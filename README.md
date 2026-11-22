@@ -8,6 +8,10 @@
 
 ## Primary Architecture: Drop-In Spine Floor + Step-Out Flying-Keel Pod
 
+![FoilSkiff 3D Render on True Kit Discovery 330](renders/01-step-out-truekit-3d.png)
+
+*Explore all **4 interactive 3D `.stl` CAD models**, OpenSCAD renders, and 11 scaled engineering SVGs in **[`VISUAL_ATLAS.md`](VISUAL_ATLAS.md)**.*
+
 Instead of bolting heavy industrial outboards onto a `31 kg` inflatable transom, cluttering the cockpit with bulky battery cases, or twisting a soft air floor under foil loads, **`FoilSkiff`'s primary architecture combines a drop-in 2-piece rigid Spine Floor with a submerged lifting-body fuselage housing two swappable `14 kg` `IP68` battery cartridges**, sleek **`1,350 cm²` lower thin wings**, and a fixed **Upper "Step-Out" Booster Wing (`+1,400 cm²` mounted `200–250 mm` higher on the strut)**:
 
 ```mermaid
@@ -59,7 +63,11 @@ xychart-beta
 
 ## Repository Contents
 
-* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Complete engineering guide covering the **Primary Drop-In Spine Floor + Step-Out Flying-Keel Pod** (swappable `2 × 14 kg` `IP68` battery cartridges, zero-mod rigid Spine Floor + `O-Frame`/`C-Frame`/switchable magnet coupling across `True Kit`/`Takacat` hulls, `4×` slim side-straddling parallelogram blades, and three high-lift wing tracks: zero-moving-parts **Upper Step-Out Booster Wing**, zero-extra-wet-area **Flush-Nested Top-Deck Switchblade Wings**, and **`~$160` Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`)** for rough chop & 4-in-1 active elevation/roll control), `IP68`/impact/anti-ventilation safety rules, off-the-shelf drive showdown (`Flipsky 65161` `100 Kv` vs `120 Kv`, `2 × T63100`, `W-30`, `APISQUEEN U30`, `Maytech 65162 / 70182`, `TP100`, `BP100` jet, `QS138` / `Sotion`, and `ME1304` baseline), `14S` vs `16S LiFePO4` ESC voltage rules, dry `60 mm` rigid battery-floor comparison, and the `M2200` + `NACA 0024` solo foiling test mule.
+* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Complete engineering guide covering the **Primary Drop-In Spine Floor + Step-Out Flying-Keel Pod** (swappable `2 × 14 kg` `IP68` battery cartridges, zero-mod rigid Spine Floor + `O-Frame`/`C-Frame`/switchable magnet coupling across `True Kit`/`Takacat` hulls, `4×` slim side-straddling parallelogram blades, and three high-lift wing tracks: zero-moving-parts **Upper Step-Out Booster Wing**, zero-extra-wet-area **Flush-Nested Top-Deck Switchblade Wings**, and **`~$160` Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`)** for rough chop & 4-in-1 active elevation/roll control), `IP68`/impact/anti-ventilation safety rules, off-the-shelf drive showdown (`Flipsky 65161` `100 Kv` vs `120 Kv`, `2 × T63100`, `W-30`, `APISQUEEN U30`, `Maytech 65162 / 70182`, `TP100`, `BP100` jet, `QS138` / `Sotion`, and `ME1304` baseline), `14S` vs `16S LiFePO4` ESC voltage rules, dry `60 mm` rigid battery-floor comparison, `M2200` + `NACA 0024` solo foiling test mule, and bolt-on kit productization rationale.
+* **[`VISUAL_ATLAS.md`](VISUAL_ATLAS.md)** — Visual Design Atlas & 3D CAD Gallery showcasing all **4 interactive 3D `.stl` CAD models**, **4 OpenSCAD multi-material 3D PNG renders**, and **11 mathematically-scaled engineering SVG diagrams**.
+* **[`models/`](models/)** — Parametric Python 3D CAD generator ([`generate_cad.py`](models/generate_cad.py), zero external Python deps) and 4 binary `.stl` assemblies (orbitable natively on GitHub or 3D-printable at `1:15` scale): `01_step_out_flying_keel_truekit.stl`, `02_switchblade_pod.stl`, `03_stol_flaperon_pod.stl`, and `04_retracted_beaching_truekit.stl`.
+* **[`renders/`](renders/)** — High-resolution `1400 × 860` multi-material OpenSCAD 3D PNG renderings of all 4 CAD configurations.
+* **[`diagrams/`](diagrams/)** — Pure-Python 2D technical SVG generator ([`generate_diagrams.py`](diagrams/generate_diagrams.py)) and 11 vector SVG engineering drawings (`00`–`10`).
 
 ---
 

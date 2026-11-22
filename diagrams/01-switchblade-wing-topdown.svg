@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" width="1040" height="560">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1038" height="558" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="492" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">1. Flush-Nested Top-Deck Switchblade Wing (Top-Down Scale Geometry)</text>
+  <text x="24" y="46" class="sub">1,300 x 220 mm Lifting Battery-Fuselage — 0 cm² Extra Wet Area Closed vs. +1,300 cm² (1.58 m Span, AR ≈ 15) Deployed</text>
+  <rect x="24" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="94" class="sec">A. CLOSED — Cruise Mode (10–22 kn)</text>
+  <text x="42" y="112" class="ok">0 cm² extra wet area • 0 exposed tips • 30.8 nm @ 15.5 kn • 32.3 lbf @ 22 kn</text>
+  <polygon points="68.0,300.0 77.8,282.3 87.5,276.0 97.2,272.0 107.0,269.4 116.8,267.8 126.5,267.1 136.2,267.0 146.0,267.0 155.8,267.0 165.5,267.0 175.2,267.0 185.0,267.0 194.8,267.0 204.5,267.0 214.2,267.0 224.0,267.0 233.8,267.0 243.5,267.0 253.2,267.0 263.0,267.0 272.8,267.0 282.5,267.0 292.2,267.0 302.0,267.0 311.8,267.0 321.5,267.0 331.2,267.0 341.0,267.0 350.8,267.1 360.5,267.8 370.2,269.1 380.0,270.6 389.8,272.5 399.5,274.5 409.2,276.8 419.0,279.2 428.8,281.9 438.5,284.7 448.2,287.6 458.0,290.8 458.0,309.2 448.2,312.4 438.5,315.3 428.8,318.1 419.0,320.8 409.2,323.2 399.5,325.5 389.8,327.5 380.0,329.4 370.2,330.9 360.5,332.2 350.8,332.9 341.0,333.0 331.2,333.0 321.5,333.0 311.8,333.0 302.0,333.0 292.2,333.0 282.5,333.0 272.8,333.0 263.0,333.0 253.2,333.0 243.5,333.0 233.8,333.0 224.0,333.0 214.2,333.0 204.5,333.0 194.8,333.0 185.0,333.0 175.2,333.0 165.5,333.0 155.8,333.0 146.0,333.0 136.2,333.0 126.5,332.9 116.8,332.2 107.0,330.6 97.2,328.0 87.5,324.0 77.8,317.7 68.0,300.0" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.8"/>
+  <polygon points="68.0,300.0 71.1,289.8 74.1,285.7 77.2,282.8 80.3,280.4 83.3,278.3 86.4,276.6 89.5,275.1 92.5,273.8 95.6,272.6 98.6,271.6 101.7,270.7 104.8,269.9 107.8,269.2 110.9,268.7 110.9,331.3 107.8,330.8 104.8,330.1 101.7,329.3 98.6,328.4 95.6,327.4 92.5,326.2 89.5,324.9 86.4,323.4 83.3,321.7 80.3,319.6 77.2,317.2 74.1,314.3 71.1,310.2 68.0,300.0" fill="url(#kevlar)" stroke="#92400E" stroke-width="1.2"/>
+  <path d="M 194.0 267.0 L 208.0 144.0 Q 212.9 138.0 225.5 152.0 L 225.5 267.0 Z" fill="#475569" fill-opacity="0.38" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <path d="M 194.0 333.0 L 208.0 456.0 Q 212.9 462.0 225.5 448.0 L 225.5 333.0 Z" fill="#475569" fill-opacity="0.38" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <rect x="437.0" y="269.0" width="32" height="14" rx="5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <line x1="471.0" y1="264.0" x2="471.0" y2="288.0" stroke="#0284C7" stroke-width="2.5"/>
+  <rect x="437.0" y="317.0" width="32" height="14" rx="5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <line x1="471.0" y1="312.0" x2="471.0" y2="336.0" stroke="#0284C7" stroke-width="2.5"/>
+  <ellipse cx="128.0" cy="261.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="128.0" cy="339.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="356.0" cy="261.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="356.0" cy="339.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <rect x="134.0" y="268.5" width="205.5" height="63.0" rx="4" fill="#0F172A" fill-opacity="0.45" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="134.6" y="268.6" width="204.0" height="30.6" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
+  <rect x="134.6" y="300.8" width="204.0" height="30.6" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
+  <rect x="131.6" y="266.0" width="21.0" height="68" rx="3" fill="#1E293B" fill-opacity="0.88" stroke="#F8FAFC" stroke-width="1.1"/>
+  <circle cx="142.4" cy="285.0" r="3.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <circle cx="142.4" cy="315.0" r="3.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <text x="236.6" y="287.7" text-anchor="middle" class="lbl-w">Left Blade (680×105 mm)</text>
+  <text x="236.6" y="319.3" text-anchor="middle" class="lbl-w">Right Blade (680×105 mm)</text>
+  <line x1="68.0" y1="475.0" x2="458.0" y2="475.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="263.0" y="491.0" text-anchor="middle" class="dim">1,300 mm Fuselage Length (26 L Buoyancy)</text>
+  <line x1="128.0" y1="238.0" x2="356.0" y2="238.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="242.0" y="230.0" text-anchor="middle" class="dim">760 mm Clear Span Between Strut Pairs</text>
+  <text x="128.0" y="210.0" text-anchor="middle" class="lbl-sm">Front Struts (x=200)</text>
+  <text x="356.0" y="210.0" text-anchor="middle" class="lbl-sm">Rear Struts (x=960)</text>
+  <text x="210.0" y="130.0" text-anchor="middle" class="lbl-sm">Fixed 1,250 cm² Lower Thin Wings (Dashed)</text>
+  <text x="339.5" y="366.0" text-anchor="middle" class="lbl-sm">2–3 mm Sand Flush Slots</text>
+  <line x1="339.5" y1="354.0" x2="338.6" y2="332.0" stroke="#475569" stroke-width="1" marker-end="url(#arrDark)"/>
+  <text x="141.5" y="394.0" text-anchor="middle" class="lbl-sm">70 mm Carbon Overhang Bridge</text>
+  <line x1="141.5" y1="382.0" x2="141.5" y2="336.0" stroke="#475569" stroke-width="1" marker-end="url(#arrDark)"/>
+  <text x="86.0" y="362.0" text-anchor="middle" class="lbl-sm">Kevlar</text>
+  <text x="86.0" y="374.0" text-anchor="middle" class="lbl-sm">Nose</text>
+  <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="550" y="94" class="sec">B. DEPLOYED — Takeoff Mode (0–9 kn)</text>
+  <text x="550" y="112" class="dim">+1,300 cm² High-Aspect Switchblades • 1.58 m Span (AR ≈ 15) • 6.7 kn Takeoff</text>
+  <polygon points="578.0,300.0 587.8,282.3 597.5,276.0 607.2,272.0 617.0,269.4 626.8,267.8 636.5,267.1 646.2,267.0 656.0,267.0 665.8,267.0 675.5,267.0 685.2,267.0 695.0,267.0 704.8,267.0 714.5,267.0 724.2,267.0 734.0,267.0 743.8,267.0 753.5,267.0 763.2,267.0 773.0,267.0 782.8,267.0 792.5,267.0 802.2,267.0 812.0,267.0 821.8,267.0 831.5,267.0 841.2,267.0 851.0,267.0 860.8,267.1 870.5,267.8 880.2,269.1 890.0,270.6 899.8,272.5 909.5,274.5 919.2,276.8 929.0,279.2 938.8,281.9 948.5,284.7 958.2,287.6 968.0,290.8 968.0,309.2 958.2,312.4 948.5,315.3 938.8,318.1 929.0,320.8 919.2,323.2 909.5,325.5 899.8,327.5 890.0,329.4 880.2,330.9 870.5,332.2 860.8,332.9 851.0,333.0 841.2,333.0 831.5,333.0 821.8,333.0 812.0,333.0 802.2,333.0 792.5,333.0 782.8,333.0 773.0,333.0 763.2,333.0 753.5,333.0 743.8,333.0 734.0,333.0 724.2,333.0 714.5,333.0 704.8,333.0 695.0,333.0 685.2,333.0 675.5,333.0 665.8,333.0 656.0,333.0 646.2,333.0 636.5,332.9 626.8,332.2 617.0,330.6 607.2,328.0 597.5,324.0 587.8,317.7 578.0,300.0" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.8"/>
+  <polygon points="578.0,300.0 581.1,289.8 584.1,285.7 587.2,282.8 590.3,280.4 593.3,278.3 596.4,276.6 599.5,275.1 602.5,273.8 605.6,272.6 608.6,271.6 611.7,270.7 614.8,269.9 617.8,269.2 620.9,268.7 620.9,331.3 617.8,330.8 614.8,330.1 611.7,329.3 608.6,328.4 605.6,327.4 602.5,326.2 599.5,324.9 596.4,323.4 593.3,321.7 590.3,319.6 587.2,317.2 584.1,314.3 581.1,310.2 578.0,300.0" fill="url(#kevlar)" stroke="#92400E" stroke-width="1.2"/>
+  <path d="M 704.0 267.0 L 718.0 144.0 Q 722.9 138.0 735.5 152.0 L 735.5 267.0 Z" fill="#475569" fill-opacity="0.38" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <path d="M 704.0 333.0 L 718.0 456.0 Q 722.9 462.0 735.5 448.0 L 735.5 333.0 Z" fill="#475569" fill-opacity="0.38" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <rect x="947.0" y="269.0" width="32" height="14" rx="5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <line x1="981.0" y1="264.0" x2="981.0" y2="288.0" stroke="#0284C7" stroke-width="2.5"/>
+  <rect x="947.0" y="317.0" width="32" height="14" rx="5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <line x1="981.0" y1="312.0" x2="981.0" y2="336.0" stroke="#0284C7" stroke-width="2.5"/>
+  <ellipse cx="638.0" cy="261.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="638.0" cy="339.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="866.0" cy="261.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <ellipse cx="866.0" cy="339.0" rx="9" ry="3.2" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+  <rect x="644.0" y="268.5" width="205.5" height="63.0" rx="4" fill="#0F172A" fill-opacity="0.45" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="638.4" y="127.0" width="30.6" height="158.0" rx="8" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <rect x="638.4" y="315.0" width="30.6" height="158.0" rx="8" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <rect x="641.6" y="266.0" width="21.0" height="68" rx="3" fill="#1E293B" fill-opacity="0.90" stroke="#FBBF24" stroke-width="1.3"/>
+  <circle cx="652.4" cy="285.0" r="3.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <circle cx="652.4" cy="315.0" r="3.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <path d="M 676.4 175.0 A 115 115 0 0 1 777.4 274.0" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>
+  <path d="M 676.4 425.0 A 115 115 0 0 0 777.4 326.0" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>
+  <text x="770.4" y="200.0" class="ok">Water drag</text>
+  <text x="770.4" y="214.0" class="ok">self-closes</text>
+  <text x="770.4" y="228.0" class="ok">flush @ 9–10 kn</text>
+  <text x="770.4" y="395.0" class="lbl-sm">Zero bending on pivot:</text>
+  <text x="770.4" y="409.0" class="lbl-sm">70 mm root slides under</text>
+  <text x="770.4" y="423.0" class="lbl-sm">carbon overhang bridge</text>
+  <text x="770.4" y="437.0" class="lbl-sm">(90 MPa takeoff / 181 MPa 2G)</text>
+  <line x1="603.0" y1="127.0" x2="603.0" y2="473.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="603.0" y="294.0" text-anchor="middle" class="dim"></text>
+  <text x="596.0" y="300.0" text-anchor="middle" transform="rotate(-90 596.0 300.0)" class="dim">1.58 m Total Span (AR ≈ 15)</text>
+  <line x1="548" y1="300" x2="572" y2="300" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <text x="556" y="290" text-anchor="middle" class="dim">Flow</text>
+</svg>

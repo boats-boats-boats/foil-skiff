@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1038" height="478" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="412" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">9. Flying-Keel Pod Internal Cutaway (1,300 x 220 x 80 mm, 26 L Buoyancy)</text>
+  <text x="24" y="46" class="sub">Swappable 2× 14 kg Potted IP68 Cartridges • Passive Seawater-Cooled 75100 VESCs • Kevlar Nose &amp; Leak Safety</text>
+  <rect x="24" y="68" width="992" height="388" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <rect x="34" y="106" width="972" height="270" rx="6" fill="url(#water)"/>
+  <path d="M 88 248 Q 100 192 200 192 L 735 192 Q 850 194 920 230 L 920 266 Q 850 302 735 304 L 200 304 Q 100 304 88 248 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="2.2"/>
+  <path d="M 88 248 Q 100 194 178 194 L 178 302 Q 100 302 88 248 Z" fill="url(#kevlar)" stroke="#92400E" stroke-width="1.5"/>
+  <rect x="178" y="196" width="11" height="104" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
+  <rect x="194" y="202" width="554" height="92" rx="4" fill="#F1F5F9" stroke="#334155" stroke-width="1.2"/>
+  <rect x="204" y="210" width="185" height="62" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.6"/>
+  <text x="296" y="237" text-anchor="middle" class="lbl-w">IP68 Cartridge #1</text>
+  <text x="296" y="252" text-anchor="middle" class="lbl-w">2.7 kWh • 14 kg</text>
+  <rect x="404" y="210" width="185" height="62" rx="6" fill="url(#wingTeal)" stroke="#0F766E" stroke-width="1.6"/>
+  <text x="496" y="237" text-anchor="middle" class="lbl-w">IP68 Cartridge #2</text>
+  <text x="496" y="252" text-anchor="middle" class="lbl-w">(or Foam Plug Solo)</text>
+  <rect x="389" y="234" width="15" height="16" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <rect x="589" y="234" width="15" height="16" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <rect x="608" y="254" width="112" height="36" rx="4" fill="#334155" stroke="#0F172A" stroke-width="1.4"/>
+  <text x="664" y="270" text-anchor="middle" class="lbl-w">2× 75100 VESC</text>
+  <text x="664" y="283" text-anchor="middle" style="font-size:8.5px;fill:#BAE6FD;font-weight:700;">Bottom-Skin Cooled</text>
+  <line x1="628" y1="292" x2="628" y2="320" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrRed)"/>
+  <line x1="664" y1="292" x2="664" y2="320" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrRed)"/>
+  <line x1="700" y1="292" x2="700" y2="320" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrRed)"/>
+  <circle cx="634" cy="222" r="7" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>
+  <rect x="688" y="196" width="24" height="10" rx="2" fill="#F59E0B" stroke="#78350F" stroke-width="1"/>
+  <rect x="744" y="198" width="18" height="100" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.6"/>
+  <circle cx="753" cy="212" r="3" fill="#0F172A"/>
+  <circle cx="753" cy="222" r="3" fill="#0F172A"/>
+  <circle cx="753" cy="274" r="3" fill="#0F172A"/>
+  <circle cx="753" cy="284" r="3" fill="#0F172A"/>
+  <line x1="768" y1="248" x2="825" y2="248" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>
+  <rect x="850" y="232" width="72" height="32" rx="10" fill="#1E293B" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="928" y1="210" x2="928" y2="286" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
+  <text x="886" y="252" text-anchor="middle" class="lbl-w">65161</text>
+  <line x1="650" y1="202" x2="650" y2="112" stroke="#0284C7" stroke-width="3" stroke-dasharray="6,3" marker-end="url(#arrBlue)"/>
+  <text x="120" y="132" text-anchor="middle" class="lbl">20 mm Kevlar</text>
+  <text x="120" y="145" text-anchor="middle" class="lbl-sm">Crush Nose</text>
+  <line x1="120" y1="150" x2="125" y2="213" stroke="#475569" stroke-width="1.1" marker-end="url(#arrDark)"/>
+  <text x="235" y="132" text-anchor="middle" class="ok">5 mm G10 Bulkhead</text>
+  <line x1="215" y1="138" x2="186" y2="196" stroke="#059669" stroke-width="1.1" marker-end="url(#arrGreen)"/>
+  <text x="415" y="132" text-anchor="middle" class="lbl">Blind-Mate IP68 Connectors</text>
+  <text x="415" y="145" text-anchor="middle" class="lbl-sm">Carry-ashore 14 kg packs (zero high-amp strut cables!)</text>
+  <text x="720" y="132" class="dim">Dry Deck Charge Umbilical + 4-Wire Alarm</text>
+  <text x="720" y="145" class="lbl-sm">Routed up strut — charge without opening seal</text>
+  <text x="785" y="176" class="warn">0.5 bar Relief Valve &amp; Leak Sensor</text>
+  <line x1="780" y1="173" x2="714" y2="200" stroke="#DC2626" stroke-width="1.1" marker-end="url(#arrRed)"/>
+  <text x="585" y="344" text-anchor="middle" class="warn">Passive Seawater Cooling (&lt;45°C MOSFETs)</text>
+  <text x="895" y="330" text-anchor="middle" class="ok">CNC Double-O-Ring Door</text>
+  <text x="895" y="344" text-anchor="middle" class="lbl-sm">Slide cartridges out aft</text>
+  <line x1="825" y1="322" x2="758" y2="292" stroke="#059669" stroke-width="1.1" marker-end="url(#arrGreen)"/>
+  <text x="42" y="408" class="ok">Free Archimedes Lift (~26.6 kg Buoyancy): Cancels ~90% of 30 kg battery weight underwater with ZERO induced drag!</text>
+  <text x="42" y="428" class="lbl-sm">Serviceability: Run 1 cartridge + closed-cell foam dummy plug (~15 nm solo) or 2 cartridges (~31 nm 2-up); replace single pack if worn.</text>
+  <text x="42" y="446" class="lbl-sm">Impact Protection: 20 mm Kevlar/elastomer cone + 5 mm G10 bulkhead isolate cells from 15 kn debris/shoal strikes.</text>
+</svg>

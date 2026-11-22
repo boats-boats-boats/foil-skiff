@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" width="1040" height="560">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1038" height="558" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="492" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">4. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram</text>
+  <text x="24" y="46" class="sub">Exact-Scale Sweep (0.60 m Strut, 1.30 m Pod) — Single Mast Crashes Tail Into Floor @ 40° &amp; Plows Nose 27 cm Deeper!</text>
+  <rect x="24" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="92" class="warn">A. AVOID: Single Central "Inverted-T" Mast Kick-Up</text>
+  <text x="42" y="109" class="lbl-sm">At just 40° aft kick-up, tail smashes PVC ceiling (-1 cm) &amp; nose plows to -91 cm!</text>
+  <rect x="38" y="161" width="456" height="14" rx="2" fill="#64748B"/>
+  <text x="50" y="172" class="lbl-w">Tunnel Ceiling / PVC Web (y = 0 cm)</text>
+  <line x1="38" y1="335.0" x2="494" y2="335.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="488" y="330.0" text-anchor="end" class="lbl-sm">Deployed Bottom (-64 cm)</text>
+  <line x1="38" y1="402.5" x2="494" y2="402.5" stroke="#DC2626" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <text x="488" y="397.5" text-anchor="end" class="warn">Nose Plows 27 cm Deeper (-91 cm!)</text>
+  <line x1="230" y1="175" x2="230.0" y2="325.0" stroke="#94A3B8" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="67.5,335.0 392.5,335.0 392.5,315.0 67.5,315.0" fill="#CBD5E1" fill-opacity="0.55" stroke="#64748B" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <line x1="230" y1="175" x2="326.4" y2="289.9" stroke="#DC2626" stroke-width="9" stroke-linecap="round"/>
+  <polygon points="208.4,402.0 457.3,193.1 444.5,177.8 195.5,386.7" fill="#FEE2E2" stroke="#DC2626" stroke-width="2.2"/>
+  <circle cx="230" cy="175" r="5.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.5"/>
+  <circle cx="444.5" cy="177.8" r="14" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="2"/>
+  <text x="448.5" y="207.8" text-anchor="middle" class="warn">FLOOR CRASH @ 40°!</text>
+  <circle cx="208.4" cy="402.0" r="6" fill="#DC2626"/>
+  <text x="248.4" y="428.0" text-anchor="middle" class="warn">Nose Dives to -91 cm!</text>
+  <line x1="72.0" y1="335.0" x2="72.0" y2="402.5" stroke="#DC2626" stroke-width="1.2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+  <text x="104.0" y="372.8" text-anchor="middle" class="warn">-27 cm!</text>
+  <text x="42" y="498" class="lbl">Verdict: Single central mast works ONLY for vertical daggerboard slide</text>
+  <text x="42" y="514" class="lbl-sm">(Option C OEM slot) or short dry-floor foils — NEVER pivot a 1.3 m pod!</text>
+  <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="550" y="92" class="ok">B. MANDATORY: 4-Bar Parallelogram Struts (2× or 4×)</text>
+  <text x="550" y="109" class="lbl-sm">Pod stays 100% HORIZONTAL at every angle — rises smoothly up to -12 cm!</text>
+  <rect x="546" y="161" width="456" height="14" rx="2" fill="#0284C7"/>
+  <text x="558" y="172" class="lbl-w">O-Frame Twin Rails / PVC Web (y = 0 cm)</text>
+  <line x1="546" y1="335.0" x2="1002" y2="335.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="996" y="330.0" text-anchor="end" class="lbl-sm">Deployed (-64 cm)</text>
+  <line x1="615.0" y1="175.0" x2="615.0" y2="325.0" stroke="#64748B" stroke-width="5.5" stroke-dasharray="4,2" stroke-linecap="round"/>
+  <line x1="805.0" y1="175.0" x2="805.0" y2="325.0" stroke="#64748B" stroke-width="5.5" stroke-dasharray="4,2" stroke-linecap="round"/>
+  <rect x="547.5" y="315.0" width="325.0" height="20.0" rx="8" fill="#CBD5E1" fill-opacity="0.50" stroke="#64748B" stroke-width="1.8" stroke-dasharray="4,2"/>
+  <line x1="615.0" y1="175.0" x2="711.4" y2="289.9" stroke="#0284C7" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
+  <line x1="805.0" y1="175.0" x2="901.4" y2="289.9" stroke="#0284C7" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
+  <rect x="643.9" y="279.9" width="325.0" height="20.0" rx="8" fill="#BAE6FD" fill-opacity="0.75" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="none"/>
+  <text x="806.4" y="293.9" text-anchor="middle" class="dim">40° Kick-Up: Flat (-50 cm)</text>
+  <line x1="615.0" y1="175.0" x2="761.7" y2="206.2" stroke="#059669" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
+  <line x1="805.0" y1="175.0" x2="951.7" y2="206.2" stroke="#059669" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
+  <rect x="694.2" y="196.2" width="325.0" height="20.0" rx="8" fill="#A7F3D0" fill-opacity="0.95" stroke="#059669" stroke-width="1.8" stroke-dasharray="none"/>
+  <text x="856.7" y="210.2" text-anchor="middle" class="ok">100% FLAT &amp; TUCKED!</text>
+  <circle cx="615.0" cy="175" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
+  <circle cx="805.0" cy="175" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
+  <text x="550" y="498" class="ok">Verdict: Delrin shear pin kicks 1.3 m pod cleanly UP &amp; AFT over reefs</text>
+  <text x="550" y="514" class="lbl-sm">with ZERO floor collision, ZERO nose plowing, and flat beach tuck.</text>
+</svg>
