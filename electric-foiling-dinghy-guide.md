@@ -99,6 +99,8 @@ Keeping a pivoting `1.3 m` Flying-Keel Pod **parallel during grounding kick-up a
 | **Fixed / Vertical-Lift Only: `1×` Single Central Carbon Mast** (`180 × 22 mm`, `3.5 mm` UD walls) | **`7.1 lbf`** *(Lowest!)* | *N/A (vertical slide only)* | *N/A* | `<1°` flex (`99 MPa`, `8×` safety) | **FAILS pivoting kick-up** (tail hits ceiling @ `40°`, nose plows `27 cm` deeper to `-91 cm`!). Use **ONLY** for vertical daggerboard lift (OEM Option C slot) or short dry-floor foils. |
 | **Avoid: `4×` Thick Quad Struts** (`110 × 15 mm` ea.) | **`18.7 lbf`** *(2.6× drag!)* | `~150 mm` | `~80 mm` | Over-built | **Avoid:** unnecessary chord/thickness destroys high-speed efficiency. |
 
+* **Upper Step-Out Booster Wing Synergy on Primary A (`4×` Side-Straddling Blades):** Supporting the `~1.0 m` upper takeoff wing at **two points `250 mm` apart** cuts its root bending moment by **`~40%`** (enabling lighter, cheaper fiberglass or thin aluminum construction), locks the left and right blades into a rigid **3D box-portal frame** (`<3 mm` roll flex even in `6061-T6` Alu, especially with a slim aft tie-rod across the rear pair), lets you set an **independent `+2°–3°` nose-up takeoff incidence angle** (zero cruise pitch penalty once it clears into dry air >`9 kn`), and folds cleanly as a **double-deck horizontal stack (`~95–105 mm` total depth → `~125–135 mm` / `~5"` clear above flat sand)**.
+
 ---
 
 ## 2. Off-the-Shelf Propulsion Showdown (`Weight`, `Compactness`, `Cost` & `Power Steering`)
