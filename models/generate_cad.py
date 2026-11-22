@@ -7,7 +7,7 @@ Secondary Open-Bow Reference: True Kit Discovery 330 (330 cm, open square bow, f
 
 Zero external Python dependencies (pure Python 3 standard library + optional OpenSCAD CLI).
 
-Generates 8 interactive binary 3D STL CAD models, 8 shaded 3D isometric SVGs, and 8 OpenSCAD PNGs:
+Generates 9 interactive binary 3D STL CAD models, 9 shaded 3D isometric SVGs, and 9 OpenSCAD PNGs:
   1. models/01_navigator300_stol_flaperons.stl       + renders/01-navigator300-stol-3d.png       + diagrams/00-navigator300-3d-cad.svg
   2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png         + diagrams/06-switchblade-3d-cad.svg
   3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png       + diagrams/07-stol-flaperons-3d-cad.svg
@@ -16,6 +16,7 @@ Generates 8 interactive binary 3D STL CAD models, 8 shaded 3D isometric SVGs, an
   6. models/06_navigator300_lr_8020_sweetspot.stl    + renders/06-navigator300-lr-8020-3d.png    + diagrams/13-navigator300-lr-8020-3d-cad.svg
   7. models/07_navigator300_lr_max_range.stl         + renders/07-navigator300-lr-max-range-3d.png + diagrams/14-navigator300-lr-max-range-3d-cad.svg
   8. models/08_lr_pod_closeup.stl                    + renders/08-lr-pod-closeup-3d.png          + diagrams/15-lr-pod-closeup-3d-cad.svg
+  9. models/09_modular_hard_deck_seating.stl         + renders/09-modular-deck-seating-3d.png    + diagrams/17-modular-deck-seating-3d-cad.svg
 """
 
 import html
@@ -202,11 +203,83 @@ def add_contoured_deck_and_underplate(mb: MeshBuilder, stations_deck, stations_u
     loft_slab(stations_under, C_ALU, 1.0, stl=True)
 
 
-def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True, deck_thick=28.0, with_bow_dodger=False):
+def add_flush_ltracks(mb: MeshBuilder, z_top=30.0, x0=-680.0, x1=890.0, y_track=195.0):
+    """
+    Twin marine-anodized flush-recessed L-Track / T-Track mounting rails (390 mm center spacing,
+    100% flush with Hard Deck top surface — ZERO trip hazard when chairs are unclipped!).
+    Supports 0 chairs (open deck), 1 chair (Solo @ CoG), or 2 chairs (Tandem Long-Range).
+    """
+    for sy in (-y_track, y_track):
+        mb.add_box(x0, x1, sy - 16, sy + 16, z_top - 4, z_top + 1.5, C_ALU, 1.0, stl=True)
+        # Inner recessed slot stripe
+        mb.add_box(x0 + 8, x1 - 8, sy - 6, sy + 6, z_top + 1.0, z_top + 2.0, C_CARBON_DARK, 1.0, stl=False)
+
+
+def add_low_sit_chair(mb: MeshBuilder, x_hip=0.0, z_deck=63.0, y_track=195.0, with_armrest_helm=False):
+    """
+    Ergonomic low-slung touring chair (Hobie Vantage / recumbent kayak style, ~2.5 kg):
+      - Width: 430 mm (fits cleanly inside Navigator 300 600 mm tunnel with 85 mm/side tube clearance!)
+      - Seat pan: ~125 mm above Hard Deck (lowers crew CoG ~250 mm & drops head behind bow dodger!)
+      - Reclined 22 deg lumbar backrest + 4x gold spring-loaded L-Track double-stud quick-release feet
+      - Optional starboard armrest wireless thumb-throttle + 2-axis steering/trim joystick pod!
+    """
+    hw = 212.0  # 424 mm total chair width
+    z_pan_back = z_deck + 118.0
+    z_pan_front = z_deck + 148.0  # Slight ergonomic thigh-support tilt!
+    # 1. Tubular anodized aluminum frame & 4x quick-release L-Track double-stud feet
+    for side in (-1, 1):
+        yt = side * y_track
+        # Lower L-Track slide shoe + gold quick-release locking studs (front & rear)
+        mb.add_box(x_hip - 225, x_hip + 145, yt - 13, yt + 13, z_deck, z_deck + 16, C_ALU, 1.0, stl=True)
+        mb.add_box(x_hip - 210, x_hip - 175, yt - 15, yt + 15, z_deck + 14, z_deck + 28, C_KEVLAR, 1.0, stl=True)
+        mb.add_box(x_hip + 95, x_hip + 130, yt - 15, yt + 15, z_deck + 14, z_deck + 28, C_KEVLAR, 1.0, stl=True)
+        # Front & rear A-frame risers from L-Track shoes to ergonomic seat frame
+        mb.add_rod((x_hip - 190, yt, z_deck + 14), (x_hip - 245, side * hw, z_pan_front), 10.0, C_ALU, n=8, alpha=1.0, stl=True)
+        mb.add_rod((x_hip + 110, yt, z_deck + 14), (x_hip + 115, side * hw, z_pan_back), 10.0, C_ALU, n=8, alpha=1.0, stl=True)
+        # Side seat frame rail
+        mb.add_rod((x_hip - 245, side * hw, z_pan_front), (x_hip + 115, side * hw, z_pan_back), 11.0, C_ALU, n=8, alpha=1.0, stl=True)
+        # Reclined 22 deg ergonomic backrest side upright (+430 mm tall!)
+        mb.add_rod((x_hip + 115, side * hw, z_pan_back), (x_hip + 280, side * (hw - 12), z_pan_back + 400), 11.0, C_ALU, n=8, alpha=1.0, stl=True)
+
+    # Top headrest crossbar & front thigh bolster tube
+    mb.add_cylinder_y(x_hip + 280, -(hw - 12), hw - 12, z_pan_back + 400, 11.0, C_ALU, n=8, alpha=1.0, stl=True)
+    mb.add_cylinder_y(x_hip - 245, -hw, hw, z_pan_front, 11.0, C_ALU, n=8, alpha=1.0, stl=True)
+
+    # 2. Contoured breathable mesh / molded carbon seat pan (lofted!)
+    pan_st = [
+        (x_hip - 242, hw - 8, z_pan_front - 6, z_pan_front + 12),
+        (x_hip - 80, hw - 6, z_pan_front - 18, z_pan_front),
+        (x_hip + 112, hw - 8, z_pan_back - 8, z_pan_back + 10),
+    ]
+    pan_rings = [[(x, -w, zb), (x, w, zb), (x, w, zt), (x, -w, zt)] for x, w, zb, zt in pan_st]
+    mb.add_loft(pan_rings, C_SEAT, 0.96, stl=True)
+
+    # 3. Contoured reclined lumbar backrest sling/shell (lofted 22 deg recline with gentle lumbar curve!)
+    back_st = [
+        (x_hip + 118, hw - 10, z_pan_back + 14),
+        (x_hip + 168, hw - 12, z_pan_back + 145),   # Ergonomic lumbar support curve
+        (x_hip + 225, hw - 15, z_pan_back + 275),
+        (x_hip + 276, hw - 18, z_pan_back + 394),
+    ]
+    b_rings = [[(x - 10, -w, z), (x - 10, w, z), (x + 10, w, z), (x + 10, -w, z)] for x, w, z in back_st]
+    mb.add_loft(b_rings, C_SEAT, 0.96, stl=True)
+
+    # 4. Optional Integrated Starboard (Right-Hand facing -X bow -> +Y!) Armrest Wireless Helm Pod
+    if with_armrest_helm:
+        ya = hw + 12.0  # Right hand (Starboard = +Y when facing bow -X!)
+        z_arm = z_pan_back + 175.0
+        mb.add_rod((x_hip + 150, hw, z_pan_back + 115), (x_hip + 130, ya, z_arm), 8.5, C_ALU, n=8, alpha=1.0, stl=True)
+        mb.add_rod((x_hip - 125, hw, z_pan_front), (x_hip - 120, ya, z_arm), 8.5, C_ALU, n=8, alpha=1.0, stl=True)
+        mb.add_box(x_hip - 155, x_hip + 138, ya - 22, ya + 22, z_arm - 10, z_arm + 14, C_CARBON_DARK, 1.0, stl=True)
+        mb.add_box(x_hip - 175, x_hip - 120, ya - 20, ya + 20, z_arm + 12, z_arm + 40, C_FLAP_R, 1.0, stl=True)
+        mb.add_rod((x_hip - 148, ya, z_arm + 38), (x_hip - 158, ya, z_arm + 84), 6.5, C_KEVLAR, n=8, alpha=1.0, stl=True)
+
+
+def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True, deck_thick=28.0, with_bow_dodger=False, show_bench_seats=True, with_ltracks=True):
     """
     Semi-realistic True Kit Navigator 300 (PRIMARY HULL):
       - LOA: 300 cm, External Beam: 155 cm, Inside Beam: 60 cm, Tube Ø460 mm
-      - Contoured 2-Piece Rigid Hard Deck (28 mm standard OR 60 mm Dual-Pack Battery-Floor) & Contoured Bow-Bent Under-Hull Plate
+      - Contoured 2-Piece Rigid Hard Deck (28 mm standard OR 60 mm Dual-Pack Battery-Floor) + Flush Recessed Twin L-Tracks
       - Optional Low-Profile Curved Bow Spray Dodger (Swap #4 Aero Trim for 60-75 nm expedition runs)
       - Factory Tru-Alu Rigid Aluminum Transom + 6 mm Dyneema Bow-D-Ring Sling (ZERO protruding boxes above deck!)
     """
@@ -247,8 +320,9 @@ def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True, deck
     mb.add_box(1035, 1065, -455, -180, 260, 335, C_TRANSOM_ALU, alpha=0.88, stl=stl_hull)
     mb.add_box(1035, 1065, 180, 455, 260, 335, C_TRANSOM_ALU, alpha=0.88, stl=stl_hull)
 
-    mb.add_box(-520, -320, -490, 490, 170, 192, C_SEAT, alpha=0.45, stl=False)
-    mb.add_box(320, 520, -490, 490, 170, 192, C_SEAT, alpha=0.45, stl=False)
+    if show_bench_seats:
+        mb.add_box(-520, -320, -490, 490, 170, 192, C_SEAT, alpha=0.45, stl=False)
+        mb.add_box(320, 520, -490, 490, 170, 192, C_SEAT, alpha=0.45, stl=False)
 
     # Factory Bow Towing D-Ring under raised curved bow nose
     mb.add_box(-1455, -1420, -28, 28, 8, 36, C_KEVLAR, 1.0, stl=True)
@@ -273,6 +347,9 @@ def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True, deck
         (1095, 152, -16, -2),
     ]
     add_contoured_deck_and_underplate(mb, deck_stations, under_stations, latch_x=66.0)
+
+    if with_ltracks:
+        add_flush_ltracks(mb, z_top=3.0 + dt, x0=-680.0, x1=890.0, y_track=195.0)
 
     # Visual gold accent band on 60 mm Dual-Pack Battery-Floor edges so the 5.38 kWh deck pack is unmistakably clear!
     if deck_thick >= 50.0:
@@ -996,22 +1073,22 @@ def add_single_centerline_prop_and_rudder(mb: MeshBuilder, dx=0.0, dz=-702.0, sh
 
 
 # ---------------------------------------------------------------------------
-# MODEL 6 (LONG-RANGE 80/20 SWEET SPOT): 65-79 nm on 10.8 kWh LiFePO4
+# MODEL 6 (LONG-RANGE 80/20 SWEET SPOT — TANDEM 2-CHAIR MODE): 65-79 nm LiFePO4
 # ---------------------------------------------------------------------------
 def build_model_06_lr_8020():
     mb = MeshBuilder()
-    # Dual-Pack 60 mm Contoured Battery-Floor Hard Deck (5.38 kWh dry) + Low-Profile Bow Spray Dodger!
-    add_navigator_300_hull(mb, tube_alpha=0.36, stl_hull=True, deck_thick=60.0, with_bow_dodger=True)
+    # Dual-Pack 60 mm Contoured Battery-Floor Hard Deck + Flush L-Tracks + Bow Spray Dodger + 2 Tandem Low-Sit Chairs!
+    add_navigator_300_hull(mb, tube_alpha=0.35, stl_hull=True, deck_thick=60.0, with_bow_dodger=True, show_bench_seats=False, with_ltracks=True)
+    # 2 Inline Tandem Ergonomic Low-Sit Chairs locked onto flush L-Tracks (424 mm wide inside 600 mm tunnel!)
+    add_low_sit_chair(mb, x_hip=-320.0, z_deck=63.0, y_track=195.0, with_armrest_helm=False)  # Front passenger
+    add_low_sit_chair(mb, x_hip=420.0, z_deck=63.0, y_track=195.0, with_armrest_helm=True)    # Aft pilot w/ armrest helm!
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0
-    # Keeps EASY 4x Side-Straddling Blades (5.5" sand clearance, zero pod cut-out!)
     add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=0.0, x_front=x_f, x_rear=x_r, y_half=122)
     mb.add_cylinder_y(x_f, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
     mb.add_cylinder_y(x_r, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
-    # Single Centerline 65161 + 10" 2-Blade CNC Prop + Tail Rudder + Wider AR 13.5 (1.50 m) Main Wing + Split STOL Flaperons!
     add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, with_motors=False)
     add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
-    # Wider High-Aspect AR 13.5 Main Wing (half_span = 750 mm -> 1.50 m total span) + Split STOL Flaperons!
     add_lower_wings(mb, dx=-160.0, dz=z_bot - 4.0, half_span=750.0, root_chord=104.0, x_le=-245.0)
     fl_sec = naca4_section(0.02, 0.4, 0.11, 58.0, n=10)
     piv_x, piv_z = -160.0 - 92.0, z_bot - 32.0
@@ -1023,66 +1100,65 @@ def build_model_06_lr_8020():
         mb.add_loft(rings, col, 1.0, stl=True)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
 
-    write_binary_stl(mb, MODELS_DIR / "06_navigator300_lr_8020_sweetspot.stl", "FoilSkiff 06 (LR 80/20 Sweet Spot): Navigator 300 65-79 nm Build (mm)")
+    write_binary_stl(mb, MODELS_DIR / "06_navigator300_lr_8020_sweetspot.stl", "FoilSkiff 06 (LR 80/20 Tandem 2-Chair): Navigator 300 65-79 nm (mm)")
     callouts = [
-        ((-1050, 0, 500), "left", 96, 235, "Swap #4: Low-Profile Bow Spray Dodger", "Cuts wind drag ~1.6 lbf + dry 5-hr cruise!"),
-        ((-320, 342, 32), "left", 204, 240, "60 mm Dual-Pack Battery Hard Deck", "5.38 kWh dry LiFePO4 + 5.38 kWh pod = 10.8 kWh!"),
+        ((-1050, 0, 500), "left", 96, 235, "Bow Spray Dodger + 2× Low-Sit Chairs", "Tandem 424 mm chairs on flush L-Tracks (-250 mm CoG!)"),
+        ((-320, 342, 32), "left", 204, 240, "60 mm Dual-Pack Hard Deck + L-Tracks", "10.8 kWh LiFePO4 • 100% flush when chairs unclipped!"),
         ((-310, 690, -692), "left", 345, 235, "Swap #2: AR 13.5 Wide Main Wing (1.50 m)", "Cuts induced drag ~30% + keeps Split STOL control!"),
         ((-795, 0, -702), "left", 478, 235, "26 L Flying-Keel Pod (5.38 kWh)", "Internal STOL & rudder servos — 0 deck boxes!"),
-        ((1050, -300, 220), "right", 96, 800, "True Kit Navigator 300 (65–79 nm!)", "125 Wh/nm @ 12 kn (79 nm) • 152 Wh/nm @ 15.5 kn (65 nm)"),
+        ((270, -225, 395), "right", 96, 800, "Aft Pilot Chair + Armrest Helm Pod", "Thumb-throttle & joystick move with the chair!"),
         ((220, -122, -320), "right", 225, 805, "Keeps Easy 4× Side-Straddling Blades!", "60×9 mm • Zero pod cut-out, 5.5\" sand clearance"),
         ((380, 0, -565), "right", 370, 795, "Compact Tailfin & Internal-Servo Rudder", "Clean steering without 2nd motor drag"),
-        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "Biggest win: -3.5 lbf drag & 70% drivetrain eff.!"),
+        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "65 nm @ 15.5 kn • 79 nm @ 12 kn (10.8 kWh LFP)"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "13-navigator300-lr-8020-3d-cad.svg",
-        "3D CAD Model 6 (Long-Range 80/20 Sweet Spot): True Kit Navigator 300 (65–79 nm)",
-        "Keeps 4× easy blades & Split STOL chop control • Adds Single 65161 + 10\" CNC prop, AR 13.5 wing, 60 mm deck pack & bow dodger",
-        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=260,
-        footer="Interactive 3D STL: models/06_navigator300_lr_8020_sweetspot.stl (80/20 Long-Range Expedition Build)",
+        "3D CAD Model 6 (LR 80/20 Tandem 2-Chair): True Kit Navigator 300 (65–79 nm)",
+        "2 inline ergonomic low-sit chairs on flush L-Tracks + Single 65161 (10\" prop), AR 13.5 Split STOL, 60 mm deck & bow dodger",
+        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=245,
+        footer="Interactive 3D STL: models/06_navigator300_lr_8020_sweetspot.stl (Tandem 2-Chair 80/20 Long-Range Build)",
     )
-    render_openscad_png(mb, RENDERS_DIR / "06-navigator300-lr-8020-3d.png", "-40,0,-240,75,0,224,5100")
+    render_openscad_png(mb, RENDERS_DIR / "06-navigator300-lr-8020-3d.png", "-40,0,-210,74,0,224,5200")
 
 
 # ---------------------------------------------------------------------------
-# MODEL 7 (FULL LONG-RANGE MAX EFFICIENCY): 70-84 nm LiFePO4 / 67 nm Single-Pod NMC
+# MODEL 7 (FULL LONG-RANGE MAX EFFICIENCY — SOLO 1-CHAIR MODE): 70-84 nm
 # ---------------------------------------------------------------------------
 def build_model_07_lr_max_range():
     mb = MeshBuilder()
-    add_navigator_300_hull(mb, tube_alpha=0.36, stl_hull=True, deck_thick=60.0, with_bow_dodger=True)
+    add_navigator_300_hull(mb, tube_alpha=0.35, stl_hull=True, deck_thick=60.0, with_bow_dodger=True, show_bench_seats=False, with_ltracks=True)
+    # 1 Solo Ergonomic Low-Sit Pilot Chair slid right over midship CoG (X = +20 mm -> crew CoG dead-on foil CoL!)
+    add_low_sit_chair(mb, x_hip=20.0, z_deck=63.0, y_track=195.0, with_armrest_helm=True)
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0
-    # Swap #3: 2x Hollow Carbon 100x18 mm Recessed Center Tandem Struts (9.1 lbf!)
     add_2x_center_recessed_struts(mb, z_top=z_top, z_bot=z_bot, x_front=x_f, x_rear=x_r)
-    # Swap #1 & #2: Single 65161 + 10" 2-Blade CNC Prop + Flush-Nested Switchblade (90 mm pod) + AR 14 (1.55 m) Wing!
     add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, pod_h=90.0, with_motors=False)
     add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
     add_lower_wings(mb, dx=-160.0, dz=z_bot - 18.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
-    # Flush-Nested Top-Deck Switchblade recess & overhang bridge (blades tucked 100% flush for max-range cruise!)
     mb.add_box(-595, -525, -110, 110, z_bot + 40, z_bot + 54, C_CARBON_DARK, 1.0, stl=True)
     for side in (-1, 1):
         mb.add_box(-575, 105, side * 52 - 48, side * 52 + 48, z_bot + 44, z_bot + 51, C_WING_UP, 0.85, stl=True)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
 
-    write_binary_stl(mb, MODELS_DIR / "07_navigator300_lr_max_range.stl", "FoilSkiff 07 (Full Long-Range Max Eff.): Navigator 300 70-84 nm Build (mm)")
+    write_binary_stl(mb, MODELS_DIR / "07_navigator300_lr_max_range.stl", "FoilSkiff 07 (Full LR Solo 1-Chair): Navigator 300 70-84 nm Build (mm)")
     callouts = [
-        ((-1050, 0, 500), "left", 96, 235, "Swap #4: Aerodynamic Bow Dodger", "Trims open-cockpit wind drag @ 12–15.5 kn"),
-        ((-320, 342, 32), "left", 204, 240, "10.8 kWh LiFePO4 (or 8.2 kWh Single NMC)", "70–84 nm (Dual LiFePO4) • 55–67 nm (Single NMC Pod)"),
+        ((-1050, 0, 500), "left", 96, 235, "Swap #4: Aerodynamic Bow Dodger", "Pilot tucks low behind dodger (-8 Wh/nm aero!)"),
+        ((-120, -225, 380), "left", 204, 240, "Solo Low-Sit Chair Slid Over CoG!", "5-sec L-Track slide balances foil CoL • Open aft bay"),
         ((-300, 720, -695), "left", 345, 235, "Swap #2: AR 14 (1.55 m) + Flush Switchblade", "0 cm² extra wet area closed • 118 Wh/nm @ 12 kn!"),
         ((-795, 0, -702), "left", 478, 235, "90 mm Recessed Switchblade Pod", "Blades sit 100% flush in roof at cruise (>9 kn)"),
-        ((1050, -300, 220), "right", 96, 800, "Full 4-Swap Long-Range Package", "118 Wh/nm @ 12 kn (84 nm) • 142 Wh/nm @ 15.5 kn (70 nm)"),
+        ((720, -195, 65), "right", 96, 800, "Open Aft Flush L-Track Cargo Bay", "Clip 2nd chair, dry bag, or plug-in extender pack!"),
         ((220, 0, -330), "right", 225, 805, "Swap #3: 2× Hollow Center Struts", "100×18 mm recessed • Rear drafts in front wake (9.1 lbf)"),
         ((380, 0, -565), "right", 370, 795, "Internal-Servo Tailfin Rudder", "Zero deck boxes, zero external steering rods"),
-        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "78–80% prop eff. • 1× 75100 VESC (lighter & -$95)"),
+        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "70–84 nm (10.8 kWh LFP) • 55–67 nm (8.2 kWh NMC)"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "14-navigator300-lr-max-range-3d-cad.svg",
-        "3D CAD Model 7 (Full Long-Range Max Efficiency): True Kit Navigator 300 (70–84 nm)",
-        "All 4 Swaps Combined: Single 65161 + 10\" CNC prop, AR 14 + Flush Switchblade, 2× Recessed Center Struts & Bow Dodger",
-        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=260,
-        footer="Interactive 3D STL: models/07_navigator300_lr_max_range.stl (Maximum-Range 70–84 nm Expedition Configuration)",
+        "3D CAD Model 7 (Full LR Solo 1-Chair): True Kit Navigator 300 (70–84 nm)",
+        "Solo ergonomic low-sit chair centered on flush L-Tracks + Single 65161 (10\" prop), AR 14 Switchblade, 2× Struts & Dodger",
+        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=245,
+        footer="Interactive 3D STL: models/07_navigator300_lr_max_range.stl (Solo 1-Chair Full 4-Swap Max-Range Build)",
     )
-    render_openscad_png(mb, RENDERS_DIR / "07-navigator300-lr-max-range-3d.png", "-40,0,-240,75,0,224,5100")
+    render_openscad_png(mb, RENDERS_DIR / "07-navigator300-lr-max-range-3d.png", "-40,0,-210,74,0,224,5200")
 
 
 # ---------------------------------------------------------------------------
@@ -1136,6 +1212,61 @@ def build_model_08_lr_pod_closeup():
     render_openscad_png(mb, RENDERS_DIR / "08-lr-pod-closeup-3d.png", "30,0,-305,67,0,224,3350")
 
 
+# ---------------------------------------------------------------------------
+# MODEL 9 (MODULAR DECK SEATING): Bow-Contoured Hard Deck + Flush L-Tracks + 2 Chairs
+# ---------------------------------------------------------------------------
+def build_model_09_modular_seating():
+    mb = MeshBuilder()
+    dt = 60.0
+    deck_st = [
+        (-1245, 95, 86, 86 + 32.0),
+        (-1160, 185, 62, 62 + 38.0),
+        (-1030, 268, 34, 34 + 48.0),
+        (-880, 322, 12, 12 + dt),
+        (-720, 340, 3, 3 + dt),
+        (60, 340, 3, 3 + dt),
+        (72, 340, 3, 3 + dt),
+        (990, 340, 3, 3 + dt),
+    ]
+    under_st = [
+        (-1175, 115, 52, 62),
+        (-1030, 148, 22, 32),
+        (-880, 154, -2, 10),
+        (-720, 152, -16, -2),
+        (1095, 152, -16, -2),
+    ]
+    add_contoured_deck_and_underplate(mb, deck_st, under_st, latch_x=66.0)
+    add_flush_ltracks(mb, z_top=3.0 + dt, x0=-680.0, x1=890.0, y_track=195.0)
+    # Transom C-clamp & bow Dyneema sling shown for hull context
+    for sy in (-125, 125):
+        mb.add_box(-740, 1095, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
+    mb.add_box(1065, 1095, -160, 160, -24, 160, C_ALU, 1.0, stl=True)
+    mb.add_box(1005, 1095, -160, 160, 140, 168, C_ALU, 1.0, stl=True)
+    # 2 Inline Tandem Low-Sit Ergonomic Chairs (slideable to 1-Chair Solo @ CoG or removed in 5 sec!)
+    add_low_sit_chair(mb, x_hip=-320.0, z_deck=3.0 + dt, y_track=195.0, with_armrest_helm=False)
+    add_low_sit_chair(mb, x_hip=420.0, z_deck=3.0 + dt, y_track=195.0, with_armrest_helm=True)
+
+    write_binary_stl(mb, MODELS_DIR / "09_modular_hard_deck_seating.stl", "FoilSkiff 09 (Modular Seating): Contoured Deck, Flush L-Tracks & 2 Low-Sit Chairs (mm)")
+    callouts = [
+        ((-1130, 0, 95), "left", 104, 240, "Bow-Contoured Footrest & Ski-Plate", "Legs extend naturally onto upturned bow deck!"),
+        ((-320, 210, 460), "left", 228, 245, "Front Low-Sit Chair (424 mm Wide)", "22° lumbar recline • Fits 600 mm tunnel cleanly"),
+        ((-510, 195, 82), "left", 378, 240, "Spring-Loaded L-Track Quick-Release", "900 kgf double-stud pins • 5-sec slide/remove!"),
+        ((-650, -195, 65), "left", 498, 240, "Flush Recessed Twin L-Tracks (390 mm)", "100% flush with deck — zero trip hazard when empty!"),
+        ((690, 0, 495), "right", 104, 800, "Aft Pilot Chair (Slides to Solo CoG!)", "Slide 1 chair to X ≈ 0 mm for solo 70+ nm flights"),
+        ((270, 225, 395), "right", 232, 800, "Integrated Armrest Wireless Helm Pod", "Right-hand thumb-throttle & joystick move with chair!"),
+        ((820, -195, 65), "right", 368, 800, "2-Piece Midship Latch + 60 mm Deck", "Packs into 2 halves • Houses 5.38 kWh dry pack"),
+        ((1080, 0, 120), "right", 492, 800, "Tru-Alu Transom Hybrid C-Clamp", "Zero deck boxes, zero hull holes!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "17-modular-deck-seating-3d-cad.svg",
+        "3D CAD Model 9: Modular Hard Deck Seating (Flush L-Tracks + 1 or 2 Low-Sit Chairs)",
+        "5-sec quick-release slide between Solo (1 chair @ CoG), Tandem (2 chairs inline), and Open Deck (0 chairs, 100% flush!)",
+        callouts, az_deg=-136, el_deg=24, scale=0.33, z_center=-180,
+        footer="Interactive 3D STL: models/09_modular_hard_deck_seating.stl (Modular 1-or-2 Low-Sit Ergonomic Seating System)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "09-modular-deck-seating-3d.png", "-40,0,190,68,0,224,3850")
+
+
 if __name__ == "__main__":
     for old_f in [
         MODELS_DIR / "01_step_out_flying_keel_truekit.stl",
@@ -1159,4 +1290,5 @@ if __name__ == "__main__":
     build_model_06_lr_8020()
     build_model_07_lr_max_range()
     build_model_08_lr_pod_closeup()
-    print("All 8 3D STL models, 8 annotated 3D SVGs, and 8 OpenSCAD PNG renders generated successfully.")
+    build_model_09_modular_seating()
+    print("All 9 3D STL models, 9 annotated 3D SVGs, and 9 OpenSCAD PNG renders generated successfully.")

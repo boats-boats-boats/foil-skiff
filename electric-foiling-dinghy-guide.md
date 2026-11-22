@@ -270,6 +270,20 @@ To double baseline range (`30–35 nm`) to **`60–75+ nm`** (`111–139 km`, `4
 
 *(An optional `1.4 × 1.8 m` `400 W` rigid solar bimini adds `~1.5 kWh` over a `5-hour` cruise = **`+10–13 nm`** bonus plus off-grid anchor charging.)*
 
+#### Modular Hard Deck Seating: 1 or 2 Ergonomic Low-Sit Chairs on Flush L-Tracks (`5-Hour` Flight Ergonomics)
+
+![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
+
+For `4.5–5.5 hour` `60–75 nm` flights, stock aluminum bench planks sit too high (high roll CoG, high wind drag) and cause lower-back fatigue. Routing **two marine-anodized L-Track rails (`1,570 mm` long, `390 mm` spacing, `~$55`, `1.1 kg`) `100%` flush into the `28 mm` or `60 mm` Hard Deck** preserves a completely snag-free flat deck when empty while enabling **`5-second` tool-free switching** across three modes *(see 3D CAD [`09_modular_hard_deck_seating.stl`](models/09_modular_hard_deck_seating.stl) & [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md))*:
+
+| Deck Mode | Chair Setup & Position (`Navigator 300`, `600 mm` Inside Beam) | CoG & Aerodynamic Benefit |
+| :--- | :--- | :--- |
+| **1. Solo Long-Range (`1 Chair`)** *(Model 7)* | One **`424 mm`-wide** low-sit framed mesh/carbon chair (`125 mm` pan height, `22°` lumbar recline, `~2.5 kg`) clipped at **`X ≈ 0 mm`**; feet rest naturally on the upturned bow deck | Pilot CoG lands **dead-on foil `CoL` (`X ≈ -200 mm`)**; drops vertical CoG **`~250 mm`** and tucks head behind bow dodger (**`-6 to -9 Wh/nm` wind drag**); leaves open aft L-Track bay for a `5.4 kWh` plug-in extender or dry bags! |
+| **2. Tandem 2-Up (`2 Chairs Inline`)** *(Model 6 & 9)* | Two inline `424 mm`-wide chairs (**`~85 mm` clear per side** to the `Ø460 mm` tubes) at **`X = -320 mm`** (front passenger) & **`X = +420 mm`** (aft pilot) | Keeps **100% of crew weight on the centerline (`Y = 0`)** for zero roll bias; slide `±150 mm` in `5 sec` via `900 kgf` spring-loaded double-stud L-Track pins to trim for any passenger weight! |
+| **3. Open Cargo / Beach Deck (`0 Chairs`)** | Unclip both chairs in `5 seconds` (`~2.5 kg` ea., fold flat) | **`100%` flush, obstruction-free cockpit** for hauling yacht groceries, dive gear, or beaching—zero protruding brackets or boxes! |
+
+* **Integrated Right-Hand Armrest Wireless Helm Pod:** Mount the compact Bluetooth/CAN **thumb-throttle + 2-axis steering/trim mini-joystick** directly onto the pilot chair's starboard (`+Y`) armrest so the helm moves seamlessly with the chair between Solo center and Tandem aft positions—eliminating any fixed dashboard or steering pedestal (`~$280–$420` total for twin flush L-Tracks + 2 framed mesh chairs).
+
 ---
 
 ## 4. Comparing All Four Integrated Battery-Hull Architectures

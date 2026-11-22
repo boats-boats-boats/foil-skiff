@@ -18,9 +18,10 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **3** | [`models/03_stol_flaperon_pod.stl`](models/03_stol_flaperon_pod.stl) | *Primary Pod Cutaway* | **Split STOL Flaperons (`+18°` / `-8°` differential bank)** with **translucent pod showing `2×` internal `IP67` servos, `Ø8 mm` sealed shafts & `ESP32`/IMU** (`ZERO` boxes above flush Hard Deck!) |
 | **4** | [`models/04_navigator300_retracted_beaching.stl`](models/04_navigator300_retracted_beaching.stl) | **`Navigator 300`** *(PRIMARY)* | **Retracted `86.5°` Parallelogram Beaching Mode** tucked cleanly beneath the `Tru-Alu` transom (`~135–140 mm` / `5.5"` sand clearance; outer wingtips folded aft inside `600 mm` tunnel!) |
 | **5** | [`models/05_discovery330_oframe_stol.stl`](models/05_discovery330_oframe_stol.stl) | `Discovery 330` *(Secondary Hull)* | Secondary open-bow reference showing **Bow-Contoured Hard Deck + Full Rigid O-Frame** + identical swappable **Split STOL Flaperon Pod** (also applies to `Takacat LX`) |
-| **6** | [`models/06_navigator300_lr_8020_sweetspot.stl`](models/06_navigator300_lr_8020_sweetspot.stl) | **`Navigator 300`** *(LR 80/20: `65–79 nm`)* | **Long-Range 80/20 Sweet Spot:** keeps `4×` easy blades & Split STOL chop control; adds **Single `65161` + `10"` 2-Blade CNC Prop**, tail rudder, **`AR 13.5` (`1.50 m`) wing**, **`60 mm` Dual-Pack Battery Deck (`10.8 kWh`)** & **Bow Spray Dodger** |
-| **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR: `70–84 nm`)* | **Full 4-Swap Long-Range Max-Efficiency Build:** **`2×` Recessed `100×18 mm` Center Struts**, **`AR 14` (`1.55 m`) + Flush-Nested Switchblade**, **Single `65161` + `10"` 2-Blade CNC Prop + Tail Rudder**, `60 mm` Deck Pack & Bow Dodger |
+| **6** | [`models/06_navigator300_lr_8020_sweetspot.stl`](models/06_navigator300_lr_8020_sweetspot.stl) | **`Navigator 300`** *(LR 80/20 Tandem)* | **Long-Range 80/20 Tandem (`65–79 nm`):** **2 inline low-sit ergonomic chairs** on flush L-Tracks + `4×` easy blades + Split STOL + **Single `65161` (`10"` CNC prop)** + `AR 13.5` wing + `60 mm` Deck Pack & Bow Dodger |
+| **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR Solo)* | **Full 4-Swap Long-Range Solo (`70–84 nm`):** **1 low-sit pilot chair slid over CoG** (open aft gear/extender bay!) + `2×` Recessed Center Struts + `AR 14` Flush Switchblade + Single `65161` (`10"` prop) & Bow Dodger |
 | **8** | [`models/08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) | *Long-Range Pod Cutaway* | **Internal Cutaway of Long-Range Single-Prop Pod:** translucent shell showing `2×` recessed center struts, swappable cartridges (`5.4 kWh` `LiFePO4` / `8.2 kWh` `NMC`), `1×` `75100` VESC, internal rudder servo & `10"` 2-blade CNC prop |
+| **9** | [`models/09_modular_hard_deck_seating.stl`](models/09_modular_hard_deck_seating.stl) | **`Navigator 300`** *(Modular Deck)* | **Modular Hard Deck Seating System:** Bow-contoured 2-piece Hard Deck + **flush recessed twin L-Track rails (`390 mm` spacing)** + **2 quick-release low-sit ergonomic chairs** + right-hand armrest wireless helm pod (`0` trip edges when empty!) |
 
 ---
 
@@ -136,33 +137,50 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ---
 
+### 9. Modular Hard Deck Seating System: Flush Recessed L-Tracks + 1 or 2 Ergonomic Low-Sit Chairs
+*Close-up of the **Bow-Contoured 2-Piece Hard Deck** outfitted with **twin flush-recessed marine L-Track rails (`390 mm` spacing, `1,570 mm` long)** that sit `100%` flush with the top carbon skin (zero trip edges when chairs are unclipped!). Tool-free `900 kgf` spring-loaded double-stud quick-release fittings let you switch in `5 seconds` between **Solo Long-Range (`1 chair` slid right over midship CoG)**, **Tandem 2-Up (`2× 424 mm` inline chairs cleanly inside the `600 mm` tunnel)**, and **Open Cargo/Beaching Deck (`0 chairs`)**—with the wireless thumb-throttle & mini-joystick integrated right onto the pilot's right-hand armrest.*
+
+![OpenSCAD 3D Render: Modular Hard Deck with Flush L-Tracks and 2 Low-Sit Chairs](renders/09-modular-deck-seating-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Modular Hard Deck Seating System](diagrams/17-modular-deck-seating-3d-cad.svg)
+
+</details>
+
+---
+
 ## Part II — Scaled 2D Engineering Drawings (`diagrams/`)
 
-### 9. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+### 10. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
+![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
+
+### 11. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
 ![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
 
-### 10. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 12. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 11. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 13. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 12. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 14. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 13. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 15. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 14. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 16. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 15. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 17. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 16. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 18. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 17. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 19. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -172,10 +190,10 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 9 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 10 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
-# Regenerate all 8 binary 3D .stl CAD models, 8 annotated 3D SVGs, and 8 OpenSCAD PNGs
+# Regenerate all 9 binary 3D .stl CAD models, 9 annotated 3D SVGs, and 9 OpenSCAD PNGs
 python3 models/generate_cad.py
 ```
 

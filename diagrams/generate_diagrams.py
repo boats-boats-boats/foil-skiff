@@ -1045,6 +1045,119 @@ def gen_16_long_range_packages():
     (OUT_DIR / "16-long-range-hydro-packages.svg").write_text(s)
 
 
+# -------------------------------------------------------------------------
+# DIAGRAM 18: Modular Hard Deck Seating (1 or 2 Ergonomic Low-Sit Chairs)
+# -------------------------------------------------------------------------
+def gen_18_modular_seating():
+    W, H = 1040, 620
+    s = svg_header(
+        W, H,
+        "18. Modular Hard Deck Seating: 1 or 2 Ergonomic Low-Sit Chairs on Flush L-Tracks",
+        "True Kit Navigator 300 (600 mm Tunnel) • 5-Sec Slide Between Solo CoG, Tandem 2-Up & 100% Flush Open Cargo Deck"
+    )
+
+    def draw_side_hull_and_deck(px, py, mode_lbl, sub_lbl):
+        out = f'  <rect x="{px}" y="{py}" width="484" height="252" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+        out += f'  <text x="{px+16}" y="{py+24}" class="sec">{html.escape(mode_lbl)}</text>\n'
+        out += f'  <text x="{px+16}" y="{py+40}" class="ok">{html.escape(sub_lbl)}</text>\n'
+        y0 = py + 178
+        # Hull outline + upturned bow + bow spray dodger + Tru-Alu transom
+        out += f'  <path d="M {px+46} {y0-42} L {px+425} {y0-42} Q {px+455} {y0-42} {px+455} {y0+6} Q {px+455} {y0+42} {px+420} {y0+42} L {px+125} {y0+42} Q {px+65} {y0+38} {px+38} {y0+6} Q {px+26} {y0-24} {px+46} {y0-42} Z" fill="#E2E8F0" fill-opacity="0.38" stroke="#94A3B8" stroke-width="1.2"/>\n'
+        # Curved translucent bow spray dodger
+        out += f'  <path d="M {px+42} {y0-36} Q {px+95} {y0-96} {px+175} {y0-94} L {px+175} {y0-38} Z" fill="#0D9488" fill-opacity="0.28" stroke="#0F766E" stroke-width="1.5"/>\n'
+        # Tru-Alu transom
+        out += f'  <rect x="{px+404}" y="{y0-48}" width="9" height="48" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+        # Bow-contoured Hard Deck (upturned bow footrest + flat cockpit + flush L-Track top stripe!)
+        out += f'  <path d="M {px+400} {y0-14} L {px+150} {y0-14} Q {px+105} {y0-15} {px+68} {y0-32} L {px+72} {y0-20} Q {px+108} {y0-3} {px+150} {y0-2} L {px+400} {y0-2} Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.3"/>\n'
+        out += f'  <line x1="{px+152}" y1="{y0-14}" x2="{px+394}" y2="{y0-14}" stroke="#FBBF24" stroke-width="2.4"/>\n'
+        # Foil Center of Lift (CoL) marker under hull
+        x_col = px + 228
+        out += f'  <line x1="{x_col}" y1="{y0+44}" x2="{x_col}" y2="{y0+18}" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>\n'
+        out += f'  <text x="{x_col}" y="{y0+56}" text-anchor="middle" class="dim">Foil CoL</text>\n'
+        return out, y0
+
+    def draw_chair_side(cx, y_deck, helm=False):
+        # Reclined 22-deg low-sit ergonomic chair silhouette (~125 mm pan height = 16 px)
+        out = f'  <line x1="{cx-26}" y1="{y_deck}" x2="{cx+16}" y2="{y_deck}" stroke="#FBBF24" stroke-width="3.2"/>\n'
+        out += f'  <line x1="{cx-20}" y1="{y_deck}" x2="{cx-28}" y2="{y_deck-18}" stroke="#475569" stroke-width="2.2"/>\n'
+        out += f'  <line x1="{cx+10}" y1="{y_deck}" x2="{cx+12}" y2="{y_deck-14}" stroke="#475569" stroke-width="2.2"/>\n'
+        out += f'  <path d="M {cx-32} {y_deck-20} L {cx+14} {y_deck-14} L {cx+34} {y_deck-66}" fill="none" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>\n'
+        if helm:
+            out += f'  <line x1="{cx-14}" y1="{y_deck-34}" x2="{cx+16}" y2="{y_deck-34}" stroke="#334155" stroke-width="3.2" stroke-linecap="round"/>\n'
+            out += f'  <circle cx="{cx-16}" cy="{y_deck-38}" r="4.2" fill="#F97316" stroke="#9A3412" stroke-width="1"/>\n'
+        return out
+
+    # --- PANEL A (TOP LEFT): SOLO 1-CHAIR LONG-RANGE MODE ---
+    s_a, y0_a = draw_side_hull_and_deck(24, 68, "A. Mode 1: Solo Long-Range (1 Chair @ CoG)", "Chair slides to X ≈ 0 mm • Head low behind dodger • Aft gear/extender bay")
+    s += s_a
+    s += draw_chair_side(24 + 258, y0_a - 14, helm=True)
+    # Reclined pilot torso + legs forward onto upturned bow footrest!
+    s += f'  <circle cx="{24+274}" cy="{y0_a-84}" r="10" fill="#38BDF8" stroke="#0369A1" stroke-width="1.3"/>\n'
+    s += f'  <path d="M {24+272} {y0_a-74} L {24+258} {y0_a-34} L {24+185} {y0_a-38} L {24+120} {y0_a-32}" fill="none" stroke="#0369A1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55"/>\n'
+    # Aft expedition dry bag / plug-in 5.4 kWh extender pack on rear L-Track
+    s += f'  <rect x="{24+322}" y="{y0_a-42}" width="66" height="27" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.3" stroke-dasharray="4,2"/>\n'
+    s += f'  <text x="{24+355}" y="{y0_a-25}" text-anchor="middle" style="font-size:8.5px;fill:#92400E;font-weight:700;">Extender / Gear</text>\n'
+    s += f'  <text x="42" y="{y0_a+66}" class="lbl-sm">Pilot CoG lands dead-on Foil CoL • -250 mm lower CoG &amp; -8 Wh/nm wind drag!</text>\n'
+
+    # --- PANEL B (TOP RIGHT): TANDEM 2-CHAIR LONG-RANGE MODE ---
+    s_b, y0_b = draw_side_hull_and_deck(532, 68, "B. Mode 2: Tandem 2-Up Long-Range (2 Chairs Inline)", "424 mm chairs fit 600 mm tunnel • Zero roll bias • Armrest helm on aft chair")
+    s += s_b
+    s += draw_chair_side(532 + 205, y0_b - 14, helm=False)
+    s += draw_chair_side(532 + 322, y0_b - 14, helm=True)
+    # Front passenger + aft pilot silhouettes
+    s += f'  <circle cx="{532+222}" cy="{y0_b-84}" r="9.5" fill="#14B8A6" stroke="#0F766E" stroke-width="1.2"/>\n'
+    s += f'  <path d="M {532+220} {y0_b-74} L {532+205} {y0_b-34} L {532+142} {y0_b-36} L {532+96} {y0_b-34}" fill="none" stroke="#0F766E" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55"/>\n'
+    s += f'  <circle cx="{532+338}" cy="{y0_b-84}" r="9.5" fill="#38BDF8" stroke="#0369A1" stroke-width="1.2"/>\n'
+    s += f'  <path d="M {532+336} {y0_b-74} L {532+322} {y0_b-34} L {532+262} {y0_b-36}" fill="none" stroke="#0369A1" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55"/>\n'
+    s += f'  <text x="{532+286}" y="{y0_b-102}" text-anchor="middle" class="warn">Armrest Helm Pod</text>\n'
+    s += f'  <line x1="{532+290}" y1="{y0_b-96}" x2="{532+305}" y2="{y0_b-56}" stroke="#DC2626" stroke-width="1.1" marker-end="url(#arrRed)"/>\n'
+    s += f'  <text x="550" y="{y0_b+66}" class="lbl-sm">Slide ±150 mm on L-Tracks in 5 sec to trim perfectly for any crew weight!</text>\n'
+
+    # --- PANEL C (BOTTOM FULL WIDTH): TOP-DOWN FITMENT & FLUSH L-TRACK CROSS-SECTION ---
+    s += '  <rect x="24" y="336" width="992" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="360" class="sec">C. Top-Down Navigator 300 Fitment (600 mm Inside Beam) &amp; Flush L-Track Detail</text>\n'
+    s += '  <text x="42" y="377" class="lbl-sm">Zero protrusions when chairs unclip (Mode 3: Open Cargo / Beaching Deck) • Same twin rails hold chairs, batteries, or dry bags</text>\n'
+
+    # Left half of Panel C: Top-Down schematic of Navigator 300 + Bow-Contoured Deck + Twin L-Tracks + 2 Tandem Chairs!
+    tx0, ty_c = 70, 480
+    # Outer U-shaped Ø460 inflatable tubes (visualized top-down!)
+    s += f'  <path d="M {tx0+490} {ty_c-86} L {tx0+155} {ty_c-86} Q {tx0+32} {ty_c-86} {tx0+18} {ty_c} Q {tx0+32} {ty_c+86} {tx0+155} {ty_c+86} L {tx0+490} {ty_c+86}" fill="none" stroke="#94A3B8" stroke-width="32" stroke-linecap="round"/>\n'
+    # Bow-contoured Hard Deck inside tubes
+    s += f'  <path d="M {tx0+460} {ty_c-54} L {tx0+160} {ty_c-54} Q {tx0+92} {ty_c-48} {tx0+66} {ty_c} Q {tx0+92} {ty_c+48} {tx0+160} {ty_c+54} L {tx0+460} {ty_c+54} Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Flush Twin L-Track rails (390 mm spacing -> +/- 31 px!)
+    for sd in (-1, 1):
+        s += f'  <line x1="{tx0+145}" y1="{ty_c+sd*31}" x2="{tx0+445}" y2="{ty_c+sd*31}" stroke="#FBBF24" stroke-width="4"/>\n'
+    # Front & Aft Low-Sit Chairs (424 mm wide -> 68 px height)
+    s += f'  <rect x="{tx0+190}" y="{ty_c-34}" width="88" height="68" rx="7" fill="url(#wingTeal)" fill-opacity="0.88" stroke="#0F766E" stroke-width="1.5"/>\n'
+    s += f'  <text x="{tx0+234}" y="{ty_c+4}" text-anchor="middle" class="lbl-w">Front Chair</text>\n'
+    s += f'  <rect x="{tx0+315}" y="{ty_c-34}" width="88" height="68" rx="7" fill="url(#wingBlue)" fill-opacity="0.88" stroke="#0369A1" stroke-width="1.5"/>\n'
+    s += f'  <text x="{tx0+359}" y="{ty_c+4}" text-anchor="middle" class="lbl-w">Pilot Chair</text>\n'
+    # Armrest helm pod on starboard (-Y = top side) of aft pilot chair
+    s += f'  <rect x="{tx0+322}" y="{ty_c-43}" width="32" height="9" rx="3" fill="#F97316" stroke="#9A3412" stroke-width="1"/>\n'
+    # Dimension markers
+    s += dim_line(tx0 + 508, ty_c - 54, tx0 + 508, ty_c + 54, "600 mm", dx=28, dy=4)
+    s += f'  <text x="{tx0+280}" y="{ty_c+92}" text-anchor="middle" class="lbl-sm">424 mm Chairs Inside 600 mm Tunnel (~85 mm Clear/Side to Ø460 Tubes)</text>\n'
+
+    # Right half of Panel C: Flush Recessed L-Track Cross-Section Detail!
+    rx0, ry0 = 655, 425
+    s += f'  <rect x="{rx0}" y="{ry0}" width="340" height="150" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += f'  <text x="{rx0+14}" y="{ry0+20}" class="lbl">Flush L-Track Cross-Section (Zero Trip Edge!)</text>\n'
+    # 28/60 mm Carbon Hard Deck slab with routed recess pocket for L-Track
+    s += f'  <path d="M {rx0+24} {ry0+68} L {rx0+125} {ry0+68} L {rx0+125} {ry0+94} L {rx0+215} {ry0+94} L {rx0+215} {ry0+68} L {rx0+316} {ry0+68} L {rx0+316} {ry0+128} L {rx0+24} {ry0+128} Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Recessed anodized aluminum L-Track profile sitting 100% FLUSH with top deck!
+    s += f'  <path d="M {rx0+127} {ry0+68} L {rx0+154} {ry0+68} L {rx0+154} {ry0+77} L {rx0+144} {ry0+77} L {rx0+144} {ry0+87} L {rx0+196} {ry0+87} L {rx0+196} {ry0+77} L {rx0+186} {ry0+77} L {rx0+186} {ry0+68} L {rx0+213} {ry0+68} L {rx0+213} {ry0+92} L {rx0+127} {ry0+92} Z" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+    # Gold spring-loaded double-stud quick-release fitting clicking in from above!
+    s += f'  <path d="M {rx0+162} {ry0+40} L {rx0+178} {ry0+40} L {rx0+178} {ry0+78} L {rx0+190} {ry0+78} L {rx0+190} {ry0+85} L {rx0+150} {ry0+85} L {rx0+150} {ry0+78} L {rx0+162} {ry0+78} Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
+    s += f'  <text x="{rx0+170}" y="{ry0+34}" text-anchor="middle" class="ok">5-Sec Quick-Release Stud (900 kgf)</text>\n'
+    s += f'  <text x="{rx0+75}" y="{ry0+60}" text-anchor="middle" class="lbl-sm">100% Flush Deck</text>\n'
+    s += f'  <text x="{rx0+268}" y="{ry0+60}" text-anchor="middle" class="lbl-sm">Recessed L-Track</text>\n'
+    s += f'  <text x="{rx0+170}" y="{ry0+114}" text-anchor="middle" class="lbl-w">28 mm or 60 mm Hard Deck Core</text>\n'
+    s += f'  <text x="{rx0+170}" y="{ry0+143}" text-anchor="middle" class="ok">Cost: ~$55 rails + ~$110–$180/chair (~2.5 kg ea.)</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "18-modular-seating-ergonomics.svg").write_text(s)
+
+
 if __name__ == "__main__":
     gen_01_switchblade()
     gen_02_stol_flaperons()
@@ -1055,4 +1168,5 @@ if __name__ == "__main__":
     gen_10_alt_architectures()
     gen_12_rejected_step_out_physics()
     gen_16_long_range_packages()
-    print("Generated all 9 2D engineering SVGs in", OUT_DIR)
+    gen_18_modular_seating()
+    print("Generated all 10 2D engineering SVGs in", OUT_DIR)
