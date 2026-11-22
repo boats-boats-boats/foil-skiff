@@ -14,7 +14,7 @@ When generating hydrodynamic calculations, CAD/3D-print fairings, battery layout
 1. **Prioritize Compact `4–13 kg` Low-`Kv` (`60–150 Kv`) Drives with Built-In or Differential Power Steering:**
    * Avoid heavy `15–26 kg` industrial outboard conversions (`Motenergy ME1304` + donor gas leg) on a `31 kg` inflatable catamaran transom unless heavy yacht hip-towing is the sole priority.
    * **Primary Pick:** Twin `IP68` submerged direct-drive e-foil pods (**`2 × Flipsky 65161`** or **`2 × Maytech MTO65162`**, `100 Kv`, `4–6 kg` total, `6–10 kW` cont., `200–240 lbf`) + **`2 × Flipsky 75100` `VESC`** mounted directly on foil struts—giving zero-hardware `360°` differential power steering via CAN-bus joystick at half the cost and `1/4` the weight of an industrial outboard.
-   * **Zero-Fab Turnkey Pick:** Steerable CNC aluminum azimuth pods (**`2 × W-30`** `730 mm` tall shafts or **`1 × 5–6 kW`** USV azimuth pod) with built-in `±85°` electric steering and wireless remote.
+   * **Zero-Fab Turnkey Pick:** Twin steerable CNC aluminum azimuth pods (**`2 × W-30`** on `730 mm` tall shafts, `13.2 kg`, `6.4 kW` peak, `110 lbf`) with built-in `±85°` electric steering and wireless remote.
    * **Low-Speed Bollard Pick:** **`2 × APISQUEEN U30`** (`4.0 kW`, `132 lbf` / `60 kgf`, `33 lbf/kW`, `5.3 kg`) for `4–11 kn` silent cruising and docking.
    * **Never specify high-`Kv` (`350–500 Kv`) RC boat motors** without a dedicated planetary reduction gearbox—they lack torque at marine propeller speeds (`2,500–5,500 RPM`).
 
