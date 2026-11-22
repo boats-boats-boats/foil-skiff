@@ -85,6 +85,16 @@ Both `True Kit` (`Navigator` / `Discovery`) and `Takacat LX` feature a **continu
   3. **Mechanical Rotary (`Magswitch`) or Electro-Permanent Magnets (EPMs) ONLY — Never Plain Electromagnets:** Plain electromagnets fail-unsafe on battery loss. Mechanical rotary `N52` pucks require **zero power**, stay failsafe `ON`, and only need a sealed **`8–10 mm` mild-steel / `430` ferritic stainless keeper plate** on the bottom carriage (saving `~4 kg` and `~$400` vs. dual-sided magnets).
   4. **Hermetic Saltwater Sealing & 6-DOF IMU Mode:** Encapsulate all `NdFeB` rotors (`316L`/epoxy) and vacuum-bag bottom steel keeper plates in carbon/epoxy against saltwater corrosion; keep magnetic compasses `>500 mm` away and run any `BNO085` auto-trim IMU in **6-DOF (gyro + accel only)** mode.
 
+#### Strut Layout & Parallelogram Retraction (`1×` Central Mast vs. `2×` Inline Tandem Struts)
+Holding the `1.3 m` Flying-Keel Pod square against the Spine Floor / O-Frame requires a **wide `250–300 mm` T-top hinge bracket spanning both rails**, NOT four separate legs in the water:
+
+| Strut Layout (`0.40 m` Submerged @ `15.5 kn`) | Strut Drag @ `15.5 kn` | Pitch Squareness | Roll Squareness (`1.5 G` Turn) | Beaching Retraction | Engineering Verdict |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| **`1×` Single Central Carbon Mast** (`180 × 22 mm`, `3.5 mm` UD walls) | **`7.2 lbf`** *(Lowest!)* | High (wide saddle) | **`<1°` flex** (`99 MPa`, `8×` safety factor) | Pivots aft (tilts pod nose/tail slightly) | **Best pure efficiency & lowest part count** (requires stiff UD carbon mast). |
+| **`2×` Inline Tandem Parallel Struts** (`120 × 18 mm` ea., fore & aft) | **`8.2 lbf`** *(+1.0 lbf; aft in front wake)* | **Infinite** *(4-bar truss)* | **`<1.2°` flex** (carbon) | **Best!** 4-bar parallelogram swings pod **100% flat** up *between* O-Frame rails | **Best mechanical match for `1.3 m` pod + Bow-to-Transom O-Frame:** zero pitch flex, flat `6"` beaching tuck, front strut carries upper wing + charge umbilical, rear carries control/rudder! |
+| **`2×` Side-by-Side V-Strut / A-Frame** (`120 × 16 mm` ea.) | `9.8 lbf` | High | **Infinite** *(triangle truss—works in Alu)* | Awkward to nest between rails | Only if fabricating struts in cheap aluminum instead of carbon. |
+| **`4×` Quad Struts** (`110 × 15 mm` ea.) | **`16.2 lbf`** *(2.25× drag!)* | Infinite | Infinite | Over-constrained, catches kelp | **Avoid:** destroys high-speed efficiency. |
+
 ---
 
 ## 2. Off-the-Shelf Propulsion Showdown (`Weight`, `Compactness`, `Cost` & `Power Steering`)
