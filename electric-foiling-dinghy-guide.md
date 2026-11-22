@@ -56,7 +56,27 @@ Hydrodynamic comparison for a `~235 kg` (`518 lb`) 1–2 person `True Kit 10 ft`
 6. **Steering & Auto-Trim Options on the Flying-Keel Pod:**
    * **Option 1 (Twin Tailcone / Aft-Wingtip `65161` Pods — Zero Moving Parts):** Mount `2 × Flipsky 65161` (`100 Kv` on `16S` or `120 Kv` on `14S`) symmetrically off the aft fuselage/stabilizer tips for **`360°` CAN-bus differential power steering** with zero rudder drag or steering servos.
    * **Option 2 (Single Centerline `65161` Tailcone Pod + Compact Servo Rudder):** Lowest drag and lightest weight (`3 kg` motor), using a `12 V` waterproof servo actuating a small trailing-edge rudder flap on the vertical strut.
-   * **Optional `<$150` Auto-Trim Pitch Assist:** Add an `ESP32` + `BNO085` IMU + ToF water-surface sensor driving a `12 V` IP66 micro-actuator (`±5°` on the aft stabilizer) to automatically trim nose-pitch across varying passenger/cargo weights.
+   * **Optional `<$150` Auto-Trim Pitch Assist:** Add an `ESP32` + `BNO085` IMU (in 6-DOF gyro+accel mode) + ToF water-surface sensor driving a `12 V` IP66 micro-actuator (`±5°` on the aft stabilizer) to automatically trim nose-pitch across varying passenger/cargo weights.
+
+### E. Drop-In 2-Piece Rigid "Spine Floor" & Zero-Hole Top-to-Bottom Coupling
+Both `True Kit` (`Navigator` / `Discovery`) and `Takacat LX` feature a **continuous, permanently heat-welded `~1.0–1.2 mm` PVC fabric "tunnel ceiling" web** stretched between the two side pontoons, with the stock drop-stitch air floor resting *on top* of it. Because you cannot pass a strut through the center of the floor without cutting that PVC membrane, the Spine Floor uses **zero-hole clamping** across or around the web:
+
+* **2-Piece Rigid Spine Floor Mechanics (`0` Glue, `0` Holes, `60-Second` Install):**
+  * Two interlocking `25–35 mm` sandwich panels (`~900–1,050 mm × 800–900 mm` ea., `~7–9 kg` total in carbon/Divinycell foam or `~11–13 kg` in marine aluminum honeycomb) latch together midship with a full-width tapered tongue-and-groove + 2 flush over-center latches.
+  * A standardized `650 mm`-wide central **Spine Core** fits multiple hulls via cheap bolt-on **beveled HDPE/EVA outer width strips (`50–150 mm`)** matching `True Kit 280/300/330`, `Takacat 300/340/380`, `Saturn`, or `Kaboat`.
+  * Partially inflate pontoons (`~1.5 PSI`) → drop the Spine Floor directly onto the `1.2 mm` PVC web and latch midship → inflate tubes to full `3.5 PSI` to friction-lock the beveled edges firmly inside the tube pockets.
+
+| Zero-Hole Connection Method (Top Spine Floor $\leftrightarrow$ Bottom Foil Carriage) | Added Weight | Added Cost | Grounding / Reef-Strike Behavior | Works on Closed-Transom Boats? | Engineering Verdict |
+| :--- | :---: | :---: | :--- | :---: | :--- |
+| **Option A: Through-Fabric Switchable Magnets (`4 × Magswitch` Rotary `N52` / EPM) + Aft Safety/Shear Bridle** | `~6–9 kg` | `+$450 – $750` | **Built-in resettable breakaway fuse** (front pair releases cleanly @ `~400 kgf` shock; safety tether retains pod!) | **Yes!** *(universal across open or closed transoms!)* | **Best universal bolt-on UX (`5-sec` drop-on):** works ONLY with Spine Floor directly on `1.2 mm` PVC (`~2.5 mm` gap), NOT through `100 mm` air deck! |
+| **Option B: Open-Transom "C-Frame" Wrap-Around Spine** *(carbon/Alu U-beam exiting open transom & running forward under tunnel)* | **`~3–4 kg`** | **`+$200 – $350`** | Mechanical strut kick-up clutch / shear pin | No *(requires open transom like `True Kit` / `Takacat`)* | **Lightest, cheapest & most bulletproof mechanical link** for open-transom catamarans; zero slip, zero corrosion, zero magnets. |
+| **Option C: Factory OEM Welded Centerboard Slot** *(heat-welded PVC trunk boot in tunnel ceiling)* | **`~1 kg`** | `+$150` *(factory)* | Strut kick-up clutch | Yes *(OEM build only)* | Ideal for a factory `True Kit` / `Takacat` Foil Edition SKU; cannot retrofit stock hulls without cutting PVC. |
+
+#### Four Mandatory Rules for Option A (Through-Fabric Switchable Magnetic Clamping)
+1. **`~2.2–2.5 mm` Gap Physics (`4 ×` `10 × 10 cm` Pucks on `400 × 800 mm` Base):** Sitting the Spine Floor directly on the `1.2 mm` PVC web yields `B ≈ 0.70 T` (`~2.0 kgf/cm²`) → **`~800 kgf` (`1,760 lbf`) total clamping force** (`~2.2×` roll safety margin in `1.5 G` turns; upward foiling lift compresses the clamp tighter).
+2. **Rubber Grip Pads + Aft Transom Shear/Safety Bridle (Mandatory):** Wet PVC is slippery (`μ ≈ 0.22` → `~175 kgf` slip threshold). Bond **micro-ribbed vulcanized rubber/silicone grip pads** (`μ ≈ 0.65–0.80` → `520+ kgf` shear) to both faces **and** clip a short Dyneema/stainless bridle over the transom to carry fore-aft shock shear and prevent losing the `$2,500` pod if a reef strike trips the magnetic breakaway fuse.
+3. **Mechanical Rotary (`Magswitch`) or Electro-Permanent Magnets (EPMs) ONLY — Never Plain Electromagnets:** Plain electromagnets fail-unsafe on battery loss. Mechanical rotary `N52` pucks require **zero power**, stay failsafe `ON`, and only need a sealed **`8–10 mm` mild-steel / `430` ferritic stainless keeper plate** on the bottom carriage (saving `~4 kg` and `~$400` vs. dual-sided magnets).
+4. **Hermetic Saltwater Sealing & 6-DOF IMU Mode:** Encapsulate all `NdFeB` rotors (`316L`/epoxy) and vacuum-bag bottom steel keeper plates in carbon/epoxy against saltwater corrosion; keep magnetic compasses `>500 mm` away and run any `BNO085` auto-trim IMU in **6-DOF (gyro + accel only)** mode.
 
 ---
 
