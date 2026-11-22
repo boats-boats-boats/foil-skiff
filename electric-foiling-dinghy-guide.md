@@ -27,28 +27,71 @@ flowchart LR
 ### B. Wing & Fuselage Geometry Showdown: Why "Step-Out" Beats Submerged Swing-Wings & Thick Battery Wings
 Hydrodynamic comparison for a `~235 kg` (`518 lb`) 1–2 person `True Kit 10 ft` dinghy (main foil + fuselage drag only):
 
-| Architecture (`~235 kg` All-Up Boat + Crew) | Takeoff Speed | Main Drag @ `10.0 kn` | Main Drag @ `12.5 kn` | Main Drag @ `15.5 kn` | Main Drag @ `22.0 kn` | Engineering Verdict |
-| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Primary (Zero Moving Parts): Flying-Keel Pod (`26 L` buoy.) + `1,350 cm²` Lower Thin Wings + Upper "Step-Out" Booster (`+1,400 cm²` high on strut)** | **`6.4 kn`** | `16.1 lbf` (`72 N`) | **`16.3 lbf`** (`73 N`) *(Tied for best!)* | **`19.3 lbf`** (`86 N`) *(`30.8 nm`)* | `33.2 lbf` (`148 N`) | **Best simplicity & passive stability:** `6.4 kn` takeoff, upper wing exits into dry air >`9 kn` (`0` moving foil parts!), passive ride-height bumper! |
-| **Co-Primary (Rough-Chop / Flush Roof): Flush-Nested Top-Deck Switchblade (`2 × 680×105 mm` flush in pod roof) + `1,250 cm²` Lower Thin Wings** | **`6.7 kn`** | `16.8 lbf` (`75 N`) | `16.5 lbf` (`73 N`) | **`19.4 lbf`** (`86 N`) *(`30.8 nm`)* | **`32.3 lbf`** (`144 N`) *(Best pod!)* | **Best all-around submerged aero:** `0 cm²` extra wet area & `0` exposed tips when closed, zero ventilation in `2 ft` chop, ultra-flat `~90 mm` beach fold, hydrodynamic self-closing! |
-| **Active-Chop Upgrade: Submerged Split STOL Flaperons (`1,000 cm²` Main + `2 × 250 cm²` Active Slotted Flaperons, `1,500 cm²` total wet)** | **`7.2 kn`** | **`16.1 lbf`** (`72 N`) | `16.9 lbf` (`75 N`) | **`20.9 lbf`** (`93 N`) *(`29.8 nm`)* | **`36.4 lbf`** (`162 N`) | **Best active flight control:** zero surface-piercing ventilation, narrower span, full **4-in-1 active elevation, roll leveling & banked turning** for `~$160`! |
-| **Alt 1: Single-Plane Fixed Flying-Keel (`26 L` buoy. + `2,200 cm²` fixed thin wings)** | `7.4 kn` | **`15.0 lbf`** (`67 N`) | `17.9 lbf` (`80 N`) | `24.2 lbf` (`108 N`) | `45.1 lbf` (`200 N`) | Simplest single-wing pod; lowest drag at `8–11 kn`, higher cruise drag >`13 kn`. |
-| **Alt 2: Flying-Keel + `1,400 cm²` Thin Wing w/ Integral Trailing-Edge Flaps** *(AC75 / Candela style)* | `7.8 kn` | `16.1 lbf` (`72 N`) | `16.5 lbf` (`73 N`) | `19.9 lbf` (`89 N`) | `34.1 lbf` (`152 N`) | Clean single submerged wing; adds 1 mechanical pushrod linkage & flap servo. |
-| **Alt 3: Dry-Floor Thin Foil (`1,600 cm²`, `t/c = 10%`) + Dry `36 kg` Battery in Rigid Floor** | `9.5 kn` | `18.2 lbf` (`81 N`) | **`16.4 lbf`** (`73 N`) | **`17.8 lbf`** (`79 N`) | **`27.5 lbf`** (`122 N`) | Lowest drag >`14 kn` (`L/D ≈ 20`) & easiest `2-sec` hand flip-up for rocky beaches, but `9.5 kn` takeoff. |
-| **Avoid: External Un-Nested Swing-Wing (`+1,400 cm²` thick wing swinging `90°` lengthwise *outside* fuselage)** | `5.6–6.5 kn` | `20.4–21.8 lbf` | `24.7–26.3 lbf` | `32.2–37.0 lbf` *(+33–53%!)* | `58.3–70.8 lbf` *(+30–58%!)* | **Avoid:** unlike flush-nested blades, an external wing keeps `100%` of its extra wetted area ($S_{\text{wet}}$) in seawater and points its blunt tip into `20 kn` flow! |
-| **Avoid: Split Battery-Fuselage Swing-Wings** *(fuselage splits spanwise at takeoff, folds lengthwise at cruise)* | `6.7 kn` | `17.9 lbf` (`80 N`) | `18.5 lbf` (`82 N`) | `22.7 lbf` (`101 N`) | `39.3 lbf` (`175 N`) | Tiny gain over fixed pod, but adds blunt-tip drag + extreme failure risk from flexing `100 A` cables through cantilevered `IP68` rotary pivots. |
-| **Avoid: Fixed Thick Full-Span Battery Wing (`3,400 cm²`, `38 mm` `21700` wing, `t/c = 14%`)** | `6.1 kn` | `21.5 lbf` (`96 N`) | `27.6 lbf` (`123 N`) | `38.8 lbf` (`173 N`) *(2.2× drag!)* | `74.1 lbf` (`330 N`) *(2.7× drag!)* | **Avoid >`12 kn`:** huge chord across the full span doubles profile drag ($C_{D0} \cdot S \cdot V^2$). |
+| Architecture (`~235 kg` All-Up Boat + Crew, `5.38 kWh` Pack) | Takeoff | `10.0 kn` Drag | `12.5 kn` Drag | `15.5 kn` Drag | `22.0 kn` Drag | **`15.5 kn` Power & Range** | Engineering Verdict |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Primary (Zero Moving Parts): Flying-Keel Pod (`26 L` buoy.) + `1,350 cm²` Lower Thin Wings + Upper "Step-Out" Booster (`+1,400 cm²` high on strut)** | **`6.4 kn`** | `16.1 lbf` (`72 N`) | **`16.3 lbf`** (`73 N`) | **`19.3 lbf`** (`86 N`) | `33.2 lbf` (`148 N`) | **`2.71 kW` (`30.8 nm`)** | **Best simplicity & passive stability:** upper wing exits into dry air >`9 kn` (`0` moving foil parts!), passive ride-height bumper! |
+| **Co-Primary (Rough-Chop / Flush Roof): Flush-Nested Top-Deck Switchblade (`2 × 680×105 mm` flush in pod roof) + `1,250 cm²` Lower Thin Wings** | **`6.7 kn`** | `16.8 lbf` (`75 N`) | `16.5 lbf` (`73 N`) | **`19.4 lbf`** (`86 N`) | **`32.3 lbf`** (`144 N`) *(Best pod!)* | **`2.71 kW` (`30.8 nm`)** | **Best all-around submerged aero:** `0 cm²` extra wet area & `0` exposed tips when closed, zero ventilation in `2 ft` chop, `~90 mm` beach fold! |
+| **Active-Chop Upgrade: Submerged Split STOL Flaperons (`1,000 cm²` Main + `2 × 250 cm²` Active Slotted Flaperons, `1,500 cm²` total wet)** | **`7.2 kn`** | **`16.1 lbf`** (`72 N`) | `16.9 lbf` (`75 N`) | **`20.9 lbf`** (`93 N`) | `36.4 lbf` (`162 N`) | **`2.80 kW` (`29.8 nm`)** | **Best active flight control:** zero ventilation, narrower span, full **4-in-1 active elevation, roll leveling & banked turning** (`~$160`)! |
+| **Alt 1: Single-Plane Fixed Flying-Keel (`26 L` buoy. + `2,200 cm²` fixed thin wings)** | `7.4 kn` | **`15.0 lbf`** (`67 N`) | `17.9 lbf` (`80 N`) | `24.2 lbf` (`108 N`) | `45.1 lbf` (`200 N`) | `2.98 kW` (`27.9 nm`) | Simplest single-wing pod; lowest drag at `8–11 kn`, higher cruise drag >`13 kn`. |
+| **Alt 2: Flying-Keel + `1,400 cm²` Thin Wing w/ Integral Trailing-Edge Flaps** *(AC75 / Candela style)* | `7.8 kn` | `16.1 lbf` (`72 N`) | `16.5 lbf` (`73 N`) | `19.9 lbf` (`89 N`) | `34.1 lbf` (`152 N`) | `2.74 kW` (`30.4 nm`) | Clean single submerged wing; adds 1 mechanical pushrod linkage & flap servo. |
+| **Alt 3: Dry-Floor Thin Foil (`1,600 cm²`, `t/c = 10%`) + Dry `36 kg` Battery in Rigid Floor** | `9.5 kn` | `18.2 lbf` (`81 N`) | **`16.4 lbf`** (`73 N`) | **`17.8 lbf`** (`79 N`) | **`27.5 lbf`** (`122 N`) | **`2.62 kW` (`31.8 nm`)** | Lowest drag >`14 kn` (`L/D ≈ 20`) & easiest `2-sec` hand flip-up for rocky beaches, but `9.5 kn` takeoff. |
+| **Avoid: External Un-Nested Swing-Wing (`+1,400 cm²` thick wing swinging `90°` lengthwise *outside* fuselage)** | `5.6–6.5 kn` | `20.4–21.8 lbf` | `24.7–26.3 lbf` | `32.2–37.0 lbf` *(+33–53%!)* | `58.3–70.8 lbf` *(+30–58%!)* | `3.44–3.71 kW` (`22.5–24.5 nm`) | **Avoid:** unlike flush-nested blades, an external wing keeps `100%` of its extra wetted area ($S_{\text{wet}}$) in seawater and points its blunt tip into `20 kn` flow! |
+| **Avoid: Split Battery-Fuselage Swing-Wings** *(fuselage splits spanwise at takeoff, folds lengthwise at cruise)* | `6.7 kn` | `17.9 lbf` (`80 N`) | `18.5 lbf` (`82 N`) | `22.7 lbf` (`101 N`) | `39.3 lbf` (`175 N`) | `2.90 kW` (`28.8 nm`) | Tiny gain over fixed pod, but adds blunt-tip drag + extreme failure risk from flexing `100 A` cables through cantilevered `IP68` rotary pivots. |
+| **Avoid: Fixed Thick Full-Span Battery Wing (`3,400 cm²`, `38 mm` `21700` wing, `t/c = 14%`)** | `6.1 kn` | `21.5 lbf` (`96 N`) | `27.6 lbf` (`123 N`) | `38.8 lbf` (`173 N`) *(2.2× drag!)* | `74.1 lbf` (`330 N`) *(2.7× drag!)* | `3.81 kW` (`21.9 nm`) | **Avoid >`12 kn`:** huge chord across the full span doubles profile drag ($C_{D0} \cdot S \cdot V^2$). |
 
 > **Fluid-Mechanics Takeaway — Three Ways to Beat the High-Speed Wetted-Area Penalty:** Above `12 kn`, `70%–85%` of foil drag is skin friction ($D_f = \frac{1}{2} \rho V^2 C_f S_{\text{wet}}$). You can eliminate that penalty by: **(1) Pulling the takeoff wing out into dry air** (*Upper Step-Out Booster*, `0` moving parts, `30.8 nm`), **(2) Nesting two thin switchblade wings completely flush into the flat top deck of the `1,300 × 220 mm` fuselage** (*Flush-Nested Switchblade*, `0 cm²` extra wet area & `0` exposed wingtips, `30.8 nm`, best `22 kn` pod drag!), or **(3) Shrinking the main wing to `1,000 cm²` + `2 × 250 cm²` active split STOL flaperons** (`1,500 cm²` total wet, `29.8 nm` + 4-in-1 active flight control).
 
 * **Flush-Nested Top-Deck Switchblade Wing Mechanics (`+1,300 cm²` Takeoff, `0 cm²` Extra Wet Area at Cruise):**
+
+```text
+CLOSED (Cruise 10-22 kn — 100% Flush Roof!)      DEPLOYED (Takeoff 0-9 kn — +1,300 cm²!)
+  Front Struts (x=200 mm)  Rear Struts (x=960)        Front Struts (x=200)     Rear (x=960)
+         o                     o                             o                      o
+  +------+---------------------+------+               +------+--[  680x105 mm  ]----+------+
+  | Nose |[== Left 680x105 ==] | Tail |               | Nose |   Carbon Bridge      | Tail |
+  | Cone |[== Right 680x105 ==]| Cone |               | Cone |  (70 mm overhang)    | Cone |
+  +------+---------------------+------+               +------+--[  680x105 mm  ]----+------+
+         o                     o                             o                      o
+   2x 105 mm = 210 mm inside 220 mm pod!              Total Span: 1.58 m (AR ~ 15!), 6.7 kn TO!
+```
+
   * **Zero-Drag Roof Nesting & Strut Clearance:** Two `680 × 105 × 13 mm` solid UD carbon blades (`2 × 105 = 210 mm` inside the `220 mm` pod width; `1.58 m` total span / `AR ≈ 15` open!) sit flush inside a `13 mm`-deep recessed top-deck pocket (`+10 mm` pod height `80 → 90 mm` preserves the full `26 L` battery bay). Mounting the **`4×` side-straddling tandem struts** at `x = 200 mm` (ahead of the `x = 220 mm` pivots) and `x = 960 mm` (behind the `x = 900 mm` tucked tips) leaves the entire `680 mm` sweep arc `100%` clear—and with no upper wing on the struts, beach retraction folds to just **`~90 mm` (`~5.5"` clear above flat sand)**.
   * **Carbon Overhang Bridge & Strength:** Solid UD carbon (`105 × 13 mm`) sees only **`90 MPa`** at normal takeoff (`52.5 kgf/blade`, `9×` safety) and **`181 MPa`** in a `2G` gust (`4.4×` safety). Mold a **`70 mm`-deep rigid carbon Overhang Bridge** across the front of the pocket so each blade's inner `70 mm` root slides *underneath* it when deployed—reacting `~214 kgf` of upward lift in pure compression while the vertical pivot pin handles only sweep rotation.
   * **Hydrodynamic Self-Closing & Sand-Proofing:** Sweeping *aft* means water drag naturally closes the blades flush at `9–10 kn` as soon as a simple hold-open latch/cable releases (and automatically folds them safely back on kelp/branch contact). Mold **`2–3 mm` aft flush-out drain slots** + low-friction **UHMW / Delrin wear pads** under the bridge to prevent beach sand jamming, and pair with the `<$150` aft auto-trim stabilizer (since there is no passive surface-piercing height bumper).
 * **Submerged Split STOL Flaperon Mechanics (`~$160` Active Flight-Control Upgrade for Rough Chop):**
+
+```text
+A. ABOVE & BEHIND (Negative-Stagger Biplane / "Staggerwing")
+                         [=== Secondary Wing ===]  (Pivots +12 deg takeoff -> 0 deg cruise)
+     Flow --->      /  (Gentle stall, higher rock clearance, CL_max ~ 1.65)
+            [====== Main Wing ======]
+
+B. SLIGHTLY BELOW & BEHIND (True STOL External Slotted Flap / Junkers Wing)
+     Flow --->  [====== Main Wing ======]
+                   >>> High-pressure slot jet accelerates over top of rear wing! >>>
+                               [=== Secondary Flap ===]  (Pivots +15-20 deg -> 0 deg cruise)
+                               (Prevents separation -> CL_max ~ 1.95 - 2.10!)
+```
+
   * **Stagger Position:** Mounting the split `2 × 250 cm²` (`450 × 55 mm` ea.) flaperons **slightly below & behind** the `1,000 cm²` main wing (`~20–35 mm` down, `~0.8` chords aft — *Junkers / Zenith CH701* STOL external slotted flap) channels a high-pressure converging slot jet over the rear wing's upper surface (`CL_max ≈ 1.95–2.10`). Mounting **above & behind** (*Beechcraft Staggerwing* negative-stagger biplane, `~50–100 mm` up, `~0.7` chords aft) yields gentler stall and higher rock clearance (`CL_max ≈ 1.65`) while mounting directly onto the rear tandem struts.
   * **4-in-1 Active Flight Control:** (1) **STOL Takeoff Flaps** (both `+15°` down), (2) **Direct-Lift Elevation / Ride-Height** (both `±3°` together—raises/lowers boat dead-flat over swells without rollercoaster nose pitching), (3) **Active Roll Leveling & Banked Turning** (differential left/right `±3°` when passengers move or turning), and (4) **Hydrodynamic Braking / Soft Touchdown** (both `-8°`).
-  * **Dry-Deck Actuation & Mechanical Failsafe (`~$160`):** Pivoting each `250 cm²` half near its **quarter-chord aerodynamic center (`20%–25%` chord)** limits peak hinge torque across `8–22 kn` to just **`2.5–3.6 N·m` (`26–37 kg·cm` / `7.3–10.5 kgf` on a `35 mm` horn)**. Two dry-mounted **`$45–$65` brushless `IP67` `70–80 kg·cm` servos** (`0.10 s/60°`) inside the Spine Floor drive two **`4 mm` stainless pushrods** tucked inside the trailing-edge grooves of the left/right rear `60 × 9 mm` blades (controlled by an `ESP32` + `BNO085` 6-DOF IMU + ToF height sensor). Placing the hinge slightly forward at **`~20%` chord** makes both flaperons **hydrodynamically self-centering to `0°`** on power/servo loss.
+  * **Dry-Deck Actuation & Mechanical Failsafe (`~$160`):** Pivoting each `250 cm²` half near its **quarter-chord aerodynamic center (`20%–25%` chord)** balances water pressure so actuator loads stay tiny across `8–22 kn`—easily driven by two dry-mounted **`$45–$65` brushless `IP67` `70–80 kg·cm` servos** (`0.10 s/60°`) inside the Spine Floor via two **`4 mm` stainless pushrods** tucked into the trailing-edge grooves of the left/right rear `60 × 9 mm` blades (controlled by an `ESP32` + `BNO085` 6-DOF IMU + ToF height sensor). Placing the hinge slightly forward at **`~20%` chord** makes both flaperons **hydrodynamically self-centering to `0°`** on power/servo loss:
+
+| Flaperon Regime (`250 cm²` / `450 × 55 mm` Half) | Lift per Half | Balanced Hinge Torque (`2×` Margin) | Pushrod Force (`35 mm` Horn) |
+| :--- | :---: | :---: | :---: |
+| **Takeoff (`+15°` @ `8 kn`)** | `304 N` | **`2.67 N·m`** (`27 kg·cm`) | **`7.8 kgf`** (`17 lbf`) |
+| **Cruise Trim (`±3°` @ `15.5 kn`)** | `285 N` | **`2.51 N·m`** (`26 kg·cm`) | **`7.3 kgf`** (`16 lbf`) |
+| **Max Speed Trim (`±2°` @ `22 kn`)** | `410 N` | **`3.61 N·m`** (`37 kg·cm`) | **`10.5 kgf`** (`23 lbf`) |
+
+#### Choosing Between the Three Top High-Lift Wing Architectures
+
+| Decision Criterion | **1. Upper Step-Out Booster (`+1,400` air + `1,350` low)** | **2. Flush-Nested Top-Deck Switchblade (`+1,300` roof + `1,250` low)** | **3. Submerged Split STOL Flaperons (`1,000 + 2×250` wet)** |
+| :--- | :---: | :---: | :---: |
+| **Takeoff / `15.5 kn` Range / `22 kn` Drag** | **`6.4 kn` / `30.8 nm`** / `33.2 lbf` | `6.7 kn` / **`30.8 nm` / `32.3 lbf`** | `7.2 kn` / `29.8 nm` / `36.4 lbf` |
+| **Rough `2 ft` Ocean Chop & Ventilation** | Pierces water surface @ `8–9 kn` (needs anti-ventilation fence) | **Zero ventilation** (stays `400 mm` deep permanently!) | **Zero ventilation** (stays `400 mm` deep permanently!) |
+| **Ride-Height & Roll Stabilization** | **Passive mechanical height bumper** (zero electronics) | Needs `<$150` aft auto-trim stabilizer | **Full 4-in-1 active Direct-Lift elevation, roll leveling & banked turns** (`~$160`) |
+| **Folded Beaching Depth (`4×` Blades)** | `~95–105 mm` (`~5"` clear above flat sand) | **`~90 mm` (`~5.5"` clear — no upper wing!)** | **`~90 mm` (`~5.5"` clear — no upper wing!)** |
+| **Simplicity & Sand/Debris Maintenance** | **Best!** Zero moving foil parts, hinges, or servos | Recessed top pocket needs `2–3 mm` sand flush slots + latch cable | Adds 2 dry-deck servos + `4 mm` pushrods (`20%`-chord self-centering failsafe) |
 
 ### C. Core Advantages of the Spine-Floor + Step-Out Flying-Keel Pod
 1. **Free Archimedes Lift (`~26.6 kg` Buoyancy) + Modular Swappable Portability:** Displacing `26 L` of seawater cancels `~90%` of the battery's weight underwater (`~66 lbf` lift with zero induced drag). Housing the cells as **two removable, factory-potted `IP68` `2.5–2.7 kWh` (`~14 kg` ea.) slide-in cartridges** inside the fuselage bay (instead of one permanent `30 kg` sealed pack) lets one person carry a battery ashore/into a car to charge, isolates seal/cell serviceability, and lets you run **1 cartridge + a closed-cell foam dummy plug** (`~15 nm`) for ultralight solo trips or **2 cartridges (`~31 nm`)** for 2-up range.
@@ -84,14 +127,52 @@ Both `True Kit` (`Navigator` / `Discovery`) and `Takacat LX` feature a **continu
 | **Option A: Through-Fabric Switchable Magnets (`4 × Magswitch` Rotary `N52` / EPM) + Aft Safety/Shear Bridle** | `~6–9 kg` | `+$450 – $750` | **Built-in resettable breakaway fuse** (front pair releases cleanly @ `~400 kgf` shock; safety tether retains pod!) | **Universal** *(open or closed transom inflatables!)* | **Best universal bolt-on UX (`5-sec` drop-on):** works ONLY with Spine Floor directly on `1.2 mm` PVC (`~2.5 mm` gap), NOT through `100 mm` air deck! |
 | **Option C: Factory OEM Welded Centerboard Slot** *(one RF-welded `60×320 mm` slot + PVC boot + split-neoprene gasket in non-airtight web)* | **`~1.0–1.5 kg`** | `+$150` *(factory)* | Top-accessible strut kick-up clutch | Factory OEM "Foil Edition" (`True Kit` / `Takacat`) | **Lightest & cleanest OEM finish** (zero underwater rails; pluggable w/ flush blanking plate); modifies stock PVC web so not a no-mod DIY bolt-on. |
 
-#### Key Structural Details for Options B1 ("O-Frame"), B2 ("C-Frame") & Option A (Switchable Magnets)
+#### Side-Profile Diagrams & Structural Rationale (`O-Frame` vs. `C-Frame` vs. `OEM Slot` vs. `Magnets`)
+
+```text
+OPTION B1: FULL BOW-TO-TRANSOM "O-FRAME" (Open-Bow Cats: True Kit Discovery / Takacat LX)
+  OPEN BOW                                                   OPEN TRANSOM
+   +===+=======================================================+===+
+   |   |        TOP RIGID SPINE FLOOR (Inside Cockpit)         |   |
+   |   +=======================================================+   |
+   |   ~~~~~~~~~~~~~~~~~ 1.2 mm PVC Tunnel Web ~~~~~~~~~~~~~~~~~   |
+   |   +=======================================================+   |
+   +===+         LOWER TWIN RAILS (2x 50x20 mm, 2.0 m)         +===+
+       ^                    [O]=========[O]                    ^
+  Bow Bridge &           Parallelogram Pivots           Transom Bridge &
+  Rock Bumper         (Pod retracts UP *between*        Retraction Tackle /
+                          250-300 mm rails!)            Launch Wheel Mount
+
+OPTION B2: OPEN-TRANSOM "C-FRAME" CANTILEVER (Closed-Bow Cats: True Kit Navigator)
+   BOW                                                      OPEN TRANSOM
+   ===========================================================+
+   |    TOP RIGID SPINE FLOOR (Inside Cockpit)                |  <-- Locks under 3.5 PSI tubes
+   ===========================================================+===+
+   ~~~~~~~~~~~~~~~~~~~ 1.2 mm PVC Tunnel Web ~~~~~~~~~~~~~~~~~    |  <-- Vertical Transom C-Bridge
+                 +============================================+===+      (120-160 mm tall gusset)
+                 |  LOWER SUB-TUNNEL BEAM (180x30 mm, 1.1 m)
+                 +====[O]=========[O]====
+
+OPTION C: FACTORY OEM WELDED CENTERBOARD SLOT (Official "Foil Edition" — 0 Air Chambers Cut!)
+   BOW                         DROP-IN FOIL STRUT                      STERN
+                                      | |
+   =============================+=====+ +=====+=============================
+   |  TOP RIGID SPINE FLOOR     | CNC Well    |  (Carries 100% bending load)
+   =============================+===+     +===+=============================
+   ~~~~~~~~~ 1.2 mm PVC Web ~~~~~~~~|     |~~~~~~~~~~ (Above static waterline!)
+                          Welded -> +-----+ <- Flush Split-Neoprene Spray Gasket
+                          PVC Boot    | |
+```
+
+* **Why Tying Both Ends ("O-Frame") Beats a 1-Ended Cantilever ("C-Frame"):** A **cantilever** is a beam supported at only *one* end (like a diving board), concentrating the full `40 kg` hanging pod weight on a `1.1 m` lever arm at the transom corner (`~917 N·m` in `2G` bounce). Tying **both** bow and transom (**O-Frame**) splits the load 50/50—cutting peak bending moment by **`3×–4×` (`~210–300 N·m`)** and bending deflection by **`10×–16×`**! *(Note: While **foiling**, upward lift `+210 kgf` pushes the lower beam flat UP against the underside of the Top Spine Floor in direct compression—so neither frame cantilevers while flying; the O-Frame advantage shines during hanging loads, wave bounce, and roll stiffness.)*
 * **Option B1 (Full Bow-to-Transom Twin-Rail "O-Frame" — `True Kit Discovery` & `Takacat LX`):**
-  * Wrapping around *both* open ends turns a `1.1 m` cantilever (`~917 N·m` in `2G` hang) into a closed `2.0 m` loop (`~210–300 N·m`), shrinking the lower chassis to **two slim `50 × 20 × 2.5 mm` `6061-T6` aluminum rails (`~3.5 kg` total, `~$70` off-the-shelf tubing)** or **`~2.5 kg` carbon** spaced **`250–300 mm` apart**.
-  * Spacing the rails `250–300 mm` apart yields huge roll stiffness in hard turns AND creates a **built-in center retraction bay** so the `220 mm`-wide Flying-Keel Pod pivots up *between* the two rails for extra beaching clearance. Midship slide-in stainless splice sleeves split the `2.0 m` rails into `1.0 m` packable halves; the front bow bridge doubles as a beaching bumper and the rear transom bridge anchors the `3:1` retraction tackle & launch wheels.
+  * Uses **two slim `50 × 20 × 2.5 mm` `6061-T6` aluminum rails (`~3.5 kg` total, `~$70` off-the-shelf tubing)** or **`~2.5 kg` carbon** spaced **`250–300 mm` apart**—giving huge roll stiffness AND a **built-in center retraction bay** so the `220 mm`-wide Flying-Keel Pod tucks UP *between* the two rails. Midship slide-in stainless splice sleeves split the `2.0 m` rails into `1.0 m` packable halves; the front bow bridge doubles as a beaching bumper and the rear bridge anchors the `3:1` retraction tackle & launch wheels.
 * **Option B2 (Open-Transom "C-Frame" — `True Kit Navigator 300`):**
-  * A `180 × 30 × 3.5 mm` hollow box beam (`~2.4 kg` carbon / `~4.2 kg` `6061-T6` Alu + vertical rear transom C-bridge) runs `1.1 m` forward underneath the `1.2 mm` PVC web to boat CoG. Upward foiling lift (`+210 kgf`) compresses directly up into the Spine Floor through a `3 mm` EPDM chafe pad (`0` cantilever moment in lift); a calibrated `$1` Delrin breakaway shear pin lets the strut kick up aft on grounding.
+  * A `180 × 30 × 3.5 mm` hollow box beam (`~2.4 kg` carbon / `~4.2 kg` `6061-T6` Alu + vertical rear transom C-bridge) runs `1.1 m` forward underneath the `1.2 mm` PVC web to boat CoG (`3 mm` EPDM chafe pad under web; calibrated `$1` Delrin breakaway shear pin for grounding kick-up).
+* **Option C (Factory OEM Welded Centerboard Slot — Non-Airtight Web & Zero Flood Risk):**
+  * Cuts **one reinforced `~60 × 320 mm` longitudinal slot** solely in the non-pressurized `1.2 mm` PVC tunnel sling—**zero airtight side-tube chambers are touched**. Because the catamaran's tunnel ceiling already sits **above the static waterline** (self-draining open transom), water does not flood upward at rest; a `100–120 mm` RF-welded vertical PVC collar ("boot") rises into the Spine Floor's CNC well, a flush **split-neoprene centerboard gasket** blocks underway spray (same proven tech as `Tiwal`, `MiniCat`, and `Laser`/`Moth` dinghies), and a snap-in HDPE blanking plug restores a smooth tunnel whenever boating without the foil. Best reserved for an OEM "Foil Edition" hull since cutting a stock hull voids factory warranty.
 * **Option A (Four Mandatory Rules for Through-Fabric Switchable Magnetic Clamping):**
-  1. **`~2.2–2.5 mm` Gap Physics (`4 ×` `10 × 10 cm` Pucks on `400 × 800 mm` Base):** Sitting the Spine Floor directly on the `1.2 mm` PVC web yields `B ≈ 0.70 T` (`~2.0 kgf/cm²`) → **`~800 kgf` (`1,760 lbf`) total clamping force** (`~2.2×` roll safety margin in `1.5 G` turns; upward foiling lift compresses the clamp tighter).
+  1. **`~2.2–2.5 mm` Gap Physics (`4 ×` `10 × 10 cm` Pucks on `400 × 800 mm` Base):** Sitting the Spine Floor directly on the `1.2 mm` PVC web yields `B ≈ 0.70 T` (`~2.0 kgf/cm²`) → **`~800 kgf` (`1,760 lbf`) total clamping force** (`~2.2×` roll safety margin in `1.5 G` turns; upward foiling lift compresses the clamp tighter). Never attempt through a `100 mm` stock air deck (flux drops to near zero).
   2. **Rubber Grip Pads + Aft Transom Shear/Safety Bridle (Mandatory):** Wet PVC is slippery (`μ ≈ 0.22` → `~175 kgf` slip threshold). Bond **micro-ribbed vulcanized rubber/silicone grip pads** (`μ ≈ 0.65–0.80` → `520+ kgf` shear) to both faces **and** clip a short Dyneema/stainless bridle over the transom to carry fore-aft shock shear and prevent losing the `$2,500` pod if a reef strike trips the magnetic breakaway fuse.
   3. **Mechanical Rotary (`Magswitch`) or Electro-Permanent Magnets (EPMs) ONLY — Never Plain Electromagnets:** Plain electromagnets fail-unsafe on battery loss. Mechanical rotary `N52` pucks require **zero power**, stay failsafe `ON`, and only need a sealed **`8–10 mm` mild-steel / `430` ferritic stainless keeper plate** on the bottom carriage (saving `~4 kg` and `~$400` vs. dual-sided magnets).
   4. **Hermetic Saltwater Sealing & 6-DOF IMU Mode:** Encapsulate all `NdFeB` rotors (`316L`/epoxy) and vacuum-bag bottom steel keeper plates in carbon/epoxy against saltwater corrosion; keep magnetic compasses `>500 mm` away and run any `BNO085` auto-trim IMU in **6-DOF (gyro + accel only)** mode.
@@ -99,16 +180,57 @@ Both `True Kit` (`Navigator` / `Discovery`) and `Takacat LX` feature a **continu
 #### Mandatory Parallelogram Strut Geometry (`4×` Slim Side-Straddling Blades vs. `2×` Center Tandem Struts)
 Keeping a pivoting `1.3 m` Flying-Keel Pod **parallel during grounding kick-up and shallow-water retraction** geometrically requires a **4-bar parallelogram linkage** (front + rear inline struts).
 
-> **Two Critical Geometric Rules:**
-> 1. **Never Pivot a Single Central Mast ("Inverted-T") on a `1.3 m` Pod:** On a `0.60 m` single central mast rigidly bolted to the middle of a `1.3 m` pod (`±0.65 m` nose/tail overhang), pivoting aft just **`40°`** drives the **rear tailcone straight up into the PVC tunnel ceiling (`-1 cm` clearance — collision!)** while pitching the **front nose `27 cm` *deeper* into the seabed (`-64 cm` → `-91 cm`) like a plow**!
-> 2. **Watch Folded Strut-Chord Stack-Up & Upper-Wing Alignment:** When a strut swings `80°–85°` aft, its **chord stands vertically**! Stacking an `80 mm` pod strictly *underneath* a `120 mm`-chord strut yields **`~210 mm` (`8.3"`)** total depth below the PVC web (leaving only `~20 mm` clearance inside a `~230 mm` `True Kit` tunnel). You solve this by either **straddling the pod sides with `4×` ultra-slim `60 × 9 mm` blades (`~90 mm` folded depth!)** OR **recessing `2×` `100 mm`-chord center struts `55 mm` into a pod top channel with offset pivot pins (`~135 mm` folded depth)**. In both cases, hinge the **Upper Step-Out Booster Wing to BOTH front and rear struts (double-deck parallelogram)** so it also stays `100%` horizontal when folded!
+```text
+WHY A SINGLE CENTRAL MAST ("INVERTED-T") FAILS GROUNDING vs. 4-BAR PARALLELOGRAM:
 
-| Strut Layout (`0.40 m` Submerged @ `15.5 kn`) | Strut Drag @ `15.5 kn` | Folded Depth Below PVC Web | Beach Clearance (`230 mm` Tunnel) | Roll Flex (`1.5 G` Turn) & Buckling | Engineering Verdict |
-| :--- | :---: | :---: | :---: | :--- | :--- |
-| **Primary A (Best Mechanical / O-Frame Fit): `4×` Ultra-Slim Side-Straddling Tandem Blades** (`60 × 9 mm` solid UD carbon or `75 × 10 mm` `6061-T6` Alu; 2 left + 2 right) | **`11.4 lbf`** *(carbon; `0.5 lbf` spray!)*<br>`13.1 lbf` *(Alu)* | **`~90–95 mm`** *(blades flank pod sides; `0` pod cut-out!)* | **`~135–140 mm` (`5.5"`)!** | `<3 mm` roll flex w/ Upper Wing tie; `9.8×–10.5×` buckling margin | **Cleanest build for Twin-Rail O-Frame:** bolts straight from both rails to pod sides (`0` crossbars, `100%` intact `IP68` battery bay, works in solid carbon or cheap `6061-T6` Alu!). Route thin charge/signal wires in a `3 mm` trailing-edge channel; only `+2.3 lbf` (`~1.3 nm` range) vs `2×` center struts. |
-| **Primary B (Lowest Pivoting Drag): `2×` Center Tandem Parallel Struts** (`100 × 18 mm` hollow carbon, offset pins + `55 mm` pod top recess) | **`9.1 lbf`** *(aft in front wake)* | **`~135 mm`** *(`~210 mm` if non-recessed!)* | **`~95 mm` (`3.7"`)** | `<1.2°` flex w/ `300 mm` wide T-heads | **Lowest drag (`+1.3 nm` range) & internal hollow cable routing**, plus cleanest weed shedding—requires hollow carbon tooling + recessed top slot in pod fairing. |
-| **Fixed / Vertical-Lift Only: `1×` Single Central Carbon Mast** (`180 × 22 mm`, `3.5 mm` UD walls) | **`7.1 lbf`** *(Lowest!)* | *N/A (vertical slide only)* | *N/A* | `<1°` flex (`99 MPa`, `8×` safety) | **FAILS pivoting kick-up** (tail hits ceiling @ `40°`, nose plows `27 cm` deeper to `-91 cm`!). Use **ONLY** for vertical daggerboard lift (OEM Option C slot) or short dry-floor foils. |
-| **Avoid: `4×` Thick Quad Struts** (`110 × 15 mm` ea.) | **`18.7 lbf`** *(2.6× drag!)* | `~150 mm` | `~80 mm` | Over-built | **Avoid:** unnecessary chord/thickness destroys high-speed efficiency. |
+SINGLE CENTRAL MAST (0.60 m mast, 1.3 m pod)     2x/4x PARALLELOGRAM STRUTS (WORKS!)
+   Tunnel Ceiling (y = 0 cm)                        Tunnel Ceiling (y = 0 cm)
+   ===================[O]===================        ============[O]=========[O]============
+                     /  \  <- Tail HITS floor                     \           \  <- Swings
+                    /   [Tail] at just 40 deg!                      \           \   pod 100%
+                   /   /                                            [=== Pod ===]   FLAT &
+               [Nose]  <- Nose PLOWS 27 cm                                          UP!
+                          DEEPER (-64 -> -91 cm)!
+```
+
+| Kick-Up Angle (`0.60 m` Strut, `1.3 m` Pod) | **Single Central Mast:** Tailcone Top | **Single Central Mast:** Nose Bottom | **4-Bar Parallelogram:** Pod Top / Bottom |
+| :---: | :---: | :---: | :---: |
+| **`0°`** *(Foiling)* | `-56 cm` | `-64 cm` | `-56 cm` / `-64 cm` *(flat)* |
+| **`25°`** | `-23 cm` | **`-86 cm`** *(22 cm deeper!)* | `-50 cm` / `-58 cm` *(flat, rising)* |
+| **`40°`** | **`-1 cm` (HITS FLOOR!)** | **`-91 cm`** *(27 cm deeper!)* | `-42 cm` / `-50 cm` *(flat, rising)* |
+| **`75°`** | `+48 cm` *(impossible)* | `-79 cm` | **`-11.5 cm` / `-19.5 cm`** *(cleanly tucked)* |
+
+> **Critical Folded Stack-Up Rule (Strut Chord Stands Vertically at `85°` Fold!):** When a strut swings `80°–85°` aft, its **chord stands vertically**! Stacking an `80 mm` pod strictly *underneath* a `120 mm`-chord strut yields **`~210 mm` (`8.3"`)** total depth below the PVC web (leaving only `~20 mm` clearance inside a `~230 mm` `True Kit` tunnel). You solve this via either **Primary A (`4×` side-straddling `60 × 9 mm` blades flanking the pod sides → `~90 mm` depth!)** OR **Primary B (`2×` `100 mm`-chord center struts with offset pivot pins—top pin near trailing edge, bottom pin near leading edge—recessed `55 mm` into a pod top slot → `~135 mm` depth)**. In both cases, hinge any **Upper Step-Out Booster Wing to BOTH front and rear struts (double-deck parallelogram)** so it also stays `100%` horizontal when folded!
+
+```text
+PRIMARY A: 4x SIDE-STRADDLING BLADES (60x9 mm) — ONLY ~90 mm FOLDED DEPTH!
+  FRONT VIEW (Deployed)                     SIDE VIEW (Folded — ~140 mm Clear of Sand!)
+  [Rail L] <---- 250 mm ----> [Rail R]      ~~~~~~~~~~~~~~~~~~~~~~~~~  0 mm (PVC Web)
+     ||                         ||          [== Upper Wing (25 mm) ==] (or 0 mm w/ Switchblade!)
+     ||====[Upper Step-Out]=====||            \  60 mm blades flank  \
+     ||    (Ties L & R rigid!)  ||             +-[=== 80 mm Pod ===]-+ -90 mm (Pod Bottom!)
+     ||==[== 220x80 mm Pod ==]==||          --- Bottom of Ø460 Tubes - -230 mm (+140 mm clear!)
+
+PRIMARY B: 2x CENTER TANDEM STRUTS (100x18 mm, 55 mm Pod Recess) — ~135 mm FOLDED DEPTH
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  0 mm (PVC Web)
+   [======== Upper Step-Out Wing (Double-Deck Flat, ~25 mm) =========]
+      \   100 mm strut (offset pins, nested 55 mm into pod slot)   \
+       +----[================= 80 mm Pod =================]---------+ -135 mm (Pod Bottom)
+   --- Bottom of Ø460 mm Side Pontoons / Flat Beach Sand ------------ -230 mm (+95 mm clear!)
+```
+
+| Folded Stack-Up Variant (`80°–85°` Aft Fold) | Vertical Stack-Up Components Below `1.2 mm` PVC Web | Pod Bottom Below Web | Clearance Above Flat Beach (`230 mm` Tunnel) |
+| :--- | :--- | :---: | :---: |
+| **Naive Stack (Avoid):** `120 mm` center struts strictly *on top* of `80 mm` pod | `10 mm` bracket + `120 mm` vertical strut chord + `80 mm` pod | **`~210 mm`** (`8.3"`) | Only `~20 mm` (`0.8"`) — **too close to sand/pebbles!** |
+| **Primary B Optimized:** `2×` `100 mm` center struts **recessed `55 mm` into pod top slot** (offset pins) | `10 mm` bracket + `100 mm` strut overlapping `55 mm` into `80 mm` pod | **`~135 mm`** (`5.3"`) | **`~95 mm` (`3.7"`)** clear above bottom of `Ø460 mm` tubes |
+| **Primary A Optimized:** `4×` `60 × 9 mm` side-straddling blades **flanking pod sides** | `10 mm` clearance + `80 mm` pod (`60 mm` blades fold *beside* pod!) | **`~90–95 mm`** (`3.6"`) | **`~135–140 mm` (`5.5"`)** clear above flat beach sand! |
+
+| Strut Layout (`0.40 m` Submerged @ `15.5 kn`) | Re / Spray Drag | Total Drag @ `15.5 kn` | Folded Depth Below Web | Beach Clearance (`230 mm` Tunnel) | Roll Flex (`1.5 G` Turn) & Buckling | Engineering Verdict |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+| **Primary A (Best Mechanical / O-Frame Fit): `4×` Ultra-Slim Side-Straddling Tandem Blades** (`60 × 9 mm` solid UD carbon or `75 × 10 mm` `6061-T6` Alu; 2 left + 2 right) | `4.0 × 10⁵` / **`0.5 lbf`** *(Half!)* | **`11.4 lbf`** *(carbon)*<br>`13.1 lbf` *(Alu)* | **`~90–95 mm`** *(flank pod sides; `0` cut-out!)* | **`~135–140 mm` (`5.5"`)!** | `<3 mm` w/ Upper Wing tie; `9.8×–10.5×` buckling (`733–789 kgf/blade`) | **Cleanest build for Twin-Rail O-Frame:** bolts straight from both rails to pod sides (`0` crossbars, `100%` intact `IP68` battery bay, works in solid carbon or cheap `6061-T6` Alu!). Route thin charge/signal wires in a `3 mm` trailing-edge channel; only `+2.3 lbf` (`~1.3 nm` range) vs `2×` center struts. |
+| **Primary B (Lowest Pivoting Drag): `2×` Center Tandem Parallel Struts** (`100 × 18 mm` hollow carbon, offset pins + `55 mm` pod top recess) | `6.7 × 10⁵` / `1.0 lbf` | **`9.1 lbf`** *(aft in front wake)* | **`~135 mm`** *(`~210 mm` non-recessed)* | **`~95 mm` (`3.7"`)** | `<1.2°` flex w/ `300 mm` wide T-heads | **Lowest drag (`+1.3 nm` range) & internal hollow cable routing**, plus cleanest weed shedding—requires hollow carbon tooling + recessed top slot in pod fairing. |
+| **Fixed / Vertical-Lift Only: `1×` Single Central Carbon Mast** (`180 × 22 mm`, `3.5 mm` UD walls) | `12.1 × 10⁵` / `0.9 lbf` | **`7.1 lbf`** *(Lowest!)* | *N/A (vertical slide only)* | *N/A* | `<1°` flex (`99 MPa`, `8×` safety) | **FAILS pivoting kick-up** (tail hits ceiling @ `40°`, nose plows `27 cm` deeper to `-91 cm`!). Use **ONLY** for vertical daggerboard lift (OEM Option C slot) or short dry-floor foils. |
+| **Avoid: `4×` Thick Quad Struts** (`110 × 15 mm` ea.) | `7.4 × 10⁵` / `1.4 lbf` | **`18.7 lbf`** *(2.6× drag!)* | `~150 mm` | `~80 mm` | Over-built | **Avoid:** unnecessary chord/thickness destroys high-speed efficiency. |
 
 * **Upper Step-Out Booster Wing Synergy on Primary A (`4×` Side-Straddling Blades):** Supporting the `~1.0 m` upper takeoff wing at **two points `250 mm` apart** cuts its root bending moment by **`~40%`** (enabling lighter, cheaper fiberglass or thin aluminum construction), locks the left and right blades into a rigid **3D box-portal frame** (`<3 mm` roll flex even in `6061-T6` Alu, especially with a slim aft tie-rod across the rear pair), lets you set an **independent `+2°–3°` nose-up takeoff incidence angle** (zero cruise pitch penalty once it clears into dry air >`9 kn`), and folds cleanly as a **double-deck horizontal stack (`~95–105 mm` total depth → `~125–135 mm` / `~5"` clear above flat sand)**.
 
@@ -235,7 +357,26 @@ A stripped `48 V` / `2,200 W` brushless outboard (e.g., `Hangkai M2200`, `2.45 t
 | Subsystem | **Primary Build: Drop-In Spine Floor + Step-Out Flying-Keel Pod** | **Alt A: Dry Rigid Battery-Floor + Twin Foil-Strut Pods (`2× 65161`)** | **Alt B: Turnkey CNC Azimuth Pods (`2 × W-30` `730 mm`)** | **Alt C: `2 × APISQUEEN U30` Ducted / Central `BP100` Jet** |
 | :--- | :--- | :--- | :--- | :--- |
 | **Propulsion & Power Steering** | `2 × Flipsky 65161` (`100 Kv`) + `2 × Flipsky 75100` `VESC` + BT/CAN joystick (**`~$1,050`**, `6 kg`, diff. steer) | `2 × Flipsky 65161` (`100 Kv`) + `2 × Flipsky 75100` `VESC` + CAN joystick (**`~$1,050`**, `6 kg`, diff. steer) | `2 × W-30` (`730 mm`) w/ built-in `±85°` steer & remote (`13.2 kg`) | `2 × U30` (`$1,300`, `5.3 kg`) or `BP100` `10 kW` jet (`$1,215`, `10.3 kg`) |
-| **Spine Floor, Fuselage & Retract Hardware** | Drop-in `25–35 mm` 2-piece rigid carbon/Alu Spine Floor (`$450`) + `26 L` carbon fuselage bay + CNC double-O-ring rear bay door, Kevlar nose, leak sensor, hinged `NACA 0024` strut, anti-ventilation fence & tackle (`$950`) | `60 mm` 2-piece carbon/E-glass dry battery floor (`$850`) + flip-up strut mounts (`$150`) | Rigid battery floor (`$850`) or clamp-on transom/exoskeleton (`$350`) | Battery floor (`$850`) or jetboard sled hull (`$900`) |
-| **Hydrofoil Wing Set & Auto-Trim** | Sleek `1,350 cm²` thin lower wings + fixed **`+1,400 cm²` upper step-out booster wing** + aft stabilizer (`$870`; optional `+$150` `ESP32`/`IMU`/`ToF` auto-trim) | `1,600 cm²` front + `650 cm²` aft carbon wings (`$750`) | `1,600 cm²` front + `650 cm²` aft wings (`$750`) | *Optional (`U30`)* / *N/A (`BP100` jet)* |
+| **Spine Floor, Fuselage & Retract Hardware** | Drop-in `25–35 mm` 2-piece rigid carbon/Alu Spine Floor + Bow-to-Transom Twin-Rail `O-Frame` (`$550`) + `26 L` carbon fuselage bay, CNC double-O-ring rear door, Kevlar nose, leak sensor, **`4×` `60×9 mm` parallelogram blades** & tackle (`$950`) | `60 mm` 2-piece carbon/E-glass dry battery floor (`$850`) + flip-up strut mounts (`$150`) | Rigid battery floor (`$850`) or clamp-on transom/exoskeleton (`$350`) | Battery floor (`$850`) or jetboard sled hull (`$900`) |
+| **Hydrofoil Wing Set & Auto-Trim** | Sleek lower wings + **Upper Step-Out Booster** (`$870`, `0` moving parts) *OR* **Flush-Nested Top-Deck Switchblade** (`$950`) *OR* **Split STOL Flaperons** (`+$160` dry servos + `ESP32`/`IMU`/`ToF`) | `1,600 cm²` front + `650 cm²` aft carbon wings (`$750`) | `1,600 cm²` front + `650 cm²` aft wings (`$750`) | *Optional (`U30`)* / *N/A (`BP100` jet)* |
 | **LiFePO4 Battery Pack & BMS** | **`2 ×` swappable `IP68` potted `2.7 kWh` (`14 kg` ea.) slide-in cartridges** + BMS & blind-mate waterproof connectors (`$700`) | `16S EVE LF105` (`5.38 kWh`) flat inside floor (`$550`) | `14S` (`4.7 kWh`) or `16S` (`5.38 kWh`) `EVE LF105` (`$520–$550`) | `14S` (`$520` for `U30`) / `24S` (`$850` for `BP100`) |
-| **Complete Conversion Total** | **`~$4,020`** *(`$4,170` w/ auto-trim; zero hull mods, `6.4 kn` takeoff, `30.8 nm` @ `15.5 kn`, carry-ashore `14 kg` packs!)* | **`~$3,350`** *(Dry battery, `2-sec` flip-up, `31.8 nm` @ `15.5 kn`!)* | **`2 × W-30` + `$1,620 – $2,150`** *(Zero steering fab!)* | **`~$2,820 – $2,965`** *(Bollard tow or `3"`-draft jet)* |
+| **Complete Conversion Total** | **`~$4,120`** *(`$4,280` w/ active flaperons/auto-trim; zero hull mods, `6.4–7.2 kn` takeoff, `30–31 nm` @ `15.5 kn`, carry-ashore `14 kg` packs!)* | **`~$3,350`** *(Dry battery, `2-sec` flip-up, `31.8 nm` @ `15.5 kn`!)* | **`2 × W-30` + `$1,620 – $2,150`** *(Zero steering fab!)* | **`~$2,820 – $2,965`** *(Bollard tow or `3"`-draft jet)* |
+
+---
+
+## 7. Productization & Bolt-On Retrofit Market Rationale
+
+The core architectural choices above—**Drop-In Rigid Spine Floor + Zero-Hole O-Frame**, **Swappable `14 kg` `IP68` Cartridges**, and **Passive Step-Out or `~$160` Active Split STOL Flaperons**—directly address a wide **`$10k → $115k` market gap** in electric tenders:
+
+| Market Segment / Benchmark | Retail Price (USD) | Range @ `15 kn` | Tender Cargo Utility | Core Buyer Pain Point |
+| :--- | :---: | :---: | :---: | :--- |
+| **Bare Inflatable Catamaran** (`True Kit Navigator/Discovery`, `Takacat LX`) | `$1,850 – $3,500` | — | High (packs in bags) | Requires motor; pounds in chop at speed |
+| **Mainstream `6 kW` Electric Outboard + `5 kWh` Pack** (`ePropulsion Navy 6.0` / `Torqeedo Cruise 6.0`) | **`$10,000 – $14,800`** | `~10 nm` | Battery clutters cockpit | High price yet still planes inefficiently (`10 nm`), heavy & wet in chop |
+| **Single-Rider Electric Foils** (`Fliteboard`, `Manta5 SL3`) | **`$8,500 – $15,000`** | `15–25 nm` | **Zero** (1-person toy) | Cannot carry 2 adults, dogs, or yacht provisions |
+| **Commercial Foiling Tenders** (`SEAir Flying Tender`, `Candela C-8`) | **`$115,000 – $390,000`** | `30–55 nm` | Superyacht only | Too heavy for normal yacht davits (`1,000+ kg`) & `10×` out of reach |
+| **`FoilSkiff` Bolt-On Conversion Kit** *(Est. small-batch COGS `$2.6k–$3.4k`)* | **`$7,900 – $11,900`** *(kit)* | **`~30 nm`** | **Full 2-person tender + `100%` clear floor** | **Matches or undercuts a non-foiling `6 kW` outboard with `3×` the range and zero wave-slamming** |
+
+### Why the Four Core Design Choices De-Risk Commercialization
+1. **Swappable `IP68` Cartridges (or BYOB V1):** Solves off-boat carrying/charging (`14 kg` vs `40 kg`), isolates warranty/seal repairs, and enables launching a mechanical + propulsion **BYOB (Bring-Your-Own-Battery) kit (`$4.5k–$5.5k`)** first to defer `UN38.3` / `IEC 62619` lithium certification and hazmat air-freight overhead.
+2. **Universal Spine Floor + O-Frame / Magnets (`0` Hull Mods):** Fits existing owner boats (`True Kit`, `Takacat`, `Saturn`, `Kaboat`) via swappable edge width strips without voiding hull warranties—expanding addressable volume beyond any single boat brand, while keeping **Option C (Factory RF-Welded Slot)** ready for an official OEM "Foil Edition" co-branded partnership.
+3. **Approachable "Push Throttle and Fly" Stability:** Cruising sailors (`45–70` yrs) will not tolerate unstable e-foil crashes with groceries aboard. Both the **Upper Step-Out Booster** (inherent mechanical ride-height bumper) and **Split STOL Flaperons (`~$160` dry-deck servos + `20%`-chord self-centering failsafe)** deliver smooth, forgiving flight without `$40k` active `100 Hz` aerospace computers.
