@@ -171,34 +171,37 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 11. Dual-Mode Morphing STOL-to-Staggerwing Flaperon (130° Sweep Kinematics & Coaxial Pod Drive)
 ![Dual-Mode Morphing STOL-to-Staggerwing Kinematics and Coaxial Drive](diagrams/20-morphing-stol-staggerwing.svg)
 
-### 12. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
+### 12. `2×` Recessed Center Struts: Upper/Lower Trunnions & One-Sided Crab-Pot / Rock Impact Protection
+![2x Recessed Center Struts: Upper/Lower Trunnions & One-Sided Impact Protection](diagrams/21-center-strut-asymmetric-loads.svg)
+
+### 13. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
 
-### 13. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+### 14. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
 ![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
 
-### 14. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 15. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 15. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 16. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 16. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 17. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 17. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 18. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 18. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 19. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 19. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 20. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 20. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 21. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 21. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 22. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -208,7 +211,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 11 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 12 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
 # Regenerate all 10 binary 3D .stl CAD models, 10 annotated 3D SVGs, and 10 OpenSCAD PNGs

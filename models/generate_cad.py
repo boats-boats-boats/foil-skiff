@@ -994,20 +994,37 @@ def build_model_05_discovery330():
 def add_2x_center_recessed_struts(mb: MeshBuilder, z_top=-22.0, z_bot=-702.0, x_front=-540.0, x_rear=220.0):
     """
     Swap #3 (Lowest Pivoting Drag): 2x Hollow Carbon 100x18 mm Recessed Center Tandem Struts (9.1 lbf vs 11.4 lbf).
-    Rear strut drafts directly in front strut wake; 300 mm wide T-heads bolt across the 250 mm rails;
-    bottom pins sit recessed 55 mm into the pod top fairing slot!
+    Includes full asymmetric-load & one-sided impact trunnion hardware:
+      - Upper End: Anti-splay bridge plate + 260 mm tapered T-Head yoke + full-width Ø16 mm SS axle across BOTH 250 mm rails
+        + orange UHMW/bronze thrust washers (8.3x lower pin bearing load, zero sideways binding during kick-up!).
+      - Lower End: 180 mm flared pod saddle T-foot inside the 55 mm top recess + full-width Ø16 mm SS axle anchored into
+        twin 6 mm G10/carbon full-height internal pod bulkheads + Delrin kick-up shear fuse!
     """
     strut_sec = naca4_section(0.0, 0.0, 0.18, 100.0, n=12)
     for bx in (x_front, x_rear):
-        # 300 mm wide T-head cross-bracket tying strut to BOTH twin rails (roll stiffness <1.2 deg!)
-        mb.add_box(bx - 30, bx + 30, -148, 148, z_top - 10, z_top + 6, C_ALU, 1.0, stl=True)
+        # Upper Anti-Splay Bridge Plate + Tapered 250 mm T-Head Yoke
+        mb.add_box(bx - 36, bx + 42, -150, 150, z_top - 4, z_top + 6, C_ALU, 1.0, stl=True)
+        mb.add_box(bx - 22, bx + 38, -102, 102, z_top - 32, z_top - 4, C_CARBON_DARK, 1.0, stl=True)
+        # Full-width Ø16 mm upper stainless axle spanning BOTH 250 mm rails (offset to TE +24 mm)
+        mb.add_cylinder_y(bx + 24, -152, 152, z_top - 14, 8.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        # Orange flanged UHMW/bronze thrust washers reacting +/-220 kgf lateral impact thrust against rails!
+        for sy in (-106, 106):
+            mb.add_box(bx + 10, bx + 38, sy - 4, sy + 4, z_top - 28, z_top - 2, C_FLAP_R, 1.0, stl=True)
+        # Hollow 100x18 mm carbon center strut
         rings = []
-        for z_pos in (z_top, (z_top + z_bot) * 0.5, z_bot + 10):
+        for z_pos in (z_top - 10, (z_top + z_bot) * 0.5, z_bot + 16):
             rings.append([(bx + xl - 50.0, yl, z_pos) for xl, yl in strut_sec])
         mb.add_loft(rings, C_CARBON_DARK, 1.0, stl=True)
-        # Offset gold parallelogram hinge pins (top pin near TE, bottom pin near LE for 55 mm folded recess!)
-        mb.add_cylinder_y(bx + 24, -26, 26, z_top - 4, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
-        mb.add_cylinder_y(bx - 24, -24, 24, z_bot + 16, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        # Lower 180 mm Recessed Pod Saddle T-Foot + Full-Width Ø16 mm Axle (offset to LE -24 mm)
+        mb.add_box(bx - 42, bx + 12, -82, 82, z_bot + 2, z_bot + 30, C_CARBON_DARK, 1.0, stl=True)
+        mb.add_cylinder_y(bx - 24, -100, 100, z_bot + 16, 8.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        # Twin 6 mm G10/carbon full-height internal pod bulkhead cheek plates + orange thrust washers
+        for sy in (-88, 88):
+            mb.add_box(bx - 48, bx + 18, sy - 5, sy + 5, z_bot - 34, z_bot + 34, C_WING_UP, 0.85, stl=False)
+            mb.add_box(bx - 36, bx - 12, sy - (6 if sy > 0 else -12) + (-6 if sy < 0 else 0), sy + (0 if sy > 0 else 6), z_bot + 4, z_bot + 28, C_FLAP_R, 1.0, stl=True)
+    # Front strut Delrin kick-up shear-pin fuse block + crab-pot line cutter notch at LE/pod junction
+    mb.add_box(x_front - 58, x_front - 26, -24, 24, z_top - 26, z_top - 4, C_PUSHROD, 1.0, stl=True)
+    mb.add_box(x_front - 64, x_front - 46, -6, 6, z_bot + 34, z_bot + 64, C_FLAP_R, 1.0, stl=True)
 
 
 def add_single_centerline_prop_and_rudder(mb: MeshBuilder, dx=0.0, dz=-702.0, show_internal=False):

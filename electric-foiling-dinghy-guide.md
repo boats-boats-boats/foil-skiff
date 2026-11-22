@@ -181,6 +181,18 @@ Keeping a pivoting `1.3 m` Flying-Keel Pod **parallel during grounding kick-up a
 
 * **Box-Portal Cross-Brace Rigidity on Primary A (`4×` Side-Straddling Blades):** Tying left and right `60 × 9 mm` blades together with two slim `Ø12 mm` above-water horizontal cross-braces (`Z = -260 mm`, clear above the `Z = -370 mm` cruise waterline — zero surface-piercing wing!) locks the four blades into a rigid **3D box-portal frame** (`<3 mm` roll flex even in `6061-T6` Alu, `9.8×–10.5×` buckling safety) while keeping the `86.5°` folded depth at just **`~90–95 mm` (`~135–140 mm` / `5.5"` clear above flat sand)**.
 
+#### Engineering the Upper & Lower Ends of `2×` Recessed Center Struts for Asymmetric Roll & One-Sided Crab-Pot / Rock Strikes
+
+![2x Recessed Center Struts: Upper/Lower Trunnions & One-Sided Impact Protection](diagrams/21-center-strut-asymmetric-loads.svg)
+
+Because **`2×` Recessed Center Struts (`100 × 18 mm` on `Y = 0`)** lack the wide `250 mm` stance of `4×` side blades, both their **upper and lower pivot joints**—plus the outer wingtips—must be engineered specifically for **uneven crew/turn roll loads (`M_x ≈ 550–650 N·m`)** and **one-sided wingtip impacts** (e.g., clipping a crab-pot line or rock at `y = +0.65 m` on a `1.55 m` long-range foil at `15.5 kn`):
+
+| Structural Zone | Load / Failure Mode Without Proper Design | Engineered `FoilSkiff` Solution | Quantitative Result |
+| :--- | :--- | :--- | :--- |
+| **Stage 1: Outer Wingtip Fuse (`Y = ±275 mm` Beaching Hinge)** | Rigid `1.55 m` wing hitting a crab pot/rock at `y = 0.65 m` (`2,500 N`) creates **`1,625 N·m` yaw torque** (`±2,138 N` sideways strut force) & wraps pot warps! | Hold the beach-folding outer wingtips open with a **`$0.50` `Ø5 mm` Delrin shear pin** (`~600–800 N` / `~70 kgf` aft release — `>8×` cruise tip drag). | Tip pin shears in `<0.01 s` → wingtip swings **`90°` aft** to shed crab-pot line / glance off rock, capping yaw torque **`≤500 N·m` (`3×` lower!)** with zero broken carbon! |
+| **Stage 2: Upper End (`260 mm` Wide T-Head Trunnion & Anti-Splay Bridge)** | Narrow `40 mm` clevis pin sees **`10.8 kN` (`1.1 ton`)** prying force under `325 N·m` roll & binds sideways during one-sided kick-up! | **Full-width `Ø16 mm` stainless axle** spanning **BOTH `250 mm`-spaced rails** inside flanged **UHMW/bronze thrust washers (`μ ≈ 0.08`)** + rigid **anti-splay bridge plate** + **offset TE pin (`+24 mm`)** + front-edge **Delrin kick-up fuse (`~140 kgf`)**. | Bearing span grows `8.3×` (`30 → 250 mm`), slashing pin load to **`132 kgf/rail`** (`<1.2°` roll flex); low-friction thrust washers carry `±220 kgf` side thrust so struts **never rack/bind** while kicking up! |
+| **Stage 3: Lower End (`180 mm` Recessed Pod Saddle Trunnion + Twin Bulkheads)** | Narrow center tab twists the pod roof skin; single strut twists in torsion during off-center hits. | Flare strut root inside the `55 mm` recess into a **`180 mm` T-foot** on a **`Ø16 mm` axle** anchored into **twin `6 mm` `G10`/carbon full-height internal pod bulkheads** + **LE offset pin (`-24 mm`)** + **`70 mm` solid forward compression stop** + **`±45°` carbon torsion wrap** & stainless **crab-pot line cutter** at front strut LE. | `760 mm` tandem spacing converts `~90%` of yaw torque into a clean lateral couple (instead of strut torsion); internal bulkheads carry roll/side loads across the full `220 mm` pod width (`<140 MPa`, `>5.5×` safety) with zero cruise backlash! |
+
 ---
 
 ## 2. Off-the-Shelf Propulsion Showdown (`Weight`, `Compactness`, `Cost` & `Power Steering`)
