@@ -7,16 +7,17 @@ Secondary Open-Bow Reference: True Kit Discovery 330 (330 cm, open square bow, f
 
 Zero external Python dependencies (pure Python 3 standard library + optional OpenSCAD CLI).
 
-Generates 9 interactive binary 3D STL CAD models, 9 shaded 3D isometric SVGs, and 9 OpenSCAD PNGs:
-  1. models/01_navigator300_stol_flaperons.stl       + renders/01-navigator300-stol-3d.png       + diagrams/00-navigator300-3d-cad.svg
-  2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png         + diagrams/06-switchblade-3d-cad.svg
-  3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png       + diagrams/07-stol-flaperons-3d-cad.svg
-  4. models/04_navigator300_retracted_beaching.stl   + renders/04-navigator300-retracted-3d.png  + diagrams/08-navigator300-retracted-3d.svg
-  5. models/05_discovery330_oframe_stol.stl          + renders/05-discovery330-oframe-3d.png     + diagrams/11-discovery330-oframe-3d-cad.svg
-  6. models/06_navigator300_lr_8020_sweetspot.stl    + renders/06-navigator300-lr-8020-3d.png    + diagrams/13-navigator300-lr-8020-3d-cad.svg
-  7. models/07_navigator300_lr_max_range.stl         + renders/07-navigator300-lr-max-range-3d.png + diagrams/14-navigator300-lr-max-range-3d-cad.svg
-  8. models/08_lr_pod_closeup.stl                    + renders/08-lr-pod-closeup-3d.png          + diagrams/15-lr-pod-closeup-3d-cad.svg
-  9. models/09_modular_hard_deck_seating.stl         + renders/09-modular-deck-seating-3d.png    + diagrams/17-modular-deck-seating-3d-cad.svg
+Generates 10 interactive binary 3D STL CAD models, 10 shaded 3D isometric SVGs, and 10 OpenSCAD PNGs:
+  1. models/01_navigator300_stol_flaperons.stl       + renders/01-navigator300-stol-3d.png          + diagrams/00-navigator300-3d-cad.svg
+  2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png            + diagrams/06-switchblade-3d-cad.svg
+  3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png          + diagrams/07-stol-flaperons-3d-cad.svg
+  4. models/04_navigator300_retracted_beaching.stl   + renders/04-navigator300-retracted-3d.png     + diagrams/08-navigator300-retracted-3d.svg
+  5. models/05_discovery330_oframe_stol.stl          + renders/05-discovery330-oframe-3d.png        + diagrams/11-discovery330-oframe-3d-cad.svg
+  6. models/06_navigator300_lr_8020_sweetspot.stl    + renders/06-navigator300-lr-8020-3d.png       + diagrams/13-navigator300-lr-8020-3d-cad.svg
+  7. models/07_navigator300_lr_max_range.stl         + renders/07-navigator300-lr-max-range-3d.png  + diagrams/14-navigator300-lr-max-range-3d-cad.svg
+  8. models/08_lr_pod_closeup.stl                    + renders/08-lr-pod-closeup-3d.png             + diagrams/15-lr-pod-closeup-3d-cad.svg
+  9. models/09_modular_hard_deck_seating.stl         + renders/09-modular-deck-seating-3d.png       + diagrams/17-modular-deck-seating-3d-cad.svg
+ 10. models/10_morphing_stol_staggerwing_pod.stl     + renders/10-morphing-stol-staggerwing-3d.png  + diagrams/19-morphing-stol-staggerwing-3d-cad.svg
 """
 
 import html
@@ -1267,6 +1268,105 @@ def build_model_09_modular_seating():
     render_openscad_png(mb, RENDERS_DIR / "09-modular-deck-seating-3d.png", "-40,0,190,68,0,224,3850")
 
 
+# ---------------------------------------------------------------------------
+# MODEL 10 (UPGRADE): Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod
+# ---------------------------------------------------------------------------
+def build_model_10_morphing_stol_staggerwing():
+    """
+    Combines Junkers STOL Slotted Flap (DOWN @ Z=-58 mm, +15 deg) + Protected Staggerwing Cruise (UP @ Z=+48 mm, 0/+/-3 deg):
+      - Main Wing (1,000 cm²) mounted flush on BOTTOM face of the 80 mm Flying-Keel Pod (Z_pod - 40 mm).
+      - 58 mm streamlined carbon cheek swing-arms pivot on a Ø16 mm hollow stainless outer tube driven by
+        1x internal self-locking worm-gear mode actuator (0 W holding power!).
+      - 2x fast IP67 70-80 kg·cm pitch servos drive coaxial inner Ø8 mm shafts for full independent active
+        roll/elevation/banked-turn control in BOTH UP and DOWN modes (ZERO boxes above Hard Deck!).
+      - Shown in split demonstration: Starboard (+Y, foreground) = Mode 2 UP (Protected Staggerwing Cruise),
+        Port (-Y) = Mode 1 DOWN (STOL Slotted Takeoff) so both regimes & the 130° sweep arc are unmistakable!
+    """
+    mb = MeshBuilder()
+    # Flush Bow-Contoured Hard Deck (0 boxes!) + contoured under-hull plate
+    deck_st = [
+        (-1050, 220, 48, 72),
+        (-900, 295, 18, 42),
+        (-740, 320, 3, 28),
+        (60, 320, 3, 28),
+        (72, 320, 3, 28),
+        (760, 320, 3, 28),
+    ]
+    under_st = [(-1040, 130, 38, 48), (-900, 148, 8, 18), (-740, 152, -16, -2), (760, 152, -16, -2)]
+    add_contoured_deck_and_underplate(mb, deck_st, under_st, latch_x=66.0)
+    add_flush_ltracks(mb, z_top=28.0, x0=-680.0, x1=720.0, y_track=195.0)
+    for sy in (-125, 125):
+        mb.add_box(-740, 760, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
+
+    dz = -620.0
+    add_4x_blades(mb, z_top=-22.0, z_bot=dz, fold_deg=0.0, x_front=-450.0, x_rear=320.0, y_half=122.0)
+    # Translucent pod shell revealing worm-gear mode actuator, coaxial Ø16/Ø8 shafts & 2x fast pitch servos!
+    add_flying_keel_pod(mb, dx=0.0, dz=dz, pod_h=80.0, with_motors=False, shell_alpha=0.38)
+    add_single_centerline_prop_and_rudder(mb, dx=0.0, dz=dz, show_internal=False)
+
+    # 1. Main Wing (1,000 cm², 100 mm chord) mounted FLUSH ON BOTTOM FACE of the 80 mm pod (dz - 40 mm)!
+    add_lower_wings(mb, dx=0.0, dz=dz - 38.0, half_span=560.0, root_chord=100.0, x_le=-255.0)
+    # Main wing TE sits at X = -155 mm; Coaxial swing-arm pivot axis sits at X = -115 mm, Z = dz - 4 mm (behind TE!)
+    x_piv, z_piv, R_arm = -115.0, dz - 4.0, 58.0
+
+    # 2. Coaxial Hollow Ø16 mm Outer Mode Tube (Alu) + Inner Ø8 mm Pitch Shafts (Red) + Cheek Seal Bosses
+    mb.add_cylinder_y(x_piv, -122, 122, z_piv, 9.5, C_ALU, n=12, alpha=1.0, stl=True)
+    mb.add_cylinder_y(x_piv, -126, 126, z_piv, 4.8, C_PUSHROD, n=10, alpha=1.0, stl=True)
+    # Internal 1x Central Self-Locking Worm-Gear Mode Actuator (center) + 2x Fast IP67 Pitch Servos (gold, flanking)
+    mb.add_box(x_piv - 28, x_piv + 48, -28, 28, dz - 22, dz + 26, C_PUSHROD, 1.0, stl=False)  # Worm-gear mode actuator
+    for side in (-1, 1):
+        mb.add_box(x_piv - 24, x_piv + 28, side * 66 - 18, side * 66 + 18, dz - 20, dz + 22, C_KEVLAR, 1.0, stl=False)
+    mb.add_box(x_piv + 62, x_piv + 135, -34, 34, dz - 12, dz + 16, C_WING_UP, 1.0, stl=False)  # ESP32/IMU
+    mb.add_box(x_piv + 150, x_piv + 265, -58, 58, dz - 36, dz - 6, C_ALU, 1.0, stl=False)       # 75100 VESC
+
+    # 3. Split Flaperons on 58 mm Streamlined Cheek Swing-Arms:
+    #    - Starboard (+Y, foreground!): Mode 2 UP (phi = +64 deg -> Z = +48 mm above pod center, Protected Staggerwing Cruise!)
+    #    - Port (-Y): Mode 1 DOWN (phi = -64 deg -> Z = -56 mm, Junkers STOL Takeoff +15 deg!)
+    fl_sec = naca4_section(0.02, 0.4, 0.11, 62.0, n=10)
+    for side, phi_deg, pitch_deg, col in [(1, 64.0, 2.0, C_FLAP_R), (-1, -64.0, 16.0, C_FLAP_L)]:
+        phi = math.radians(phi_deg)
+        fx = x_piv + R_arm * math.cos(phi)
+        fz = z_piv + R_arm * math.sin(phi)
+        # Streamlined 58 mm carbon cheek swing-arm hugging pod wall at Y = side * 118 mm
+        mb.add_rod((x_piv, side * 118, z_piv), (fx, side * 118, fz), 10.5, C_CARBON_DARK, n=10, alpha=1.0, stl=True)
+        # Gold coaxial pitch pivot pin at flaperon 20%-chord root
+        mb.add_cylinder_y(fx, side * 110, side * 130, fz, 7.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        # Flaperon lofted blade
+        rad = math.radians(pitch_deg)
+        rings = []
+        for dist in (122, 330, 560):
+            y = side * dist
+            rings.append([(fx + (xl - 12.4) * math.cos(rad) + zl * math.sin(rad), y, fz - (xl - 12.4) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
+        mb.add_loft(rings, col, 1.0, stl=True)
+
+    # Translucent teal 130-deg sweep-arc guide ribbon on foreground Starboard side (+Y) showing travel behind Main Wing TE!
+    arc_pts = []
+    for k in range(11):
+        a = math.radians(-64.0 + 128.0 * k / 10.0)
+        arc_pts.append((x_piv + R_arm * math.cos(a), 145.0, z_piv + R_arm * math.sin(a), 4.5))
+    mb.add_tube_along_path(arc_pts, C_WING_UP, n=6, alpha=0.65, stl=False, cap_ends=True)
+
+    write_binary_stl(mb, MODELS_DIR / "10_morphing_stol_staggerwing_pod.stl", "FoilSkiff 10 (Upgrade): Morphing STOL-to-Staggerwing Flaperon Pod (mm)")
+    callouts = [
+        ((-920, 0, 56), "left", 96, 245, "100% Flush Bow-Contoured Hard Deck", "ZERO deck boxes • All 3 actuators inside sealed pod!"),
+        ((-100, 440, dz + 48), "left", 218, 245, "Mode 2 (UP): Protected Staggerwing!", "+106 mm debris shield • Above main wing wake (-1 lbf)!"),
+        ((-60, 145, dz - 4), "left", 355, 245, "58 mm Cheek Swing-Arm (130° Arc)", "Clears cleanly behind Main Wing TE (0°→2 s switch)"),
+        ((-220, 460, dz - 38), "left", 488, 245, "Main Wing Flush on Pod Bottom", "Fixed carbon wing shields UP flaperons from debris!"),
+        ((320, -122, -290), "right", 104, 795, "Clean 4× Blades (0 External Pushrods!)", "Self-contained pod • No pushrod fold binding"),
+        ((-115, 0, dz + 12), "right", 232, 795, "1× Worm-Gear + 2× Coaxial Pitch Servos", "Worm self-locks (0 W hold); Ø8 mm inner pitch shafts"),
+        ((-90, -450, dz - 58), "right", 372, 795, "Mode 1 (DOWN): Junkers STOL Takeoff", "+15° slotted flap (CL_max ≈ 2.0) for 7.0 kn lift-off!"),
+        ((725, 0, dz), "right", 495, 800, "Long-Range Single 65161 + 10\" CNC Prop", "+1.5–2.5 nm bonus from clean out-of-wake UP cruise!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "19-morphing-stol-staggerwing-3d-cad.svg",
+        "3D CAD Model 10 (Upgrade): Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod",
+        "Split Demo: Foreground = Mode 2 UP (Protected Staggerwing Cruise) | Far Side = Mode 1 DOWN (STOL Takeoff) • All 3 Actuators Inside Pod",
+        callouts, az_deg=-134, el_deg=23, scale=0.37, z_center=295,
+        footer="Interactive 3D STL: models/10_morphing_stol_staggerwing_pod.stl (Dual-Mode STOL + Staggerwing Upgrade)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "10-morphing-stol-staggerwing-3d.png", "10,0,-305,66,0,226,3150")
+
+
 if __name__ == "__main__":
     for old_f in [
         MODELS_DIR / "01_step_out_flying_keel_truekit.stl",
@@ -1291,4 +1391,5 @@ if __name__ == "__main__":
     build_model_07_lr_max_range()
     build_model_08_lr_pod_closeup()
     build_model_09_modular_seating()
-    print("All 9 3D STL models, 9 annotated 3D SVGs, and 9 OpenSCAD PNG renders generated successfully.")
+    build_model_10_morphing_stol_staggerwing()
+    print("All 10 3D STL models, 10 annotated 3D SVGs, and 10 OpenSCAD PNG renders generated successfully.")

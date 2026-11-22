@@ -22,6 +22,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR Solo)* | **Full 4-Swap Long-Range Solo (`70–84 nm`):** **1 low-sit pilot chair slid over CoG** (open aft gear/extender bay!) + `2×` Recessed Center Struts + `AR 14` Flush Switchblade + Single `65161` (`10"` prop) & Bow Dodger |
 | **8** | [`models/08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) | *Long-Range Pod Cutaway* | **Internal Cutaway of Long-Range Single-Prop Pod:** translucent shell showing `2×` recessed center struts, swappable cartridges (`5.4 kWh` `LiFePO4` / `8.2 kWh` `NMC`), `1×` `75100` VESC, internal rudder servo & `10"` 2-blade CNC prop |
 | **9** | [`models/09_modular_hard_deck_seating.stl`](models/09_modular_hard_deck_seating.stl) | **`Navigator 300`** *(Modular Deck)* | **Modular Hard Deck Seating System:** Bow-contoured 2-piece Hard Deck + **flush recessed twin L-Track rails (`390 mm` spacing)** + **2 quick-release low-sit ergonomic chairs** + right-hand armrest wireless helm pod (`0` trip edges when empty!) |
+| **10** | [`models/10_morphing_stol_staggerwing_pod.stl`](models/10_morphing_stol_staggerwing_pod.stl) | *Dual-Mode Wing Upgrade* | **Morphing STOL-to-Staggerwing Flaperon Pod:** Bottom-mounted Main Wing + **`58 mm` cheek swing-arm (`130°` arc)** switching between **DOWN STOL Takeoff (`CL_max ≈ 2.0`)** & **UP Protected Staggerwing Cruise (`+106 mm` debris shield, out of wake!)** via internal worm-gear + coaxial pitch servos |
 
 ---
 
@@ -151,36 +152,53 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ---
 
+### 10. Dual-Mode Upgrade: Morphing STOL-to-Staggerwing Flaperon Pod (Coaxial Internal Drive)
+*Combines **Junkers STOL external slotted takeoff** (shown on far port side: DOWN at `Z = -58 mm`, `+15°`, `CL_max ≈ 2.0`) with **Protected Staggerwing Cruise** (shown on foreground starboard side: lifted `+106 mm` UP to `Z = +48 mm` on `58 mm` cheek swing-arms cleanly behind the bottom-mounted Main Wing TE!). Lifting the flaperons UP shields them behind the fixed lower Main Wing, moves them **above the Main Wing's turbulent wake (`-0.8 to -1.2 lbf` drag saved → `+1.5–2.5 nm` bonus!)**, preserves full `±3°` active roll/elevation control, and adds `+45 mm` beaching clearance. Inside the translucent pod: **`1×` red self-locking worm-gear mode actuator (`0 W` hold)** on the `Ø16 mm` hollow outer tube + **`2×` gold fast `IP67` pitch servos** on coaxial inner `Ø8 mm` shafts (`ZERO` boxes above the Hard Deck!).*
+
+![OpenSCAD 3D Render: Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod](renders/10-morphing-stol-staggerwing-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod](diagrams/19-morphing-stol-staggerwing-3d-cad.svg)
+
+</details>
+
+---
+
 ## Part II — Scaled 2D Engineering Drawings (`diagrams/`)
 
-### 10. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
+### 11. Dual-Mode Morphing STOL-to-Staggerwing Flaperon (130° Sweep Kinematics & Coaxial Pod Drive)
+![Dual-Mode Morphing STOL-to-Staggerwing Kinematics and Coaxial Drive](diagrams/20-morphing-stol-staggerwing.svg)
+
+### 12. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
 
-### 11. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+### 13. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
 ![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
 
-### 12. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 14. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 13. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 15. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 14. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 16. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 15. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 17. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 16. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 18. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 17. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 19. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 18. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 20. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 19. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 21. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -190,10 +208,10 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 10 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 11 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
-# Regenerate all 9 binary 3D .stl CAD models, 9 annotated 3D SVGs, and 9 OpenSCAD PNGs
+# Regenerate all 10 binary 3D .stl CAD models, 10 annotated 3D SVGs, and 10 OpenSCAD PNGs
 python3 models/generate_cad.py
 ```
 

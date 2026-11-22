@@ -66,6 +66,15 @@ Hydrodynamic comparison for a `~235 kg` (`518 lb`) 1–2 person `True Kit Naviga
 | **Cruise Trim (`±3°` @ `15.5 kn`)** | `285 N` | **`2.51 N·m`** (`26 kg·cm`) | **`>58×`** yield safety (`0` external pushrods) |
 | **Max Speed Trim (`±2°` @ `22 kn`)** | `410 N` | **`3.61 N·m`** (`37 kg·cm`) | **`>40×`** yield safety (`0` external pushrods) |
 
+* **Dual-Mode Upgrade — Morphing STOL-to-Staggerwing Flaperon (`+$180–$260`, `+0.9 kg` — Best for 5-Hour Long-Range Flights):**
+
+![Dual-Mode Morphing STOL-to-Staggerwing Kinematics and Coaxial Drive](diagrams/20-morphing-stol-staggerwing.svg)
+
+  * **Two Regimes in One Pod:** Mount the fixed `1,000 cm²` Main Wing flush on the **bottom face (`Z = -40 mm`)** of the `80 mm` pod, and carry the split `2 × 250 cm²` flaperons on **`58 mm` streamlined carbon cheek swing-arms** pivoting cleanly behind the Main Wing trailing edge (`130°` arc):
+    * **Mode 1 — DOWN (`Z = -58 mm`, `+15°` Takeoff):** True **Junkers STOL external slotted flap** (`CL_max ≈ 1.95–2.10`, `7.0–7.2 kn` lift-off).
+    * **Mode 2 — UP (`Z = +48 mm`, `0°` / `±3°` Protected Staggerwing Cruise):** Swings **`+106 mm` higher** behind the fixed lower Main Wing—shielding the active flaperons from kelp/logs/shoals, lifting them **completely above the Main Wing's downward-angled turbulent wake (`-0.8 to -1.2 lbf` drag saved → `+1.5–2.5 nm` bonus!)**, preserving full `±3°` active roll/elevation control, and adding **`+45 mm` extra sand clearance** when retracted!
+  * **Decoupled Coaxial Internal Pod Drive (`ZERO` Deck Boxes!):** Because holding a `58 mm` arm against `10–22 kn` lift takes `17–24 N·m` (too high for a fast RC servo), use **`1×` central self-locking worm-gear mode actuator (`30+ N·m`, `0 W` holding power)** on a `Ø16 mm` hollow stainless outer tube to swing UP/DOWN in `~2 s` (while flaperons feather to `0°`), paired with **`2×` fast `IP67` `70–80 kg·cm` pitch servos** driving **coaxial inner `Ø8 mm` shafts** through CNC double-O-ring cheek glands (`≤3.6 N·m` balanced `20%`-chord pitch torque; see 3D cutaway [`10_morphing_stol_staggerwing_pod.stl`](models/10_morphing_stol_staggerwing_pod.stl)).
+
 * **SECONDARY: Flush-Nested Top-Deck Switchblade Wing Mechanics (`+1,300 cm²` Takeoff, `0 cm²` Extra Wet Area at Cruise):**
 
 ![Flush-Nested Top-Deck Switchblade Wing Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
