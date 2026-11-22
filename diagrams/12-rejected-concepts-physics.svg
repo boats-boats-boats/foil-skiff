@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 540" width="1040" height="540">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1038" height="538" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="472" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">12. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop</text>
+  <text x="24" y="46" class="sub">15.5 kn (q = 32.8 kPa, 850x Air-to-Water Density Shock) — Forward &amp; Deep-Aft Step-Out Hazards vs. Deep-Submerged STOL Flaperons</text>
+  <rect x="24" y="68" width="484" height="448" rx="8" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="42" y="92" class="warn">A. REJECTED: Forward Surface-Piercing Step-Out Wing</text>
+  <text x="42" y="109" class="lbl-sm">1,400 cm² horizontal slab hovering 50–100 mm above water hits a 1 ft wave crest</text>
+  <path d="M 34 325 Q 110 265 185 268 Q 255 272 330 330 Q 410 355 498 315 L 498 440 L 34 440 Z" fill="url(#water)"/>
+  <path d="M 34 325 Q 110 265 185 268 Q 255 272 330 330 Q 410 355 498 315" fill="none" stroke="#0284C7" stroke-width="2.2"/>
+  <g transform="translate(265, 220) rotate(-6)">
+    <rect x="-145" y="-22" width="290" height="30" rx="14" fill="url(#tubeGrad)" stroke="#475569" stroke-width="1.6"/>
+    <line x1="-85" y1="8" x2="-85" y2="128" stroke="#334155" stroke-width="6"/>
+    <line x1="65" y1="8" x2="65" y2="128" stroke="#334155" stroke-width="6"/>
+    <rect x="-115" y="118" width="215" height="20" rx="8" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+    <rect x="-126" y="42" width="60" height="10" rx="4" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.6"/>
+    <circle cx="0" cy="-6" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  </g>
+  <circle cx="172" cy="274" r="18" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,2"/>
+  <line x1="172" y1="286" x2="172" y2="352" stroke="#DC2626" stroke-width="3" marker-end="url(#arrRed)"/>
+  <line x1="184" y1="274" x2="246" y2="274" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
+  <text x="172" y="370" text-anchor="middle" class="warn">-140 kgf Suction!</text>
+  <text x="172" y="383" text-anchor="middle" class="lbl-sm">(if pitch -5° to -8°)</text>
+  <text x="315" y="268" class="warn">+103 lbf Drag Trip</text>
+  <text x="275" y="176" text-anchor="middle" class="lbl-sm">CoG</text>
+  <text x="42" y="458" class="warn">1. Nose-Down Entry (-6°): -140 kgf suction + 103 lbf brake → pitchpole!</text>
+  <text x="42" y="476" class="warn">2. Level Wave Slam (0°): +210 kgf (+1G) bow launch → breach &amp; crash!</text>
+  <text x="42" y="496" class="lbl-sm">Also requires double-deck tie-bars, 6 pins/side &amp; anti-ventilation fence.</text>
+  <rect x="532" y="68" width="484" height="448" rx="8" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="550" y="92" class="warn">B. REJECTED: Deep-Aft Step-Out Wing vs. Deep STOL</text>
+  <text x="550" y="109" class="lbl-sm">Moving the step-out wing aft still trips the bow on wave crests &amp; shifts CoL!</text>
+  <path d="M 542 332 Q 635 352 725 322 Q 825 262 910 272 Q 960 280 1006 318 L 1006 440 L 542 440 Z" fill="url(#water)"/>
+  <path d="M 542 332 Q 635 352 725 322 Q 825 262 910 272 Q 960 280 1006 318" fill="none" stroke="#0284C7" stroke-width="2.2"/>
+  <g transform="translate(765, 224) rotate(-5)">
+    <rect x="-145" y="-22" width="290" height="30" rx="14" fill="url(#tubeGrad)" stroke="#475569" stroke-width="1.6"/>
+    <line x1="-75" y1="8" x2="-75" y2="128" stroke="#334155" stroke-width="6"/>
+    <line x1="75" y1="8" x2="75" y2="128" stroke="#334155" stroke-width="6"/>
+    <rect x="-110" y="118" width="215" height="20" rx="8" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+    <rect x="70" y="42" width="60" height="10" rx="4" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.6"/>
+    <circle cx="0" cy="-6" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  </g>
+  <circle cx="866" cy="264" r="18" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,2"/>
+  <line x1="866" y1="252" x2="866" y2="178" stroke="#DC2626" stroke-width="3" marker-end="url(#arrRed)"/>
+  <text x="866" y="166" text-anchor="middle" class="warn">+150 kgf Tail Slam!</text>
+  <path d="M 616 205 A 65 65 0 0 0 600 268" fill="none" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
+  <text x="588" y="288" text-anchor="middle" class="warn">-1,350 N·m</text>
+  <text x="588" y="301" text-anchor="middle" class="lbl-sm">Bow Driven Down!</text>
+  <text x="768" y="182" text-anchor="middle" class="lbl-sm">CoG</text>
+  <text x="550" y="458" class="warn">1. Wave Crest on Aft Wing: +150 kgf lifts tail → drives bow into trough!</text>
+  <text x="550" y="476" class="warn">2. Takeoff Balance: +1,400 cm² aft shifts CoL ~45 cm → bow wheelbarrows!</text>
+  <text x="550" y="496" class="ok">WINNER: Deep-Submerged Split STOL Flaperons (400 mm deep, ~4 lbf wave ripple!)</text>
+</svg>

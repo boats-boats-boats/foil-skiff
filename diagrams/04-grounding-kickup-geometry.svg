@@ -84,25 +84,29 @@
   <text x="42" y="498" class="lbl">Verdict: Single central mast works ONLY for vertical daggerboard slide</text>
   <text x="42" y="514" class="lbl-sm">(Option C OEM slot) or short dry-floor foils — NEVER pivot a 1.3 m pod!</text>
   <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="550" y="92" class="ok">B. MANDATORY: 4-Bar Parallelogram Struts (2× or 4×)</text>
-  <text x="550" y="109" class="lbl-sm">Pod stays 100% HORIZONTAL at every angle — rises smoothly up to -12 cm!</text>
-  <rect x="546" y="161" width="456" height="14" rx="2" fill="#0284C7"/>
-  <text x="558" y="172" class="lbl-w">O-Frame Twin Rails / PVC Web (y = 0 cm)</text>
+  <text x="550" y="92" class="ok">B. MANDATORY: 4-Bar Parallelogram Struts (4× Blades)</text>
+  <text x="550" y="109" class="lbl-sm">Pod &amp; STOL flaperons stay 100% HORIZONTAL (0°→85°) — zero upper wing needed!</text>
+  <path d="M 552 149 Q 576 163 608 163 L 1002 163 L 1002 175 L 608 175 Q 572 175 546 161 Z" fill="#0284C7"/>
+  <text x="795" y="172" text-anchor="middle" class="lbl-w">Bow-Contoured Under-Hull Rails (y = 0 cm)</text>
   <line x1="546" y1="335.0" x2="1002" y2="335.0" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>
   <text x="996" y="330.0" text-anchor="end" class="lbl-sm">Deployed (-64 cm)</text>
-  <line x1="615.0" y1="175.0" x2="615.0" y2="325.0" stroke="#64748B" stroke-width="5.5" stroke-dasharray="4,2" stroke-linecap="round"/>
-  <line x1="805.0" y1="175.0" x2="805.0" y2="325.0" stroke="#64748B" stroke-width="5.5" stroke-dasharray="4,2" stroke-linecap="round"/>
-  <rect x="547.5" y="315.0" width="325.0" height="20.0" rx="8" fill="#CBD5E1" fill-opacity="0.50" stroke="#64748B" stroke-width="1.8" stroke-dasharray="4,2"/>
-  <line x1="615.0" y1="175.0" x2="711.4" y2="289.9" stroke="#0284C7" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
-  <line x1="805.0" y1="175.0" x2="901.4" y2="289.9" stroke="#0284C7" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
-  <rect x="643.9" y="279.9" width="325.0" height="20.0" rx="8" fill="#BAE6FD" fill-opacity="0.75" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="none"/>
-  <text x="806.4" y="293.9" text-anchor="middle" class="dim">40° Kick-Up: Flat (-50 cm)</text>
-  <line x1="615.0" y1="175.0" x2="761.7" y2="206.2" stroke="#059669" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
-  <line x1="805.0" y1="175.0" x2="951.7" y2="206.2" stroke="#059669" stroke-width="5.5" stroke-dasharray="none" stroke-linecap="round"/>
-  <rect x="694.2" y="196.2" width="325.0" height="20.0" rx="8" fill="#A7F3D0" fill-opacity="0.95" stroke="#059669" stroke-width="1.8" stroke-dasharray="none"/>
-  <text x="856.7" y="210.2" text-anchor="middle" class="ok">100% FLAT &amp; TUCKED!</text>
-  <circle cx="615.0" cy="175" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
-  <circle cx="805.0" cy="175" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
-  <text x="550" y="498" class="ok">Verdict: Delrin shear pin kicks 1.3 m pod cleanly UP &amp; AFT over reefs</text>
-  <text x="550" y="514" class="lbl-sm">with ZERO floor collision, ZERO nose plowing, and flat beach tuck.</text>
+  <line x1="588.0" y1="175.0" x2="588.0" y2="325.0" stroke="#64748B" stroke-width="5.2" stroke-dasharray="4,2" stroke-linecap="round"/>
+  <line x1="768.0" y1="175.0" x2="768.0" y2="325.0" stroke="#64748B" stroke-width="5.2" stroke-dasharray="4,2" stroke-linecap="round"/>
+  <rect x="528.0" y="315.0" width="300.0" height="20.0" rx="8" fill="#CBD5E1" fill-opacity="0.50" stroke="#64748B" stroke-width="1.8" stroke-dasharray="4,2"/>
+  <circle cx="588.0" cy="325.0" r="3.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <circle cx="768.0" cy="325.0" r="3.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <line x1="588.0" y1="175.0" x2="684.4" y2="289.9" stroke="#0284C7" stroke-width="5.2" stroke-dasharray="none" stroke-linecap="round"/>
+  <line x1="768.0" y1="175.0" x2="864.4" y2="289.9" stroke="#0284C7" stroke-width="5.2" stroke-dasharray="none" stroke-linecap="round"/>
+  <rect x="624.4" y="279.9" width="300.0" height="20.0" rx="8" fill="#BAE6FD" fill-opacity="0.75" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="none"/>
+  <text x="774.4" y="293.9" text-anchor="middle" class="dim">40° Kick-Up: Flat (-50 cm)</text>
+  <line x1="588.0" y1="175.0" x2="737.4" y2="188.1" stroke="#059669" stroke-width="5.2" stroke-dasharray="none" stroke-linecap="round"/>
+  <line x1="768.0" y1="175.0" x2="917.4" y2="188.1" stroke="#059669" stroke-width="5.2" stroke-dasharray="none" stroke-linecap="round"/>
+  <rect x="677.4" y="178.1" width="300.0" height="20.0" rx="8" fill="#A7F3D0" fill-opacity="0.95" stroke="#059669" stroke-width="1.8" stroke-dasharray="none"/>
+  <circle cx="737.4" cy="188.1" r="3.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <circle cx="917.4" cy="188.1" r="3.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <text x="827.4" y="192.1" text-anchor="middle" class="ok">85°: 100% FLAT &amp; TUCKED!</text>
+  <circle cx="588.0" cy="175" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <circle cx="768.0" cy="175" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <text x="550" y="498" class="ok">Verdict: Simple 4-pin/side parallelogram kicks pod flat UP &amp; AFT over reefs</text>
+  <text x="550" y="514" class="lbl-sm">with ZERO floor collision, ZERO nose plowing, and ZERO external pushrod binding!</text>
 </svg>

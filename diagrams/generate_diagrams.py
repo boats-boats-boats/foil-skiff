@@ -338,15 +338,19 @@ def gen_02_stol_flaperons():
     fl_to = transform_pts(naca4_points(0.02, 0.4, 0.11, 105), 765, 268, deg=18)
     s += f'  <polygon points="{pts_to_str(fl_cr)}" fill="none" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4,3"/>\n'
     s += f'  <polygon points="{pts_to_str(fl_to)}" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.6"/>\n'
-    # Pivot pin at 20% chord + pushrod up rear blade
+    # Pivot pin at 20% chord — DIRECT-DRIVE internal pod servo + Ø8 mm double-O-ring sealed torque tube (ZERO deck boxes!)
     piv_x, piv_y = 786, 272
-    s += f'  <circle cx="{piv_x}" cy="{piv_y}" r="4.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # Pushrod horn & 4 mm stainless pushrod
-    s += f'  <line x1="{piv_x}" y1="{piv_y}" x2="{piv_x+16}" y2="{piv_y-22}" stroke="#0F172A" stroke-width="2.2"/>\n'
-    s += f'  <line x1="{piv_x+16}" y1="{piv_y-22}" x2="{piv_x+16}" y2="128" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="6,2"/>\n'
-    s += f'  <text x="{piv_x+24}" y="145" class="warn">4 mm SS Pushrod</text>\n'
-    s += f'  <text x="{piv_x+24}" y="159" class="lbl-sm">to dry IP67 servo</text>\n'
-    s += f'  <text x="{piv_x+24}" y="173" class="lbl-sm">(70–80 kg·cm, ~$60)</text>\n'
+    # Translucent pod aft-bay outline showing internal IP67 servo right next to the flaperon root!
+    s += f'  <rect x="{piv_x-18}" y="{piv_y-54}" width="64" height="40" rx="5" fill="#1E293B" fill-opacity="0.88" stroke="#FBBF24" stroke-width="1.4"/>\n'
+    s += f'  <text x="{piv_x+14}" y="{piv_y-37}" text-anchor="middle" style="font-size:8.5px;fill:#FBBF24;font-weight:700;">IP67 Servo</text>\n'
+    s += f'  <text x="{piv_x+14}" y="{piv_y-25}" text-anchor="middle" style="font-size:7.8px;fill:#E2E8F0;">INSIDE Pod!</text>\n'
+    # Short internal linkage / Ø8 mm sealed stainless torque shaft directly to 20%-chord pivot
+    s += f'  <line x1="{piv_x}" y1="{piv_y}" x2="{piv_x}" y2="{piv_y-16}" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>\n'
+    s += f'  <circle cx="{piv_x}" cy="{piv_y}" r="5.0" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += f'  <text x="{piv_x+14}" y="145" text-anchor="middle" class="ok">Internal Pod Servos</text>\n'
+    s += f'  <text x="{piv_x+14}" y="159" text-anchor="middle" class="lbl-sm">Ø8 mm double-O-ring shaft</text>\n'
+    s += f'  <text x="{piv_x+14}" y="173" text-anchor="middle" class="ok">ZERO deck boxes / pushrods!</text>\n'
+    s += f'  <line x1="{piv_x+14}" y1="178" x2="{piv_x+14}" y2="{piv_y-56}" stroke="#059669" stroke-width="1.2" marker-end="url(#arrGreen)"/>\n'
     # Converging high-pressure slot jet streamlines!
     s += '  <path d="M 555 268 Q 680 264 762 248 Q 815 244 895 292" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
     s += '  <path d="M 555 284 Q 685 278 760 258 Q 812 256 888 304" fill="none" stroke="#059669" stroke-width="1.8" stroke-opacity="0.8" marker-end="url(#arrGreen)"/>\n'
@@ -354,9 +358,9 @@ def gen_02_stol_flaperons():
     s += '  <text x="688" y="316" text-anchor="middle" class="ok">(prevents rear-wing stall @ +15°!)</text>\n'
     s += '  <text x="895" y="255" text-anchor="middle" class="lbl-sm">0° Cruise</text>\n'
     s += '  <text x="905" y="334" text-anchor="middle" class="dim">+15° Takeoff / ±3° Trim</text>\n'
-    s += '  <text x="550" y="408" class="lbl">20%-Chord Pivot: 26–37 kg·cm torque (8–22 kn), self-centers to 0°.</text>\n'
+    s += '  <text x="550" y="408" class="lbl">20%-Chord Direct-Drive: 26–37 kg·cm torque (8–22 kn), self-centers to 0°.</text>\n'
     s += '  <text x="550" y="426" class="lbl-sm">Split 2×250 cm²: Takeoff Flaps + Elevation + Roll + Banked Turns.</text>\n'
-    s += '  <text x="550" y="446" class="ok">Zero ventilation in 2 ft chop • Active electronics BOM ≈ $160.</text>\n'
+    s += '  <text x="550" y="446" class="ok">PRIMARY: 400 mm deep (0 wave slam) • Servos sealed inside pod (0 deck boxes!)</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "02-stol-flaperons-cross-section.svg").write_text(s)
@@ -373,61 +377,65 @@ def gen_03_spine_coupling():
         "Bridging the Continuous 1.2 mm PVC Tunnel Web — Zero-Hole Navigator 300 Hybrid C-Frame, Switchable Magnets, Discovery O-Frame & OEM Slot"
     )
 
-    def draw_hull_base(y0, open_bow=False, tru_alu_transom=True):
-        out = f'  <rect x="80" y="{y0-58}" width="840" height="128" rx="46" fill="#E2E8F0" fill-opacity="0.35" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>\n'
-        out += f'  <line x1="170" y1="{y0}" x2="830" y2="{y0}" stroke="#64748B" stroke-width="4"/>\n'
+    def draw_hull_base(y0, open_bow=False, tru_alu_transom=True, show_deck_labels=True):
+        # Inflatable catamaran silhouette with REAL upward bow rocker curve!
+        out = f'  <path d="M 110 {y0-54} L 870 {y0-54} Q 920 {y0-54} 920 {y0+10} Q 920 {y0+66} 865 {y0+66} L 240 {y0+66} Q 150 {y0+62} 95 {y0+18} Q 76 {y0-28} 110 {y0-54} Z" fill="#E2E8F0" fill-opacity="0.35" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>\n'
+        # Continuous 1.2 mm PVC tunnel web bending UPWARD in the bow (X = 270 -> 150 rises smoothly 24 px!)
+        out += f'  <path d="M 830 {y0} L 285 {y0} Q 215 {y0-2} 152 {y0-24}" fill="none" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>\n'
         if not open_bow:
-            # Raised closed curved inflatable bow tube leaving air inlet underneath!
-            out += f'  <path d="M 170 {y0} Q 108 {y0-10} 92 {y0-42} Q 96 {y0-62} 145 {y0-58}" fill="#CBD5E1" fill-opacity="0.55" stroke="#475569" stroke-width="2.5"/>\n'
-            out += f'  <rect x="96" y="{y0-4}" width="12" height="12" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-            out += f'  <text x="120" y="{y0-48}" text-anchor="middle" class="lbl-sm">Closed Bow</text>\n'
+            out += f'  <path d="M 152 {y0-24} Q 108 {y0-32} 96 {y0-50} Q 102 {y0-64} 148 {y0-58}" fill="#CBD5E1" fill-opacity="0.55" stroke="#475569" stroke-width="2.5"/>\n'
+            out += f'  <rect x="96" y="{y0-24}" width="12" height="12" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+            out += f'  <text x="122" y="{y0-56}" text-anchor="middle" class="lbl-sm">Closed Bow</text>\n'
         else:
-            out += f'  <text x="128" y="{y0-28}" text-anchor="middle" class="ok">Open Bow</text>\n'
+            out += f'  <text x="124" y="{y0-42}" text-anchor="middle" class="ok">Open Bow</text>\n'
         if tru_alu_transom:
-            # Rigid factory Tru-Alu transom spanning above the open tunnel!
             out += f'  <rect x="828" y="{y0-56}" width="12" height="58" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
             out += f'  <text x="892" y="{y0-36}" text-anchor="middle" class="lbl-sm">Tru-Alu</text>\n'
             out += f'  <text x="892" y="{y0-24}" text-anchor="middle" class="lbl-sm">Transom</text>\n'
         else:
             out += f'  <text x="880" y="{y0-28}" text-anchor="middle" class="ok">Open Transom</text>\n'
-        out += f'  <rect x="175" y="{y0-20}" width="322" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-        out += f'  <rect x="501" y="{y0-20}" width="324" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-        out += f'  <rect x="492" y="{y0-22}" width="14" height="20" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
-        out += f'  <text x="336" y="{y0-8}" text-anchor="middle" class="lbl-w">Spine Floor Front (680×1,850 mm)</text>\n'
-        out += f'  <text x="663" y="{y0-8}" text-anchor="middle" class="lbl-w">Spine Floor Rear (Latched Midship)</text>\n'
+        # Contoured 2-Piece Hard Deck (Front half BENDS UP smoothly with bow rocker; zero protruding boxes above deck!)
+        out += (
+            f'  <path d="M 496 {y0-20} L 285 {y0-20} Q 222 {y0-22} 162 {y0-41} L 166 {y0-26} Q 224 {y0-7} 285 {y0-5} L 496 {y0-5} Z" '
+            f'fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+        )
+        out += f'  <rect x="501" y="{y0-20}" width="324" height="15" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+        out += f'  <rect x="492" y="{y0-22}" width="14" height="19" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+        if show_deck_labels:
+            out += f'  <text x="355" y="{y0-9}" text-anchor="middle" class="lbl-w">Bow-Contoured Hard Deck</text>\n'
+            out += f'  <text x="663" y="{y0-9}" text-anchor="middle" class="lbl-w">Rear Hard Deck (100% Flush!)</text>\n'
         return out
 
     # --- SECTION 1 (PRIMARY): NAVIGATOR 300 HYBRID C-FRAME + BOW D-RING DYNEEMA SLING ---
     s += '  <rect x="24" y="68" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="1.8"/>\n'
-    s += '  <text x="42" y="92" class="ok">1. PRIMARY (True Kit Navigator 300): Tru-Alu Transom-Clamped Hybrid C-Frame + 6 mm Dyneema Bow Sling</text>\n'
-    s += '  <text x="42" y="109" class="lbl-sm">Clamps directly onto factory 10 HP Tru-Alu transom • Dyneema bow-D-ring sling kills front cantilever • Zero holes in closed bow!</text>\n'
-    y1 = 184
+    s += '  <text x="42" y="92" class="ok">1. PRIMARY (True Kit Navigator 300): Contoured Bow-Bent Hybrid C-Frame + 6 mm Dyneema Bow Sling</text>\n'
+    s += '  <text x="42" y="109" class="lbl-sm">Both Hard Deck &amp; under-hull plate bend UP with bow contour • Clamps onto Tru-Alu transom • Zero boxes above deck!</text>\n'
+    y1 = 186
     s += draw_hull_base(y1, open_bow=False, tru_alu_transom=True)
-    # Twin 50x20 Alu rails running under tunnel + over-transom clamp jaw gripping Tru-Alu transom!
-    s += f'  <path d="M 225 {y1+14} L 848 {y1+14} L 848 {y1-34} L 822 {y1-34} L 822 {y1-14}" fill="none" stroke="#0284C7" stroke-width="9" stroke-linejoin="round"/>\n'
-    # Red 6 mm Dyneema sling from front rail crossbar (225, y1+14) to golden bow D-ring (102, y1+2)!
-    s += f'  <line x1="225" y1="{y1+14}" x2="106" y2="{y1+3}" stroke="#DC2626" stroke-width="3.5" stroke-dasharray="6,2"/>\n'
-    s += f'  <circle cx="385" cy="{y1+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <circle cx="595" cy="{y1+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <line x1="490" y1="{y1+48}" x2="490" y2="{y1+22}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <text x="148" y="{y1+38}" text-anchor="middle" class="warn">6 mm Dyneema Sling</text>\n'
-    s += f'  <text x="148" y="{y1+50}" text-anchor="middle" class="lbl-sm">(Bow D-Ring — 0 Sag!)</text>\n'
-    s += f'  <text x="530" y="{y1+66}" text-anchor="middle" class="ok">Upward Lift Compresses Into Spine Floor • 250 mm Rails Let Pod Retract Flat!</text>\n'
+    # Contoured under-hull plate/rails hugging curved PVC web with upward bow ski-bend + over-transom clamp jaw!
+    s += f'  <path d="M 185 {y1-4} Q 232 {y1+12} 290 {y1+13} L 848 {y1+13} L 848 {y1-34} L 822 {y1-34} L 822 {y1-14}" fill="none" stroke="#0284C7" stroke-width="8.5" stroke-linejoin="round" stroke-linecap="round"/>\n'
+    # Red 6 mm Dyneema sling from upturned bow nose of under-hull plate (185, y1-4) to golden bow D-ring (106, y1-18)!
+    s += f'  <line x1="185" y1="{y1-4}" x2="108" y2="{y1-18}" stroke="#DC2626" stroke-width="3.4" stroke-dasharray="6,2"/>\n'
+    s += f'  <circle cx="385" cy="{y1+13}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <circle cx="595" cy="{y1+13}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <line x1="490" y1="{y1+47}" x2="490" y2="{y1+21}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <text x="150" y="{y1+26}" text-anchor="middle" class="warn">Bow-Bent Ski Nose +</text>\n'
+    s += f'  <text x="150" y="{y1+39}" text-anchor="middle" class="lbl-sm">6 mm Dyneema Sling</text>\n'
+    s += f'  <text x="530" y="{y1+64}" text-anchor="middle" class="ok">Upward Lift Compresses Into Contoured Hard Deck • 250 mm Rails Let Pod Retract Flat!</text>\n'
     s += f'  <text x="898" y="{y1+22}" text-anchor="middle" class="dim">Transom Clamp</text>\n'
     s += f'  <text x="898" y="{y1+34}" text-anchor="middle" class="lbl-sm">(Like Outboard!)</text>\n'
 
     # --- SECTION 2: OPTION A — THROUGH-FABRIC SWITCHABLE MAGNETS (NAVIGATOR 300 UNIVERSAL ALT) ---
     s += '  <rect x="24" y="278" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="302" class="sec">2. Option A (Navigator 300 / Universal Bolt-On): 4× Rotary Switchable Magnets + Transom Safety Bridle</text>\n'
-    s += '  <text x="42" y="319" class="dim">~800 kgf clamp across 2.5 mm gap (direct on 1.2 mm PVC web) • 5-sec drop-on • Built-in resettable reef breakaway fuse</text>\n'
-    y2 = 394
-    s += draw_hull_base(y2, open_bow=False, tru_alu_transom=True)
-    # 4x Magswitch rotary pucks sitting cleanly ABOVE the Spine Floor (y2-40..y2-20) so labels never collide!
-    for mx in [370, 610]:
-        s += f'  <rect x="{mx-26}" y="{y2-42}" width="52" height="20" rx="3" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
-        s += f'  <text x="{mx}" y="{y2-28}" text-anchor="middle" style="font-size:8.5px;fill:#FFFFFF;font-weight:700;">Magswitch</text>\n'
+    s += '  <text x="42" y="302" class="sec">2. Option A (Navigator 300 / Universal Bolt-On): 4× Flush-Recessed Switchable Magnets + Transom Bridle</text>\n'
+    s += '  <text x="42" y="319" class="dim">~800 kgf clamp across 2.5 mm gap (flush-recessed inside 28 mm Hard Deck) • 5-sec drop-on • Built-in breakaway fuse</text>\n'
+    y2 = 396
+    s += draw_hull_base(y2, open_bow=False, tru_alu_transom=True, show_deck_labels=False)
+    # 4x flush-recessed rotary magnetic pucks (flush with top of Hard Deck — zero trip boxes!)
+    for mx in [380, 610]:
+        s += f'  <rect x="{mx-26}" y="{y2-21}" width="52" height="15" rx="2" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
+        s += f'  <text x="{mx}" y="{y2-10}" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">Flush Mag</text>\n'
     s += f'  <rect x="335" y="{y2+4}" width="310" height="14" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.4"/>\n'
-    # Aft transom Dyneema shear/safety bridle from lower carriage up to Tru-Alu transom!
     s += f'  <line x1="645" y1="{y2+11}" x2="834" y2="{y2-18}" stroke="#DC2626" stroke-width="3" stroke-dasharray="5,2"/>\n'
     s += f'  <text x="440" y="{y2+48}" text-anchor="middle" class="lbl">Rubber Grip Pads (μ ≈ 0.7) + Sealed Steel Keeper (~2.5 mm Gap)</text>\n'
     s += f'  <text x="800" y="{y2+32}" text-anchor="middle" class="warn">Transom Shear /</text>\n'
@@ -435,14 +443,14 @@ def gen_03_spine_coupling():
 
     # --- SECTION 3: DISCOVERY 330 / TAKACAT LX FULL RIGID BOW-TO-TRANSOM O-FRAME ---
     s += '  <rect x="24" y="488" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="512" class="sec">3. Option B1 (Open-Bow Secondary Ref — True Kit Discovery 330 / Takacat LX): Full Rigid "O-Frame"</text>\n'
-    s += '  <text x="42" y="529" class="lbl-sm">Open square bow lets 2× 50×20 mm Alu rails wrap BOTH ends rigidly (~3.5 kg, ~$70 tubing, 3×–4× lower bending moment)</text>\n'
-    y3 = 604
+    s += '  <text x="42" y="512" class="sec">3. Option B2 (Open-Bow Secondary Ref — True Kit Discovery 330 / Takacat LX): Contoured Rigid "O-Frame"</text>\n'
+    s += '  <text x="42" y="529" class="lbl-sm">Open square bow lets bow-bent 2× 50×20 mm Alu rails wrap BOTH ends rigidly (~3.5 kg, 3×–4× lower bending moment)</text>\n'
+    y3 = 606
     s += draw_hull_base(y3, open_bow=True, tru_alu_transom=False)
-    s += f'  <path d="M 175 {y3-12} L 154 {y3-12} L 154 {y3+14} L 846 {y3+14} L 846 {y3-12} L 825 {y3-12}" fill="none" stroke="#0284C7" stroke-width="10" stroke-linejoin="round"/>\n'
-    s += f'  <circle cx="385" cy="{y3+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <circle cx="595" cy="{y3+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <text x="490" y="{y3+46}" text-anchor="middle" class="dim">Closed Rigid Loop Around Open Bow &amp; Open Transom (Splits at Midship to 1.0 m Halves)</text>\n'
+    s += f'  <path d="M 164 {y3-34} L 146 {y3-34} L 146 {y3-10} Q 216 {y3+12} 288 {y3+13} L 846 {y3+13} L 846 {y3-12} L 825 {y3-12}" fill="none" stroke="#0284C7" stroke-width="9" stroke-linejoin="round"/>\n'
+    s += f'  <circle cx="385" cy="{y3+13}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <circle cx="595" cy="{y3+13}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <text x="490" y="{y3+46}" text-anchor="middle" class="dim">Bow-Contoured Closed Rigid Loop Around Open Bow &amp; Open Transom (Splits to 1.0 m Halves)</text>\n'
 
     # --- SECTION 4: OPTION C (FACTORY OEM WELDED CENTERBOARD SLOT) ---
     s += '  <rect x="24" y="698" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
@@ -537,44 +545,48 @@ def gen_04_grounding_kickup():
     s += '  <text x="42" y="498" class="lbl">Verdict: Single central mast works ONLY for vertical daggerboard slide</text>\n'
     s += '  <text x="42" y="514" class="lbl-sm">(Option C OEM slot) or short dry-floor foils — NEVER pivot a 1.3 m pod!</text>\n'
 
-    # --- RIGHT PANEL: 4-BAR PARALLELOGRAM (WORKS!) ---
+    # --- RIGHT PANEL: 4-BAR PARALLELOGRAM (DEEP-SUBMERGED STOL / SWITCHBLADE POD) ---
     s += '  <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="550" y="92" class="ok">B. MANDATORY: 4-Bar Parallelogram Struts (2× or 4×)</text>\n'
-    s += '  <text x="550" y="109" class="lbl-sm">Pod stays 100% HORIZONTAL at every angle — rises smoothly up to -12 cm!</text>\n'
-    ox2, oy2 = 710, 175
-    s += f'  <rect x="546" y="{oy2-14}" width="456" height="14" rx="2" fill="#0284C7"/>\n'
-    s += f'  <text x="558" y="{oy2-3}" class="lbl-w">O-Frame Twin Rails / PVC Web (y = 0 cm)</text>\n'
+    s += '  <text x="550" y="92" class="ok">B. MANDATORY: 4-Bar Parallelogram Struts (4× Blades)</text>\n'
+    s += '  <text x="550" y="109" class="lbl-sm">Pod &amp; STOL flaperons stay 100% HORIZONTAL (0°→85°) — zero upper wing needed!</text>\n'
+    ox2, oy2 = 678, 175
+    # Contoured bow-bent under-hull plate at y = 0 cm
+    s += f'  <path d="M 552 {oy2-26} Q 576 {oy2-12} 608 {oy2-12} L 1002 {oy2-12} L 1002 {oy2} L 608 {oy2} Q 572 {oy2} 546 {oy2-14} Z" fill="#0284C7"/>\n'
+    s += f'  <text x="795" y="{oy2-3}" text-anchor="middle" class="lbl-w">Bow-Contoured Under-Hull Rails (y = 0 cm)</text>\n'
     s += f'  <line x1="546" y1="{oy2+64*sc:.1f}" x2="1002" y2="{oy2+64*sc:.1f}" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="5,3"/>\n'
     s += f'  <text x="996" y="{oy2+64*sc-5:.1f}" text-anchor="end" class="lbl-sm">Deployed (-64 cm)</text>\n'
 
-    # Draw 0 deg (ghost), 40 deg (mid), 76 deg (tucked!)
-    p_front, p_rear = -38.0, 38.0  # cm fore/aft strut spacing (~76 cm)
-    for deg, fill_c, strk_c, dash, op, lbl in [
-        (0, "#CBD5E1", "#64748B", "4,2", "0.50", "0° (-64 cm)"),
-        (40, "#BAE6FD", "#0284C7", "none", "0.75", "40° (-50 cm)"),
-        (78, "#A7F3D0", "#059669", "none", "0.95", "78° Tucked (-16 cm)"),
+    # Draw 0 deg (ghost), 40 deg (mid), 85 deg (flat tucked!)
+    L_cm = 60.0
+    p_front, p_rear = -36.0, 36.0
+    for deg, fill_c, strk_c, dash, op in [
+        (0, "#CBD5E1", "#64748B", "4,2", "0.50"),
+        (40, "#BAE6FD", "#0284C7", "none", "0.75"),
+        (85, "#A7F3D0", "#059669", "none", "0.95"),
     ]:
         th = math.radians(deg)
-        dx = 60.0 * math.sin(th)
-        dy = 60.0 * math.cos(th)
+        dx = L_cm * math.sin(th)
+        dy = L_cm * math.cos(th)
         for p_off in (p_front, p_rear):
             x1, y1 = ox2 + p_off * sc, oy2
             x2, y2 = ox2 + (p_off + dx) * sc, oy2 + dy * sc
-            s += f'  <line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{strk_c}" stroke-width="5.5" stroke-dasharray="{dash}" stroke-linecap="round"/>\n'
-        # Horizontal pod centered at (ox2 + dx*sc, oy2 + dy*sc)
-        px = ox2 + (dx - 65.0) * sc
+            s += f'  <line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{strk_c}" stroke-width="5.2" stroke-dasharray="{dash}" stroke-linecap="round"/>\n'
+        px = ox2 + (dx - 60.0) * sc
         py = oy2 + (dy - 4.0) * sc
-        s += f'  <rect x="{px:.1f}" y="{py:.1f}" width="{130*sc:.1f}" height="{8*sc:.1f}" rx="8" fill="{fill_c}" fill-opacity="{op}" stroke="{strk_c}" stroke-width="1.8" stroke-dasharray="{dash}"/>\n'
-        if deg == 78:
-            s += f'  <text x="{px+130*sc/2:.1f}" y="{py+14:.1f}" text-anchor="middle" class="ok">100% FLAT &amp; TUCKED!</text>\n'
+        s += f'  <rect x="{px:.1f}" y="{py:.1f}" width="{120*sc:.1f}" height="{8*sc:.1f}" rx="8" fill="{fill_c}" fill-opacity="{op}" stroke="{strk_c}" stroke-width="1.8" stroke-dasharray="{dash}"/>\n'
+        if deg in (0, 85):
+            for p_off in (p_front, p_rear):
+                s += f'  <circle cx="{ox2+(p_off+dx)*sc:.1f}" cy="{oy2+dy*sc:.1f}" r="3.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
+        if deg == 85:
+            s += f'  <text x="{px+120*sc/2:.1f}" y="{py+14:.1f}" text-anchor="middle" class="ok">85°: 100% FLAT &amp; TUCKED!</text>\n'
         elif deg == 40:
-            s += f'  <text x="{px+130*sc/2:.1f}" y="{py+14:.1f}" text-anchor="middle" class="dim">40° Kick-Up: Flat (-50 cm)</text>\n'
+            s += f'  <text x="{px+120*sc/2:.1f}" y="{py+14:.1f}" text-anchor="middle" class="dim">40° Kick-Up: Flat (-50 cm)</text>\n'
 
     for p_off in (p_front, p_rear):
-        s += f'  <circle cx="{ox2+p_off*sc:.1f}" cy="{oy2}" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>\n'
+        s += f'  <circle cx="{ox2+p_off*sc:.1f}" cy="{oy2}" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
 
-    s += '  <text x="550" y="498" class="ok">Verdict: Delrin shear pin kicks 1.3 m pod cleanly UP &amp; AFT over reefs</text>\n'
-    s += '  <text x="550" y="514" class="lbl-sm">with ZERO floor collision, ZERO nose plowing, and flat beach tuck.</text>\n'
+    s += '  <text x="550" y="498" class="ok">Verdict: Simple 4-pin/side parallelogram kicks pod flat UP &amp; AFT over reefs</text>\n'
+    s += '  <text x="550" y="514" class="lbl-sm">with ZERO floor collision, ZERO nose plowing, and ZERO external pushrod binding!</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "04-grounding-kickup-geometry.svg").write_text(s)
@@ -614,21 +626,23 @@ def gen_05_strut_stackup():
     # Continuous 1.2 mm PVC tunnel web + Drop-In Spine Floor
     s += f'  <line x1="{cx-90}" y1="{y_web}" x2="{cx+90}" y2="{y_web}" stroke="#64748B" stroke-width="3.5"/>\n'
     s += f'  <rect x="{cx-96}" y="{y_web-12}" width="192" height="10" rx="2" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <text x="{cx}" y="{y_web-18}" text-anchor="middle" class="lbl">Drop-In Rigid Spine Floor</text>\n'
-    # Twin O-Frame rails (250 mm apart = 64 px)
+    s += f'  <text x="{cx}" y="{y_web-18}" text-anchor="middle" class="lbl">100% Flush Contoured Hard Deck (0 Boxes!)</text>\n'
+    # Twin Hybrid C-Frame rails (250 mm apart = 64 px)
     for side in (-1, 1):
         rx = cx + side * 32
         s += f'  <rect x="{rx-6}" y="{y_web+3}" width="12" height="7" rx="1.5" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
         # Vertical 60x9 mm carbon blade descending straight to pod side!
         s += f'  <rect x="{rx-3}" y="{y_web+10}" width="6" height="{y_pod-y_web-10}" fill="url(#carbon)" stroke="#0F172A" stroke-width="1"/>\n'
-    # Upper Step-Out Booster Wing (bridges L & R blades — 250 mm dual support!)
-    s += f'  <rect x="{cx-125}" y="{y_upper-5}" width="250" height="10" rx="5" fill="url(#wingTeal)" stroke="#0F766E" stroke-width="1.4"/>\n'
-    s += f'  <text x="{cx+128}" y="{y_upper-10}" text-anchor="end" class="ok">Upper Step-Out Wing (In AIR &gt;9 kn!)</text>\n'
-    # Lower 220x80 mm Flying-Keel Pod + 1,350 cm2 thin lower wings
-    s += f'  <rect x="{cx-160}" y="{y_pod-3}" width="320" height="7" rx="3.5" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.3"/>\n'
+    # Slim above-water box-portal cross-brace ONLY (ZERO surface-piercing wing in wave zone!)
+    s += f'  <rect x="{cx-32}" y="{y_upper-3}" width="64" height="5" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
+    s += f'  <text x="{cx+145}" y="{y_upper-4}" text-anchor="end" class="ok">Clean Wave Zone! (Only 9 mm blades)</text>\n'
+    # Lower 220x80 mm Flying-Keel Pod + 1,000 cm2 Main + 2x250 cm2 Split STOL Flaperons (400 mm deep!)
+    s += f'  <rect x="{cx-145}" y="{y_pod-3}" width="290" height="7" rx="3.5" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.3"/>\n'
+    s += f'  <rect x="{cx-130}" y="{y_pod+6}" width="92" height="5" rx="2.5" fill="url(#wingTeal)" stroke="#0F766E" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx+38}" y="{y_pod+6}" width="92" height="5" rx="2.5" fill="url(#wingTeal)" stroke="#0F766E" stroke-width="1.1"/>\n'
     s += f'  <rect x="{cx-30}" y="{y_pod-12}" width="60" height="24" rx="10" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
     s += f'  <text x="{cx}" y="{y_pod+4}" text-anchor="middle" class="lbl-w">26 L</text>\n'
-    s += f'  <text x="{cx}" y="{y_pod+32}" text-anchor="middle" class="lbl">220×80 mm Battery-Fuselage + 1,350 cm² Lower Thin Wings</text>\n'
+    s += f'  <text x="{cx}" y="{y_pod+32}" text-anchor="middle" class="lbl">220×80 mm Pod (Internal Servos) + Split STOL Flaperons</text>\n'
     s += dim_line(cx - 32, y_web + 24, cx + 32, y_web + 24, "250 mm", dy=-6)
     s += dim_line(cx - 190, y_water, cx - 190, y_pod, "400 mm", dx=24, dy=4)
 
@@ -656,7 +670,7 @@ def gen_05_strut_stackup():
         pod_bot_y = y_top + depth_mm * rsc
         pod_top_y = pod_bot_y - pod_h
         if depth_mm == 90:
-            # Side-straddling: 60 mm blade flanks 80 mm pod!
+            # Side-straddling: 60 mm blade flanks 80 mm pod cleanly (ZERO upper wing in tunnel!)
             s += f'  <rect x="605" y="{pod_top_y:.1f}" width="210" height="{pod_h:.1f}" rx="8" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
             s += f'  <rect x="585" y="{y_top+8:.1f}" width="185" height="{60*rsc:.1f}" rx="4" fill="url(#wingBlue)" fill-opacity="0.72" stroke="#0369A1" stroke-width="1.3"/>\n'
             s += f'  <text x="710" y="{pod_top_y+pod_h/2+4:.1f}" text-anchor="middle" class="lbl-w">80 mm Pod (60 mm Blades Beside)</text>\n'
@@ -723,6 +737,10 @@ def gen_09_cartridge_cutaway():
     s += f'  <rect x="389" y="{cy-14}" width="15" height="16" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
     s += f'  <rect x="589" y="{cy-14}" width="15" height="16" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
 
+    # 2x Internal IP67 Brushless Flaperon Servos + ESP32/BNO085 IMU inside pod bay (ZERO boxes above top deck!)
+    s += f'  <rect x="608" y="{cy-38}" width="112" height="34" rx="4" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>\n'
+    s += f'  <text x="664" y="{cy-22}" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">2× IP67 Servos + IMU</text>\n'
+    s += f'  <text x="664" y="{cy-10}" text-anchor="middle" style="font-size:8px;fill:#CCFBF1;font-weight:700;">Ø8 mm Sealed Shafts</text>\n'
     # 2x Flipsky 75100 VESCs bolted directly to bottom aluminum/carbon seawater-cooled skin!
     s += f'  <rect x="608" y="{cy+6}" width="112" height="36" rx="4" fill="#334155" stroke="#0F172A" stroke-width="1.4"/>\n'
     s += f'  <text x="664" y="{cy+22}" text-anchor="middle" class="lbl-w">2× 75100 VESC</text>\n'
@@ -731,7 +749,7 @@ def gen_09_cartridge_cutaway():
     for hx in [628, 664, 700]:
         s += f'  <line x1="{hx}" y1="{cy+44}" x2="{hx}" y2="{cy+72}" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrRed)"/>\n'
     # Optical leak sensor & 0.5 bar pressure relief burst valve
-    s += f'  <circle cx="634" cy="{cy-26}" r="7" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>\n'
+    s += f'  <circle cx="732" cy="{cy-26}" r="6.5" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>\n'
     s += f'  <rect x="688" y="{cy-52}" width="24" height="10" rx="2" fill="#F59E0B" stroke="#78350F" stroke-width="1"/>\n'
     # CNC Double-O-Ring Rear Service Flange Door (X: 742..762)
     s += f'  <rect x="744" y="{cy-50}" width="18" height="100" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.6"/>\n'
@@ -790,7 +808,7 @@ def gen_10_alt_architectures():
     )
 
     panels = [
-        (24, 68, "1. PRIMARY: Step-Out Flying-Keel Pod", "6.4 kn TO • 30.8 nm @ 15.5 kn • 0 high-amp strut cables", "primary"),
+        (24, 68, "1. PRIMARY: Split STOL Flaperon Flying-Keel Pod", "7.2 kn TO • 29.8 nm @ 15.5 kn • Servos inside pod (0 wave slam)", "primary"),
         (532, 68, "2. ALT A: Dry 60 mm Rigid Battery-Floor", "9.5 kn TO • 31.8 nm @ 15.5 kn • Rocky-beach flip-up pick", "dry"),
         (24, 344, "3. ALT B: Twin Torpedo SWATH Floats", "2× Ø180 mm × 1.8 m tubes • Dual IP68 seals required", "swath"),
         (532, 344, "4. ALT C: Central BP100 10 kW Jet Board", "3\" draft • Detachable jet-surfboard • Cannot foil (7.4 nm)", "jet"),
@@ -811,15 +829,16 @@ def gen_10_alt_architectures():
         s += f'  <line x1="{cx-91}" y1="{y_web}" x2="{cx+91}" y2="{y_web}" stroke="#64748B" stroke-width="3"/>\n'
 
         if mode == "primary":
-            # Thin 25 mm Spine Floor + O-Frame + 4x slim blades + Upper Wing + 26 L Battery Pod + Lower Wings
+            # Thin 28 mm Contoured Hard Deck + Hybrid C-Frame + 4x slim blades + Deep Split STOL Pod (ZERO surface wing!)
             s += f'  <rect x="{cx-95}" y="{y_web-9}" width="190" height="8" rx="2" fill="url(#carbon)"/>\n'
             for sd in (-1, 1):
                 s += f'  <rect x="{cx+sd*24-3}" y="{y_web+2}" width="6" height="96" fill="url(#carbon)"/>\n'
-            s += f'  <rect x="{cx-90}" y="{y_wat-16}" width="180" height="7" rx="3" fill="url(#wingTeal)"/>\n'
-            s += f'  <rect x="{cx-118}" y="{y_web+96}" width="236" height="6" rx="3" fill="url(#wingBlue)"/>\n'
-            s += f'  <rect x="{cx-26}" y="{y_web+88}" width="52" height="20" rx="8" fill="url(#carbon)" stroke="#FBBF24" stroke-width="1.4"/>\n'
-            s += f'  <text x="{cx}" y="{y_web+101}" text-anchor="middle" style="font-size:8.5px;fill:#FBBF24;font-weight:700;">5.4 kWh</text>\n'
-            s += f'  <text x="{px+20}" y="{py+236}" class="ok">100% Empty Cockpit • 26 kg Free Buoyancy • Passive Cooling</text>\n'
+            s += f'  <rect x="{cx-108}" y="{y_web+92}" width="216" height="6" rx="3" fill="url(#wingBlue)"/>\n'
+            s += f'  <rect x="{cx-100}" y="{y_web+100}" width="70" height="4.5" rx="2" fill="url(#wingTeal)"/>\n'
+            s += f'  <rect x="{cx+30}" y="{y_web+100}" width="70" height="4.5" rx="2" fill="url(#wingTeal)"/>\n'
+            s += f'  <rect x="{cx-26}" y="{y_web+86}" width="52" height="20" rx="8" fill="url(#carbon)" stroke="#FBBF24" stroke-width="1.4"/>\n'
+            s += f'  <text x="{cx}" y="{y_web+99}" text-anchor="middle" style="font-size:8.5px;fill:#FBBF24;font-weight:700;">5.4 kWh</text>\n'
+            s += f'  <text x="{px+20}" y="{py+236}" class="ok">100% Flush Deck (0 Boxes) • Deep 400 mm Foil • Active Wave Control</text>\n'
         elif mode == "dry":
             # Thick 60 mm Dry Composite Battery-Floor housing flat 36.7 mm EVE LF105 cells ABOVE waterline!
             s += f'  <rect x="{cx-96}" y="{y_web-20}" width="192" height="18" rx="3" fill="url(#carbon)" stroke="#FBBF24" stroke-width="1.4"/>\n'
@@ -849,6 +868,80 @@ def gen_10_alt_architectures():
     (OUT_DIR / "10-alt-architectures-comparison.svg").write_text(s)
 
 
+# -------------------------------------------------------------------------
+# DIAGRAM 12: Why We Rejected Surface-Piercing Step-Out Wings (Wave-Slam Physics)
+# -------------------------------------------------------------------------
+def gen_12_rejected_step_out_physics():
+    W, H = 1040, 540
+    s = svg_header(
+        W, H,
+        "12. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop",
+        "15.5 kn (q = 32.8 kPa, 850x Air-to-Water Density Shock) — Forward & Deep-Aft Step-Out Hazards vs. Deep-Submerged STOL Flaperons"
+    )
+
+    # --- LEFT PANEL: FORWARD STEP-OUT WING (WAVE SLAM & NOSE-DIVE SUCTION) ---
+    s += '  <rect x="24" y="68" width="484" height="448" rx="8" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>\n'
+    s += '  <text x="42" y="92" class="warn">A. REJECTED: Forward Surface-Piercing Step-Out Wing</text>\n'
+    s += '  <text x="42" y="109" class="lbl-sm">1,400 cm² horizontal slab hovering 50–100 mm above water hits a 1 ft wave crest</text>\n'
+    # Wave profile rising right into the forward step-out wing!
+    s += '  <path d="M 34 325 Q 110 265 185 268 Q 255 272 330 330 Q 410 355 498 315 L 498 440 L 34 440 Z" fill="url(#water)"/>\n'
+    s += '  <path d="M 34 325 Q 110 265 185 268 Q 255 272 330 330 Q 410 355 498 315" fill="none" stroke="#0284C7" stroke-width="2.2"/>\n'
+    # Boat pitching slightly nose-down (-6 deg) into wave crest
+    s += '  <g transform="translate(265, 220) rotate(-6)">\n'
+    s += '    <rect x="-145" y="-22" width="290" height="30" rx="14" fill="url(#tubeGrad)" stroke="#475569" stroke-width="1.6"/>\n'
+    s += '    <line x1="-85" y1="8" x2="-85" y2="128" stroke="#334155" stroke-width="6"/>\n'
+    s += '    <line x1="65" y1="8" x2="65" y2="128" stroke="#334155" stroke-width="6"/>\n'
+    s += '    <rect x="-115" y="118" width="215" height="20" rx="8" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Forward Step-Out Wing SLAMMING into wave crest!
+    s += '    <rect x="-126" y="42" width="60" height="10" rx="4" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.6"/>\n'
+    s += '    <circle cx="0" cy="-6" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += '  </g>\n'
+    # Impact ring & force vectors at forward step-out wing
+    s += '  <circle cx="172" cy="274" r="18" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,2"/>\n'
+    s += '  <line x1="172" y1="286" x2="172" y2="352" stroke="#DC2626" stroke-width="3" marker-end="url(#arrRed)"/>\n'
+    s += '  <line x1="184" y1="274" x2="246" y2="274" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
+    s += '  <text x="172" y="370" text-anchor="middle" class="warn">-140 kgf Suction!</text>\n'
+    s += '  <text x="172" y="383" text-anchor="middle" class="lbl-sm">(if pitch -5° to -8°)</text>\n'
+    s += '  <text x="315" y="268" class="warn">+103 lbf Drag Trip</text>\n'
+    s += '  <text x="275" y="176" text-anchor="middle" class="lbl-sm">CoG</text>\n'
+    s += '  <text x="42" y="458" class="warn">1. Nose-Down Entry (-6°): -140 kgf suction + 103 lbf brake → pitchpole!</text>\n'
+    s += '  <text x="42" y="476" class="warn">2. Level Wave Slam (0°): +210 kgf (+1G) bow launch → breach &amp; crash!</text>\n'
+    s += '  <text x="42" y="496" class="lbl-sm">Also requires double-deck tie-bars, 6 pins/side &amp; anti-ventilation fence.</text>\n'
+
+    # --- RIGHT PANEL: DEEP-AFT STEP-OUT WING (TAIL-UP NOSE-DIVE & 45 cm CoL JUMP) ---
+    s += '  <rect x="532" y="68" width="484" height="448" rx="8" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>\n'
+    s += '  <text x="550" y="92" class="warn">B. REJECTED: Deep-Aft Step-Out Wing vs. Deep STOL</text>\n'
+    s += '  <text x="550" y="109" class="lbl-sm">Moving the step-out wing aft still trips the bow on wave crests &amp; shifts CoL!</text>\n'
+    # Wave crest slamming the AFT step-out wing upward!
+    s += '  <path d="M 542 332 Q 635 352 725 322 Q 825 262 910 272 Q 960 280 1006 318 L 1006 440 L 542 440 Z" fill="url(#water)"/>\n'
+    s += '  <path d="M 542 332 Q 635 352 725 322 Q 825 262 910 272 Q 960 280 1006 318" fill="none" stroke="#0284C7" stroke-width="2.2"/>\n'
+    # Hull pitching nose-DOWN because wave slams aft wing UP!
+    s += '  <g transform="translate(765, 224) rotate(-5)">\n'
+    s += '    <rect x="-145" y="-22" width="290" height="30" rx="14" fill="url(#tubeGrad)" stroke="#475569" stroke-width="1.6"/>\n'
+    s += '    <line x1="-75" y1="8" x2="-75" y2="128" stroke="#334155" stroke-width="6"/>\n'
+    s += '    <line x1="75" y1="8" x2="75" y2="128" stroke="#334155" stroke-width="6"/>\n'
+    s += '    <rect x="-110" y="118" width="215" height="20" rx="8" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Deep-Aft Step-Out Wing getting slammed UP by wave crest!
+    s += '    <rect x="70" y="42" width="60" height="10" rx="4" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.6"/>\n'
+    s += '    <circle cx="0" cy="-6" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += '  </g>\n'
+    # Upward slam arrow at aft wing -> nose-down pitch arc at bow!
+    s += '  <circle cx="866" cy="264" r="18" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,2"/>\n'
+    s += '  <line x1="866" y1="252" x2="866" y2="178" stroke="#DC2626" stroke-width="3" marker-end="url(#arrRed)"/>\n'
+    s += '  <text x="866" y="166" text-anchor="middle" class="warn">+150 kgf Tail Slam!</text>\n'
+    # Curved nose-down torque arrow at bow!
+    s += '  <path d="M 616 205 A 65 65 0 0 0 600 268" fill="none" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
+    s += '  <text x="588" y="288" text-anchor="middle" class="warn">-1,350 N·m</text>\n'
+    s += '  <text x="588" y="301" text-anchor="middle" class="lbl-sm">Bow Driven Down!</text>\n'
+    s += '  <text x="768" y="182" text-anchor="middle" class="lbl-sm">CoG</text>\n'
+    s += '  <text x="550" y="458" class="warn">1. Wave Crest on Aft Wing: +150 kgf lifts tail → drives bow into trough!</text>\n'
+    s += '  <text x="550" y="476" class="warn">2. Takeoff Balance: +1,400 cm² aft shifts CoL ~45 cm → bow wheelbarrows!</text>\n'
+    s += '  <text x="550" y="496" class="ok">WINNER: Deep-Submerged Split STOL Flaperons (400 mm deep, ~4 lbf wave ripple!)</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "12-rejected-concepts-physics.svg").write_text(s)
+
+
 if __name__ == "__main__":
     gen_01_switchblade()
     gen_02_stol_flaperons()
@@ -857,4 +950,5 @@ if __name__ == "__main__":
     gen_05_strut_stackup()
     gen_09_cartridge_cutaway()
     gen_10_alt_architectures()
-    print("Generated all 7 2D engineering SVGs in", OUT_DIR)
+    gen_12_rejected_step_out_physics()
+    print("Generated all 8 2D engineering SVGs in", OUT_DIR)
