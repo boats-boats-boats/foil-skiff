@@ -46,7 +46,7 @@ xychart-beta
 
 ## Repository Contents
 
-* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Complete engineering guide comparing compact off-the-shelf drives (`Flipsky 65161`, `Maytech 65162 / 70182`, `W-30` CNC azimuth pods, `APISQUEEN U30`, `TP Power TP100`, `APISQUEEN BP100` jet, `QS138` / `Sotion` IPM, and `ME1304` baseline), hydrofoil lift-off physics, `60 mm` rigid `EVE LF105` battery-floor vs. twin torpedo SWATH pods, `14S` vs. `16S LiFePO4` ESC voltage rules, and the `M2200` + `NACA 0024` solo foiling test-mule blueprint.
+* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Complete engineering guide comparing compact off-the-shelf drives (`Flipsky 65161`, `Maytech 65162 / 70182`, ultra-budget open-can `2 × T63100`, `W-30` CNC azimuth pods, `APISQUEEN U30`, `TP Power TP100`, `APISQUEEN BP100` jet, `QS138` / `Sotion` IPM, and `ME1304` baseline), hydrofoil lift-off physics, `60 mm` rigid `EVE LF105` battery-floor vs. twin torpedo SWATH pods, `14S` vs. `16S LiFePO4` ESC voltage rules, and the `M2200` + `NACA 0024` solo foiling test-mule blueprint.
 
 ---
 
