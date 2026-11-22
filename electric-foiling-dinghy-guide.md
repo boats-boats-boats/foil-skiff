@@ -249,6 +249,27 @@ xychart-beta
 | **6. High-Speed Continuous (`9 HP` Equiv.)** | **`15.5 kn`** (`17.8 mph`) | `185 lbf` (`84 kgf`) | `212 lbf` (`96 kgf`) | **`7.91 kW`** (`154 A`) | **`510 Wh/nm`** | **`0.68 hrs` (`10.5 nm`)** |
 | **7. Peak Hole-Shot / Yacht Tow** | **`19.0 kn`** (`21.9 mph`) | `295 lbf` (`134 kgf`) | `345 lbf` (`156 kgf`) | **`15.70 kW`** (`307 A`) | **`826 Wh/nm`** | `1–2 min` burst |
 
+### C. Long-Range (`60–75+ nm`) Expedition Hydro Package (`True Kit Navigator 300`)
+
+![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
+
+To double baseline range (`30–35 nm`) to **`60–75+ nm`** (`111–139 km`, `4.5–5.5 hrs` continuous flight) with a `15%–20%` weather reserve—while keeping the `Navigator 300` cockpit flush and well within its `500 kg` payload—combine up to **four targeted hardware swaps** (cutting energy burn `~28%`, from `195 → 142 Wh/nm` @ `15.5 kn` and `165 → 118 Wh/nm` @ `12 kn`) with dual-pack or high-density energy storage. *(Explore interactive 3D models [`06_navigator300_lr_8020_sweetspot.stl`](models/06_navigator300_lr_8020_sweetspot.stl), [`07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl), and cutaway [`08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) in [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md).)*
+
+| Hardware Swap | Standard `Navigator 300` Build | **Long-Range Hydro Package** | Savings @ `15.5 kn` | Trade-Off |
+| :--- | :--- | :--- | :---: | :--- |
+| **1. Propulsion** *(~50% of gain!)* | `2 × Flipsky 65161` + twin `7.5"` props (`63%` eff.) | **`1 ×` Centerline `65161` (`100 Kv`) + `10"×11"` 2-blade CNC prop** (`70%` eff., `1× 75100 VESC`) | **`-3.5 lbf` + `+11%` eff.** (`~32 Wh/nm`) | Replace differential steer with compact internal-servo tailfin rudder flap. |
+| **2. Main Wing** | `1.05 m` (`AR ≈ 9`) + Split STOL Flaperons | **High-Aspect `1.50–1.55 m` (`AR 13.5–14`, folding tips)** w/ Split STOL *(80/20)* or Flush Switchblade *(Max)* | **`-2.5` to `-4.0 lbf`** (`~10–15 Wh/nm`) | Wider span (folding tips keep `600 mm` tunnel beaching). |
+| **3. Struts** *(Optional)* | `4×` `60 × 9 mm` side blades (`11.4 lbf`, `5.5"` clear) | **`2×` hollow `100 × 18 mm` recessed center struts** (`9.1 lbf`, rear drafts in front wake) | **`-2.3 lbf`** (`~7 Wh/nm`) | Harder hollow-carbon fab + `55 mm` pod top recess (`3.7"` sand clear). |
+| **4. Aero Trim** | Open bow + upright posture (`~9.5 lbf` wind drag) | **Low-profile curved bow spray dodger** + lower seated trim | **`-1.6 lbf`** (`~6 Wh/nm`) | Adds light bow fairing; keeps crew dry on `5-hr` runs. |
+
+| Long-Range Recipe (`Navigator 300`, `500 kg` Capacity) | Pack Energy & Chemistry | Added Weight (`All-Up`) | **80/20 Sweet Spot** *(Model 6: Keep `4×` Blades + Split STOL)* | **Full 4-Swap Max LR** *(Model 7: `2×` Struts + Switchblade)* |
+| :--- | :--- | :---: | :---: | :---: |
+| **Recipe A: Dual-Location `100%` `LiFePO4`** *(`5.4 kWh` Pod + `5.4 kWh` `60 mm` Battery Hard Deck)* | **`10.76 kWh`** (`9.94 kWh` usable) | `+32 kg` (`~267 kg`) | **`65 nm` @ `15.5 kn`**<br>**`79 nm` @ `12.0 kn`** | **`70 nm` @ `15.5 kn`**<br>**`84 nm` @ `12.0 kn`** |
+| **Recipe B: Single-Pod `21700 NMC`** *(`2 × 4.1 kWh` potted cartridges inside same `26 L` pod; keeps `28 mm` deck)* | **`8.2 kWh`** (`7.38 kWh` usable) | `+7 kg` (`~242 kg`) | `51 nm` @ `15.5 kn`<br>**`63 nm` @ `12.0 kn`** | `55 nm` @ `15.5 kn`<br>**`67 nm` @ `12.0 kn`** |
+| **Recipe C: Plug-In Expedition Extender** *(`5.4 kWh` everyday pod + removable `5.4 kWh` under-seat dry pack via umbilical)* | **`10.76 kWh`** (`9.94 kWh` usable) | `+32 kg` *(long trips only!)* | **`65 nm` @ `15.5 kn`**<br>**`79 nm` @ `12.0 kn`** | **`70 nm` @ `15.5 kn`**<br>**`84 nm` @ `12.0 kn`** |
+
+*(An optional `1.4 × 1.8 m` `400 W` rigid solar bimini adds `~1.5 kWh` over a `5-hour` cruise = **`+10–13 nm`** bonus plus off-grid anchor charging.)*
+
 ---
 
 ## 4. Comparing All Four Integrated Battery-Hull Architectures

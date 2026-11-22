@@ -7,12 +7,15 @@ Secondary Open-Bow Reference: True Kit Discovery 330 (330 cm, open square bow, f
 
 Zero external Python dependencies (pure Python 3 standard library + optional OpenSCAD CLI).
 
-Generates 5 interactive binary 3D STL CAD models, 5 shaded 3D isometric SVGs, and 5 OpenSCAD PNGs:
-  1. models/01_navigator300_step_out_flying_keel.stl + renders/01-navigator300-step-out-3d.png + diagrams/00-navigator300-3d-cad.svg
-  2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png       + diagrams/06-switchblade-3d-cad.svg
-  3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png     + diagrams/07-stol-flaperons-3d-cad.svg
-  4. models/04_navigator300_retracted_beaching.stl   + renders/04-navigator300-retracted-3d.png+ diagrams/08-navigator300-retracted-3d.svg
-  5. models/05_discovery330_oframe_step_out.stl      + renders/05-discovery330-oframe-3d.png   + diagrams/11-discovery330-oframe-3d-cad.svg
+Generates 8 interactive binary 3D STL CAD models, 8 shaded 3D isometric SVGs, and 8 OpenSCAD PNGs:
+  1. models/01_navigator300_stol_flaperons.stl       + renders/01-navigator300-stol-3d.png       + diagrams/00-navigator300-3d-cad.svg
+  2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png         + diagrams/06-switchblade-3d-cad.svg
+  3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png       + diagrams/07-stol-flaperons-3d-cad.svg
+  4. models/04_navigator300_retracted_beaching.stl   + renders/04-navigator300-retracted-3d.png  + diagrams/08-navigator300-retracted-3d.svg
+  5. models/05_discovery330_oframe_stol.stl          + renders/05-discovery330-oframe-3d.png     + diagrams/11-discovery330-oframe-3d-cad.svg
+  6. models/06_navigator300_lr_8020_sweetspot.stl    + renders/06-navigator300-lr-8020-3d.png    + diagrams/13-navigator300-lr-8020-3d-cad.svg
+  7. models/07_navigator300_lr_max_range.stl         + renders/07-navigator300-lr-max-range-3d.png + diagrams/14-navigator300-lr-max-range-3d-cad.svg
+  8. models/08_lr_pod_closeup.stl                    + renders/08-lr-pod-closeup-3d.png          + diagrams/15-lr-pod-closeup-3d-cad.svg
 """
 
 import html
@@ -199,11 +202,12 @@ def add_contoured_deck_and_underplate(mb: MeshBuilder, stations_deck, stations_u
     loft_slab(stations_under, C_ALU, 1.0, stl=True)
 
 
-def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True):
+def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True, deck_thick=28.0, with_bow_dodger=False):
     """
     Semi-realistic True Kit Navigator 300 (PRIMARY HULL):
       - LOA: 300 cm, External Beam: 155 cm, Inside Beam: 60 cm, Tube Ø460 mm
-      - Contoured 2-Piece Rigid Hard Deck & Contoured Bow-Bent Under-Hull Hybrid C-Frame Plate (NO flat rectangles!)
+      - Contoured 2-Piece Rigid Hard Deck (28 mm standard OR 60 mm Dual-Pack Battery-Floor) & Contoured Bow-Bent Under-Hull Plate
+      - Optional Low-Profile Curved Bow Spray Dodger (Swap #4 Aero Trim for 60-75 nm expedition runs)
       - Factory Tru-Alu Rigid Aluminum Transom + 6 mm Dyneema Bow-D-Ring Sling (ZERO protruding boxes above deck!)
     """
     path = [
@@ -249,18 +253,18 @@ def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True):
     # Factory Bow Towing D-Ring under raised curved bow nose
     mb.add_box(-1455, -1420, -28, 28, 8, 36, C_KEVLAR, 1.0, stl=True)
 
-    # Contoured 2-Piece Hard Deck (tapers to curved closed-bow tube AND bends smoothly UPWARD in the bow!)
+    # Contoured 2-Piece Hard Deck (28 mm standard OR 60 mm Dry Battery-Floor housing 5.38 kWh EVE LF105 cells!)
+    dt = deck_thick
     deck_stations = [
-        (-1245, 95, 86, 112),
-        (-1160, 185, 62, 88),
-        (-1030, 268, 34, 60),
-        (-880, 322, 12, 38),
-        (-720, 340, 3, 30),
-        (60, 340, 3, 30),
-        (72, 340, 3, 30),
-        (990, 340, 3, 30),
+        (-1245, 95, 86, 86 + min(dt, 32.0)),
+        (-1160, 185, 62, 62 + min(dt, 38.0)),
+        (-1030, 268, 34, 34 + min(dt, 48.0)),
+        (-880, 322, 12, 12 + dt),
+        (-720, 340, 3, 3 + dt),
+        (60, 340, 3, 3 + dt),
+        (72, 340, 3, 3 + dt),
+        (990, 340, 3, 3 + dt),
     ]
-    # Contoured Under-Hull Carriage Plate (hugs PVC web & bends smoothly UPWARD into a bow ski-nose!)
     under_stations = [
         (-1175, 115, 52, 62),
         (-1030, 148, 22, 32),
@@ -270,6 +274,10 @@ def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True):
     ]
     add_contoured_deck_and_underplate(mb, deck_stations, under_stations, latch_x=66.0)
 
+    # Visual gold accent band on 60 mm Dual-Pack Battery-Floor edges so the 5.38 kWh deck pack is unmistakably clear!
+    if deck_thick >= 50.0:
+        mb.add_box(-680, 380, -342, 342, 18, 46, C_KEVLAR, 0.90, stl=False)
+
     for sy in (-125, 125):
         mb.add_box(-740, 1095, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
     mb.add_box(1065, 1095, -160, 160, -24, 160, C_ALU, 1.0, stl=True)
@@ -278,6 +286,39 @@ def add_navigator_300_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True):
 
     mb.add_rod((-1170, -88, 56), (-1435, 0, 22), 7.5, C_DYNEEMA, n=8, alpha=1.0, stl=True)
     mb.add_rod((-1170, 88, 56), (-1435, 0, 22), 7.5, C_DYNEEMA, n=8, alpha=1.0, stl=True)
+
+    # Optional Swap #4: Low-Profile Aerodynamic Bow Spray Dodger over the curved closed bow tube!
+    if with_bow_dodger:
+        dodger_st = [
+            (-1460, 160, 330, 345),
+            (-1320, 395, 315, 435),
+            (-1080, 525, 275, 520),
+            (-760, 565, 240, 585),
+            (-480, 560, 232, 600),
+        ]
+        n_arc = 10
+        d_rings = []
+        for x, hw, z_base, z_crown in dodger_st:
+            ring = []
+            for i in range(n_arc + 1):
+                a = math.pi * i / n_arc
+                y = -hw * math.cos(a)
+                z = z_base + (z_crown - z_base) * (math.sin(a) ** 0.78)
+                ring.append((x, y, z))
+            # Close arch back along thin 10 mm shell underside
+            for i in range(n_arc, -1, -1):
+                a = math.pi * i / n_arc
+                y = -hw * math.cos(a)
+                z = z_base + (z_crown - z_base) * (math.sin(a) ** 0.78) - 10.0
+                ring.append((x, y, z))
+            d_rings.append(ring)
+        mb.add_loft(d_rings, C_WING_UP, alpha=0.45, stl=stl_hull)
+        # Sleek aluminum arch frame hoop at aft edge of dodger
+        arch_pts = []
+        for i in range(n_arc + 1):
+            a = math.pi * i / n_arc
+            arch_pts.append((-480, -560 * math.cos(a), 232 + 368 * (math.sin(a) ** 0.78), 11))
+        mb.add_tube_along_path(arch_pts, C_ALU, n=8, alpha=0.95, stl=stl_hull, cap_ends=True)
 
 
 def add_discovery_330_hull(mb: MeshBuilder, tube_alpha=0.38, stl_hull=True):
@@ -872,6 +913,229 @@ def build_model_05_discovery330():
     render_openscad_png(mb, RENDERS_DIR / "05-discovery330-oframe-3d.png", "-40,0,-290,77,0,222,5200")
 
 
+def add_2x_center_recessed_struts(mb: MeshBuilder, z_top=-22.0, z_bot=-702.0, x_front=-540.0, x_rear=220.0):
+    """
+    Swap #3 (Lowest Pivoting Drag): 2x Hollow Carbon 100x18 mm Recessed Center Tandem Struts (9.1 lbf vs 11.4 lbf).
+    Rear strut drafts directly in front strut wake; 300 mm wide T-heads bolt across the 250 mm rails;
+    bottom pins sit recessed 55 mm into the pod top fairing slot!
+    """
+    strut_sec = naca4_section(0.0, 0.0, 0.18, 100.0, n=12)
+    for bx in (x_front, x_rear):
+        # 300 mm wide T-head cross-bracket tying strut to BOTH twin rails (roll stiffness <1.2 deg!)
+        mb.add_box(bx - 30, bx + 30, -148, 148, z_top - 10, z_top + 6, C_ALU, 1.0, stl=True)
+        rings = []
+        for z_pos in (z_top, (z_top + z_bot) * 0.5, z_bot + 10):
+            rings.append([(bx + xl - 50.0, yl, z_pos) for xl, yl in strut_sec])
+        mb.add_loft(rings, C_CARBON_DARK, 1.0, stl=True)
+        # Offset gold parallelogram hinge pins (top pin near TE, bottom pin near LE for 55 mm folded recess!)
+        mb.add_cylinder_y(bx + 24, -26, 26, z_top - 4, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        mb.add_cylinder_y(bx - 24, -24, 24, z_bot + 16, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+
+
+def add_single_centerline_prop_and_rudder(mb: MeshBuilder, dx=0.0, dz=-702.0, show_internal=False):
+    """
+    Swap #1 (Biggest Range Win — ~50% of gain!): Single Centerline Flipsky 65161 Tailcone Pod +
+    10" x 11" High-Pitch 2-Blade CNC Prop (~78-80% prop efficiency, -3.5 lbf drag) +
+    Compact Vertical Tailfin & Hinged Rudder Flap driven directly by internal aft pod servo!
+    """
+    # Centerline Flipsky 65161 motor housing integrated cleanly into tapered fuselage tailcone
+    pod_rings = []
+    for x, r in [(540, 34), (665, 32.5), (710, 26), (735, 16), (748, 6)]:
+        pod_rings.append([(dx + x, r * math.cos(2 * math.pi * i / 14), dz + r * math.sin(2 * math.pi * i / 14)) for i in range(14)])
+    mb.add_loft(pod_rings, C_MOTOR, 1.0, stl=True)
+
+    # Large 10" (Ø254 mm -> r = 127 mm) High-Pitch 2-Blade CNC Foiling Propeller!
+    for k in range(2):
+        ang = math.radians(k * 180 + 78)
+        ca, sa = math.cos(ang), math.sin(ang)
+        pa, qa = math.cos(ang + 0.35), math.sin(ang + 0.35)
+        pb, qb = math.cos(ang - 0.35), math.sin(ang - 0.35)
+        mb.add_quad(
+            (dx + 716, 12 * pa, dz + 12 * qa),
+            (dx + 732, 68 * pa, dz + 68 * qa),
+            (dx + 724, 127 * ca, dz + 127 * sa),
+            (dx + 706, 52 * pb, dz + 52 * qb),
+            C_PROP, 0.98, stl=True,
+        )
+        mb.add_quad(
+            (dx + 716, 12 * pa, dz + 12 * qa),
+            (dx + 706, 52 * pb, dz + 52 * qb),
+            (dx + 724, 127 * ca, dz + 127 * sa),
+            (dx + 732, 68 * pa, dz + 68 * qa),
+            C_WING_LOW, 0.98, stl=True,
+        )
+
+    # Compact Vertical Tailfin (fixed forward spar) + Hinged Rudder Flap (deflected +12 deg for visual clarity!)
+    fin_sec = naca4_section(0.0, 0.0, 0.12, 70.0, n=10)
+    fin_rings = []
+    for z_off in (30, 105, 175):
+        taper = 1.0 - 0.30 * ((z_off - 30) / 145.0)
+        fin_rings.append([(dx + 465 + 18 * (1 - taper) + xl * taper, yl * taper, dz + z_off) for xl, yl in fin_sec])
+    mb.add_loft(fin_rings, C_CARBON_DARK, 1.0, stl=True)
+
+    # Orange trailing-edge rudder flap (deflected +14 deg right)
+    rud_sec = naca4_section(0.0, 0.0, 0.11, 46.0, n=8)
+    r_rad = math.radians(14.0)
+    rud_rings = []
+    for z_off in (32, 105, 172):
+        taper = 1.0 - 0.30 * ((z_off - 32) / 140.0)
+        x_p = dx + 538 + 6 * (1 - taper)
+        rud_rings.append([(x_p + xl * taper * math.cos(r_rad) - yl * taper * math.sin(r_rad), xl * taper * math.sin(r_rad) + yl * taper * math.cos(r_rad), dz + z_off) for xl, yl in rud_sec])
+    mb.add_loft(rud_rings, C_FLAP_R, 1.0, stl=True)
+    # Gold rudder hinge shaft exiting pod top through double-O-ring seal
+    mb.add_cylinder_y(dx + 538, -8, 8, dz + 28, 7.0, C_KEVLAR, n=8, alpha=1.0, stl=True)
+
+    if show_internal:
+        # Internal IP67 aft rudder/elevator servo + 1x Flipsky 75100 VESC (saves weight & $95!) + 2x IP68 Battery Cartridges
+        mb.add_box(dx + 470, dx + 528, -22, 22, dz - 18, dz + 22, C_KEVLAR, 1.0, stl=False)   # Aft Rudder Servo
+        mb.add_box(dx + 345, dx + 455, -52, 52, dz - 36, dz - 6, C_ALU, 1.0, stl=False)       # 1x 75100 VESC (bottom-skin cooled)
+        mb.add_box(dx + 260, dx + 332, -32, 32, dz - 12, dz + 16, C_WING_UP, 1.0, stl=False)  # ESP32 + 6-DOF BNO085 IMU
+        # Front & Mid swappable IP68 battery cartridges (translucent blue/teal inside 26 L bay)
+        mb.add_box(dx - 455, dx - 140, -82, 82, dz - 28, dz + 24, C_WING_LOW, 0.72, stl=False)
+        mb.add_box(dx - 115, dx + 220, -82, 82, dz - 28, dz + 24, C_WING_UP, 0.72, stl=False)
+
+
+# ---------------------------------------------------------------------------
+# MODEL 6 (LONG-RANGE 80/20 SWEET SPOT): 65-79 nm on 10.8 kWh LiFePO4
+# ---------------------------------------------------------------------------
+def build_model_06_lr_8020():
+    mb = MeshBuilder()
+    # Dual-Pack 60 mm Contoured Battery-Floor Hard Deck (5.38 kWh dry) + Low-Profile Bow Spray Dodger!
+    add_navigator_300_hull(mb, tube_alpha=0.36, stl_hull=True, deck_thick=60.0, with_bow_dodger=True)
+    x_f, x_r = -540.0, 220.0
+    z_top, z_bot = -22.0, -702.0
+    # Keeps EASY 4x Side-Straddling Blades (5.5" sand clearance, zero pod cut-out!)
+    add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=0.0, x_front=x_f, x_rear=x_r, y_half=122)
+    mb.add_cylinder_y(x_f, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
+    mb.add_cylinder_y(x_r, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
+    # Single Centerline 65161 + 10" 2-Blade CNC Prop + Tail Rudder + Wider AR 13.5 (1.50 m) Main Wing + Split STOL Flaperons!
+    add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, with_motors=False)
+    add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
+    # Wider High-Aspect AR 13.5 Main Wing (half_span = 750 mm -> 1.50 m total span) + Split STOL Flaperons!
+    add_lower_wings(mb, dx=-160.0, dz=z_bot - 4.0, half_span=750.0, root_chord=104.0, x_le=-245.0)
+    fl_sec = naca4_section(0.02, 0.4, 0.11, 58.0, n=10)
+    piv_x, piv_z = -160.0 - 92.0, z_bot - 32.0
+    mb.add_cylinder_y(piv_x, -122, 122, piv_z + 18, 6.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+    for side, deg, col in [(-1, 14.0, C_FLAP_L), (1, -5.0, C_FLAP_R)]:
+        mb.add_box(piv_x - 10, piv_x + 10, side * 112 - 6, side * 112 + 6, piv_z - 4, piv_z + 24, C_ALU, 1.0, stl=True)
+        rad = math.radians(deg)
+        rings = [[(piv_x + (xl - 11.6) * math.cos(rad) + zl * math.sin(rad), side * dist, piv_z - (xl - 11.6) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec] for dist in (115, 340, 560)]
+        mb.add_loft(rings, col, 1.0, stl=True)
+    add_plane_grid(mb, -370.0, C_WATER, 0.16)
+
+    write_binary_stl(mb, MODELS_DIR / "06_navigator300_lr_8020_sweetspot.stl", "FoilSkiff 06 (LR 80/20 Sweet Spot): Navigator 300 65-79 nm Build (mm)")
+    callouts = [
+        ((-1050, 0, 500), "left", 96, 235, "Swap #4: Low-Profile Bow Spray Dodger", "Cuts wind drag ~1.6 lbf + dry 5-hr cruise!"),
+        ((-320, 342, 32), "left", 204, 240, "60 mm Dual-Pack Battery Hard Deck", "5.38 kWh dry LiFePO4 + 5.38 kWh pod = 10.8 kWh!"),
+        ((-310, 690, -692), "left", 345, 235, "Swap #2: AR 13.5 Wide Main Wing (1.50 m)", "Cuts induced drag ~30% + keeps Split STOL control!"),
+        ((-795, 0, -702), "left", 478, 235, "26 L Flying-Keel Pod (5.38 kWh)", "Internal STOL & rudder servos — 0 deck boxes!"),
+        ((1050, -300, 220), "right", 96, 800, "True Kit Navigator 300 (65–79 nm!)", "125 Wh/nm @ 12 kn (79 nm) • 152 Wh/nm @ 15.5 kn (65 nm)"),
+        ((220, -122, -320), "right", 225, 805, "Keeps Easy 4× Side-Straddling Blades!", "60×9 mm • Zero pod cut-out, 5.5\" sand clearance"),
+        ((380, 0, -565), "right", 370, 795, "Compact Tailfin & Internal-Servo Rudder", "Clean steering without 2nd motor drag"),
+        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "Biggest win: -3.5 lbf drag & 70% drivetrain eff.!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "13-navigator300-lr-8020-3d-cad.svg",
+        "3D CAD Model 6 (Long-Range 80/20 Sweet Spot): True Kit Navigator 300 (65–79 nm)",
+        "Keeps 4× easy blades & Split STOL chop control • Adds Single 65161 + 10\" CNC prop, AR 13.5 wing, 60 mm deck pack & bow dodger",
+        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=260,
+        footer="Interactive 3D STL: models/06_navigator300_lr_8020_sweetspot.stl (80/20 Long-Range Expedition Build)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "06-navigator300-lr-8020-3d.png", "-40,0,-240,75,0,224,5100")
+
+
+# ---------------------------------------------------------------------------
+# MODEL 7 (FULL LONG-RANGE MAX EFFICIENCY): 70-84 nm LiFePO4 / 67 nm Single-Pod NMC
+# ---------------------------------------------------------------------------
+def build_model_07_lr_max_range():
+    mb = MeshBuilder()
+    add_navigator_300_hull(mb, tube_alpha=0.36, stl_hull=True, deck_thick=60.0, with_bow_dodger=True)
+    x_f, x_r = -540.0, 220.0
+    z_top, z_bot = -22.0, -702.0
+    # Swap #3: 2x Hollow Carbon 100x18 mm Recessed Center Tandem Struts (9.1 lbf!)
+    add_2x_center_recessed_struts(mb, z_top=z_top, z_bot=z_bot, x_front=x_f, x_rear=x_r)
+    # Swap #1 & #2: Single 65161 + 10" 2-Blade CNC Prop + Flush-Nested Switchblade (90 mm pod) + AR 14 (1.55 m) Wing!
+    add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, pod_h=90.0, with_motors=False)
+    add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
+    add_lower_wings(mb, dx=-160.0, dz=z_bot - 18.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
+    # Flush-Nested Top-Deck Switchblade recess & overhang bridge (blades tucked 100% flush for max-range cruise!)
+    mb.add_box(-595, -525, -110, 110, z_bot + 40, z_bot + 54, C_CARBON_DARK, 1.0, stl=True)
+    for side in (-1, 1):
+        mb.add_box(-575, 105, side * 52 - 48, side * 52 + 48, z_bot + 44, z_bot + 51, C_WING_UP, 0.85, stl=True)
+    add_plane_grid(mb, -370.0, C_WATER, 0.16)
+
+    write_binary_stl(mb, MODELS_DIR / "07_navigator300_lr_max_range.stl", "FoilSkiff 07 (Full Long-Range Max Eff.): Navigator 300 70-84 nm Build (mm)")
+    callouts = [
+        ((-1050, 0, 500), "left", 96, 235, "Swap #4: Aerodynamic Bow Dodger", "Trims open-cockpit wind drag @ 12–15.5 kn"),
+        ((-320, 342, 32), "left", 204, 240, "10.8 kWh LiFePO4 (or 8.2 kWh Single NMC)", "70–84 nm (Dual LiFePO4) • 55–67 nm (Single NMC Pod)"),
+        ((-300, 720, -695), "left", 345, 235, "Swap #2: AR 14 (1.55 m) + Flush Switchblade", "0 cm² extra wet area closed • 118 Wh/nm @ 12 kn!"),
+        ((-795, 0, -702), "left", 478, 235, "90 mm Recessed Switchblade Pod", "Blades sit 100% flush in roof at cruise (>9 kn)"),
+        ((1050, -300, 220), "right", 96, 800, "Full 4-Swap Long-Range Package", "118 Wh/nm @ 12 kn (84 nm) • 142 Wh/nm @ 15.5 kn (70 nm)"),
+        ((220, 0, -330), "right", 225, 805, "Swap #3: 2× Hollow Center Struts", "100×18 mm recessed • Rear drafts in front wake (9.1 lbf)"),
+        ((380, 0, -565), "right", 370, 795, "Internal-Servo Tailfin Rudder", "Zero deck boxes, zero external steering rods"),
+        ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "78–80% prop eff. • 1× 75100 VESC (lighter & -$95)"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "14-navigator300-lr-max-range-3d-cad.svg",
+        "3D CAD Model 7 (Full Long-Range Max Efficiency): True Kit Navigator 300 (70–84 nm)",
+        "All 4 Swaps Combined: Single 65161 + 10\" CNC prop, AR 14 + Flush Switchblade, 2× Recessed Center Struts & Bow Dodger",
+        callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=260,
+        footer="Interactive 3D STL: models/07_navigator300_lr_max_range.stl (Maximum-Range 70–84 nm Expedition Configuration)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "07-navigator300-lr-max-range-3d.png", "-40,0,-240,75,0,224,5100")
+
+
+# ---------------------------------------------------------------------------
+# MODEL 8 (CLOSE-UP CUTAWAY): Long-Range Single-Prop Pod & 2x Recessed Struts
+# ---------------------------------------------------------------------------
+def build_model_08_lr_pod_closeup():
+    mb = MeshBuilder()
+    # Bow-contoured 60 mm Battery-Floor Hard Deck (translucent front cut showing dry pack) + contoured under-plate
+    deck_st = [
+        (-1050, 220, 48, 86),
+        (-900, 295, 18, 72),
+        (-740, 320, 3, 63),
+        (60, 320, 3, 63),
+        (72, 320, 3, 63),
+        (760, 320, 3, 63),
+    ]
+    under_st = [(-1040, 130, 38, 48), (-900, 148, 8, 18), (-740, 152, -16, -2), (760, 152, -16, -2)]
+    add_contoured_deck_and_underplate(mb, deck_st, under_st, latch_x=66.0)
+    for sy in (-125, 125):
+        mb.add_box(-740, 760, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
+
+    # 2x Recessed Center Tandem Struts (100x18 mm, T-heads bolting across both 250 mm rails!)
+    add_2x_center_recessed_struts(mb, z_top=-22.0, z_bot=-620.0, x_front=-420.0, x_rear=310.0)
+    # Translucent 90 mm pod revealing swappable cartridges, 1x 75100 VESC, ESP32/IMU & internal aft rudder servo!
+    add_flying_keel_pod(mb, dx=0.0, dz=-620.0, pod_h=90.0, with_motors=False, shell_alpha=0.38)
+    add_single_centerline_prop_and_rudder(mb, dx=0.0, dz=-620.0, show_internal=True)
+    # High-aspect AR 14 (1.55 m) lower wing + flush-nested Switchblade roof pocket
+    add_lower_wings(mb, dx=0.0, dz=-638.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
+    mb.add_box(-415, -345, -110, 110, -580, -566, C_CARBON_DARK, 1.0, stl=True)
+    for side in (-1, 1):
+        mb.add_box(-395, 265, side * 52 - 48, side * 52 + 48, -576, -569, C_WING_UP, 0.55, stl=False)
+
+    write_binary_stl(mb, MODELS_DIR / "08_lr_pod_closeup.stl", "FoilSkiff 08 (LR Cutaway): Single-Prop Pod, 2x Recessed Struts & AR14 Wing (mm)")
+    callouts = [
+        ((-940, 0, 62), "left", 104, 245, "60 mm Bow-Contoured Battery Deck", "Houses 5.38 kWh dry EVE LF105 (100% flush top!)"),
+        ((-420, 0, -280), "left", 228, 245, "2× Hollow Center Struts (100×18 mm)", "300 mm T-heads + 55 mm pod recess (9.1 lbf!)"),
+        ((-260, 0, -620), "left", 375, 245, "Swappable IP68 Cartridges (Translucent)", "5.38 kWh LiFePO4 OR 8.2 kWh 21700 NMC"),
+        ((-120, 680, -630), "left", 495, 245, "High-Aspect AR 14 Main Wing (1.55 m)", "Slashes induced drag ~30% at 12–15.5 kn"),
+        ((310, 0, -280), "right", 118, 795, "Rear Strut Drafts in Front Wake", "Offset gold pins fold pod to 135 mm depth"),
+        ((500, 0, -605), "right", 252, 795, "Internal Aft Rudder Servo + 1× VESC", "Single 75100 VESC + IMU inside sealed pod"),
+        ((540, 0, -490), "right", 375, 795, "Compact Tailfin & Hinged Rudder (+14°)", "Direct-drive shaft seal — zero deck boxes!"),
+        ((725, 0, -620), "right", 498, 800, "Single 65161 + 10\"×11\" 2-Blade CNC Prop", "78–80% prop eff. • Saves ~32 Wh/nm vs twin pods!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "15-lr-pod-closeup-3d-cad.svg",
+        "3D CAD Model 8 (Long-Range Pod Cutaway): Single-Prop, 2× Recessed Struts & AR 14 Wing",
+        "Translucent pod shows internal rudder servo, 1× 75100 VESC, ESP32/IMU, swappable cartridges & 10\" 2-blade CNC prop",
+        callouts, az_deg=-134, el_deg=22, scale=0.35, z_center=295,
+        footer="Interactive 3D STL: models/08_lr_pod_closeup.stl (Long-Range Hydro Package internal cutaway)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "08-lr-pod-closeup-3d.png", "30,0,-305,67,0,224,3350")
+
+
 if __name__ == "__main__":
     for old_f in [
         MODELS_DIR / "01_step_out_flying_keel_truekit.stl",
@@ -892,4 +1156,7 @@ if __name__ == "__main__":
     build_model_03_stol_flaperons()
     build_model_04_navigator300_retracted()
     build_model_05_discovery330()
-    print("All 5 3D STL models, 5 annotated 3D SVGs, and 5 OpenSCAD PNG renders generated successfully.")
+    build_model_06_lr_8020()
+    build_model_07_lr_max_range()
+    build_model_08_lr_pod_closeup()
+    print("All 8 3D STL models, 8 annotated 3D SVGs, and 8 OpenSCAD PNG renders generated successfully.")

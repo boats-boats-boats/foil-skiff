@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 620" width="1040" height="620">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1038" height="618" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="552" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">16. Long-Range (60–75+ nm) Hydro Package Swaps &amp; Battery Recipes (Navigator 300)</text>
+  <text x="24" y="46" class="sub">4 Hardware Swaps Cutting Energy Burn 28% (195 → 142 Wh/nm @ 15.5 kn | 165 → 118 Wh/nm @ 12 kn) + 3 Pack Options</text>
+  <rect x="24" y="68" width="484" height="252" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="92" class="sec">A. Swap #1 (~50% of Gain): Single 65161 + 10" CNC Prop</text>
+  <text x="42" y="109" class="ok">Saves -3.5 lbf drag &amp; boosts eff. 63% → 70% (-32 Wh/nm @ 15.5 kn!)</text>
+  <text x="42" y="136" class="lbl-sm">Standard: Twin 65161 + 7.5" Props (63% eff., diff. steer)</text>
+  <path d="M 75 168 L 210 168 Q 250 168 270 160 L 270 176 Q 250 168 210 168 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+  <rect x="65" y="156" width="175" height="24" rx="10" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+  <rect x="228" y="138" width="42" height="14" rx="5" fill="#334155"/>
+  <rect x="228" y="184" width="42" height="14" rx="5" fill="#334155"/>
+  <line x1="274" y1="135" x2="274" y2="155" stroke="#0284C7" stroke-width="3.2" stroke-linecap="round"/>
+  <line x1="274" y1="181" x2="274" y2="201" stroke="#0284C7" stroke-width="3.2" stroke-linecap="round"/>
+  <text x="305" y="166" class="lbl-sm">2× nacelles + 2× small props</text>
+  <text x="305" y="180" class="lbl-sm">(~9.5 lbf aft drag @ 15.5 kn)</text>
+  <text x="42" y="226" class="ok">Long-Range: Single Centerline 65161 + 10"×11" CNC 2-Blade</text>
+  <rect x="65" y="244" width="175" height="24" rx="10" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+  <rect x="234" y="248" width="46" height="16" rx="6" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <line x1="286" y1="230" x2="286" y2="282" stroke="#059669" stroke-width="4.2" stroke-linecap="round"/>
+  <polygon points="212,248 238,248 238,236 218,236" fill="#F97316" stroke="#9A3412" stroke-width="1"/>
+  <text x="305" y="252" class="ok">1× 65161 + 1× 75100 VESC (-$95)</text>
+  <text x="305" y="266" class="lbl-sm">Internal-servo tail rudder flap</text>
+  <text x="305" y="280" class="ok">78–80% prop eff. (-3.5 lbf drag!)</text>
+  <rect x="532" y="68" width="484" height="252" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="550" y="92" class="sec">B. Swaps #2 &amp; #3: AR 14 Wide Wing + 2× Center Struts</text>
+  <text x="550" y="109" class="dim">Induced drag drops ~30% (1.05 m → 1.55 m span) • Struts 11.4 → 9.1 lbf</text>
+  <rect x="679" y="138" width="190" height="22" rx="8" fill="#CBD5E1" stroke="#64748B" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="774" y="153" text-anchor="middle" class="lbl-sm">Standard 1.05 m (AR ≈ 9)</text>
+  <rect x="609" y="172" width="330" height="18" rx="7" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <circle cx="702" cy="181" r="4" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <circle cx="846" cy="181" r="4" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
+  <text x="774" y="185" text-anchor="middle" class="lbl-w">Long-Range 1.50–1.55 m (AR 13.5–14)</text>
+  <text x="774" y="206" text-anchor="middle" class="lbl-sm">Gold tip hinges fold outer tips 90° aft cleanly inside 600 mm tunnel</text>
+  <text x="556" y="236" class="lbl">80/20 Sweet Spot (Model 6):</text>
+  <text x="556" y="250" class="lbl-sm">Keep 4× 60×9 mm blades + Split STOL</text>
+  <text x="556" y="264" class="ok">125 Wh/nm @ 12 kn • 5.5" sand clear!</text>
+  <line x1="774" y1="224" x2="774" y2="306" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="790" y="236" class="dim">Max-Range Full 4-Swap (Model 7):</text>
+  <text x="790" y="250" class="lbl-sm">2× 100×18 mm center struts + Switchblade</text>
+  <text x="790" y="264" class="ok">118 Wh/nm @ 12 kn • 142 @ 15.5 kn!</text>
+  <text x="556" y="294" class="lbl-sm">Swap #4 (Both): Low bow spray dodger cuts wind drag ~1.6 lbf (~6 Wh/nm) + dry 5-hr runs.</text>
+  <rect x="24" y="336" width="992" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="360" class="sec">C. Real-World Navigator 300 Range Recipes: Reaching 60–75+ nm (With 15% Weather Reserve)</text>
+  <text x="42" y="377" class="lbl-sm">Bar length = theoretical range (nm); dashed green band marks target 60–75 nm mission envelope</text>
+  <rect x="724.0" y="390" width="96.0" height="172" fill="#D1FAE5" fill-opacity="0.55" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="772.0" y="404" text-anchor="middle" class="ok">60–75 nm Target</text>
+  <line x1="340.0" y1="410" x2="340.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="340.0" y="576" text-anchor="middle" class="lbl-sm">0 nm</text>
+  <line x1="468.0" y1="410" x2="468.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="468.0" y="576" text-anchor="middle" class="lbl-sm">20 nm</text>
+  <line x1="596.0" y1="410" x2="596.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="596.0" y="576" text-anchor="middle" class="lbl-sm">40 nm</text>
+  <line x1="724.0" y1="410" x2="724.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="724.0" y="576" text-anchor="middle" class="lbl-sm">60 nm</text>
+  <line x1="820.0" y1="410" x2="820.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="820.0" y="576" text-anchor="middle" class="lbl-sm">75 nm</text>
+  <line x1="916.0" y1="410" x2="916.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="916.0" y="576" text-anchor="middle" class="lbl-sm">90 nm</text>
+  <line x1="980.0" y1="410" x2="980.0" y2="562" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="980.0" y="576" text-anchor="middle" class="lbl-sm">100 nm</text>
+  <text x="330" y="432" text-anchor="end" class="lbl">Baseline: 5.38 kWh LiFePO4 (Twin STOL)</text>
+  <rect x="340" y="420" width="222.1" height="18" rx="4" fill="#64748B" fill-opacity="0.32" stroke="#64748B" stroke-width="1"/>
+  <rect x="340" y="420" width="190.7" height="18" rx="4" fill="#94A3B8"/>
+  <text x="524.7" y="432" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">30 nm @15.5</text>
+  <text x="568.1" y="432" class="lbl-sm">35 nm @12kn</text>
+  <text x="330" y="461" text-anchor="end" class="lbl">Recipe B: 8.2 kWh Single-Pod NMC (Full LR)</text>
+  <rect x="340" y="449" width="429.4" height="18" rx="4" fill="#0369A1" fill-opacity="0.32" stroke="#0369A1" stroke-width="1"/>
+  <rect x="340" y="449" width="350.1" height="18" rx="4" fill="#0284C7"/>
+  <text x="684.1" y="461" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">55 nm @15.5</text>
+  <text x="775.4" y="461" class="lbl-sm">67 nm @12kn</text>
+  <text x="330" y="490" text-anchor="end" class="lbl">Recipe A/C: 10.8 kWh LiFePO4 (80/20 STOL)</text>
+  <rect x="340" y="478" width="508.8" height="18" rx="4" fill="#0F766E" fill-opacity="0.32" stroke="#0F766E" stroke-width="1"/>
+  <rect x="340" y="478" width="418.6" height="18" rx="4" fill="#0D9488"/>
+  <text x="752.6" y="490" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">65 nm @15.5</text>
+  <text x="854.8" y="490" class="lbl-sm">80 nm @12kn</text>
+  <text x="330" y="519" text-anchor="end" class="lbl">Recipe A/C: 10.8 kWh LiFePO4 (Full LR)</text>
+  <rect x="340" y="507" width="538.9" height="18" rx="4" fill="#047857" fill-opacity="0.32" stroke="#047857" stroke-width="1"/>
+  <rect x="340" y="507" width="448.0" height="18" rx="4" fill="#059669"/>
+  <text x="782.0" y="519" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">70 nm @15.5</text>
+  <text x="884.9" y="519" class="lbl-sm">84 nm @12kn</text>
+  <text x="330" y="548" text-anchor="end" class="lbl">Max Hybrid: 13.6 kWh NMC+LFP (Full LR)</text>
+  <rect x="340" y="536" width="640.0" height="18" rx="4" fill="#B45309" fill-opacity="0.32" stroke="#B45309" stroke-width="1"/>
+  <rect x="340" y="536" width="544.0" height="18" rx="4" fill="#D97706"/>
+  <text x="878.0" y="548" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">85 nm @15.5</text>
+  <text x="974.0" y="548" text-anchor="end" style="font-size:9px;fill:#78350F;font-weight:700;">100+ @12kn</text>
+  <text x="42" y="590" class="lbl-sm">Solid bar = 15.5 kn fast cruise • Shaded extension = 12.0 kn eco-foiling • Optional 400 W solar bimini adds +10–13 nm over 5 hrs.</text>
+</svg>

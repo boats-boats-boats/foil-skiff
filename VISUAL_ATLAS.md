@@ -18,6 +18,9 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **3** | [`models/03_stol_flaperon_pod.stl`](models/03_stol_flaperon_pod.stl) | *Primary Pod Cutaway* | **Split STOL Flaperons (`+18°` / `-8°` differential bank)** with **translucent pod showing `2×` internal `IP67` servos, `Ø8 mm` sealed shafts & `ESP32`/IMU** (`ZERO` boxes above flush Hard Deck!) |
 | **4** | [`models/04_navigator300_retracted_beaching.stl`](models/04_navigator300_retracted_beaching.stl) | **`Navigator 300`** *(PRIMARY)* | **Retracted `86.5°` Parallelogram Beaching Mode** tucked cleanly beneath the `Tru-Alu` transom (`~135–140 mm` / `5.5"` sand clearance; outer wingtips folded aft inside `600 mm` tunnel!) |
 | **5** | [`models/05_discovery330_oframe_stol.stl`](models/05_discovery330_oframe_stol.stl) | `Discovery 330` *(Secondary Hull)* | Secondary open-bow reference showing **Bow-Contoured Hard Deck + Full Rigid O-Frame** + identical swappable **Split STOL Flaperon Pod** (also applies to `Takacat LX`) |
+| **6** | [`models/06_navigator300_lr_8020_sweetspot.stl`](models/06_navigator300_lr_8020_sweetspot.stl) | **`Navigator 300`** *(LR 80/20: `65–79 nm`)* | **Long-Range 80/20 Sweet Spot:** keeps `4×` easy blades & Split STOL chop control; adds **Single `65161` + `10"` 2-Blade CNC Prop**, tail rudder, **`AR 13.5` (`1.50 m`) wing**, **`60 mm` Dual-Pack Battery Deck (`10.8 kWh`)** & **Bow Spray Dodger** |
+| **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR: `70–84 nm`)* | **Full 4-Swap Long-Range Max-Efficiency Build:** **`2×` Recessed `100×18 mm` Center Struts**, **`AR 14` (`1.55 m`) + Flush-Nested Switchblade**, **Single `65161` + `10"` 2-Blade CNC Prop + Tail Rudder**, `60 mm` Deck Pack & Bow Dodger |
+| **8** | [`models/08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) | *Long-Range Pod Cutaway* | **Internal Cutaway of Long-Range Single-Prop Pod:** translucent shell showing `2×` recessed center struts, swappable cartridges (`5.4 kWh` `LiFePO4` / `8.2 kWh` `NMC`), `1×` `75100` VESC, internal rudder servo & `10"` 2-blade CNC prop |
 
 ---
 
@@ -91,30 +94,75 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ---
 
+### 6. Long-Range 80/20 Sweet Spot (`65–79 nm`): `Navigator 300` + Single `65161` (`10"` Prop) + `AR 13.5` Split STOL + `60 mm` Dual-Pack Deck
+*Hitting **`65 nm` @ `15.5 kn` / `79 nm` @ `12 kn`** on `100%` fire-safe **`10.76 kWh` `LiFePO4`** (`5.38 kWh` pod + `5.38 kWh` dry inside the `60 mm` bow-contoured Battery-Floor Hard Deck) while **keeping `4×` easy side-straddling blades (`5.5"` sand clearance) and Primary Split STOL Flaperon chop control**. Adds the **Single Centerline `65161` + `10"×11"` 2-blade CNC prop + internal-servo tail rudder** (nearly half the total range gain!), wider `AR 13.5` (`1.50 m`) main wing, and a low-profile curved bow spray dodger.*
+
+![OpenSCAD 3D Render: Long-Range 80/20 Sweet Spot Navigator 300](renders/06-navigator300-lr-8020-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Long-Range 80/20 Sweet Spot Navigator 300](diagrams/13-navigator300-lr-8020-3d-cad.svg)
+
+</details>
+
+---
+
+### 7. Full 4-Swap Long-Range Max Efficiency (`70–84 nm` `LiFePO4` / `67 nm` Single-Pod `NMC`): `2×` Recessed Center Struts + `AR 14` Flush Switchblade
+*All four Long-Range Hydro Package swaps combined on **`True Kit Navigator 300`**: **`2×` hollow `100 × 18 mm` recessed center struts** (`9.1 lbf`, rear drafts in front wake), **`AR 14` (`1.55 m`) wing + Flush-Nested Switchblade** (`0 cm²` extra wet area closed), **Single Centerline `65161` + `10"` 2-blade CNC prop + tail rudder**, and curved bow spray dodger — cutting energy burn to **`118 Wh/nm` @ `12 kn` (`84 nm`)** and **`142 Wh/nm` @ `15.5 kn` (`70 nm`)** on `10.8 kWh` `LiFePO4` (or **`67 nm` @ `12 kn`** from a single `8.2 kWh` `21700 NMC` pod keeping the slim `28 mm` Hard Deck!).*
+
+![OpenSCAD 3D Render: Full 4-Swap Long-Range Max Efficiency Navigator 300](renders/07-navigator300-lr-max-range-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Full 4-Swap Long-Range Max Efficiency Navigator 300](diagrams/14-navigator300-lr-max-range-3d-cad.svg)
+
+</details>
+
+---
+
+### 8. Long-Range Single-Prop Pod Close-Up Cutaway (`2×` Recessed Struts, Internal Rudder Servo & `10"` 2-Blade CNC Prop)
+*Close-up translucent cutaway showing the **`60 mm` bow-contoured Battery-Floor Hard Deck** (`100%` flush top, zero boxes!), **`2×` `100 × 18 mm` recessed center tandem struts** with `300 mm` T-heads and offset gold pivot pins, swappable `IP68` cartridges, **`1×` seawater-cooled `Flipsky 75100` `VESC`**, `ESP32`/`BNO085` IMU, **internal aft `IP67` rudder servo** driving the orange tailfin rudder flap, and the **Single `65161` + `10"×11"` 2-blade CNC prop**.*
+
+![OpenSCAD 3D Render: Long-Range Single-Prop Pod Internal Cutaway](renders/08-lr-pod-closeup-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Long-Range Single-Prop Pod Internal Cutaway](diagrams/15-lr-pod-closeup-3d-cad.svg)
+
+</details>
+
+---
+
 ## Part II — Scaled 2D Engineering Drawings (`diagrams/`)
 
-### 6. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 9. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
+
+### 10. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 7. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 11. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 8. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 12. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 9. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 13. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 10. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 14. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 11. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 15. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 12. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 16. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 13. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 17. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -124,10 +172,10 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 8 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 9 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
-# Regenerate all 5 binary 3D .stl CAD models, 5 annotated 3D SVGs, and 5 OpenSCAD PNGs
+# Regenerate all 8 binary 3D .stl CAD models, 8 annotated 3D SVGs, and 8 OpenSCAD PNGs
 python3 models/generate_cad.py
 ```
 

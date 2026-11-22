@@ -942,6 +942,109 @@ def gen_12_rejected_step_out_physics():
     (OUT_DIR / "12-rejected-concepts-physics.svg").write_text(s)
 
 
+# -------------------------------------------------------------------------
+# DIAGRAM 16: Long-Range (60-75+ nm) Hydro Package Swaps & Energy Recipes
+# -------------------------------------------------------------------------
+def gen_16_long_range_packages():
+    W, H = 1040, 620
+    s = svg_header(
+        W, H,
+        "16. Long-Range (60–75+ nm) Hydro Package Swaps & Battery Recipes (Navigator 300)",
+        "4 Hardware Swaps Cutting Energy Burn 28% (195 → 142 Wh/nm @ 15.5 kn | 165 → 118 Wh/nm @ 12 kn) + 3 Pack Options"
+    )
+
+    # --- PANEL A (TOP LEFT): SWAP #1 PROPULSION (TWIN 7.5" vs SINGLE 10" 2-BLADE + RUDDER) ---
+    s += '  <rect x="24" y="68" width="484" height="252" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Swap #1 (~50% of Gain): Single 65161 + 10" CNC Prop</text>\n'
+    s += '  <text x="42" y="109" class="ok">Saves -3.5 lbf drag &amp; boosts eff. 63% → 70% (-32 Wh/nm @ 15.5 kn!)</text>\n'
+    # Top mini-schematic: Standard Twin 65161 (top-down tail)
+    s += '  <text x="42" y="136" class="lbl-sm">Standard: Twin 65161 + 7.5" Props (63% eff., diff. steer)</text>\n'
+    s += '  <path d="M 75 168 L 210 168 Q 250 168 270 160 L 270 176 Q 250 168 210 168 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += '  <rect x="65" y="156" width="175" height="24" rx="10" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += '  <rect x="228" y="138" width="42" height="14" rx="5" fill="#334155"/>\n'
+    s += '  <rect x="228" y="184" width="42" height="14" rx="5" fill="#334155"/>\n'
+    s += '  <line x1="274" y1="135" x2="274" y2="155" stroke="#0284C7" stroke-width="3.2" stroke-linecap="round"/>\n'
+    s += '  <line x1="274" y1="181" x2="274" y2="201" stroke="#0284C7" stroke-width="3.2" stroke-linecap="round"/>\n'
+    s += '  <text x="305" y="166" class="lbl-sm">2× nacelles + 2× small props</text>\n'
+    s += '  <text x="305" y="180" class="lbl-sm">(~9.5 lbf aft drag @ 15.5 kn)</text>\n'
+    # Bottom mini-schematic: Long-Range Single Centerline 65161 + 10" 2-Blade + Rudder
+    s += '  <text x="42" y="226" class="ok">Long-Range: Single Centerline 65161 + 10"×11" CNC 2-Blade</text>\n'
+    s += '  <rect x="65" y="244" width="175" height="24" rx="10" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += '  <rect x="234" y="248" width="46" height="16" rx="6" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
+    s += '  <line x1="286" y1="230" x2="286" y2="282" stroke="#059669" stroke-width="4.2" stroke-linecap="round"/>\n'
+    s += '  <polygon points="212,248 238,248 238,236 218,236" fill="#F97316" stroke="#9A3412" stroke-width="1"/>\n'
+    s += '  <text x="305" y="252" class="ok">1× 65161 + 1× 75100 VESC (-$95)</text>\n'
+    s += '  <text x="305" y="266" class="lbl-sm">Internal-servo tail rudder flap</text>\n'
+    s += '  <text x="305" y="280" class="ok">78–80% prop eff. (-3.5 lbf drag!)</text>\n'
+
+    # --- PANEL B (TOP RIGHT): SWAPS #2 & #3 WING AR 13.5-14 + 2x RECESSED STRUTS ---
+    s += '  <rect x="532" y="68" width="484" height="252" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="550" y="92" class="sec">B. Swaps #2 &amp; #3: AR 14 Wide Wing + 2× Center Struts</text>\n'
+    s += '  <text x="550" y="109" class="dim">Induced drag drops ~30% (1.05 m → 1.55 m span) • Struts 11.4 → 9.1 lbf</text>\n'
+    # Top-down span overlay comparison
+    cx_b = 774
+    s += f'  <rect x="{cx_b-95}" y="138" width="190" height="22" rx="8" fill="#CBD5E1" stroke="#64748B" stroke-width="1.2" stroke-dasharray="4,2"/>\n'
+    s += f'  <text x="{cx_b}" y="153" text-anchor="middle" class="lbl-sm">Standard 1.05 m (AR ≈ 9)</text>\n'
+    # Wide AR 14 wing with folding tip hinge markers at +/- 270 mm (inside 600 mm tunnel!)
+    s += f'  <rect x="{cx_b-165}" y="172" width="330" height="18" rx="7" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    for sd in (-1, 1):
+        s += f'  <circle cx="{cx_b+sd*72}" cy="181" r="4" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
+    s += f'  <text x="{cx_b}" y="185" text-anchor="middle" class="lbl-w">Long-Range 1.50–1.55 m (AR 13.5–14)</text>\n'
+    s += f'  <text x="{cx_b}" y="206" text-anchor="middle" class="lbl-sm">Gold tip hinges fold outer tips 90° aft cleanly inside 600 mm tunnel</text>\n'
+    # Strut cross-section comparison: 4x Blades vs 2x Recessed Center Struts
+    s += '  <text x="556" y="236" class="lbl">80/20 Sweet Spot (Model 6):</text>\n'
+    s += '  <text x="556" y="250" class="lbl-sm">Keep 4× 60×9 mm blades + Split STOL</text>\n'
+    s += '  <text x="556" y="264" class="ok">125 Wh/nm @ 12 kn • 5.5" sand clear!</text>\n'
+    s += '  <line x1="774" y1="224" x2="774" y2="306" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="790" y="236" class="dim">Max-Range Full 4-Swap (Model 7):</text>\n'
+    s += '  <text x="790" y="250" class="lbl-sm">2× 100×18 mm center struts + Switchblade</text>\n'
+    s += '  <text x="790" y="264" class="ok">118 Wh/nm @ 12 kn • 142 @ 15.5 kn!</text>\n'
+    s += '  <text x="556" y="294" class="lbl-sm">Swap #4 (Both): Low bow spray dodger cuts wind drag ~1.6 lbf (~6 Wh/nm) + dry 5-hr runs.</text>\n'
+
+    # --- PANEL C (BOTTOM FULL WIDTH): RANGE BAR CHART FOR ALL 3 BATTERY RECIPES ---
+    s += '  <rect x="24" y="336" width="992" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="360" class="sec">C. Real-World Navigator 300 Range Recipes: Reaching 60–75+ nm (With 15% Weather Reserve)</text>\n'
+    s += '  <text x="42" y="377" class="lbl-sm">Bar length = theoretical range (nm); dashed green band marks target 60–75 nm mission envelope</text>\n'
+
+    # Chart frame (x = 340..980 -> 640 px for 0..100 nm => 6.4 px/nm!)
+    gx0, gx1 = 340, 980
+    gsc = 6.4
+    # Target 60..75 nm shaded band!
+    s += f'  <rect x="{gx0 + 60*gsc:.1f}" y="390" width="{15*gsc:.1f}" height="172" fill="#D1FAE5" fill-opacity="0.55" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,3"/>\n'
+    s += f'  <text x="{gx0 + 67.5*gsc:.1f}" y="404" text-anchor="middle" class="ok">60–75 nm Target</text>\n'
+    # Grid ticks
+    for nm in (0, 20, 40, 60, 75, 90, 100):
+        tx = gx0 + nm * gsc
+        s += f'  <line x1="{tx:.1f}" y1="410" x2="{tx:.1f}" y2="562" stroke="#E2E8F0" stroke-width="1"/>\n'
+        s += f'  <text x="{tx:.1f}" y="576" text-anchor="middle" class="lbl-sm">{nm} nm</text>\n'
+
+    bars = [
+        ("Baseline: 5.38 kWh LiFePO4 (Twin STOL)", 29.8, 34.7, "#94A3B8", "#64748B"),
+        ("Recipe B: 8.2 kWh Single-Pod NMC (Full LR)", 54.7, 67.1, "#0284C7", "#0369A1"),
+        ("Recipe A/C: 10.8 kWh LiFePO4 (80/20 STOL)", 65.4, 79.5, "#0D9488", "#0F766E"),
+        ("Recipe A/C: 10.8 kWh LiFePO4 (Full LR)", 70.0, 84.2, "#059669", "#047857"),
+        ("Max Hybrid: 13.6 kWh NMC+LFP (Full LR)", 85.0, 100.0, "#D97706", "#B45309"),
+    ]
+    for idx, (label, r15, r12, c15, c12) in enumerate(bars):
+        by = 418 + idx * 29
+        s += f'  <text x="330" y="{by+14}" text-anchor="end" class="lbl">{html.escape(label)}</text>\n'
+        # 12 kn eco bar (lighter background extension)
+        s += f'  <rect x="{gx0}" y="{by+2}" width="{min(100, r12)*gsc:.1f}" height="18" rx="4" fill="{c12}" fill-opacity="0.32" stroke="{c12}" stroke-width="1"/>\n'
+        # 15.5 kn cruise bar (solid foreground)
+        s += f'  <rect x="{gx0}" y="{by+2}" width="{min(100, r15)*gsc:.1f}" height="18" rx="4" fill="{c15}"/>\n'
+        # Value tags cleanly positioned
+        s += f'  <text x="{gx0 + min(100, r15)*gsc - 6:.1f}" y="{by+14}" text-anchor="end" style="font-size:9px;fill:#FFFFFF;font-weight:700;">{r15:.0f} nm @15.5</text>\n'
+        if r12 < 96:
+            s += f'  <text x="{gx0 + r12*gsc + 6:.1f}" y="{by+14}" class="lbl-sm">{r12:.0f} nm @12kn</text>\n'
+        else:
+            s += f'  <text x="{gx0 + 100*gsc - 6:.1f}" y="{by+14}" text-anchor="end" style="font-size:9px;fill:#78350F;font-weight:700;">100+ @12kn</text>\n'
+
+    s += '  <text x="42" y="590" class="lbl-sm">Solid bar = 15.5 kn fast cruise • Shaded extension = 12.0 kn eco-foiling • Optional 400 W solar bimini adds +10–13 nm over 5 hrs.</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "16-long-range-hydro-packages.svg").write_text(s)
+
+
 if __name__ == "__main__":
     gen_01_switchblade()
     gen_02_stol_flaperons()
@@ -951,4 +1054,5 @@ if __name__ == "__main__":
     gen_09_cartridge_cutaway()
     gen_10_alt_architectures()
     gen_12_rejected_step_out_physics()
-    print("Generated all 8 2D engineering SVGs in", OUT_DIR)
+    gen_16_long_range_packages()
+    print("Generated all 9 2D engineering SVGs in", OUT_DIR)
