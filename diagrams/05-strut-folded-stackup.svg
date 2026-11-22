@@ -90,7 +90,7 @@
   <text x="100.0" y="355.0" text-anchor="middle" class="dim">400 mm</text>
   <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="550" y="92" class="sec">B. Folded Stack-Up Comparison (85° Aft Fold vs. Flat Sand)</text>
-  <text x="550" y="109" class="lbl-sm">True Kit 300/330 tunnel height = ~230 mm from PVC web to bottom of Ø460 mm tubes</text>
+  <text x="550" y="109" class="lbl-sm">Navigator 300 (600 mm tunnel): ~230 mm web to Ø460 tube bottom</text>
   <text x="550" y="131" class="lbl">Primary A: 4× Side-Straddling Blades (60×9 mm)</text>
   <rect x="550" y="135" width="446" height="6" fill="#64748B"/>
   <rect x="550" y="236.2" width="446" height="10" fill="#FDE68A" stroke="#D97706" stroke-width="1"/>

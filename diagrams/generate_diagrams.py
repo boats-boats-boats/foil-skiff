@@ -366,97 +366,107 @@ def gen_02_stol_flaperons():
 # DIAGRAM 3: Spine-Floor Top-to-Bottom Coupling Options (O-Frame / C-Frame / OEM Slot)
 # -------------------------------------------------------------------------
 def gen_03_spine_coupling():
-    W, H = 1040, 720
+    W, H = 1040, 910
     s = svg_header(
         W, H,
-        "3. Drop-In Rigid Spine Floor & Top-to-Bottom Coupling Architectures (Side Profiles)",
-        "How to Bridge the Continuous 1.2 mm PVC Tunnel Ceiling Web on True Kit / Takacat Catamarans"
+        "3. Drop-In Rigid Spine Floor & Coupling Options (True Kit Navigator 300 Primary + Discovery 330)",
+        "Bridging the Continuous 1.2 mm PVC Tunnel Web — Zero-Hole Navigator 300 Hybrid C-Frame, Switchable Magnets, Discovery O-Frame & OEM Slot"
     )
 
-    def draw_hull_base(y0, open_bow=True):
-        # y0 = top of PVC web (y0+4 = bottom of PVC web)
-        # Side tube silhouette behind (dashed light grey)
+    def draw_hull_base(y0, open_bow=False, tru_alu_transom=True):
         out = f'  <rect x="80" y="{y0-58}" width="840" height="128" rx="46" fill="#E2E8F0" fill-opacity="0.35" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>\n'
-        # 1.2 mm PVC tunnel web
         out += f'  <line x1="170" y1="{y0}" x2="830" y2="{y0}" stroke="#64748B" stroke-width="4"/>\n'
         if not open_bow:
-            out += f'  <path d="M 170 {y0} Q 105 {y0-10} 92 {y0-45}" fill="none" stroke="#64748B" stroke-width="4"/>\n'
-            out += f'  <text x="118" y="{y0-52}" text-anchor="middle" class="lbl-sm">Closed Bow</text>\n'
+            # Raised closed curved inflatable bow tube leaving air inlet underneath!
+            out += f'  <path d="M 170 {y0} Q 108 {y0-10} 92 {y0-42} Q 96 {y0-62} 145 {y0-58}" fill="#CBD5E1" fill-opacity="0.55" stroke="#475569" stroke-width="2.5"/>\n'
+            out += f'  <rect x="96" y="{y0-4}" width="12" height="12" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+            out += f'  <text x="120" y="{y0-48}" text-anchor="middle" class="lbl-sm">Closed Bow</text>\n'
         else:
             out += f'  <text x="128" y="{y0-28}" text-anchor="middle" class="ok">Open Bow</text>\n'
-        out += f'  <text x="875" y="{y0-28}" text-anchor="middle" class="ok">Open Transom</text>\n'
-        # Top Rigid Spine Floor (2-piece, latched midship)
+        if tru_alu_transom:
+            # Rigid factory Tru-Alu transom spanning above the open tunnel!
+            out += f'  <rect x="828" y="{y0-56}" width="12" height="58" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
+            out += f'  <text x="892" y="{y0-36}" text-anchor="middle" class="lbl-sm">Tru-Alu</text>\n'
+            out += f'  <text x="892" y="{y0-24}" text-anchor="middle" class="lbl-sm">Transom</text>\n'
+        else:
+            out += f'  <text x="880" y="{y0-28}" text-anchor="middle" class="ok">Open Transom</text>\n'
         out += f'  <rect x="175" y="{y0-20}" width="322" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
         out += f'  <rect x="501" y="{y0-20}" width="324" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
         out += f'  <rect x="492" y="{y0-22}" width="14" height="20" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
-        out += f'  <text x="336" y="{y0-8}" text-anchor="middle" class="lbl-w">Top Rigid Spine Floor (Front Half)</text>\n'
-        out += f'  <text x="663" y="{y0-8}" text-anchor="middle" class="lbl-w">Top Rigid Spine Floor (Rear Half)</text>\n'
+        out += f'  <text x="336" y="{y0-8}" text-anchor="middle" class="lbl-w">Spine Floor Front (680×1,850 mm)</text>\n'
+        out += f'  <text x="663" y="{y0-8}" text-anchor="middle" class="lbl-w">Spine Floor Rear (Latched Midship)</text>\n'
         return out
 
-    # --- SECTION 1: OPTION B1 (FULL BOW-TO-TRANSOM O-FRAME) ---
-    s += '  <rect x="24" y="68" width="992" height="200" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">Option B1 (Top Zero-Hole Pick): Full Bow-to-Transom Twin-Rail "O-Frame" Clamshell</text>\n'
-    s += '  <text x="42" y="109" class="ok">True Kit Discovery &amp; Takacat LX • 2× 50×20 mm 6061-T6 Alu (~3.5 kg, ~$70) • 3×–4× lower bending moment • Pod retracts BETWEEN rails!</text>\n'
-    y1 = 186
-    s += draw_hull_base(y1, open_bow=True)
-    # Closed O-Frame loop around both bow (x=160) and transom (x=838)
-    s += f'  <path d="M 175 {y1-12} L 154 {y1-12} L 154 {y1+14} L 846 {y1+14} L 846 {y1-12} L 825 {y1-12}" fill="none" stroke="#0284C7" stroke-width="10" stroke-linejoin="round"/>\n'
-    s += f'  <path d="M 175 {y1-12} L 154 {y1-12} L 154 {y1+14} L 846 {y1+14} L 846 {y1-12} L 825 {y1-12}" fill="none" stroke="#E0F2FE" stroke-width="2" stroke-dasharray="6,4"/>\n'
-    # Midship rail splice + parallelogram pivot pins
+    # --- SECTION 1 (PRIMARY): NAVIGATOR 300 HYBRID C-FRAME + BOW D-RING DYNEEMA SLING ---
+    s += '  <rect x="24" y="68" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="1.8"/>\n'
+    s += '  <text x="42" y="92" class="ok">1. PRIMARY (True Kit Navigator 300): Tru-Alu Transom-Clamped Hybrid C-Frame + 6 mm Dyneema Bow Sling</text>\n'
+    s += '  <text x="42" y="109" class="lbl-sm">Clamps directly onto factory 10 HP Tru-Alu transom • Dyneema bow-D-ring sling kills front cantilever • Zero holes in closed bow!</text>\n'
+    y1 = 184
+    s += draw_hull_base(y1, open_bow=False, tru_alu_transom=True)
+    # Twin 50x20 Alu rails running under tunnel + over-transom clamp jaw gripping Tru-Alu transom!
+    s += f'  <path d="M 225 {y1+14} L 848 {y1+14} L 848 {y1-34} L 822 {y1-34} L 822 {y1-14}" fill="none" stroke="#0284C7" stroke-width="9" stroke-linejoin="round"/>\n'
+    # Red 6 mm Dyneema sling from front rail crossbar (225, y1+14) to golden bow D-ring (102, y1+2)!
+    s += f'  <line x1="225" y1="{y1+14}" x2="106" y2="{y1+3}" stroke="#DC2626" stroke-width="3.5" stroke-dasharray="6,2"/>\n'
     s += f'  <circle cx="385" cy="{y1+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
     s += f'  <circle cx="595" cy="{y1+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    # Direct upward compression arrows
-    for ax in [385, 490, 595]:
-        s += f'  <line x1="{ax}" y1="{y1+52}" x2="{ax}" y2="{y1+22}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <text x="490" y="{y1+66}" text-anchor="middle" class="ok">Upward Lift (+210 kgf) Compresses Straight Into Spine Floor • Hanging Load Splits 50/50 Bow &amp; Stern!</text>\n'
-    s += f'  <text x="150" y="{y1+42}" text-anchor="middle" class="dim">Bow Bridge</text>\n'
-    s += f'  <text x="150" y="{y1+54}" text-anchor="middle" class="lbl-sm">(Rock Bumper)</text>\n'
-    s += f'  <text x="860" y="{y1+42}" text-anchor="middle" class="dim">Transom Bridge</text>\n'
-    s += f'  <text x="860" y="{y1+54}" text-anchor="middle" class="lbl-sm">(Tackle + Wheels)</text>\n'
+    s += f'  <line x1="490" y1="{y1+48}" x2="490" y2="{y1+22}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <text x="148" y="{y1+38}" text-anchor="middle" class="warn">6 mm Dyneema Sling</text>\n'
+    s += f'  <text x="148" y="{y1+50}" text-anchor="middle" class="lbl-sm">(Bow D-Ring — 0 Sag!)</text>\n'
+    s += f'  <text x="530" y="{y1+66}" text-anchor="middle" class="ok">Upward Lift Compresses Into Spine Floor • 250 mm Rails Let Pod Retract Flat!</text>\n'
+    s += f'  <text x="898" y="{y1+22}" text-anchor="middle" class="dim">Transom Clamp</text>\n'
+    s += f'  <text x="898" y="{y1+34}" text-anchor="middle" class="lbl-sm">(Like Outboard!)</text>\n'
 
-    # --- SECTION 2: OPTION B2 (OPEN-TRANSOM C-FRAME CANTILEVER) ---
-    s += '  <rect x="24" y="282" width="992" height="200" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="306" class="sec">Option B2 (Closed-Bow Catamarans): Open-Transom "C-Frame" Wrap-Around Cantilever</text>\n'
-    s += '  <text x="42" y="323" class="dim">True Kit Navigator 300 • 180×30 mm Box Beam (~2.4 kg carbon / ~4.2 kg Alu) • Zero Holes • Direct Compression in Lift</text>\n'
-    y2 = 400
-    s += draw_hull_base(y2, open_bow=False)
-    # C-Frame wrapping ONLY around open transom (x=846) forward 1.1 m to x=360
-    s += f'  <path d="M 355 {y2+16} L 846 {y2+16} L 846 {y2-12} L 825 {y2-12}" fill="none" stroke="#475569" stroke-width="13" stroke-linejoin="round"/>\n'
-    s += f'  <circle cx="400" cy="{y2+16}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <circle cx="600" cy="{y2+16}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <line x1="490" y1="{y2+50}" x2="490" y2="{y2+25}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <text x="490" y="{y2+64}" text-anchor="middle" class="lbl">0 Cantilever While Foiling (Compresses Up Into Spine Floor) • 1.1 m Cantilever Only Under Hanging Pod Weight (~917 N·m 2G)</text>\n'
-    s += f'  <text x="895" y="{y2+24}" text-anchor="middle" class="lbl-sm">Transom</text>\n'
-    s += f'  <text x="895" y="{y2+36}" text-anchor="middle" class="lbl-sm">C-Gusset</text>\n'
+    # --- SECTION 2: OPTION A — THROUGH-FABRIC SWITCHABLE MAGNETS (NAVIGATOR 300 UNIVERSAL ALT) ---
+    s += '  <rect x="24" y="278" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="302" class="sec">2. Option A (Navigator 300 / Universal Bolt-On): 4× Rotary Switchable Magnets + Transom Safety Bridle</text>\n'
+    s += '  <text x="42" y="319" class="dim">~800 kgf clamp across 2.5 mm gap (direct on 1.2 mm PVC web) • 5-sec drop-on • Built-in resettable reef breakaway fuse</text>\n'
+    y2 = 394
+    s += draw_hull_base(y2, open_bow=False, tru_alu_transom=True)
+    # 4x Magswitch rotary pucks sitting cleanly ABOVE the Spine Floor (y2-40..y2-20) so labels never collide!
+    for mx in [370, 610]:
+        s += f'  <rect x="{mx-26}" y="{y2-42}" width="52" height="20" rx="3" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
+        s += f'  <text x="{mx}" y="{y2-28}" text-anchor="middle" style="font-size:8.5px;fill:#FFFFFF;font-weight:700;">Magswitch</text>\n'
+    s += f'  <rect x="335" y="{y2+4}" width="310" height="14" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Aft transom Dyneema shear/safety bridle from lower carriage up to Tru-Alu transom!
+    s += f'  <line x1="645" y1="{y2+11}" x2="834" y2="{y2-18}" stroke="#DC2626" stroke-width="3" stroke-dasharray="5,2"/>\n'
+    s += f'  <text x="440" y="{y2+48}" text-anchor="middle" class="lbl">Rubber Grip Pads (μ ≈ 0.7) + Sealed Steel Keeper (~2.5 mm Gap)</text>\n'
+    s += f'  <text x="800" y="{y2+32}" text-anchor="middle" class="warn">Transom Shear /</text>\n'
+    s += f'  <text x="800" y="{y2+45}" text-anchor="middle" class="warn">Breakaway Bridle</text>\n'
 
-    # --- SECTION 3: OPTION C (OEM WELDED CENTERBOARD SLOT) ---
-    s += '  <rect x="24" y="496" width="992" height="204" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="520" class="sec">Option C (Official Factory OEM "Foil Edition"): RF-Welded Centerboard Slot in Non-Airtight Web</text>\n'
-    s += '  <text x="42" y="537" class="lbl-sm">Lightest (~1.0–1.5 kg) &amp; cleanest tunnel • Zero airtight tubes touched • Tunnel ceiling sits ABOVE static waterline (no flooding!)</text>\n'
-    y3 = 612
-    # Waterline below PVC web!
-    s += f'  <rect x="80" y="{y3+32}" width="840" height="44" rx="4" fill="url(#water)"/>\n'
-    s += f'  <line x1="80" y1="{y3+32}" x2="920" y2="{y3+32}" stroke="#0284C7" stroke-width="1.4" stroke-dasharray="6,3"/>\n'
-    s += f'  <text x="145" y="{y3+48}" class="dim">Static Waterline (Below Web!)</text>\n'
-    s += f'  <rect x="80" y="{y3-58}" width="840" height="128" rx="46" fill="#E2E8F0" fill-opacity="0.28" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>\n'
-    # Split PVC web around 60x320 mm slot (x=455..545)
-    s += f'  <line x1="170" y1="{y3}" x2="455" y2="{y3}" stroke="#64748B" stroke-width="4"/>\n'
-    s += f'  <line x1="545" y1="{y3}" x2="830" y2="{y3}" stroke="#64748B" stroke-width="4"/>\n'
-    # Welded vertical PVC collar boot rising up into Spine Floor well
-    s += f'  <path d="M 442 {y3} L 455 {y3} L 455 {y3-28} M 558 {y3} L 545 {y3} L 545 {y3-28}" fill="none" stroke="#0D9488" stroke-width="4"/>\n'
-    # Spine floor left/right of CNC cassette well
-    s += f'  <rect x="175" y="{y3-20}" width="272" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-    s += f'  <rect x="553" y="{y3-20}" width="272" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-    s += f'  <rect x="447" y="{y3-26}" width="106" height="24" rx="3" fill="none" stroke="#0284C7" stroke-width="2.2"/>\n'
-    # Foil strut dropping cleanly straight down through CNC well + neoprene gasket
-    s += f'  <rect x="486" y="{y3-36}" width="28" height="114" rx="4" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
-    s += f'  <line x1="456" y1="{y3+2}" x2="485" y2="{y3+2}" stroke="#F59E0B" stroke-width="3.5"/>\n'
-    s += f'  <line x1="515" y1="{y3+2}" x2="544" y2="{y3+2}" stroke="#F59E0B" stroke-width="3.5"/>\n'
-    s += f'  <text x="372" y="{y3-30}" text-anchor="end" class="dim">CNC Cassette Well (Carries 100% Load)</text>\n'
-    s += f'  <line x1="378" y1="{y3-33}" x2="444" y2="{y3-18}" stroke="#0284C7" stroke-width="1.2" marker-end="url(#arrBlue)"/>\n'
-    s += f'  <text x="615" y="{y3-28}" class="ok">RF-Welded PVC Collar Boot + Flush Split-Neoprene Spray Gasket</text>\n'
-    s += f'  <line x1="610" y1="{y3-31}" x2="548" y2="{y3-12}" stroke="#059669" stroke-width="1.2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <text x="615" y="{y3+20}" class="lbl-sm">Snap-in HDPE blanking plug seals slot smoothly when sailing without foil</text>\n'
+    # --- SECTION 3: DISCOVERY 330 / TAKACAT LX FULL RIGID BOW-TO-TRANSOM O-FRAME ---
+    s += '  <rect x="24" y="488" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="512" class="sec">3. Option B1 (Open-Bow Secondary Ref — True Kit Discovery 330 / Takacat LX): Full Rigid "O-Frame"</text>\n'
+    s += '  <text x="42" y="529" class="lbl-sm">Open square bow lets 2× 50×20 mm Alu rails wrap BOTH ends rigidly (~3.5 kg, ~$70 tubing, 3×–4× lower bending moment)</text>\n'
+    y3 = 604
+    s += draw_hull_base(y3, open_bow=True, tru_alu_transom=False)
+    s += f'  <path d="M 175 {y3-12} L 154 {y3-12} L 154 {y3+14} L 846 {y3+14} L 846 {y3-12} L 825 {y3-12}" fill="none" stroke="#0284C7" stroke-width="10" stroke-linejoin="round"/>\n'
+    s += f'  <circle cx="385" cy="{y3+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <circle cx="595" cy="{y3+14}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += f'  <text x="490" y="{y3+46}" text-anchor="middle" class="dim">Closed Rigid Loop Around Open Bow &amp; Open Transom (Splits at Midship to 1.0 m Halves)</text>\n'
+
+    # --- SECTION 4: OPTION C (FACTORY OEM WELDED CENTERBOARD SLOT) ---
+    s += '  <rect x="24" y="698" width="992" height="196" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="722" class="sec">4. Option C (Official Factory OEM "Foil Edition"): RF-Welded Centerboard Slot in Non-Airtight Web</text>\n'
+    s += '  <text x="42" y="739" class="lbl-sm">Lightest (~1.0–1.5 kg) &amp; cleanest tunnel • Zero airtight tubes touched • Tunnel ceiling sits ABOVE static waterline (no flooding!)</text>\n'
+    y4 = 812
+    s += f'  <rect x="80" y="{y4+30}" width="840" height="42" rx="4" fill="url(#water)"/>\n'
+    s += f'  <line x1="80" y1="{y4+30}" x2="920" y2="{y4+30}" stroke="#0284C7" stroke-width="1.4" stroke-dasharray="6,3"/>\n'
+    s += f'  <text x="145" y="{y4+46}" class="dim">Static Waterline (Below Web!)</text>\n'
+    s += f'  <rect x="80" y="{y4-56}" width="840" height="122" rx="44" fill="#E2E8F0" fill-opacity="0.28" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>\n'
+    s += f'  <line x1="170" y1="{y4}" x2="455" y2="{y4}" stroke="#64748B" stroke-width="4"/>\n'
+    s += f'  <line x1="545" y1="{y4}" x2="830" y2="{y4}" stroke="#64748B" stroke-width="4"/>\n'
+    s += f'  <path d="M 442 {y4} L 455 {y4} L 455 {y4-26} M 558 {y4} L 545 {y4} L 545 {y4-26}" fill="none" stroke="#0D9488" stroke-width="4"/>\n'
+    s += f'  <rect x="175" y="{y4-20}" width="272" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += f'  <rect x="553" y="{y4-20}" width="272" height="16" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += f'  <rect x="447" y="{y4-26}" width="106" height="24" rx="3" fill="none" stroke="#0284C7" stroke-width="2.2"/>\n'
+    s += f'  <rect x="486" y="{y4-34}" width="28" height="108" rx="4" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
+    s += f'  <line x1="456" y1="{y4+2}" x2="485" y2="{y4+2}" stroke="#F59E0B" stroke-width="3.5"/>\n'
+    s += f'  <line x1="515" y1="{y4+2}" x2="544" y2="{y4+2}" stroke="#F59E0B" stroke-width="3.5"/>\n'
+    s += f'  <text x="372" y="{y4-28}" text-anchor="end" class="dim">CNC Cassette Well (100% Load)</text>\n'
+    s += f'  <line x1="378" y1="{y4-31}" x2="444" y2="{y4-18}" stroke="#0284C7" stroke-width="1.2" marker-end="url(#arrBlue)"/>\n'
+    s += f'  <text x="615" y="{y4-26}" class="ok">RF-Welded PVC Collar Boot + Flush Neoprene Spray Gasket</text>\n'
+    s += f'  <line x1="610" y1="{y4-29}" x2="548" y2="{y4-12}" stroke="#059669" stroke-width="1.2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <text x="615" y="{y4+18}" class="lbl-sm">Snap-in HDPE blanking plug seals slot smoothly when sailing without foil</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "03-spine-floor-coupling-options.svg").write_text(s)
@@ -625,7 +635,7 @@ def gen_05_strut_stackup():
     # --- RIGHT PANEL: SIDE-BY-SIDE FOLDED STACK-UP COMPARISON ---
     s += '  <rect x="532" y="68" width="484" height="468" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
     s += '  <text x="550" y="92" class="sec">B. Folded Stack-Up Comparison (85° Aft Fold vs. Flat Sand)</text>\n'
-    s += '  <text x="550" y="109" class="lbl-sm">True Kit 300/330 tunnel height = ~230 mm from PVC web to bottom of Ø460 mm tubes</text>\n'
+    s += '  <text x="550" y="109" class="lbl-sm">Navigator 300 (600 mm tunnel): ~230 mm web to Ø460 tube bottom</text>\n'
 
     # Scale for right panel: 1 mm = 0.45 px -> 230 mm = 103.5 px per sub-row!
     rsc = 0.44
@@ -776,7 +786,7 @@ def gen_10_alt_architectures():
     s = svg_header(
         W, H,
         "10. Integrated Battery-Hull Architectures & Through-Fabric Magnetic Clamp (Front Cross-Sections)",
-        "Visual Comparison of All Four FoilSkiff Hull Foundations on a True Kit 10 ft Catamaran (Ø460 mm Side Pontoons)"
+        "Visual Comparison of All Four FoilSkiff Hull Foundations on a True Kit Navigator 300 (155 cm Beam, 60 cm Tunnel, Ø460 mm Tubes)"
     )
 
     panels = [
