@@ -12,7 +12,7 @@ Instead of bolting heavy industrial outboards onto a `31 kg` inflatable transom,
 
 ```mermaid
 flowchart LR
-    Floor["1. Drop-In 2-Piece Rigid Spine Floor + Bow-to-Transom O-Frame (Zero Hull Mods)"] --> Strut["2. 2x Inline Tandem Parallelogram Struts (Flat Horizontal Kick-Up + Dry Charge Umbilical)"]
+    Floor["1. Drop-In 2-Piece Rigid Spine Floor + Bow-to-Transom O-Frame (Zero Hull Mods)"] --> Strut["2. Parallelogram Struts (4x 60x9 mm Side Blades or 2x 100x18 mm Center — Flat Kick-Up)"]
     Strut --> Upper["3. Upper Step-Out Booster Wing (+1,400 cm² + Anti-Ventilation Fence; Flies in AIR >9 kn!)"]
     Strut --> Fuse["4. Submerged Lifting Fuselage Bay (1.3 m x 220 x 80 mm, 26 L Buoyancy, 2x 14 kg Swappable IP68 Cartridges)"]
     Fuse --> Wings["5. Sleek 10% Lower Wings (1,350 cm²) + Aft Stabilizer (Optional <$150 IMU/ToF Auto-Trim)"]
@@ -72,6 +72,6 @@ xychart-beta
 - [ ] **Phase 1: `M2200` + `Flipsky 75100` `VESC` + `NACA 0024` Fairing & Drive-by-Wire Mule**
   - `3D`-print interlocking `150 mm` chord `NACA 0024` shaft fairing + glass/carbon skin; install `Flipsky 75100` `VESC` and `12 V` linear-actuator steering & aft-foil pitch trim; run solo lift-off trials.
 - [ ] **Phase 2: Drop-In Spine Floor + Step-Out Flying-Keel Prototype (`26 L` Bay + Swappable Cartridges)**
-  - Fabricate the universal `25–35 mm` 2-piece rigid Spine Floor (`True Kit` / `Takacat` trim panels) + Bow-to-Transom Twin-Rail O-Frame, `1.3 m × 220 mm × 80 mm` carbon lifting fuselage bay with `20 mm` sacrificial Kevlar nose bumper, CNC double-O-ring rear door for `2 × 14 kg` potted `IP68` cartridges, leak sensor, internal seawater-cooled `2 × Flipsky 75100` `VESCs`, `2 × Flipsky 65161` tailcone pods, `1,350 cm²` sleek lower thin wings, `+1,400 cm²` upper step-out booster wing with `20 mm` anti-ventilation fence, and **`2×` inline tandem parallelogram retraction struts**.
+  - Fabricate the universal `25–35 mm` 2-piece rigid Spine Floor (`True Kit` / `Takacat` trim panels) + Bow-to-Transom Twin-Rail O-Frame, `1.3 m × 220 mm × 80 mm` carbon lifting fuselage bay with `20 mm` sacrificial Kevlar nose bumper, CNC double-O-ring rear door for `2 × 14 kg` potted `IP68` cartridges, leak sensor, internal seawater-cooled `2 × Flipsky 75100` `VESCs`, `2 × Flipsky 65161` tailcone pods, `1,350 cm²` sleek lower thin wings, `+1,400 cm²` double-deck horizontal upper step-out booster wing with `20 mm` anti-ventilation fence, and **parallelogram retraction struts (`4×` `60 × 9 mm` side-straddling blades for `~90 mm` folded depth or `2×` `100 × 18 mm` recessed center tandem struts)**.
 - [ ] **Phase 3: Full-Scale `15–22 kn` Foiling Sea Trials & Mothership `48 V` Umbilical Charging**
   - Validate `6.4 kn` step-out takeoff, `30+ nm` range at `15.5 knots`, passive ride-height stabilization + optional auto-trim, carry-ashore cartridge swapping, assisted shallow-water retraction, and dry deck-level charging from the mothership's bus (see [`flux-shaft`](https://github.com/boats-boats-boats/flux-shaft)).
