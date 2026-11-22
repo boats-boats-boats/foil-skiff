@@ -1,7 +1,7 @@
 # CLAUDE.md — Project Context & Engineering Guidelines for `foil-skiff`
 
 ## 1. Project Overview
-`foil-skiff` (**FoilSkiff**) is an R&D, hydrodynamics, and fabrication repository for a **submerged lifting-body battery-fuselage ("Flying-Keel Pod") with an Upper "Step-Out" Booster Wing (biplane / ladder hydrofoil)** for `10 ft` inflatable tunnel-catamaran tenders (e.g., `True Kit Navigator 300` / `Discovery 330`).
+`foil-skiff` (**FoilSkiff**) is an R&D, hydrodynamics, and fabrication repository for a **Drop-In Rigid Spine Floor + Step-Out Flying-Keel Pod** (submerged lifting-body fuselage with swappable `IP68` battery cartridges + Upper "Step-Out" Booster Wing biplane hydrofoil) for `10 ft` inflatable tunnel-catamaran tenders (e.g., `True Kit Navigator 300` / `Discovery 330`, `Takacat LX`, `Saturn`, `Kaboat`).
 
 Primary reference document: [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md).
 
@@ -11,17 +11,18 @@ Primary reference document: [`electric-foiling-dinghy-guide.md`](electric-foilin
 
 When generating hydrodynamic calculations, CAD/molds, 3D-print fairings, battery layouts, controller wiring, or BOMs in this repository, always adhere to these physical and electrical constraints:
 
-1. **Primary Architecture — Step-Out Flying-Keel Pod (Longitudinal Lifting Battery-Fuselage + Upper Step-Out Booster Wing):**
-   * Orient submerged battery cells **longitudinally (fore-and-aft)** inside a streamlined flattened lifting fuselage (`~1.3 m × 220 mm × 80 mm`, `~26 L` displacement = `~26.6 kg` Archimedes seawater buoyancy) paired with **sleek `10%`-thick high-aspect lower carbon wings (`1,300–1,400 cm²`)** AND a fixed **Upper "Step-Out" Booster Wing (`+1,400 cm²` thick high-lift takeoff wing mounted `200–250 mm` higher on the `NACA 0024` strut)**.
-   * At takeoff (`0–8 kn`), both wings (`~2,750 cm²`) are submerged for **`6.4 kn` lift-off** (`41%` lower takeoff power). Above `9 kn`, the upper wing **exits completely into dry air** (`99.9%` drag elimination, zero moving parts, `2.71 kW` / `30.8 nm` at `15.5 kn`, plus passive mechanical ride-height stabilization).
-   * **Never use submerged longitudinal swing-wings** (folding a second thick wing `90°` lengthwise underwater still leaves `100%` of its wetted area $S_{\text{wet}}$ in seawater and turns its blunt wingtip into oncoming flow, adding `+33%–53%` cruise drag) and **never pack batteries spanwise inside a thick full-span wing (`3,400+ cm²`, `t/c ≥ 14%`)**.
-   * House the battery, BMS, `Flipsky 75100` `VESC` controller(s) (heat-sunk directly to the seawater-cooled shell), and tailcone **`Flipsky 65161`** pod(s) inside the same submerged fuselage so **zero high-current (`100–150 A`) DC cables run up the foil strut**.
+1. **Primary Architecture — Drop-In Rigid Spine Floor + Step-Out Flying-Keel Pod:**
+   * **Drop-In Rigid Spine Floor (`25–35 mm` Thin 2-Piece Carbon/Aluminum):** Always replace the soft inflatable drop-stitch floor with a rigid 2-piece folding Spine Floor wedged into the existing tube tuck-under channels to carry `200+ kg` dynamic foil pitch/roll loads with **zero glue, zero holes, and zero hull twist**. Mount a standardized central hinged foil-cassette trunk adaptable across `True Kit`, `Takacat`, and similar catamarans via swappable outer trim panels.
+   * **Submerged Lifting Fuselage Bay + Swappable `IP68` Battery Cartridges:** Orient batteries **longitudinally (fore-and-aft)** inside a streamlined flattened lifting fuselage bay (`~1.3 m × 220 mm × 80 mm`, `~26 L` displacement = `~26.6 kg` Archimedes seawater buoyancy) as **two removable, factory-potted `IP68` `2.5–2.7 kWh` (`~14 kg` ea.) slide-in cartridges** (*Flitecell*-style, with blind-mate waterproof connectors + closed-cell foam dummy plug option for 1-cartridge solo hops) rather than a permanent monolithic sealed `30 kg` pack.
+   * **Biplane Step-Out Wing Set + Optional `<$150` Auto-Trim:** Pair **sleek `10%`-thick high-aspect lower carbon wings (`1,300–1,400 cm²`)** with a fixed **Upper "Step-Out" Booster Wing (`+1,400 cm²` thick high-lift takeoff wing mounted `200–250 mm` higher on the `NACA 0024` strut)**. Both wings (`~2,750 cm²`) submerge for **`6.4 kn` lift-off** (`41%` lower takeoff power); above `9 kn`, the upper wing exits into dry air (`99.9%` drag elimination, `2.71 kW` / `30.8 nm` @ `15.5 kn`, passive mechanical ride-height stabilization). Optionally pair with a `<$150` `ESP32` + `BNO085` IMU + ToF auto-trim actuator (`±5°` on aft stabilizer) for effortless "push throttle and fly" cruising.
+   * **Never use submerged longitudinal swing-wings** (persistent wetted area $S_{\text{wet}}$ & sideways blunt wingtip add `+33%–53%` cruise drag) and **never pack batteries spanwise inside a thick full-span wing (`3,400+ cm²`, `t/c ≥ 14%`)**.
+   * House the battery cartridges, `Flipsky 75100` `VESC` controller(s) (heat-sunk directly to the seawater-cooled bottom skin), and tailcone **`Flipsky 65161`** pod(s) inside the same submerged fuselage so **zero high-current (`100–150 A`) DC cables run up the foil strut**.
    * **Mandatory Submerged-Pod & Step-Out Safety Package:**
      1. **Anti-ventilation strut fence collar (`~20 mm` horizontal carbon plate `50 mm` below the upper booster wing)** to prevent surface air from sucking down the strut onto the lower wing during the `8–9 kn` step-out breach.
      2. **`20 mm` sacrificial Kevlar/elastomer crush-nose bumper** ahead of a `5 mm` `G10` bulkhead for rock/debris impact protection.
-     3. **CNC double-O-ring anodized endcap/flange**, internal **optical/conductivity moisture leak sensor** wired to a cockpit alarm, and **`0.5 bar` pressure-relief burst valve**.
-     4. **Dry deck-level charging umbilical** routed up inside the hollow `NACA 0024` strut so the `IP68` fuselage seal is never opened for routine charging.
-     5. **Assisted Hinged Retraction (`3:1` Dyneema tackle or marine gas strut)** to lift the `~37–43 kg` pod into the central catamaran tunnel for beaching, plus **`350–450 mm` lower-pod cruise immersion depth** (placing the upper booster wing `100–150 mm` clear in dry air at cruise).
+     3. **CNC double-O-ring rear bay door** for swappable `IP68` cartridges, internal **optical/conductivity moisture leak sensor** wired to a cockpit alarm, and **`0.5 bar` pressure-relief burst valve**.
+     4. **Dry deck-level charging umbilical** routed up inside the hollow `NACA 0024` strut for routine mothership charging without opening the bay door.
+     5. **Assisted Hinged Retraction (`3:1` Dyneema tackle or marine gas strut)** in the Spine Floor's central trunk to lift the pod (`~37–43 kg` loaded / `~11–15 kg` empty) into the tunnel for beaching, plus **`350–450 mm` lower-pod cruise immersion depth** (placing the upper booster wing `100–150 mm` clear in dry air at cruise).
 
 2. **Compact `4–13 kg` Low-`Kv` Drives & `100 Kv` vs. `120 Kv` Selection (`Flipsky 65161`):**
    * **Primary Pick:** Twin `IP68` sealed pods (**`2 × Flipsky 65161`** or **`2 × Maytech MTO65162`**, `4–6 kg` total, `6–10 kW` cont., `200–240 lbf`) + **`2 × Flipsky 75100` `VESC`** for zero-hardware `360°` CAN-bus differential power steering.
