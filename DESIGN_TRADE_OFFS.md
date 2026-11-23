@@ -19,6 +19,7 @@ This document records **exact physics, failure modes, and numbers** for every ma
 | **7. Fixed Thick Full-Span Battery Wing (`3,400 cm²`, `t/c = 14%`)** | Massive full-span profile drag ($C_{D0} \cdot S \cdot V^2$) above `12 kn` | **`2.2×–2.7×` drag** (`38.8 lbf` @ `15.5 kn`, `74.1 lbf` @ `22 kn`; only `21.9 nm` range) | Longitudinal `220×80 mm` Lifting Battery-Fuselage + sleek `10%`-thick high-aspect wings |
 | **8. Thick `4×` Quad Struts (`110 × 15 mm`)** | Unnecessary wetted area & spray drag | **`18.7 lbf`** strut drag (`2.6×` penalty) | Ultra-slim **`4×` `60 × 9 mm` UD carbon blades** (`11.4 lbf`, `0.5 lbf` spray drag, `9.8×` buckling safety) |
 | **9. Bare Round Outboard Tube / High-Kv Motors / `16S` on `12S` ESC / Pump-Jet + Foil** | Cylinder drag (`C_D ≈ 1.15`), over-voltage ESC blow-up, jet air-suction on lift-off | `Ø36 mm` bare tube wastes **`2,407 W` @ `10 kn`** (`63 lbf` drag); `16S` (`58.4 V`) blows `50.4 V` ESCs | `NACA 0024` fairing (`2,135 W` saved); `100 Kv` on `16S` w/ `75 V` `VESC`; keep `BP100` jet strictly non-foiling |
+| **10. External Protruding `58 mm` Morphing Cheek Swing-Arms** | Pitch hinge sits `58 mm` out at arm tip → needs hidden belts/gears/4-bar links; external arms snag kelp & add interference drag | `-0.4 lbf` extra drag + `~18 mm` overly wide STOL slot + exposed moving linkage | **`100%` Internal-Pod Wet-Slot Vertical Elevator Sled** (`90 mm` pod, `Tr10×2` leadscrew + `IP68` servos directly ON sled, `0` external arms) — OR **Fixed Upper Staggerwing** (`0` sled, `+0.5 kn` takeoff) |
 
 ---
 

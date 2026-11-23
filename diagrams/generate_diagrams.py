@@ -1162,130 +1162,153 @@ def gen_18_modular_seating():
 # DIAGRAM 20: Dual-Mode Morphing STOL-to-Staggerwing Flaperon Kinematics
 # -------------------------------------------------------------------------
 def gen_20_morphing_stol_staggerwing():
-    W, H = 1040, 540
+    W, H = 1040, 548
     s = svg_header(
         W, H,
-        "20. Dual-Mode Morphing STOL-to-Staggerwing Flaperon (Sweep Kinematics & Coaxial Drive)",
-        "Bottom-Mounted Main Wing + 58 mm Cheek Swing-Arm: Mode 1 DOWN (STOL Takeoff) ↔ Mode 2 UP (Protected Out-of-Wake Cruise)"
+        "20. 100% Internal-Pod Morphing STOL-to-Staggerwing Flaperon (Wet-Slot Elevator Sled)",
+        "90 mm Pod Envelope (ZERO External Arms, Belts, or Sliding Dry-Hull Seals) • Mode 1 DOWN (-35 mm) ↔ Mode 2 UP (+35 mm)"
     )
 
-    # --- PANEL A (LEFT): SIDE-PROFILE KINEMATIC SWEEP & WAKE CLEARANCE ---
-    s += '  <rect x="24" y="68" width="530" height="448" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">A. Side-Profile 130° Sweep Behind Main Wing TE</text>\n'
-    s += '  <text x="42" y="109" class="ok">STOL takeoff (CL_max ≈ 2.0) + Protected laminar cruise (+106 mm up!)</text>\n'
-    s += '  <rect x="34" y="118" width="510" height="314" rx="6" fill="url(#water)"/>\n'
+    # --- PANEL A (LEFT): SIDE-PROFILE 90 mm POD & 70 mm PURE VERTICAL TRAVEL ---
+    s += '  <rect x="24" y="68" width="530" height="456" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Side Profile: 100% Inside 90 mm Pod (70 mm Stroke)</text>\n'
+    s += '  <text x="42" y="109" class="ok">6–8 mm Venturi slot (DOWN) ↔ 57 mm / 4–5× wake clearance (UP)</text>\n'
+    s += '  <rect x="34" y="118" width="510" height="316" rx="6" fill="url(#water)"/>\n'
 
-    # 80 mm Flying-Keel Pod outline (scale: 1 mm = 1.65 px -> 80 mm = 132 px tall; center Y = 264 -> top=198, bot=330)
-    cy = 264
-    s += f'  <rect x="44" y="{cy-66}" width="470" height="132" rx="34" fill="#334155" fill-opacity="0.22" stroke="#475569" stroke-width="1.6" stroke-dasharray="6,3"/>\n'
-    s += f'  <text x="64" y="{cy-48}" class="lbl-sm">80 mm Flying-Keel Pod Profile (Dashed)</text>\n'
+    # Scale: 1 mm = 1.60 px -> 90 mm pod height = 144 px tall; cy = 266 -> top = 194, bot = 338
+    cy = 266
+    # 90 mm Flying-Keel Pod outline (100% encloses Main Wing + both UP & DOWN flaperon pivots!)
+    s += f'  <rect x="44" y="{cy-72}" width="474" height="144" rx="36" fill="#334155" fill-opacity="0.16" stroke="#334155" stroke-width="2"/>\n'
+    # Free-flooding internal wing-box bay (x = 304..404) bounded by twin green watertight bulkheads!
+    s += f'  <rect x="304" y="{cy-70}" width="100" height="140" fill="#BAE6FD" fill-opacity="0.45" stroke="none"/>\n'
+    s += f'  <rect x="294" y="{cy-71}" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
+    s += f'  <rect x="404" y="{cy-71}" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
+    s += f'  <text x="168" y="{cy-52}" text-anchor="middle" class="lbl-sm">Dry IP68 Bay (Battery + VESC + IMU)</text>\n'
+    s += f'  <text x="354" y="{cy-55}" text-anchor="middle" style="font-size:8.5px;fill:#0F766E;font-weight:700;">Wet Wing-Box</text>\n'
 
-    # Main Wing (100 mm chord = 165 px) mounted FLUSH ON BOTTOM FACE of pod (y = 326)!
-    mw_pts = transform_pts(naca4_points(0.02, 0.4, 0.10, 165), 86, 326, deg=2)
+    # Twin Ø10 mm vertical guide rods + central gold Tr10x2 leadscrew inside wet wing-box
+    s += f'  <rect x="330" y="{cy-68}" width="5" height="136" fill="url(#alu)" stroke="#475569" stroke-width="0.9"/>\n'
+    s += f'  <rect x="373" y="{cy-68}" width="5" height="136" fill="url(#alu)" stroke="#475569" stroke-width="0.9"/>\n'
+    s += f'  <rect x="351" y="{cy-68}" width="6" height="136" fill="#FBBF24" stroke="#92400E" stroke-width="1"/>\n'
+    # Vertical flush cheek slot outline (12 x 75 mm -> 19 x 120 px)
+    s += f'  <rect x="345" y="{cy-60}" width="18" height="120" rx="4" fill="none" stroke="#0F172A" stroke-width="1.2" stroke-dasharray="3,2"/>\n'
+
+    # Fixed Main Wing (100 mm chord = 160 px) mounted in LOWER THIRD (Z = -22 mm -> y = 266 + 35 = 301)
+    y_mw = cy + 35
+    mw_pts = transform_pts(naca4_points(0.02, 0.4, 0.10, 160), 118, y_mw, deg=2)
     s += f'  <polygon points="{pts_to_str(mw_pts)}" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.8"/>\n'
-    s += '  <text x="168" y="354" text-anchor="middle" class="lbl">Fixed Main Wing (Bottom of Pod)</text>\n'
+    s += f'  <text x="195" y="{y_mw+26}" text-anchor="middle" class="lbl">Fixed Main Wing (Z = -22 mm)</text>\n'
 
-    # Downward-angled turbulent viscous wake trailing aft of Main Wing (y = 328 -> 352)!
-    s += '  <path d="M 250 322 L 538 338 L 538 378 L 250 338 Z" fill="#94A3B8" fill-opacity="0.34"/>\n'
-    s += '  <text x="458" y="365" text-anchor="middle" class="lbl-sm">Main Wing Wake (Turbulent)</text>\n'
+    # Thin turbulent viscous wake trailing aft of Main Wing (~10-14 mm thick = ~18-22 px, ~1 deg downwash)
+    s += f'  <path d="M 278 {y_mw-4} L 538 {y_mw+2} L 538 {y_mw+26} L 278 {y_mw+10} Z" fill="#94A3B8" fill-opacity="0.38"/>\n'
+    s += f'  <text x="482" y="{y_mw+18}" text-anchor="middle" class="lbl-sm">~12 mm Wake</text>\n'
 
-    # Coaxial pivot center (x_piv = 312, y_piv = 270; arm radius R = 58 mm * 1.65 = 95 px)
-    xp, yp, R = 312, 270, 95
-    # 130-deg sweep arc behind Main Wing TE (from -64 deg DOWN to +64 deg UP -> screen Y inverted!)
-    x_up = xp + R * math.cos(math.radians(64))
-    y_up = yp - R * math.sin(math.radians(64))
-    x_dn = xp + R * math.cos(math.radians(-64))
-    y_dn = yp - R * math.sin(math.radians(-64))
-    # Arc path sweeping from DOWN -> AFT -> UP
-    s += f'  <path d="M {x_dn:.1f} {y_dn:.1f} A {R} {R} 0 0 0 {x_up:.1f} {y_up:.1f}" fill="none" stroke="#0D9488" stroke-width="2.6" stroke-dasharray="6,3" marker-end="url(#arrGreen)"/>\n'
-    # Arm lines (DOWN ghost + UP solid)
-    s += f'  <line x1="{xp}" y1="{yp}" x2="{x_dn:.1f}" y2="{y_dn:.1f}" stroke="#0284C7" stroke-width="4.5" stroke-dasharray="5,3" stroke-linecap="round"/>\n'
-    s += f'  <line x1="{xp}" y1="{yp}" x2="{x_up:.1f}" y2="{y_up:.1f}" stroke="#0F172A" stroke-width="5.5" stroke-linecap="round"/>\n'
-    s += f'  <circle cx="{xp}" cy="{yp}" r="7.5" fill="#DC2626" stroke="#0F172A" stroke-width="1.5"/>\n'
-
-    # Mode 1 DOWN: Junkers STOL Flaperon (+16 deg down, chord 62 mm * 1.65 = 102 px, 20%-chord pivot at (x_dn, y_dn))
-    fl_dn = transform_pts(naca4_points(0.02, 0.4, 0.11, 102), x_dn - 20, y_dn - 3, deg=16)
+    # Mode 1 DOWN: Z = -35 mm -> y_dn = 266 + 56 = 322 (+15 deg STOL Takeoff, 6-8 mm slot gap!)
+    xp = 354
+    y_dn = cy + 56
+    y_up = cy - 56
+    fl_dn = transform_pts(naca4_points(0.02, 0.4, 0.11, 96), xp - 19, y_dn - 3, deg=15)
     s += f'  <polygon points="{pts_to_str(fl_dn)}" fill="url(#wingBlue)" fill-opacity="0.88" stroke="#0369A1" stroke-width="1.6"/>\n'
-    s += f'  <circle cx="{x_dn:.1f}" cy="{y_dn:.1f}" r="4.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    # Converging slot jet in DOWN mode
-    s += '  <path d="M 185 338 Q 275 340 338 348 Q 395 358 455 390" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>\n'
+    s += f'  <circle cx="{xp}" cy="{y_dn}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    # Converging Venturi slot jet between Main Wing TE (278, 305) and Flap LE (335, 319)
+    s += f'  <path d="M 225 {y_mw+16} Q 290 {y_mw+15} 348 {y_dn+2} Q 402 {y_dn+14} 448 {y_dn+32}" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>\n'
 
-    # Mode 2 UP: Protected Staggerwing Cruise (0 deg / +/-3 deg active trim, 100% ABOVE wake!)
-    fl_up = transform_pts(naca4_points(0.02, 0.4, 0.11, 102), x_up - 20, y_up - 1, deg=0)
+    # Mode 2 UP: Z = +35 mm -> y_up = 266 - 56 = 210 (0 deg / +/-3 deg Protected Staggerwing Cruise!)
+    fl_up = transform_pts(naca4_points(0.02, 0.4, 0.11, 96), xp - 19, y_up - 1, deg=0)
     s += f'  <polygon points="{pts_to_str(fl_up)}" fill="#F97316" stroke="#9A3412" stroke-width="1.6"/>\n'
-    s += f'  <circle cx="{x_up:.1f}" cy="{y_up:.1f}" r="4.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    # Clean laminar freestream streamline over UP wing!
-    s += '  <path d="M 190 176 L 520 176" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <circle cx="{xp}" cy="{y_up}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    # Clean laminar freestream streamline over UP wing (far above wake!)
+    s += f'  <path d="M 195 {y_up-18} L 526 {y_up-18}" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>\n'
 
-    # Clean non-overlapping callouts inside Panel A
-    s += '  <text x="395" y="142" text-anchor="middle" class="ok">Mode 2 (UP): Protected Staggerwing</text>\n'
-    s += '  <text x="395" y="156" text-anchor="middle" class="lbl-sm">Clean laminar flow • ±3° active roll/heave</text>\n'
-    s += '  <text x="335" y="405" text-anchor="middle" class="dim">Mode 1 (DOWN): Junkers STOL (+15°)</text>\n'
-    s += '  <text x="335" y="419" text-anchor="middle" class="lbl-sm">Slot jet CL_max ≈ 2.0 • 7.0 kn takeoff</text>\n'
-    s += '  <text x="454" y="246" text-anchor="middle" class="ok">130° Arc</text>\n'
-    s += '  <text x="454" y="259" text-anchor="middle" class="lbl-sm">(R = 58 mm)</text>\n'
-    s += '  <text x="208" y="274" text-anchor="middle" class="warn">Coaxial Hub</text>\n'
-    s += dim_line(522, y_up, 522, y_dn, "+106 mm", dx=-28, dy=36, cls="ok", marker="arrGreen", stroke="#059669")
+    # Vertical travel arrow & clear non-overlapping callouts
+    s += f'  <line x1="{xp}" y1="{y_dn-9}" x2="{xp}" y2="{y_up+10}" stroke="#0D9488" stroke-width="2.6" marker-end="url(#arrGreen)"/>\n'
+    s += dim_line(456, y_up, 456, y_dn, "70 mm", dx=24, dy=4, cls="ok", marker="arrGreen", stroke="#059669")
+    s += dim_line(284, y_up, 284, y_mw, "57 mm", dx=-24, dy=-4, cls="dim", marker="arrBlue", stroke="#0284C7")
 
-    s += '  <text x="42" y="458" class="ok">Cruise Benefit: Lifting flaperons +106 mm ABOVE Main Wing wake saves ~1 lbf!</text>\n'
-    s += '  <text x="42" y="476" class="lbl-sm">Debris Shield: Fixed lower Main Wing absorbs kelp/log hits ahead of UP flaperons.</text>\n'
-    s += '  <text x="42" y="496" class="lbl-sm">Beaching Bonus: Swinging UP before 86.5° fold adds +45 mm extra sand clearance.</text>\n'
+    s += '  <text x="366" y="142" text-anchor="middle" class="ok">Mode 2 UP (Z = +35 mm): Protected Staggerwing</text>\n'
+    s += '  <text x="366" y="156" text-anchor="middle" class="lbl-sm">100% laminar flow (4–5× above wake) • Still 10 mm inside pod roof!</text>\n'
+    s += '  <text x="300" y="396" text-anchor="middle" class="dim">Mode 1 DOWN (Z = -35 mm): Junkers STOL (+15°)</text>\n'
+    s += '  <text x="300" y="410" text-anchor="middle" class="lbl-sm">Optimal 6–8 mm Venturi slot (CL_max ≈ 2.0) • Still 10 mm inside pod belly!</text>\n'
+    s += '  <text x="150" y="254" text-anchor="middle" class="ok">Dry Bay</text>\n'
+    s += '  <text x="150" y="268" text-anchor="middle" class="lbl-sm">(Watertight Bulkhead at TE →)</text>\n'
 
-    # --- PANEL B (RIGHT): INTERNAL COAXIAL DRIVE ARCHITECTURE (TOP-DOWN POD CUTAWAY) ---
-    s += '  <rect x="574" y="68" width="442" height="448" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="592" y="92" class="sec">B. Internal Pod Coaxial Drive (ZERO Deck Boxes!)</text>\n'
-    s += '  <text x="592" y="109" class="dim">Decoupled torque: Worm-gear holds arm • Fast servos drive 20% pitch</text>\n'
+    s += '  <text x="42" y="458" class="ok">Zero External Arms: Entire sled + 70 mm travel fits flush inside 90 mm pod!</text>\n'
+    s += '  <text x="42" y="476" class="lbl-sm">Hydrodynamic Win: Narrower 6–8 mm STOL slot (DOWN) + 4–5× wake clearance (UP).</text>\n'
+    s += '  <text x="42" y="496" class="lbl-sm">Debris Shield: Fixed lower Main Wing blocks kelp/rocks ahead of UP flaperons.</text>\n'
 
-    # Top-down cutaway of the 220 mm wide Flying-Keel Pod bay (x = 670..920 -> 250 px wide, y = 135..410)
-    cx_b = 795
-    s += f'  <rect x="{cx_b-110}" y="138" width="220" height="275" rx="22" fill="#F1F5F9" stroke="#0F172A" stroke-width="2.2"/>\n'
-    s += f'  <text x="{cx_b}" y="158" text-anchor="middle" class="lbl-sm">220 mm Sealed IP68 Pod Bay (Top View)</text>\n'
+    # --- PANEL B (RIGHT): FRONT CROSS-SECTION (Y-Z CUTAWAY) OF WET-SLOT ELEVATOR SLED ---
+    s += '  <rect x="574" y="68" width="442" height="456" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="592" y="92" class="sec">B. Front Cutaway: Wet-Slot / Dry-Bay Elevator Sled</text>\n'
+    s += '  <text x="592" y="109" class="dim">Direct-drive IP68 servos ride ON sled • ZERO belts, gears, or sliding dry seals</text>\n'
 
-    # Hollow Ø16 mm Stainless Outer Mode Tube spanning pod walls (y = 258)
-    y_ax = 262
-    s += f'  <rect x="{cx_b-142}" y="{y_ax-11}" width="284" height="22" rx="4" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
-    # Inner coaxial Ø8 mm stainless pitch shafts (Port & Starboard independent halves!)
-    s += f'  <rect x="{cx_b-146}" y="{y_ax-4}" width="118" height="8" rx="2" fill="#DC2626"/>\n'
-    s += f'  <rect x="{cx_b+28}" y="{y_ax-4}" width="118" height="8" rx="2" fill="#DC2626"/>\n'
+    cx_b, cy_b = 795, 266
+    # 220 x 90 mm Flying-Keel Pod cross-section (220 px wide x 144 px tall -> x=685..905, y=194..338)
+    s += f'  <rect x="{cx_b-110}" y="{cy_b-72}" width="220" height="144" rx="28" fill="#E0F2FE" stroke="#0F172A" stroke-width="2.4"/>\n'
+    s += f'  <text x="{cx_b}" y="176" text-anchor="middle" class="lbl-sm">220 × 90 mm Free-Flooding Wing-Box (Front View)</text>\n'
 
-    # CNC Double-O-Ring Coaxial Cheek Seal Glands at pod walls (cx_b +/- 110)
+    # Flush Silicone Cheek Wiper Skirts (centerboard-style gaskets at pod walls x = cx_b +/- 110)
     for sd in (-1, 1):
-        gx = cx_b + sd * 110
-        s += f'  <rect x="{gx-8}" y="{y_ax-18}" width="16" height="36" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
-        # Streamlined 58 mm Carbon Cheek Swing-Arm extending aft (+Y in top view)
-        ax = cx_b + sd * 134
-        s += f'  <rect x="{ax-10}" y="{y_ax-10}" width="20" height="72" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-        # Flaperon root extending outward from end of 58 mm swing-arm
-        fx0 = ax + (10 if sd > 0 else -58)
-        s += f'  <rect x="{fx0}" y="{y_ax+42}" width="48" height="26" rx="5" fill="{"#F97316" if sd > 0 else "url(#wingBlue)"}" stroke="#0F172A" stroke-width="1.3"/>\n'
+        wx = cx_b + sd * 110
+        s += f'  <rect x="{wx-5}" y="{cy_b-60}" width="10" height="120" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
 
-    # 1x Central Self-Locking Worm-Gear Mode Actuator (30+ N·m, 0 W holding!)
-    s += f'  <rect x="{cx_b-34}" y="{y_ax-58}" width="68" height="44" rx="5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>\n'
-    s += f'  <text x="{cx_b}" y="{y_ax-38}" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">Worm-Gear</text>\n'
-    s += f'  <text x="{cx_b}" y="{y_ax-25}" text-anchor="middle" style="font-size:8px;fill:#FEE2E2;">30+ N·m (0 W)</text>\n'
-    s += f'  <line x1="{cx_b}" y1="{y_ax-14}" x2="{cx_b}" y2="{y_ax-10}" stroke="#0F172A" stroke-width="3"/>\n'
+    # Twin Ø10 mm stainless vertical guide rods + central gold Tr10x2 self-locking leadscrew
+    s += f'  <rect x="{cx_b-78}" y="{cy_b-68}" width="8" height="136" fill="url(#alu)" stroke="#334155" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx_b+70}" y="{cy_b-68}" width="8" height="136" fill="url(#alu)" stroke="#334155" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx_b-5}" y="{cy_b-68}" width="10" height="136" fill="#FBBF24" stroke="#92400E" stroke-width="1.2"/>\n'
 
-    # 2x Fast IP67 Brushless Pitch Servos (70-80 kg·cm, gold, driving inner Ø8 mm coaxial shafts!)
-    for sd, lbl_s in [(-1, "Port"), (1, "Stbd")]:
-        sx = cx_b + sd * 62
-        s += f'  <rect x="{sx-28}" y="{y_ax+28}" width="56" height="42" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.4"/>\n'
-        s += f'  <text x="{sx}" y="{y_ax+47}" text-anchor="middle" style="font-size:8.5px;fill:#0F172A;font-weight:700;">{lbl_s} Servo</text>\n'
-        s += f'  <text x="{sx}" y="{y_ax+60}" text-anchor="middle" style="font-size:7.8px;fill:#451A03;">75 kg·cm</text>\n'
-        s += f'  <line x1="{sx}" y1="{y_ax+28}" x2="{sx}" y2="{y_ax+4}" stroke="#DC2626" stroke-width="2.4"/>\n'
+    # Top worm-gear / motor drive cap (0 W self-locking Tr10x2 hold, >300 kgf vertical!)
+    s += f'  <rect x="{cx_b-30}" y="{cy_b-98}" width="60" height="24" rx="4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.3"/>\n'
+    s += f'  <text x="{cx_b}" y="{cy_b-83}" text-anchor="middle" style="font-size:8.2px;fill:#FFFFFF;font-weight:700;">Tr10×2 Drive</text>\n'
 
-    # ESP32 + BNO085 IMU block below servos
-    s += f'  <rect x="{cx_b-56}" y="{y_ax+86}" width="112" height="32" rx="5" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>\n'
-    s += f'  <text x="{cx_b}" y="{y_ax+105}" text-anchor="middle" class="lbl-w">ESP32 + 6-DOF IMU</text>\n'
+    # Dashed Ghost Elevator Sled at Mode 1 DOWN (Z = -35 mm -> y = cy_b + 48)
+    y_sled_dn = cy_b + 44
+    s += f'  <rect x="{cx_b-86}" y="{y_sled_dn-14}" width="172" height="28" rx="4" fill="#0284C7" fill-opacity="0.18" stroke="#0284C7" stroke-width="1.4" stroke-dasharray="4,3"/>\n'
+    s += f'  <line x1="{cx_b-166}" y1="{y_sled_dn}" x2="{cx_b-86}" y2="{y_sled_dn}" stroke="#0284C7" stroke-width="5" stroke-dasharray="4,3"/>\n'
+    s += f'  <line x1="{cx_b+86}" y1="{y_sled_dn}" x2="{cx_b+166}" y2="{y_sled_dn}" stroke="#0284C7" stroke-width="5" stroke-dasharray="4,3"/>\n'
+    s += f'  <text x="{cx_b}" y="{y_sled_dn+4}" text-anchor="middle" style="font-size:8.5px;fill:#0369A1;font-weight:700;">Mode 1 DOWN Sled (Z = -35 mm)</text>\n'
 
-    # Side annotations
-    s += f'  <text x="590" y="{y_ax-26}" class="ok">Coaxial</text>\n'
-    s += f'  <text x="590" y="{y_ax-14}" class="lbl-sm">O-Ring Seal</text>\n'
-    s += f'  <text x="998" y="{y_ax-26}" text-anchor="end" class="lbl">58 mm Arm</text>\n'
-    s += f'  <text x="998" y="{y_ax-14}" text-anchor="end" class="lbl-sm">(&lt;0.3 lbf)</text>\n'
+    # Solid Aluminum/Delrin Elevator Sled at Mode 2 UP (Z = +35 mm -> y = cy_b - 42)
+    y_sled_up = cy_b - 40
+    s += f'  <rect x="{cx_b-88}" y="{y_sled_up-18}" width="176" height="36" rx="5" fill="#475569" stroke="#0F172A" stroke-width="1.6"/>\n'
+    # 2x Gold IP68 CNC Billet Pitch Servos riding DIRECTLY on the sled!
+    for sd, lbl_s in [(-1, "Port IP68"), (1, "Stbd IP68")]:
+        sx = cx_b + sd * 44
+        s += f'  <rect x="{sx-26}" y="{y_sled_up-14}" width="52" height="28" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>\n'
+        s += f'  <text x="{sx}" y="{y_sled_up-2}" text-anchor="middle" style="font-size:7.6px;fill:#0F172A;font-weight:700;">{lbl_s}</text>\n'
+        s += f'  <text x="{sx}" y="{y_sled_up+9}" text-anchor="middle" style="font-size:7.2px;fill:#451A03;">75 kg·cm</text>\n'
+        # Direct-drive Ø8 mm stainless flaperon shaft exiting through cheek wiper!
+        x_sh0 = sx + sd * 26
+        x_sh1 = cx_b + sd * 130
+        s += f'  <line x1="{x_sh0}" y1="{y_sled_up}" x2="{x_sh1}" y2="{y_sled_up}" stroke="#DC2626" stroke-width="4.2"/>\n'
+        # Orange UP flaperon blade extending outboard
+        fx0 = cx_b + sd * 124 if sd > 0 else cx_b - 196
+        s += f'  <rect x="{fx0}" y="{y_sled_up-8}" width="72" height="16" rx="4" fill="#F97316" stroke="#9A3412" stroke-width="1.4"/>\n'
 
-    s += '  <text x="592" y="446" class="lbl">1. Worm-gear locks UP/DOWN at 0 W (handles 17–24 N·m arm load).</text>\n'
-    s += '  <text x="592" y="464" class="lbl">2. Fast servos see ONLY ≤3.6 N·m balanced 20%-chord pitch torque.</text>\n'
-    s += '  <text x="592" y="482" class="ok">3. Upgrade BOM: +$180–$260, +0.9 kg • 100% sealed inside pod!</text>\n'
+    # Central Tr10x2 bronze nut on sled
+    s += f'  <rect x="{cx_b-10}" y="{y_sled_up-10}" width="20" height="20" rx="2" fill="#D97706" stroke="#78350F" stroke-width="1.2"/>\n'
+
+    # Static IP68 Bulkhead Wire Gland + flexible 3-wire silicone pigtail loop (ZERO sliding dry seals!)
+    s += f'  <circle cx="{cx_b-34}" cy="{cy_b+4}" r="6" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>\n'
+    s += f'  <path d="M {cx_b-44} {y_sled_up+14} C {cx_b-56} {cy_b-8} {cx_b-16} {cy_b-12} {cx_b-34} {cy_b+4}" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3,2"/>\n'
+    s += f'  <text x="{cx_b+32}" y="{cy_b+6}" text-anchor="middle" style="font-size:8.2px;fill:#0F766E;font-weight:700;">← Static Bulkhead Gland</text>\n'
+
+    # Bottom Sand-Flush Drain Port
+    s += f'  <rect x="{cx_b-16}" y="{cy_b+67}" width="32" height="10" rx="2" fill="#0284C7" stroke="#0369A1" stroke-width="1.1"/>\n'
+    s += f'  <text x="{cx_b}" y="{cy_b+93}" text-anchor="middle" class="lbl-sm">Bottom Sand-Flush Drain Port (5 s freshwater hose rinse)</text>\n'
+
+    # Side labels for silicone wipers & direct shafts
+    s += f'  <text x="636" y="{y_sled_up-16}" text-anchor="middle" class="lbl">Ø8 mm Direct</text>\n'
+    s += f'  <text x="954" y="{y_sled_up-16}" text-anchor="middle" class="lbl">UP Flaperon</text>\n'
+    s += f'  <text x="636" y="{cy_b+16}" text-anchor="middle" class="ok">Silicone</text>\n'
+    s += f'  <text x="636" y="{cy_b+28}" text-anchor="middle" class="lbl-sm">Wiper Skirt</text>\n'
+    s += f'  <text x="956" y="{cy_b+16}" text-anchor="middle" class="ok">Silicone</text>\n'
+    s += f'  <text x="956" y="{cy_b+28}" text-anchor="middle" class="lbl-sm">Wiper Skirt</text>\n'
+
+    # Bottom numbered takeaways
+    s += '  <text x="592" y="438" class="lbl-sm">1. Tr10×2 leadscrew self-locks UP/DOWN at 0 W (&gt;300 kgf vertical load).</text>\n'
+    s += '  <text x="592" y="456" class="lbl-sm">2. IP68 servos ride ON sled: direct Ø8 mm drive (≤3.6 N·m, 0 belts/gears).</text>\n'
+    s += '  <text x="592" y="474" class="ok">3. Dry bay stays 100% statically sealed (only a stationary cable gland).</text>\n'
+    s += '  <text x="592" y="494" class="dim">Simpler Alt: Fixed Upper Staggerwing (Z = +35 mm) = +0.5 kn takeoff, 0 sled!</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "20-morphing-stol-staggerwing.svg").write_text(s)

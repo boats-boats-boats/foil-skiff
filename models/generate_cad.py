@@ -1290,14 +1290,17 @@ def build_model_09_modular_seating():
 # ---------------------------------------------------------------------------
 def build_model_10_morphing_stol_staggerwing():
     """
-    Combines Junkers STOL Slotted Flap (DOWN @ Z=-58 mm, +15 deg) + Protected Staggerwing Cruise (UP @ Z=+48 mm, 0/+/-3 deg):
-      - Main Wing (1,000 cm²) mounted flush on BOTTOM face of the 80 mm Flying-Keel Pod (Z_pod - 40 mm).
-      - 58 mm streamlined carbon cheek swing-arms pivot on a Ø16 mm hollow stainless outer tube driven by
-        1x internal self-locking worm-gear mode actuator (0 W holding power!).
-      - 2x fast IP67 70-80 kg·cm pitch servos drive coaxial inner Ø8 mm shafts for full independent active
-        roll/elevation/banked-turn control in BOTH UP and DOWN modes (ZERO boxes above Hard Deck!).
-      - Shown in split demonstration: Starboard (+Y, foreground) = Mode 2 UP (Protected Staggerwing Cruise),
-        Port (-Y) = Mode 1 DOWN (STOL Slotted Takeoff) so both regimes & the 130° sweep arc are unmistakable!
+    100% Internal-Pod Wet-Slot / Dry-Bay Vertical Elevator Sled (ZERO external swing-arms, belts, or sliding dry seals!):
+      - 90 mm tall Flying-Keel Pod (Z = dz - 45 to dz + 45) completely encloses the entire morphing mechanism!
+      - Main Wing (1,000 cm², 100 mm chord) mounted in the LOWER THIRD (Z = dz - 22 mm).
+      - Free-Flooding Internal Wing-Box (x = -142..-46 mm) bounded by twin watertight bulkheads:
+          * Twin Ø10 mm stainless vertical guide rods + central self-locking Tr10×2 stainless leadscrew (0 W hold!)
+          * 70 mm pure vertical travel: Mode 1 DOWN (Z = -35 mm, 6-8 mm optimal Venturi STOL slot, still 10 mm inside pod belly!)
+            ↔ Mode 2 UP (Z = +35 mm, 57 mm / 4-5× wake clearance Protected Staggerwing cruise, still 10 mm inside pod roof!).
+          * 2× individually waterproof IP68 billet pitch servos ride DIRECTLY ON the elevator sled, direct-driving the Ø8 mm
+            flaperon shafts through flush silicone cheek wiper skirts (ZERO external arms, ZERO belts/gears, ZERO sliding dry-hull seals!).
+      - Shown in split demonstration: Starboard (+Y, foreground) = Mode 2 UP (Z = +35 mm, Protected Staggerwing Cruise),
+        Port (-Y) = Mode 1 DOWN (Z = -35 mm, +15° Junkers STOL Takeoff) so both extremes of the 70 mm internal stroke are unmistakable!
     """
     mb = MeshBuilder()
     # Flush Bow-Contoured Hard Deck (0 boxes!) + contoured under-hull plate
@@ -1317,69 +1320,93 @@ def build_model_10_morphing_stol_staggerwing():
 
     dz = -620.0
     add_4x_blades(mb, z_top=-22.0, z_bot=dz, fold_deg=0.0, x_front=-450.0, x_rear=320.0, y_half=122.0)
-    # Translucent pod shell revealing worm-gear mode actuator, coaxial Ø16/Ø8 shafts & 2x fast pitch servos!
-    add_flying_keel_pod(mb, dx=0.0, dz=dz, pod_h=80.0, with_motors=False, shell_alpha=0.38)
+    # 90 mm tall translucent Flying-Keel Pod (100% encloses the internal vertical elevator sled!)
+    add_flying_keel_pod(mb, dx=0.0, dz=dz, pod_h=90.0, with_motors=False, shell_alpha=0.34)
     add_single_centerline_prop_and_rudder(mb, dx=0.0, dz=dz, show_internal=False)
 
-    # 1. Main Wing (1,000 cm², 100 mm chord) mounted FLUSH ON BOTTOM FACE of the 80 mm pod (dz - 40 mm)!
-    add_lower_wings(mb, dx=0.0, dz=dz - 38.0, half_span=560.0, root_chord=100.0, x_le=-255.0)
-    # Main wing TE sits at X = -155 mm; Coaxial swing-arm pivot axis sits at X = -115 mm, Z = dz - 4 mm (behind TE!)
-    x_piv, z_piv, R_arm = -115.0, dz - 4.0, 58.0
+    # 1. Fixed Main Wing (1,000 cm², 100 mm chord) in LOWER THIRD of 90 mm pod (Z = dz - 22 mm)
+    add_lower_wings(mb, dx=0.0, dz=dz - 22.0, half_span=560.0, root_chord=100.0, x_le=-255.0)
 
-    # 2. Coaxial Hollow Ø16 mm Outer Mode Tube (Alu) + Inner Ø8 mm Pitch Shafts (Red) + Cheek Seal Bosses
-    mb.add_cylinder_y(x_piv, -122, 122, z_piv, 9.5, C_ALU, n=12, alpha=1.0, stl=True)
-    mb.add_cylinder_y(x_piv, -126, 126, z_piv, 4.8, C_PUSHROD, n=10, alpha=1.0, stl=True)
-    # Internal 1x Central Self-Locking Worm-Gear Mode Actuator (center) + 2x Fast IP67 Pitch Servos (gold, flanking)
-    mb.add_box(x_piv - 28, x_piv + 48, -28, 28, dz - 22, dz + 26, C_PUSHROD, 1.0, stl=False)  # Worm-gear mode actuator
+    # 2. Free-Flooding Internal Wing-Box (x = -142..-46 mm) separated from Dry Bay by twin curved watertight bulkheads!
+    x_sled = -94.0
+    def add_pod_bulkhead(bx, ry=105.0, rz=42.0, half_t=3.5):
+        n_ang = 20
+        rings = []
+        for xx in (bx - half_t, bx + half_t):
+            ring = []
+            for i in range(n_ang):
+                a = 2 * math.pi * i / n_ang
+                ca, sa = math.cos(a), math.sin(a)
+                ring.append((xx, ry * math.copysign(abs(ca) ** 0.85, ca), dz + rz * math.copysign(abs(sa) ** 0.85, sa)))
+            rings.append(ring)
+        mb.add_loft(rings, C_WING_UP, 0.90, stl=False, cap_ends=True)
+
+    add_pod_bulkhead(-145.0)
+    add_pod_bulkhead(-43.0)
+    # Twin Ø10 mm stainless vertical guide rods (at y = ±56 mm, 100% inside curved pod!) + central gold Tr10×2 leadscrew
+    for ry in (-56.0, 56.0):
+        mb.add_rod((x_sled, ry, dz - 36.0), (x_sled, ry, dz + 36.0), 4.5, C_ALU, n=10, alpha=1.0, stl=True)
+    mb.add_rod((x_sled, 0.0, dz - 41.0), (x_sled, 0.0, dz + 41.0), 5.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+    # Compact red top leadscrew drive cap tucked inside roof contour
+    mb.add_box(x_sled - 18, x_sled + 18, -20, 20, dz + 28, dz + 41, C_PUSHROD, 1.0, stl=False)
+    # Curved flush silicone cheek wiper skirts hugging the exact superellipse pod wall from z = -34 to +34 mm!
     for side in (-1, 1):
-        mb.add_box(x_piv - 24, x_piv + 28, side * 66 - 18, side * 66 + 18, dz - 20, dz + 22, C_KEVLAR, 1.0, stl=False)
-    mb.add_box(x_piv + 62, x_piv + 135, -34, 34, dz - 12, dz + 16, C_WING_UP, 1.0, stl=False)  # ESP32/IMU
-    mb.add_box(x_piv + 150, x_piv + 265, -58, 58, dz - 36, dz - 6, C_ALU, 1.0, stl=False)       # 75100 VESC
+        wiper_pts = []
+        for k in range(9):
+            t = -1.0 + 2.0 * k / 8.0  # -1..+1
+            sa = 0.76 * t
+            ca = math.sqrt(max(0.0, 1.0 - sa * sa))
+            wy = side * 110.5 * (ca ** 0.85)
+            wz = dz + 45.0 * math.copysign(abs(sa) ** 0.85, sa)
+            wiper_pts.append((x_sled, wy, wz, 5.0))
+        mb.add_tube_along_path(wiper_pts, C_CARBON_DARK, n=8, alpha=0.95, stl=True, cap_ends=True)
 
-    # 3. Split Flaperons on 58 mm Streamlined Cheek Swing-Arms:
-    #    - Starboard (+Y, foreground!): Mode 2 UP (phi = +64 deg -> Z = +48 mm above pod center, Protected Staggerwing Cruise!)
-    #    - Port (-Y): Mode 1 DOWN (phi = -64 deg -> Z = -56 mm, Junkers STOL Takeoff +15 deg!)
-    fl_sec = naca4_section(0.02, 0.4, 0.11, 62.0, n=10)
-    for side, phi_deg, pitch_deg, col in [(1, 64.0, 2.0, C_FLAP_R), (-1, -64.0, 16.0, C_FLAP_L)]:
-        phi = math.radians(phi_deg)
-        fx = x_piv + R_arm * math.cos(phi)
-        fz = z_piv + R_arm * math.sin(phi)
-        # Streamlined 58 mm carbon cheek swing-arm hugging pod wall at Y = side * 118 mm
-        mb.add_rod((x_piv, side * 118, z_piv), (fx, side * 118, fz), 10.5, C_CARBON_DARK, n=10, alpha=1.0, stl=True)
-        # Gold coaxial pitch pivot pin at flaperon 20%-chord root
-        mb.add_cylinder_y(fx, side * 110, side * 130, fz, 7.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
-        # Flaperon lofted blade
+    # Dry Bay behind aft watertight bulkhead: Static IP68 wire gland + ESP32/IMU + 75100 VESC (ZERO sliding dry seals!)
+    mb.add_rod((-52, 20, dz), (-32, 20, dz), 6.5, C_PUSHROD, n=10, alpha=1.0, stl=False)      # Static bulkhead cable gland
+    mb.add_box(-22, 62, -34, 34, dz - 16, dz + 16, C_WING_UP, 1.0, stl=False)                 # ESP32 + 6-DOF IMU
+    mb.add_box(85, 220, -56, 56, dz - 32, dz - 2, C_ALU, 1.0, stl=False)                      # 75100 VESC
+
+    # 3. Split Demonstration of the 70 mm Pure Vertical Internal Elevator Sled:
+    #    - Starboard (+Y, foreground!): Mode 2 UP (Z = +32 mm, Protected Staggerwing Cruise — 54 mm / 4-5× above wake!)
+    #    - Port (-Y): Mode 1 DOWN (Z = -32 mm, +15° Junkers STOL Takeoff — 6-8 mm optimal Venturi slot!)
+    fl_sec = naca4_section(0.02, 0.4, 0.11, 60.0, n=10)
+    for side, z_off, pitch_deg, col in [(1, 32.0, 1.5, C_FLAP_R), (-1, -32.0, 15.0, C_FLAP_L)]:
+        fz = dz + z_off
+        # Internal Aluminum Elevator Sled half-carriage riding inside pod curve on the Ø10 mm guide rod + Tr10×2 leadscrew
+        y0, y1 = (0, 66) if side > 0 else (-66, 0)
+        mb.add_box(x_sled - 18, x_sled + 18, y0, y1, fz - 8, fz + 8, C_ALU, 1.0, stl=True)
+        # Individually waterproof IP68 billet pitch servo riding DIRECTLY ON the sled (0 belts/gears!)
+        mb.add_box(x_sled - 15, x_sled + 15, side * 34 - 16, side * 34 + 16, fz - 9, fz + 9, C_KEVLAR, 1.0, stl=False)
+        # Direct-drive Ø8 mm stainless shaft straight from IP68 servo through flush silicone wiper into flaperon 20%-chord root!
+        mb.add_cylinder_y(x_sled, side * 48, side * 98, fz, 4.2, C_PUSHROD, n=10, alpha=1.0, stl=True)
+        # Flaperon lofted blade starting cleanly flush at the curved pod shoulder (Y = ±84 mm -> ±560 mm)
         rad = math.radians(pitch_deg)
         rings = []
-        for dist in (122, 330, 560):
+        for dist in (84, 320, 560):
             y = side * dist
-            rings.append([(fx + (xl - 12.4) * math.cos(rad) + zl * math.sin(rad), y, fz - (xl - 12.4) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
+            rings.append([(x_sled + (xl - 12.0) * math.cos(rad) + zl * math.sin(rad), y, fz - (xl - 12.0) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
         mb.add_loft(rings, col, 1.0, stl=True)
 
-    # Translucent teal 130-deg sweep-arc guide ribbon on foreground Starboard side (+Y) showing travel behind Main Wing TE!
-    arc_pts = []
-    for k in range(11):
-        a = math.radians(-64.0 + 128.0 * k / 10.0)
-        arc_pts.append((x_piv + R_arm * math.cos(a), 145.0, z_piv + R_arm * math.sin(a), 4.5))
-    mb.add_tube_along_path(arc_pts, C_WING_UP, n=6, alpha=0.65, stl=False, cap_ends=True)
+    # Translucent vertical stroke guide bar on foreground Starboard cheek showing pure vertical internal travel!
+    mb.add_rod((x_sled, 126.0, dz - 32.0), (x_sled, 126.0, dz + 32.0), 3.6, C_WING_UP, n=8, alpha=0.75, stl=False)
 
-    write_binary_stl(mb, MODELS_DIR / "10_morphing_stol_staggerwing_pod.stl", "FoilSkiff 10 (Upgrade): Morphing STOL-to-Staggerwing Flaperon Pod (mm)")
+    write_binary_stl(mb, MODELS_DIR / "10_morphing_stol_staggerwing_pod.stl", "FoilSkiff 10 (Upgrade): 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (mm)")
     callouts = [
-        ((-920, 0, 56), "left", 96, 245, "100% Flush Bow-Contoured Hard Deck", "ZERO deck boxes • All 3 actuators inside sealed pod!"),
-        ((-100, 440, dz + 48), "left", 218, 245, "Mode 2 (UP): Protected Staggerwing!", "+106 mm debris shield • Above main wing wake (-1 lbf)!"),
-        ((-60, 145, dz - 4), "left", 355, 245, "58 mm Cheek Swing-Arm (130° Arc)", "Clears cleanly behind Main Wing TE (0°→2 s switch)"),
-        ((-220, 460, dz - 38), "left", 488, 245, "Main Wing Flush on Pod Bottom", "Fixed carbon wing shields UP flaperons from debris!"),
-        ((320, -122, -290), "right", 104, 795, "Clean 4× Blades (0 External Pushrods!)", "Self-contained pod • No pushrod fold binding"),
-        ((-115, 0, dz + 12), "right", 232, 795, "1× Worm-Gear + 2× Coaxial Pitch Servos", "Worm self-locks (0 W hold); Ø8 mm inner pitch shafts"),
-        ((-90, -450, dz - 58), "right", 372, 795, "Mode 1 (DOWN): Junkers STOL Takeoff", "+15° slotted flap (CL_max ≈ 2.0) for 7.0 kn lift-off!"),
-        ((725, 0, dz), "right", 495, 800, "Long-Range Single 65161 + 10\" CNC Prop", "+1.5–2.5 nm bonus from clean out-of-wake UP cruise!"),
+        ((-920, 0, 56), "left", 96, 245, "100% Flush Bow-Contoured Hard Deck", "ZERO deck boxes • Entire sled fits inside 90 mm pod!"),
+        ((-94, 420, dz + 35), "left", 218, 245, "Mode 2 UP (Z = +35 mm): Staggerwing", "57 mm (4–5×) above wake • Still 10 mm inside pod roof!"),
+        ((-94, 128, dz), "left", 355, 245, "70 mm Pure Vertical Internal Stroke", "ZERO external arms • Flush silicone cheek wiper skirts"),
+        ((-220, 440, dz - 22), "left", 488, 245, "Fixed Main Wing (Lower Third, -22 mm)", "Shields UP flaperons from kelp/logs • 6–8 mm STOL slot"),
+        ((320, -122, -290), "right", 104, 795, "Clean 4× Blades (0 External Pushrods!)", "Self-contained 90 mm pod • No fold binding"),
+        ((-94, 0, dz + 35), "right", 232, 795, "Wet-Slot Sled: Tr10×2 + IP68 Servos", "Direct Ø8 mm drive ON sled • 0 belts, 0 sliding dry seals!"),
+        ((-94, -420, dz - 35), "right", 372, 795, "Mode 1 DOWN (Z = -35 mm): STOL (+15°)", "Optimal 6–8 mm Venturi slot • Still 10 mm above pod belly!"),
+        ((725, 0, dz), "right", 495, 800, "Dry IP68 Bay + Static Bulkhead Gland", "Only a stationary servo cable enters dry battery/VESC bay"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "19-morphing-stol-staggerwing-3d-cad.svg",
-        "3D CAD Model 10 (Upgrade): Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod",
-        "Split Demo: Foreground = Mode 2 UP (Protected Staggerwing Cruise) | Far Side = Mode 1 DOWN (STOL Takeoff) • All 3 Actuators Inside Pod",
+        "3D CAD Model 10 (Upgrade): 100% Internal-Pod Morphing STOL-to-Staggerwing Sled",
+        "Split Demo: Foreground = Mode 2 UP (+35 mm Staggerwing) | Far = Mode 1 DOWN (-35 mm STOL) • ZERO External Arms or Belts!",
         callouts, az_deg=-134, el_deg=23, scale=0.37, z_center=295,
-        footer="Interactive 3D STL: models/10_morphing_stol_staggerwing_pod.stl (Dual-Mode STOL + Staggerwing Upgrade)",
+        footer="Interactive 3D STL: models/10_morphing_stol_staggerwing_pod.stl (100% Internal-Pod Wet-Slot Elevator Sled)",
     )
     render_openscad_png(mb, RENDERS_DIR / "10-morphing-stol-staggerwing-3d.png", "10,0,-305,66,0,226,3150")
 

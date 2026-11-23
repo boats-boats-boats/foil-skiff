@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 540" width="1040" height="540">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 548" width="1040" height="548">
   <defs>
     <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
       <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
@@ -57,75 +57,89 @@
       .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
     </style>
   </defs>
-  <rect x="1" y="1" width="1038" height="538" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-  <rect x="12" y="56" width="1016" height="472" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">20. Dual-Mode Morphing STOL-to-Staggerwing Flaperon (Sweep Kinematics &amp; Coaxial Drive)</text>
-  <text x="24" y="46" class="sub">Bottom-Mounted Main Wing + 58 mm Cheek Swing-Arm: Mode 1 DOWN (STOL Takeoff) ↔ Mode 2 UP (Protected Out-of-Wake Cruise)</text>
-  <rect x="24" y="68" width="530" height="448" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="92" class="sec">A. Side-Profile 130° Sweep Behind Main Wing TE</text>
-  <text x="42" y="109" class="ok">STOL takeoff (CL_max ≈ 2.0) + Protected laminar cruise (+106 mm up!)</text>
-  <rect x="34" y="118" width="510" height="314" rx="6" fill="url(#water)"/>
-  <rect x="44" y="198" width="470" height="132" rx="34" fill="#334155" fill-opacity="0.22" stroke="#475569" stroke-width="1.6" stroke-dasharray="6,3"/>
-  <text x="64" y="216" class="lbl-sm">80 mm Flying-Keel Pod Profile (Dashed)</text>
-  <polygon points="86.0,326.0 86.2,324.9 87.1,323.9 88.6,322.8 90.8,321.8 93.5,320.8 96.8,319.9 100.7,319.0 105.1,318.2 110.0,317.6 115.4,317.0 121.2,316.7 127.3,316.4 133.8,316.4 140.5,316.5 147.4,316.7 154.5,317.2 161.7,317.7 168.9,318.4 176.1,319.2 183.2,320.0 190.2,320.9 197.1,321.9 203.7,322.9 210.1,323.9 216.1,324.9 221.8,325.9 227.0,326.8 231.8,327.8 236.2,328.6 240.0,329.4 243.3,330.1 246.0,330.7 248.1,331.1 249.7,331.5 250.6,331.7 250.9,331.8 250.6,331.8 249.6,331.8 248.1,331.8 245.9,331.8 243.1,331.9 239.8,332.0 235.9,332.0 231.5,332.1 226.6,332.2 221.2,332.2 215.5,332.3 209.4,332.4 203.0,332.5 196.4,332.6 189.5,332.7 182.5,332.8 175.4,332.9 168.2,332.9 161.1,333.0 154.0,333.0 147.0,333.0 140.2,332.9 133.7,332.9 127.3,332.8 121.3,332.6 115.7,332.4 110.4,332.2 105.6,331.8 101.2,331.4 97.3,330.9 94.0,330.3 91.2,329.6 89.0,328.8 87.4,328.0 86.4,327.0" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.8"/>
-  <text x="168" y="354" text-anchor="middle" class="lbl">Fixed Main Wing (Bottom of Pod)</text>
-  <path d="M 250 322 L 538 338 L 538 378 L 250 338 Z" fill="#94A3B8" fill-opacity="0.34"/>
-  <text x="458" y="365" text-anchor="middle" class="lbl-sm">Main Wing Wake (Turbulent)</text>
-  <path d="M 353.6 355.4 A 95 95 0 0 0 353.6 184.6" fill="none" stroke="#0D9488" stroke-width="2.6" stroke-dasharray="6,3" marker-end="url(#arrGreen)"/>
-  <line x1="312" y1="270" x2="353.6" y2="355.4" stroke="#0284C7" stroke-width="4.5" stroke-dasharray="5,3" stroke-linecap="round"/>
-  <line x1="312" y1="270" x2="353.6" y2="184.6" stroke="#0F172A" stroke-width="5.5" stroke-linecap="round"/>
-  <circle cx="312" cy="270" r="7.5" fill="#DC2626" stroke="#0F172A" stroke-width="1.5"/>
-  <polygon points="333.6,352.4 334.0,351.7 334.7,351.2 335.7,350.7 337.2,350.3 339.0,350.1 341.1,350.0 343.6,350.0 346.4,350.2 349.4,350.5 352.7,350.9 356.2,351.6 360.0,352.3 363.9,353.3 367.9,354.3 372.0,355.5 376.2,356.9 380.4,358.3 384.6,359.8 388.8,361.4 393.0,363.0 397.0,364.6 401.0,366.2 404.8,367.8 408.5,369.4 411.9,370.9 415.2,372.4 418.2,373.8 420.9,375.1 423.4,376.3 425.5,377.4 427.4,378.3 428.9,379.1 430.1,379.7 431.0,380.1 431.5,380.4 431.7,380.5 431.5,380.5 430.9,380.3 430.0,380.1 428.7,379.8 427.0,379.5 425.0,379.0 422.6,378.5 419.9,377.9 417.0,377.3 413.8,376.5 410.3,375.8 406.6,374.9 402.8,374.1 398.8,373.2 394.6,372.2 390.4,371.3 386.1,370.3 381.8,369.3 377.5,368.2 373.2,367.2 369.1,366.2 365.0,365.1 361.1,364.1 357.3,363.1 353.7,362.1 350.4,361.1 347.3,360.2 344.4,359.2 341.9,358.3 339.7,357.3 337.7,356.4 336.2,355.6 335.0,354.7 334.2,353.9 333.7,353.1" fill="url(#wingBlue)" fill-opacity="0.88" stroke="#0369A1" stroke-width="1.6"/>
-  <circle cx="353.6" cy="355.4" r="4.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <path d="M 185 338 Q 275 340 338 348 Q 395 358 455 390" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>
-  <polygon points="333.6,183.6 333.8,182.9 334.3,182.1 335.2,181.4 336.5,180.7 338.1,179.9 340.2,179.2 342.5,178.6 345.3,178.0 348.3,177.4 351.6,177.0 355.1,176.6 358.9,176.3 362.9,176.1 367.1,176.0 371.4,176.1 375.8,176.2 380.2,176.4 384.7,176.7 389.2,177.0 393.6,177.4 397.9,177.9 402.2,178.3 406.3,178.8 410.3,179.4 414.0,179.9 417.5,180.4 420.8,180.9 423.8,181.4 426.5,181.9 428.9,182.3 430.9,182.7 432.6,183.0 433.9,183.3 434.9,183.5 435.5,183.6 435.6,183.6 435.4,183.6 434.9,183.7 433.9,183.7 432.5,183.8 430.8,183.9 428.8,184.1 426.4,184.2 423.6,184.4 420.6,184.6 417.3,184.8 413.8,185.0 410.0,185.2 406.1,185.4 402.0,185.6 397.7,185.9 393.4,186.1 389.0,186.4 384.6,186.6 380.2,186.8 375.8,186.9 371.5,187.1 367.3,187.2 363.2,187.3 359.4,187.4 355.6,187.4 352.2,187.4 348.9,187.3 345.9,187.2 343.2,187.0 340.8,186.7 338.7,186.4 337.0,186.0 335.6,185.5 334.6,184.9 333.9,184.3" fill="#F97316" stroke="#9A3412" stroke-width="1.6"/>
-  <circle cx="353.6" cy="184.6" r="4.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <path d="M 190 176 L 520 176" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>
-  <text x="395" y="142" text-anchor="middle" class="ok">Mode 2 (UP): Protected Staggerwing</text>
-  <text x="395" y="156" text-anchor="middle" class="lbl-sm">Clean laminar flow • ±3° active roll/heave</text>
-  <text x="335" y="405" text-anchor="middle" class="dim">Mode 1 (DOWN): Junkers STOL (+15°)</text>
-  <text x="335" y="419" text-anchor="middle" class="lbl-sm">Slot jet CL_max ≈ 2.0 • 7.0 kn takeoff</text>
-  <text x="454" y="246" text-anchor="middle" class="ok">130° Arc</text>
-  <text x="454" y="259" text-anchor="middle" class="lbl-sm">(R = 58 mm)</text>
-  <text x="208" y="274" text-anchor="middle" class="warn">Coaxial Hub</text>
-  <line x1="522.0" y1="184.6" x2="522.0" y2="355.4" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
-  <text x="494.0" y="306.0" text-anchor="middle" class="ok">+106 mm</text>
-  <text x="42" y="458" class="ok">Cruise Benefit: Lifting flaperons +106 mm ABOVE Main Wing wake saves ~1 lbf!</text>
-  <text x="42" y="476" class="lbl-sm">Debris Shield: Fixed lower Main Wing absorbs kelp/log hits ahead of UP flaperons.</text>
-  <text x="42" y="496" class="lbl-sm">Beaching Bonus: Swinging UP before 86.5° fold adds +45 mm extra sand clearance.</text>
-  <rect x="574" y="68" width="442" height="448" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="592" y="92" class="sec">B. Internal Pod Coaxial Drive (ZERO Deck Boxes!)</text>
-  <text x="592" y="109" class="dim">Decoupled torque: Worm-gear holds arm • Fast servos drive 20% pitch</text>
-  <rect x="685" y="138" width="220" height="275" rx="22" fill="#F1F5F9" stroke="#0F172A" stroke-width="2.2"/>
-  <text x="795" y="158" text-anchor="middle" class="lbl-sm">220 mm Sealed IP68 Pod Bay (Top View)</text>
-  <rect x="653" y="251" width="284" height="22" rx="4" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>
-  <rect x="649" y="258" width="118" height="8" rx="2" fill="#DC2626"/>
-  <rect x="823" y="258" width="118" height="8" rx="2" fill="#DC2626"/>
-  <rect x="677" y="244" width="16" height="36" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
-  <rect x="651" y="252" width="20" height="72" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
-  <rect x="603" y="304" width="48" height="26" rx="5" fill="url(#wingBlue)" stroke="#0F172A" stroke-width="1.3"/>
-  <rect x="897" y="244" width="16" height="36" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
-  <rect x="919" y="252" width="20" height="72" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
-  <rect x="939" y="304" width="48" height="26" rx="5" fill="#F97316" stroke="#0F172A" stroke-width="1.3"/>
-  <rect x="761" y="204" width="68" height="44" rx="5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>
-  <text x="795" y="224" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">Worm-Gear</text>
-  <text x="795" y="237" text-anchor="middle" style="font-size:8px;fill:#FEE2E2;">30+ N·m (0 W)</text>
-  <line x1="795" y1="248" x2="795" y2="252" stroke="#0F172A" stroke-width="3"/>
-  <rect x="705" y="290" width="56" height="42" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.4"/>
-  <text x="733" y="309" text-anchor="middle" style="font-size:8.5px;fill:#0F172A;font-weight:700;">Port Servo</text>
-  <text x="733" y="322" text-anchor="middle" style="font-size:7.8px;fill:#451A03;">75 kg·cm</text>
-  <line x1="733" y1="290" x2="733" y2="266" stroke="#DC2626" stroke-width="2.4"/>
-  <rect x="829" y="290" width="56" height="42" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.4"/>
-  <text x="857" y="309" text-anchor="middle" style="font-size:8.5px;fill:#0F172A;font-weight:700;">Stbd Servo</text>
-  <text x="857" y="322" text-anchor="middle" style="font-size:7.8px;fill:#451A03;">75 kg·cm</text>
-  <line x1="857" y1="290" x2="857" y2="266" stroke="#DC2626" stroke-width="2.4"/>
-  <rect x="739" y="348" width="112" height="32" rx="5" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>
-  <text x="795" y="367" text-anchor="middle" class="lbl-w">ESP32 + 6-DOF IMU</text>
-  <text x="590" y="236" class="ok">Coaxial</text>
-  <text x="590" y="248" class="lbl-sm">O-Ring Seal</text>
-  <text x="998" y="236" text-anchor="end" class="lbl">58 mm Arm</text>
-  <text x="998" y="248" text-anchor="end" class="lbl-sm">(&lt;0.3 lbf)</text>
-  <text x="592" y="446" class="lbl">1. Worm-gear locks UP/DOWN at 0 W (handles 17–24 N·m arm load).</text>
-  <text x="592" y="464" class="lbl">2. Fast servos see ONLY ≤3.6 N·m balanced 20%-chord pitch torque.</text>
-  <text x="592" y="482" class="ok">3. Upgrade BOM: +$180–$260, +0.9 kg • 100% sealed inside pod!</text>
+  <rect x="1" y="1" width="1038" height="546" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1016" height="480" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">20. 100% Internal-Pod Morphing STOL-to-Staggerwing Flaperon (Wet-Slot Elevator Sled)</text>
+  <text x="24" y="46" class="sub">90 mm Pod Envelope (ZERO External Arms, Belts, or Sliding Dry-Hull Seals) • Mode 1 DOWN (-35 mm) ↔ Mode 2 UP (+35 mm)</text>
+  <rect x="24" y="68" width="530" height="456" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="92" class="sec">A. Side Profile: 100% Inside 90 mm Pod (70 mm Stroke)</text>
+  <text x="42" y="109" class="ok">6–8 mm Venturi slot (DOWN) ↔ 57 mm / 4–5× wake clearance (UP)</text>
+  <rect x="34" y="118" width="510" height="316" rx="6" fill="url(#water)"/>
+  <rect x="44" y="194" width="474" height="144" rx="36" fill="#334155" fill-opacity="0.16" stroke="#334155" stroke-width="2"/>
+  <rect x="304" y="196" width="100" height="140" fill="#BAE6FD" fill-opacity="0.45" stroke="none"/>
+  <rect x="294" y="195" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <rect x="404" y="195" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <text x="168" y="214" text-anchor="middle" class="lbl-sm">Dry IP68 Bay (Battery + VESC + IMU)</text>
+  <text x="354" y="211" text-anchor="middle" style="font-size:8.5px;fill:#0F766E;font-weight:700;">Wet Wing-Box</text>
+  <rect x="330" y="198" width="5" height="136" fill="url(#alu)" stroke="#475569" stroke-width="0.9"/>
+  <rect x="373" y="198" width="5" height="136" fill="url(#alu)" stroke="#475569" stroke-width="0.9"/>
+  <rect x="351" y="198" width="6" height="136" fill="#FBBF24" stroke="#92400E" stroke-width="1"/>
+  <rect x="345" y="206" width="18" height="120" rx="4" fill="none" stroke="#0F172A" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <polygon points="118.0,301.0 118.2,300.0 119.1,298.9 120.6,297.9 122.6,296.9 125.3,296.0 128.5,295.0 132.2,294.2 136.5,293.5 141.3,292.8 146.5,292.3 152.1,291.9 158.1,291.7 164.3,291.7 170.9,291.8 177.6,292.0 184.5,292.5 191.4,293.0 198.4,293.6 205.4,294.4 212.3,295.2 219.1,296.1 225.7,297.0 232.1,298.0 238.3,298.9 244.2,299.9 249.7,300.9 254.8,301.8 259.4,302.7 263.6,303.5 267.3,304.3 270.5,305.0 273.1,305.5 275.2,306.0 276.7,306.3 277.6,306.5 277.9,306.6 277.6,306.6 276.7,306.6 275.2,306.6 273.0,306.7 270.3,306.7 267.1,306.8 263.3,306.8 259.1,306.9 254.3,307.0 249.1,307.1 243.6,307.1 237.7,307.2 231.5,307.3 225.0,307.4 218.4,307.5 211.6,307.6 204.7,307.7 197.7,307.7 190.8,307.8 183.9,307.8 177.2,307.7 170.6,307.7 164.2,307.7 158.1,307.6 152.3,307.4 146.8,307.2 141.7,307.0 137.0,306.6 132.8,306.2 129.0,305.7 125.8,305.2 123.1,304.5 120.9,303.7 119.3,302.9 118.4,302.0" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.8"/>
+  <text x="195" y="327" text-anchor="middle" class="lbl">Fixed Main Wing (Z = -22 mm)</text>
+  <path d="M 278 297 L 538 303 L 538 327 L 278 311 Z" fill="#94A3B8" fill-opacity="0.38"/>
+  <text x="482" y="319" text-anchor="middle" class="lbl-sm">~12 mm Wake</text>
+  <polygon points="335.0,319.0 335.3,318.4 335.9,317.8 336.9,317.4 338.3,317.0 340.0,316.8 342.0,316.6 344.3,316.6 346.9,316.7 349.8,316.9 352.9,317.3 356.3,317.9 359.8,318.5 363.5,319.3 367.3,320.3 371.2,321.3 375.1,322.5 379.1,323.8 383.1,325.1 387.1,326.5 391.0,328.0 394.9,329.4 398.6,330.9 402.2,332.4 405.7,333.8 409.0,335.2 412.0,336.5 414.9,337.8 417.5,339.0 419.8,340.0 421.9,341.0 423.6,341.9 425.1,342.6 426.2,343.1 427.1,343.5 427.6,343.8 427.7,343.8 427.5,343.8 427.0,343.7 426.1,343.5 424.9,343.3 423.3,343.0 421.4,342.6 419.1,342.1 416.6,341.6 413.8,341.0 410.8,340.4 407.5,339.7 404.1,339.0 400.4,338.3 396.6,337.5 392.7,336.7 388.7,335.8 384.7,335.0 380.6,334.1 376.5,333.2 372.5,332.3 368.6,331.4 364.7,330.5 361.0,329.6 357.4,328.7 354.1,327.8 350.9,327.0 348.0,326.1 345.3,325.3 342.9,324.4 340.7,323.6 338.9,322.8 337.4,321.9 336.3,321.2 335.5,320.4 335.1,319.7" fill="url(#wingBlue)" fill-opacity="0.88" stroke="#0369A1" stroke-width="1.6"/>
+  <circle cx="354" cy="322" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <path d="M 225 317 Q 290 316 348 324 Q 402 336 448 354" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <polygon points="335.0,209.0 335.1,208.3 335.6,207.6 336.5,206.9 337.7,206.2 339.2,205.5 341.1,204.9 343.4,204.3 345.9,203.7 348.8,203.2 351.9,202.8 355.2,202.4 358.8,202.1 362.6,202.0 366.5,201.9 370.5,201.9 374.7,202.0 378.8,202.2 383.1,202.5 387.3,202.8 391.4,203.2 395.5,203.6 399.5,204.0 403.4,204.5 407.1,205.0 410.6,205.5 413.9,206.0 417.0,206.5 419.8,206.9 422.4,207.4 424.6,207.8 426.5,208.1 428.1,208.4 429.4,208.7 430.3,208.9 430.8,209.0 431.0,209.0 430.8,209.0 430.3,209.0 429.4,209.1 428.1,209.2 426.5,209.3 424.5,209.4 422.3,209.6 419.7,209.7 416.9,209.9 413.8,210.1 410.4,210.3 406.9,210.5 403.2,210.7 399.3,210.9 395.3,211.1 391.3,211.4 387.1,211.6 382.9,211.8 378.8,212.0 374.7,212.1 370.6,212.3 366.7,212.4 362.9,212.5 359.2,212.6 355.7,212.6 352.4,212.6 349.4,212.5 346.5,212.4 344.0,212.2 341.7,211.9 339.8,211.6 338.1,211.2 336.8,210.8 335.9,210.2 335.2,209.6" fill="#F97316" stroke="#9A3412" stroke-width="1.6"/>
+  <circle cx="354" cy="210" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <path d="M 195 192 L 526 192" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>
+  <line x1="354" y1="313" x2="354" y2="220" stroke="#0D9488" stroke-width="2.6" marker-end="url(#arrGreen)"/>
+  <line x1="456.0" y1="210.0" x2="456.0" y2="322.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
+  <text x="480.0" y="270.0" text-anchor="middle" class="ok">70 mm</text>
+  <line x1="284.0" y1="210.0" x2="284.0" y2="301.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="260.0" y="251.5" text-anchor="middle" class="dim">57 mm</text>
+  <text x="366" y="142" text-anchor="middle" class="ok">Mode 2 UP (Z = +35 mm): Protected Staggerwing</text>
+  <text x="366" y="156" text-anchor="middle" class="lbl-sm">100% laminar flow (4–5× above wake) • Still 10 mm inside pod roof!</text>
+  <text x="300" y="396" text-anchor="middle" class="dim">Mode 1 DOWN (Z = -35 mm): Junkers STOL (+15°)</text>
+  <text x="300" y="410" text-anchor="middle" class="lbl-sm">Optimal 6–8 mm Venturi slot (CL_max ≈ 2.0) • Still 10 mm inside pod belly!</text>
+  <text x="150" y="254" text-anchor="middle" class="ok">Dry Bay</text>
+  <text x="150" y="268" text-anchor="middle" class="lbl-sm">(Watertight Bulkhead at TE →)</text>
+  <text x="42" y="458" class="ok">Zero External Arms: Entire sled + 70 mm travel fits flush inside 90 mm pod!</text>
+  <text x="42" y="476" class="lbl-sm">Hydrodynamic Win: Narrower 6–8 mm STOL slot (DOWN) + 4–5× wake clearance (UP).</text>
+  <text x="42" y="496" class="lbl-sm">Debris Shield: Fixed lower Main Wing blocks kelp/rocks ahead of UP flaperons.</text>
+  <rect x="574" y="68" width="442" height="456" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="592" y="92" class="sec">B. Front Cutaway: Wet-Slot / Dry-Bay Elevator Sled</text>
+  <text x="592" y="109" class="dim">Direct-drive IP68 servos ride ON sled • ZERO belts, gears, or sliding dry seals</text>
+  <rect x="685" y="194" width="220" height="144" rx="28" fill="#E0F2FE" stroke="#0F172A" stroke-width="2.4"/>
+  <text x="795" y="176" text-anchor="middle" class="lbl-sm">220 × 90 mm Free-Flooding Wing-Box (Front View)</text>
+  <rect x="680" y="206" width="10" height="120" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <rect x="900" y="206" width="10" height="120" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <rect x="717" y="198" width="8" height="136" fill="url(#alu)" stroke="#334155" stroke-width="1.1"/>
+  <rect x="865" y="198" width="8" height="136" fill="url(#alu)" stroke="#334155" stroke-width="1.1"/>
+  <rect x="790" y="198" width="10" height="136" fill="#FBBF24" stroke="#92400E" stroke-width="1.2"/>
+  <rect x="765" y="168" width="60" height="24" rx="4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.3"/>
+  <text x="795" y="183" text-anchor="middle" style="font-size:8.2px;fill:#FFFFFF;font-weight:700;">Tr10×2 Drive</text>
+  <rect x="709" y="296" width="172" height="28" rx="4" fill="#0284C7" fill-opacity="0.18" stroke="#0284C7" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="629" y1="310" x2="709" y2="310" stroke="#0284C7" stroke-width="5" stroke-dasharray="4,3"/>
+  <line x1="881" y1="310" x2="961" y2="310" stroke="#0284C7" stroke-width="5" stroke-dasharray="4,3"/>
+  <text x="795" y="314" text-anchor="middle" style="font-size:8.5px;fill:#0369A1;font-weight:700;">Mode 1 DOWN Sled (Z = -35 mm)</text>
+  <rect x="707" y="208" width="176" height="36" rx="5" fill="#475569" stroke="#0F172A" stroke-width="1.6"/>
+  <rect x="725" y="212" width="52" height="28" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>
+  <text x="751" y="224" text-anchor="middle" style="font-size:7.6px;fill:#0F172A;font-weight:700;">Port IP68</text>
+  <text x="751" y="235" text-anchor="middle" style="font-size:7.2px;fill:#451A03;">75 kg·cm</text>
+  <line x1="725" y1="226" x2="665" y2="226" stroke="#DC2626" stroke-width="4.2"/>
+  <rect x="599" y="218" width="72" height="16" rx="4" fill="#F97316" stroke="#9A3412" stroke-width="1.4"/>
+  <rect x="813" y="212" width="52" height="28" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>
+  <text x="839" y="224" text-anchor="middle" style="font-size:7.6px;fill:#0F172A;font-weight:700;">Stbd IP68</text>
+  <text x="839" y="235" text-anchor="middle" style="font-size:7.2px;fill:#451A03;">75 kg·cm</text>
+  <line x1="865" y1="226" x2="925" y2="226" stroke="#DC2626" stroke-width="4.2"/>
+  <rect x="919" y="218" width="72" height="16" rx="4" fill="#F97316" stroke="#9A3412" stroke-width="1.4"/>
+  <rect x="785" y="216" width="20" height="20" rx="2" fill="#D97706" stroke="#78350F" stroke-width="1.2"/>
+  <circle cx="761" cy="270" r="6" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>
+  <path d="M 751 240 C 739 258 779 254 761 270" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="827" y="272" text-anchor="middle" style="font-size:8.2px;fill:#0F766E;font-weight:700;">← Static Bulkhead Gland</text>
+  <rect x="779" y="333" width="32" height="10" rx="2" fill="#0284C7" stroke="#0369A1" stroke-width="1.1"/>
+  <text x="795" y="359" text-anchor="middle" class="lbl-sm">Bottom Sand-Flush Drain Port (5 s freshwater hose rinse)</text>
+  <text x="636" y="210" text-anchor="middle" class="lbl">Ø8 mm Direct</text>
+  <text x="954" y="210" text-anchor="middle" class="lbl">UP Flaperon</text>
+  <text x="636" y="282" text-anchor="middle" class="ok">Silicone</text>
+  <text x="636" y="294" text-anchor="middle" class="lbl-sm">Wiper Skirt</text>
+  <text x="956" y="282" text-anchor="middle" class="ok">Silicone</text>
+  <text x="956" y="294" text-anchor="middle" class="lbl-sm">Wiper Skirt</text>
+  <text x="592" y="438" class="lbl-sm">1. Tr10×2 leadscrew self-locks UP/DOWN at 0 W (&gt;300 kgf vertical load).</text>
+  <text x="592" y="456" class="lbl-sm">2. IP68 servos ride ON sled: direct Ø8 mm drive (≤3.6 N·m, 0 belts/gears).</text>
+  <text x="592" y="474" class="ok">3. Dry bay stays 100% statically sealed (only a stationary cable gland).</text>
+  <text x="592" y="494" class="dim">Simpler Alt: Fixed Upper Staggerwing (Z = +35 mm) = +0.5 kn takeoff, 0 sled!</text>
 </svg>

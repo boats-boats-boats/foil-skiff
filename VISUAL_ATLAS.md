@@ -22,7 +22,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR Solo)* | **Full 4-Swap Long-Range Solo (`70–84 nm`):** **1 low-sit pilot chair slid over CoG** (open aft gear/extender bay!) + `2×` Recessed Center Struts + `AR 14` Flush Switchblade + Single `65161` (`10"` prop) & Bow Dodger |
 | **8** | [`models/08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) | *Long-Range Pod Cutaway* | **Internal Cutaway of Long-Range Single-Prop Pod:** translucent shell showing `2×` recessed center struts, swappable cartridges (`5.4 kWh` `LiFePO4` / `8.2 kWh` `NMC`), `1×` `75100` VESC, internal rudder servo & `10"` 2-blade CNC prop |
 | **9** | [`models/09_modular_hard_deck_seating.stl`](models/09_modular_hard_deck_seating.stl) | **`Navigator 300`** *(Modular Deck)* | **Modular Hard Deck Seating System:** Bow-contoured 2-piece Hard Deck + **flush recessed twin L-Track rails (`390 mm` spacing)** + **2 quick-release low-sit ergonomic chairs** + right-hand armrest wireless helm pod (`0` trip edges when empty!) |
-| **10** | [`models/10_morphing_stol_staggerwing_pod.stl`](models/10_morphing_stol_staggerwing_pod.stl) | *Dual-Mode Wing Upgrade* | **Morphing STOL-to-Staggerwing Flaperon Pod:** Bottom-mounted Main Wing + **`58 mm` cheek swing-arm (`130°` arc)** switching between **DOWN STOL Takeoff (`CL_max ≈ 2.0`)** & **UP Protected Staggerwing Cruise (`+106 mm` debris shield, out of wake!)** via internal worm-gear + coaxial pitch servos |
+| **10** | [`models/10_morphing_stol_staggerwing_pod.stl`](models/10_morphing_stol_staggerwing_pod.stl) | *Dual-Mode Wing Upgrade* | **100% Internal-Pod Morphing STOL-to-Staggerwing Sled:** `90 mm` pod encloses a **Wet-Slot / Dry-Bay Vertical Elevator Sled (`70 mm` stroke, `0` external arms!)** switching between **DOWN STOL (`6–8 mm` slot)** & **UP Protected Staggerwing (`57 mm` / `4–5×` above wake!)** via `Tr10×2` leadscrew + `2×` direct-drive `IP68` servos ON sled |
 
 ---
 
@@ -152,15 +152,15 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ---
 
-### 10. Dual-Mode Upgrade: Morphing STOL-to-Staggerwing Flaperon Pod (Coaxial Internal Drive)
-*Combines **Junkers STOL external slotted takeoff** (shown on far port side: DOWN at `Z = -58 mm`, `+15°`, `CL_max ≈ 2.0`) with **Protected Staggerwing Cruise** (shown on foreground starboard side: lifted `+106 mm` UP to `Z = +48 mm` on `58 mm` cheek swing-arms cleanly behind the bottom-mounted Main Wing TE!). Lifting the flaperons UP shields them behind the fixed lower Main Wing, moves them **above the Main Wing's turbulent wake (`-0.8 to -1.2 lbf` drag saved → `+1.5–2.5 nm` bonus!)**, preserves full `±3°` active roll/elevation control, and adds `+45 mm` beaching clearance. Inside the translucent pod: **`1×` red self-locking worm-gear mode actuator (`0 W` hold)** on the `Ø16 mm` hollow outer tube + **`2×` gold fast `IP67` pitch servos** on coaxial inner `Ø8 mm` shafts (`ZERO` boxes above the Hard Deck!).*
+### 10. Dual-Mode Upgrade: 100% Internal-Pod Morphing STOL-to-Staggerwing Elevator Sled
+*Keeps `100%` of the morphing mechanism inside a **`90 mm` Flying-Keel Pod (`ZERO` external swing-arms, `ZERO` belts/gears, `ZERO` sliding dry-hull seals!)**. A dedicated `96 mm`-long **free-flooding internal wing-box** (bounded by twin curved green watertight bulkheads) houses twin `Ø10 mm` guide rods and a self-locking **`Tr10×2` stainless leadscrew (`0 W` hold)** moving the aluminum elevator sled `70 mm` straight vertically between **Mode 1 DOWN** (far port side: `Z = -35 mm`, optimal `6–8 mm` Venturi STOL slot, `CL_max ≈ 2.0`, still `10 mm` above pod belly) and **Mode 2 UP** (foreground starboard side: `Z = +35 mm`, `57 mm` / `4–5×` above the Main Wing's `~12 mm` turbulent wake, shielded behind the fixed lower Main Wing, still `10 mm` below pod roof!). Both individually waterproof **`IP68` billet pitch servos** ride **directly ON the sled** (direct-driving the `Ø8 mm` flaperon shafts through flush silicone cheek wiper skirts), while only a stationary cable passes through a **static bulkhead gland** into the dry battery/VESC/IMU bay (`ZERO` boxes above the Hard Deck!).*
 
-![OpenSCAD 3D Render: Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod](renders/10-morphing-stol-staggerwing-3d.png)
+![OpenSCAD 3D Render: 100% Internal-Pod Morphing STOL-to-Staggerwing Sled](renders/10-morphing-stol-staggerwing-3d.png)
 
 <details>
 <summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
 
-![Annotated 3D Isometric CAD: Dual-Mode Morphing STOL-to-Staggerwing Flaperon Pod](diagrams/19-morphing-stol-staggerwing-3d-cad.svg)
+![Annotated 3D Isometric CAD: 100% Internal-Pod Morphing STOL-to-Staggerwing Sled](diagrams/19-morphing-stol-staggerwing-3d-cad.svg)
 
 </details>
 
@@ -168,8 +168,8 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ## Part II — Scaled 2D Engineering Drawings (`diagrams/`)
 
-### 11. Dual-Mode Morphing STOL-to-Staggerwing Flaperon (130° Sweep Kinematics & Coaxial Pod Drive)
-![Dual-Mode Morphing STOL-to-Staggerwing Kinematics and Coaxial Drive](diagrams/20-morphing-stol-staggerwing.svg)
+### 11. 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (Wet-Slot / Dry-Bay Mechanics & Wake Clearance)
+![100% Internal-Pod Morphing STOL-to-Staggerwing Wet-Slot Elevator Sled](diagrams/20-morphing-stol-staggerwing.svg)
 
 ### 12. `2×` Recessed Center Struts: Upper/Lower Trunnions & One-Sided Crab-Pot / Rock Impact Protection
 ![2x Recessed Center Struts: Upper/Lower Trunnions & One-Sided Impact Protection](diagrams/21-center-strut-asymmetric-loads.svg)
