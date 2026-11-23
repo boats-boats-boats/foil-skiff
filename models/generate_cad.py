@@ -487,55 +487,55 @@ def add_flying_keel_pod(mb: MeshBuilder, dx=0.0, dz=-702.0, pod_h=80.0, with_mot
                 )
 
 
-def add_stol_flaperons_and_servos(mb: MeshBuilder, dx=0.0, dz=-702.0, deg_port=14.0, deg_stbd=14.0, fold_tips=False, tunnel_half=270.0, show_internal=False):
+def add_stol_flaperons_and_servos(mb: MeshBuilder, dx=0.0, dz=-702.0, deg_port=14.0, deg_stbd=14.0, linked_fold=False, show_internal=False):
     """
     PRIMARY WING ARCHITECTURE: Compact 1,000 cm² Main Wing + 2x 250 cm² Independent Split Junkers STOL Flaperons
     driven directly by 2x IP67 70-80 kg·cm brushless servos SEALED INSIDE THE FLYING-KEEL POD via Ø8 mm double-O-ring
-    stainless torque tubes (ZERO protruding boxes above top Hard Deck, ZERO external strut pushrods!).
+    stainless torque tubes (ZERO protruding boxes above top Hard Deck, ZERO external brackets/hinges sticking out of hull!).
+    When linked_fold=True, BOTH Main Wing halves & flaperons sweep 82° aft cleanly alongside the pod (~400 mm beach dart!).
     """
-    add_lower_wings(mb, dx=dx, dz=dz - 4.0, half_span=525.0, root_chord=100.0, x_le=-245.0, fold_tips=fold_tips, tunnel_half=tunnel_half)
+    add_lower_wings(mb, dx=dx, dz=dz - 14.0, half_span=525.0, root_chord=100.0, x_le=-245.0, linked_fold=linked_fold)
 
-    fl_sec = naca4_section(0.02, 0.4, 0.11, 62.0, n=10)
+    fl_sec = naca4_section(0.02, 0.4, 0.11, 60.0, n=10)
     piv_x = dx - 92.0
-    piv_z = dz - 32.0
+    piv_z = dz - 30.0
 
-    # Ø8 mm sealed direct-drive stainless torque tube + CNC double-O-ring side seal bosses on pod walls
-    mb.add_cylinder_y(piv_x, -122, 122, piv_z + 18, 6.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+    # Flush Ø8 mm sealed direct-drive stainless torque tube along piv_z (ZERO protruding brackets outside hull!)
+    mb.add_cylinder_y(piv_x, -116, 116, piv_z, 4.5, C_PUSHROD, n=10, alpha=1.0, stl=True)
     for side, deg, col in [(-1, deg_port, C_FLAP_L), (1, deg_stbd, C_FLAP_R)]:
-        mb.add_box(piv_x - 10, piv_x + 10, side * 112 - 6, side * 112 + 6, piv_z - 4, piv_z + 24, C_ALU, 1.0, stl=True)
-        rad = math.radians(deg)
-        if not fold_tips:
+        # Flush CNC double-O-ring cheek seal collar tucked cleanly inside the pod shoulder
+        mb.add_cylinder_y(piv_x, side * 96, side * 112, piv_z, 7.0, C_CARBON_DARK, n=10, alpha=1.0, stl=True)
+        rad = math.radians(0.0 if linked_fold else deg)
+        if not linked_fold:
             rings = []
-            for dist in (115, 320, 545):
+            for dist in (108, 320, 545):
                 y = side * dist
-                rings.append([(piv_x + (xl - 12.4) * math.cos(rad) + zl * math.sin(rad), y, piv_z - (xl - 12.4) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
+                rings.append([(piv_x + (xl - 12.0) * math.cos(rad) + zl * math.sin(rad), y, piv_z - (xl - 12.0) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
             mb.add_loft(rings, col, 1.0, stl=True)
         else:
+            # Linked-Fold 82° aft-swept & 0° self-feathered flaperons tucked cleanly alongside pod (~346 mm wide!)
+            flap_len = 435.0
+            sw_rad = math.radians(82.0)
             rings = []
-            for dist in (115, tunnel_half):
-                y = side * dist
-                rings.append([(piv_x + (xl - 12.4) * math.cos(rad) + zl * math.sin(rad), y, piv_z - (xl - 12.4) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
-            mb.add_loft(rings, col, 1.0, stl=True)
-            tip_len = 545.0 - tunnel_half
-            mb.add_box(piv_x - 8, piv_x + 12, side * tunnel_half - 8, side * tunnel_half + 8, piv_z - 8, piv_z + 8, C_KEVLAR, 1.0, stl=True)
-            tip_rings = []
             for frac in (0.0, 0.5, 1.0):
-                x_pos = piv_x + 12 + frac * tip_len
-                tip_rings.append([(x_pos, side * (tunnel_half - xl * 0.72), piv_z + zl) for xl, zl in fl_sec])
-            mb.add_loft(tip_rings, col, 1.0, stl=True)
+                s_d = frac * flap_len
+                bx = piv_x + s_d * math.sin(sw_rad)
+                by = side * (112.0 + s_d * math.cos(sw_rad))
+                rings.append([(bx + (xl - 12.0) * math.cos(sw_rad), by + side * (xl - 12.0) * math.sin(sw_rad) * 0.45, piv_z + zl) for xl, zl in fl_sec])
+            mb.add_loft(rings, col, 1.0, stl=True)
 
     if show_internal:
         for side in (-1, 1):
-            mb.add_box(piv_x - 24, piv_x + 24, side * 52 - 18, side * 52 + 18, dz - 20, dz + 24, C_KEVLAR, 1.0, stl=False)
-            mb.add_rod((piv_x, side * 52, dz - 8), (piv_x, side * 116, piv_z + 18), 5.5, C_PUSHROD, n=8, alpha=1.0, stl=False)
+            mb.add_box(piv_x - 24, piv_x + 24, side * 52 - 18, side * 52 + 18, dz - 36, dz + 8, C_KEVLAR, 1.0, stl=False)
+            mb.add_rod((piv_x, side * 52, piv_z), (piv_x, side * 112, piv_z), 5.0, C_PUSHROD, n=8, alpha=1.0, stl=False)
         mb.add_box(piv_x + 36, piv_x + 108, -32, 32, dz - 10, dz + 16, C_WING_UP, 1.0, stl=False)
         mb.add_box(piv_x + 122, piv_x + 235, -68, 68, dz - 34, dz - 6, C_ALU, 1.0, stl=False)
 
 
-def add_lower_wings(mb: MeshBuilder, dx=0.0, dz=-712.0, half_span=670.0, root_chord=115.0, x_le=-220.0, fold_tips=False, tunnel_half=275.0):
+def add_lower_wings(mb: MeshBuilder, dx=0.0, dz=-712.0, half_span=670.0, root_chord=115.0, x_le=-220.0, linked_fold=False):
     lo_sec = naca4_section(0.02, 0.4, 0.10, root_chord, n=12)
-    if not fold_tips:
-        ys = [-half_span, -half_span * 0.78, -half_span * 0.48, -110, 110, half_span * 0.48, half_span * 0.78, half_span]
+    if not linked_fold:
+        ys = [-half_span, -half_span * 0.78, -half_span * 0.48, -96, 96, half_span * 0.48, half_span * 0.78, half_span]
         rings = []
         for y in ys:
             u = abs(y) / half_span
@@ -545,32 +545,20 @@ def add_lower_wings(mb: MeshBuilder, dx=0.0, dz=-712.0, half_span=670.0, root_ch
             rings.append([(dx + x_le + sweep + xl * taper, y, dz + dih + zl * taper) for xl, zl in lo_sec])
         mb.add_loft(rings, C_WING_LOW, 1.0, stl=True)
     else:
-        # Inner core fits cleanly INSIDE Navigator 300 600 mm tunnel (Y = -tunnel_half..+tunnel_half)
-        ys_in = [-tunnel_half, -110, 110, tunnel_half]
-        rings = []
-        for y in ys_in:
-            u = abs(y) / half_span
-            taper = 1.0 - 0.42 * (u**1.8)
-            sweep = 45 * (u**1.3)
-            dih = 26 * (u**2.2)
-            rings.append([(dx + x_le + sweep + xl * taper, y, dz + dih + zl * taper) for xl, zl in lo_sec])
-        mb.add_loft(rings, C_WING_LOW, 1.0, stl=True)
-        # Outer tips folded 90 deg AFT parallel to the inflatable pontoons (zero tube intersection!)
-        tip_len = half_span - tunnel_half
-        u0 = tunnel_half / half_span
-        t0 = 1.0 - 0.42 * (u0**1.8)
-        sw0 = 45 * (u0**1.3)
-        d0 = 26 * (u0**2.2)
+        # Unified Linked-Fold: BOTH Main Wing halves pivot at y = ±92 mm & sweep 82° aft cleanly alongside pod (~400 mm dart!)
+        wing_len = half_span - 92.0
+        sw_rad = math.radians(82.0)
+        x_piv = dx + x_le + 22.0
         for side in (-1, 1):
-            # Gold tip-fold hinge pin
-            mb.add_box(dx + x_le + sw0 + 18, dx + x_le + sw0 + 42, side * tunnel_half - 10, side * tunnel_half + 10, dz + d0 - 10, dz + d0 + 10, C_KEVLAR, 1.0, stl=True)
-            tip_rings = []
-            for frac in (0.0, 0.5, 1.0):
-                u = (tunnel_half + frac * tip_len) / half_span
+            rings = []
+            for frac in (0.0, 0.45, 0.80, 1.0):
+                u = (92.0 + frac * wing_len) / half_span
                 taper = 1.0 - 0.42 * (u**1.8)
-                x_pos = dx + x_le + sw0 + 30 + frac * tip_len
-                tip_rings.append([(x_pos, side * (tunnel_half - xl * taper * 0.72), dz + d0 + zl * taper) for xl, zl in lo_sec])
-            mb.add_loft(tip_rings, C_WING_LOW, 1.0, stl=True)
+                s_d = frac * wing_len
+                bx = x_piv + s_d * math.sin(sw_rad)
+                by = side * (96.0 + s_d * math.cos(sw_rad))
+                rings.append([(bx + (xl - 22.0) * taper * math.cos(sw_rad), by + side * (xl - 22.0) * taper * math.sin(sw_rad) * 0.45, dz + zl * taper) for xl, zl in lo_sec])
+            mb.add_loft(rings, C_WING_LOW, 1.0, stl=True)
 
 
 def add_4x_blades(mb: MeshBuilder, z_top=-22.0, z_bot=-702.0, fold_deg=0.0, x_front=-540.0, x_rear=220.0, y_half=122.0):
@@ -593,80 +581,6 @@ def add_4x_blades(mb: MeshBuilder, z_top=-22.0, z_bot=-702.0, fold_deg=0.0, x_fr
             mb.add_cylinder_y(bx, sy - 16, sy + 16, z_top, 9.0, C_KEVLAR, n=10, alpha=1.0, stl=True)
             mb.add_cylinder_y(bx + L * sx_dir, sy - 16, sy + 16, z_top + L * sz_dir, 9.0, C_KEVLAR, n=10, alpha=1.0, stl=True)
     return (L * sx_dir, z_top + L * sz_dir)
-
-
-def add_upper_step_out_wing(mb: MeshBuilder, z_top=-22.0, s_up=260.0, fold_deg=0.0, x_front=-540.0, x_rear=220.0, y_half=122.0, fold_tips=False, tunnel_half=275.0):
-    """
-    Double-Deck 4-Bar Parallelogram Upper Step-Out Booster Wing:
-      - Twin outer longitudinal tie-bars (Y = +/-(y_half + 12)) pivot on BOTH front & rear struts at radius s_up.
-      - Wing sits in sweep-free Quadrant III (forward & slightly below front pin: x_le = x_pin - 180, z = z_pin - 38)
-        so it stays 100% HORIZONTAL (parallel to waterline / longitudinal axis) at EVERY fold angle 0°..86.5°
-        with ZERO strut collision and folds flat AHEAD of the pod nose!
-    """
-    th = math.radians(fold_deg)
-    dx_up = s_up * math.sin(th)
-    dz_up = z_top - s_up * math.cos(th)
-    xf_p = x_front + dx_up
-    xr_p = x_rear + dx_up
-    y_bar = y_half + 13.0
-
-    # 1. Twin longitudinal parallelogram tie-bars connecting Front & Rear struts at identical radius s_up
-    for side in (-1, 1):
-        sy = side * y_bar
-        mb.add_box(xf_p - 28, xr_p + 18, sy - 5, sy + 5, dz_up - 10, dz_up + 10, C_ALU, 1.0, stl=True)
-        # Quadrant-III forward-down clevis carrier arms supporting the Upper Step-Out Wing completely clear of strut sweep!
-        mb.add_rod((xf_p, sy, dz_up), (xf_p - 75, sy, dz_up - 38), 7.5, C_ALU, n=8, alpha=1.0, stl=True)
-        mb.add_rod((xf_p - 15, sy, dz_up), (xf_p - 150, sy, dz_up - 38), 6.5, C_ALU, n=8, alpha=1.0, stl=True)
-        # Visible gold parallelogram hinge pins at Front & Rear mid-strut pivots
-        mb.add_cylinder_y(xf_p, side * y_half - 16, side * (y_bar + 9), dz_up, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
-        mb.add_cylinder_y(xr_p, side * y_half - 16, side * (y_bar + 9), dz_up, 9.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
-
-    # Rear box-portal cross-brace tying left & right rear mid-pivots for <3 mm roll flex
-    mb.add_cylinder_y(xr_p, -y_bar, y_bar, dz_up, 6.5, C_ALU, n=8, alpha=1.0, stl=True)
-
-    # 2. Upper Step-Out Booster Wing airfoil (140 mm chord) — ALWAYS parallel to longitudinal axis (waterline)!
-    up_sec = naca4_section(0.025, 0.4, 0.14, 140.0, n=12)
-    x_le = xf_p - 180.0
-    z_wing = dz_up - 38.0
-    rad = math.radians(2.5)  # Fixed +2.5° takeoff incidence relative to longitudinal waterline
-
-    if not fold_tips:
-        rings = []
-        for y in (-500, -350, -135, 135, 350, 500):
-            taper = 1.0 - 0.25 * (abs(y) / 500.0) ** 2
-            x_off = x_le + 18 * (1 - taper)
-            ring = []
-            for xl, zl in up_sec:
-                xs, zs = xl * taper, zl * taper
-                ring.append((x_off + xs * math.cos(rad) + zs * math.sin(rad), y, z_wing - xs * math.sin(rad) + zs * math.cos(rad)))
-            rings.append(ring)
-        mb.add_loft(rings, C_WING_UP, 1.0, stl=True)
-    else:
-        # Inner core fits cleanly inside 600 mm tunnel (Y = -tunnel_half..+tunnel_half)
-        rings = []
-        for y in (-tunnel_half, -135, 135, tunnel_half):
-            taper = 1.0 - 0.25 * (abs(y) / 500.0) ** 2
-            x_off = x_le + 18 * (1 - taper)
-            ring = []
-            for xl, zl in up_sec:
-                xs, zs = xl * taper, zl * taper
-                ring.append((x_off + xs * math.cos(rad) + zs * math.sin(rad), y, z_wing - xs * math.sin(rad) + zs * math.cos(rad)))
-            rings.append(ring)
-        mb.add_loft(rings, C_WING_UP, 1.0, stl=True)
-        # Outer 225 mm tips folded 90 deg AFT parallel to inflatable tubes (zero tube clipping!)
-        tip_len = 500.0 - tunnel_half
-        t0 = 1.0 - 0.25 * (tunnel_half / 500.0) ** 2
-        x0 = x_le + 18 * (1 - t0) + 32
-        for side in (-1, 1):
-            mb.add_box(x0 - 12, x0 + 12, side * tunnel_half - 10, side * tunnel_half + 10, z_wing - 10, z_wing + 10, C_KEVLAR, 1.0, stl=True)
-            tip_rings = []
-            for frac in (0.0, 0.5, 1.0):
-                u = (tunnel_half + frac * tip_len) / 500.0
-                taper = 1.0 - 0.25 * (u**2)
-                x_pos = x0 + frac * tip_len
-                tip_rings.append([(x_pos, side * (tunnel_half - xl * taper * 0.65), z_wing + zl * taper) for xl, zl in up_sec])
-            mb.add_loft(tip_rings, C_WING_UP, 1.0, stl=True)
-    return (xf_p, z_wing)
 
 
 def add_plane_grid(mb: MeshBuilder, z_val, color, alpha, wx0=-1750, wx1=1700, wy0=-1050, wy1=1050, n=7):
@@ -808,11 +722,8 @@ def build_model_01_navigator300():
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0  # L = 680 mm
     add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=0.0, x_front=x_f, x_rear=x_r, y_half=122)
-    # Clean wave zone! Only slim above-water box-portal cross-braces between blades (ZERO surface-piercing wing!)
-    mb.add_cylinder_y(x_f, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
-    mb.add_cylinder_y(x_r, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
     add_flying_keel_pod(mb, dx=-160.0, dz=z_bot)
-    add_stol_flaperons_and_servos(mb, dx=-160.0, dz=z_bot, deg_port=15.0, deg_stbd=-6.0, fold_tips=False, show_internal=False)
+    add_stol_flaperons_and_servos(mb, dx=-160.0, dz=z_bot, deg_port=15.0, deg_stbd=-6.0, linked_fold=False, show_internal=False)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
     write_binary_stl(mb, MODELS_DIR / "01_navigator300_stol_flaperons.stl", "FoilSkiff 01 (PRIMARY): True Kit Navigator 300 + Split STOL Flaperons (mm)")
     callouts = [
@@ -840,26 +751,34 @@ def build_model_01_navigator300():
 # ---------------------------------------------------------------------------
 def build_model_02_switchblade():
     mb = MeshBuilder()
-    # Contoured bow-upswept under-hull rail plate (no flat rectangle!)
-    under_st = [(-1050, 125, 42, 52), (-900, 148, 12, 22), (-740, 152, -16, -2), (760, 152, -16, -2)]
-    rings_u = [[(x, -hw, zb), (x, hw, zb), (x, hw, zt), (x, -hw, zt)] for x, hw, zb, zt in under_st]
-    mb.add_loft(rings_u, C_ALU, 1.0, stl=True)
+    # Bow-contoured dark carbon Hard Deck (100% flush!) + contoured under-hull rail plate
+    deck_st = [
+        (-1050, 220, 48, 72),
+        (-900, 295, 18, 42),
+        (-740, 320, 3, 28),
+        (60, 320, 3, 28),
+        (72, 320, 3, 28),
+        (760, 320, 3, 28),
+    ]
+    under_st = [(-1040, 130, 38, 48), (-900, 148, 8, 18), (-740, 152, -16, -2), (760, 152, -16, -2)]
+    add_contoured_deck_and_underplate(mb, deck_st, under_st, latch_x=66.0)
     for sy in (-125, 125):
         mb.add_box(-740, 760, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
     add_4x_blades(mb, z_top=-22, z_bot=-620, fold_deg=0, x_front=-480, x_rear=310, y_half=122)
     add_flying_keel_pod(mb, dx=0, dz=-620, pod_h=90.0)
     add_lower_wings(mb, dx=0, dz=-640, half_span=620, root_chord=108, x_le=-170)
 
-    mb.add_box(-435, -365, -112, 112, -578, -564, C_CARBON_DARK, 1.0, stl=True)
+    # Sleek flush-recessed carbon overhang bridge tucked cleanly into the 90 mm pod roof contour (z = -584..-575, y = ±88!)
+    mb.add_box(-425, -365, -88, 88, -584, -575, C_CARBON_DARK, 1.0, stl=True)
     sw_sec = naca4_section(0.02, 0.4, 0.12, 105.0, n=10)
     for side in (-1, 1):
         rings = []
         for dist in (40, 110, 350, 620, 790):
             taper = 1.0 - 0.18 * (dist / 790.0) ** 2
-            rings.append([(-415 + xl * taper, side * dist, -575 + zl * taper) for xl, zl in sw_sec])
+            rings.append([(-415 + xl * taper, side * dist, -582 + zl * taper) for xl, zl in sw_sec])
         mb.add_loft(rings, C_WING_UP, 1.0, stl=True)
-        mb.add_box(-405, -385, side * 35 - 10, side * 35 + 10, -582, -560, C_KEVLAR, 1.0, stl=True)
-        mb.add_box(-415, 265, side * 52 - 48, side * 52 + 48, -576, -569, C_FLAP_L, 0.25, stl=False)
+        mb.add_cylinder_y(-395, side * 35 - 8, side * 35 + 8, -580, 6.0, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        mb.add_box(-415, 255, side * 46 - 40, side * 46 + 40, -585, -577, C_FLAP_L, 0.28, stl=False)
 
     write_binary_stl(mb, MODELS_DIR / "02_switchblade_pod.stl", "FoilSkiff 02 (SECONDARY WING): Flush-Nested Top-Deck Switchblade Pod (mm)")
     callouts = [
@@ -902,7 +821,7 @@ def build_model_03_stol_flaperons():
     add_4x_blades(mb, z_top=-22, z_bot=-620, fold_deg=0, x_front=-420, x_rear=310, y_half=122)
     # Translucent pod shell in visual render so the 2x INTERNAL IP67 servos + IMU + VESCs inside the pod are clearly visible!
     add_flying_keel_pod(mb, dx=0, dz=-620, pod_h=80.0, shell_alpha=0.42)
-    add_stol_flaperons_and_servos(mb, dx=0, dz=-620, deg_port=18.0, deg_stbd=-8.0, fold_tips=False, show_internal=True)
+    add_stol_flaperons_and_servos(mb, dx=0, dz=-620, deg_port=18.0, deg_stbd=-8.0, linked_fold=False, show_internal=True)
 
     write_binary_stl(mb, MODELS_DIR / "03_stol_flaperon_pod.stl", "FoilSkiff 03 (PRIMARY POD): Split STOL Flaperons w/ Internal Pod Servos (mm)")
     callouts = [
@@ -935,7 +854,7 @@ def build_model_04_navigator300_retracted():
     dx_bot, z_pod = add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=fold, x_front=x_f, x_rear=x_r, y_half=122)
     dx_pod = -160.0 + dx_bot
     add_flying_keel_pod(mb, dx=dx_pod, dz=z_pod, pod_h=80.0)
-    add_stol_flaperons_and_servos(mb, dx=dx_pod, dz=z_pod, deg_port=0.0, deg_stbd=0.0, fold_tips=True, tunnel_half=270.0, show_internal=False)
+    add_stol_flaperons_and_servos(mb, dx=dx_pod, dz=z_pod, deg_port=0.0, deg_stbd=0.0, linked_fold=True, show_internal=False)
     add_plane_grid(mb, -232.0, C_SAND, 0.32, n=6)
 
     write_binary_stl(mb, MODELS_DIR / "04_navigator300_retracted_beaching.stl", "FoilSkiff 04 (PRIMARY): True Kit Navigator 300 Retracted 86.5-deg Beaching (mm)")
@@ -945,7 +864,7 @@ def build_model_04_navigator300_retracted():
         ((dx_pod - 550, 0, z_pod), "left", 425, 240, "STOL Pod Stays 100% Horizontal!", "Internal servos = zero pushrod fold binding!"),
         ((1050, -240, 180), "right", 112, 800, "Clears Beneath Tru-Alu Transom!", "Pod slides smoothly under open-bottom transom"),
         ((dx_pod + 620, -135, z_pod), "right", 275, 795, "Props Protected Inside Rear Cones", "Within 300 cm LOA, high & dry above sand"),
-        ((150, -350, -168), "right", 455, 800, "~130–140 mm (5.1–5.5\") Sand Clear!", "Outer wingtips fold aft inside 600 mm tunnel"),
+        ((150, -350, -168), "right", 455, 800, "~130–140 mm (5.1–5.5\") Sand Clear!", "Linked-Fold wings sweep 82° aft (~400 mm dart in tunnel!)"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "08-navigator300-retracted-3d.svg",
@@ -966,10 +885,8 @@ def build_model_05_discovery330():
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0
     add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=0.0, x_front=x_f, x_rear=x_r, y_half=124)
-    mb.add_cylinder_y(x_f, -124, 124, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
-    mb.add_cylinder_y(x_r, -124, 124, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
     add_flying_keel_pod(mb, dx=-160.0, dz=z_bot)
-    add_stol_flaperons_and_servos(mb, dx=-160.0, dz=z_bot, deg_port=15.0, deg_stbd=-6.0, fold_tips=False, show_internal=False)
+    add_stol_flaperons_and_servos(mb, dx=-160.0, dz=z_bot, deg_port=15.0, deg_stbd=-6.0, linked_fold=False, show_internal=False)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
     write_binary_stl(mb, MODELS_DIR / "05_discovery330_oframe_stol.stl", "FoilSkiff 05 (Secondary Hull): True Kit Discovery 330 + Split STOL Pod (mm)")
     callouts = [
@@ -1103,18 +1020,16 @@ def build_model_06_lr_8020():
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0
     add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=0.0, x_front=x_f, x_rear=x_r, y_half=122)
-    mb.add_cylinder_y(x_f, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
-    mb.add_cylinder_y(x_r, -122, 122, -260, 6.0, C_ALU, n=8, alpha=1.0, stl=True)
     add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, with_motors=False)
     add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
-    add_lower_wings(mb, dx=-160.0, dz=z_bot - 4.0, half_span=750.0, root_chord=104.0, x_le=-245.0)
+    add_lower_wings(mb, dx=-160.0, dz=z_bot - 14.0, half_span=750.0, root_chord=104.0, x_le=-245.0)
     fl_sec = naca4_section(0.02, 0.4, 0.11, 58.0, n=10)
-    piv_x, piv_z = -160.0 - 92.0, z_bot - 32.0
-    mb.add_cylinder_y(piv_x, -122, 122, piv_z + 18, 6.5, C_KEVLAR, n=10, alpha=1.0, stl=True)
+    piv_x, piv_z = -160.0 - 92.0, z_bot - 30.0
+    mb.add_cylinder_y(piv_x, -116, 116, piv_z, 4.5, C_PUSHROD, n=10, alpha=1.0, stl=True)
     for side, deg, col in [(-1, 14.0, C_FLAP_L), (1, -5.0, C_FLAP_R)]:
-        mb.add_box(piv_x - 10, piv_x + 10, side * 112 - 6, side * 112 + 6, piv_z - 4, piv_z + 24, C_ALU, 1.0, stl=True)
+        mb.add_cylinder_y(piv_x, side * 96, side * 112, piv_z, 7.0, C_CARBON_DARK, n=10, alpha=1.0, stl=True)
         rad = math.radians(deg)
-        rings = [[(piv_x + (xl - 11.6) * math.cos(rad) + zl * math.sin(rad), side * dist, piv_z - (xl - 11.6) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec] for dist in (115, 340, 560)]
+        rings = [[(piv_x + (xl - 11.6) * math.cos(rad) + zl * math.sin(rad), side * dist, piv_z - (xl - 11.6) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec] for dist in (108, 340, 560)]
         mb.add_loft(rings, col, 1.0, stl=True)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
 
@@ -1173,9 +1088,9 @@ def build_model_07_lr_max_range():
     add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
     add_lower_wings(mb, dx=-160.0, dz=z_bot - 18.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
     add_linked_fold_root_box(mb, dx=-160.0, dz_wing=z_bot - 18.0, x_le=-220.0)
-    mb.add_box(-595, -525, -110, 110, z_bot + 40, z_bot + 54, C_CARBON_DARK, 1.0, stl=True)
+    # Flush-nested Switchblade blades recessed cleanly INSIDE the 90 mm pod roof behind front center strut (ZERO floating plate!)
     for side in (-1, 1):
-        mb.add_box(-575, 105, side * 52 - 48, side * 52 + 48, z_bot + 44, z_bot + 51, C_WING_UP, 0.85, stl=True)
+        mb.add_box(-470, 120, side * 44 - 38, side * 44 + 38, z_bot + 36, z_bot + 44, C_WING_UP, 0.72, stl=False)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
 
     write_binary_stl(mb, MODELS_DIR / "07_navigator300_lr_max_range.stl", "FoilSkiff 07 (Full LR Solo 1-Chair): Navigator 300 70-84 nm Build (mm)")
@@ -1226,9 +1141,9 @@ def build_model_08_lr_pod_closeup():
     # High-aspect AR 14 (1.55 m) lower wing in Unified Linked-Fold Overhang C-Slot Root Box!
     add_lower_wings(mb, dx=0.0, dz=-638.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
     add_linked_fold_root_box(mb, dx=0.0, dz_wing=-638.0, x_le=-220.0)
-    mb.add_box(-415, -345, -110, 110, -580, -566, C_CARBON_DARK, 1.0, stl=True)
+    # Flush-nested Switchblade blades recessed cleanly inside the 90 mm pod roof behind front center strut (ZERO floating plate!)
     for side in (-1, 1):
-        mb.add_box(-395, 265, side * 52 - 48, side * 52 + 48, -576, -569, C_WING_UP, 0.55, stl=False)
+        mb.add_box(-330, 240, side * 44 - 38, side * 44 + 38, -584, -576, C_WING_UP, 0.48, stl=False)
 
     write_binary_stl(mb, MODELS_DIR / "08_lr_pod_closeup.stl", "FoilSkiff 08 (LR Cutaway): Single-Prop Pod, 2x Recessed Struts & Linked-Fold Wing (mm)")
     callouts = [
