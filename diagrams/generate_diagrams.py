@@ -1546,6 +1546,331 @@ def gen_21_center_strut_asymmetric_loads():
     (OUT_DIR / "21-center-strut-asymmetric-loads.svg").write_text(s)
 
 
+# -------------------------------------------------------------------------
+# DIAGRAM 22: Central Breakaway Wing Socket — V-Cradle Stack-Up & 5 Options
+# -------------------------------------------------------------------------
+def gen_22_breakaway_socket_options():
+    W, H = 1080, 720
+    s = svg_header(
+        W, H,
+        "22. Central Breakaway Wing Socket: V-Cradle Sandwich Anatomy & Alternative Mechanisms",
+        "Detailed Double-Shear Bushing Mechanics (Option 1) vs. Ski-Binding Cam (Opt 2), DIY Front C-Hook (Opt 3) & Kingpin Swing (Opt 4)"
+    )
+
+    # =========================================================================
+    # PANEL A (TOP LEFT): OPTION 1 — 120° V-CRADLE SIDE STACK-UP + GOOD VS BAD SHEAR
+    # =========================================================================
+    s += '  <rect x="24" y="68" width="510" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Option 1: 120° V-Cradle Stack-Up &amp; Double-Shear Rule</text>\n'
+    s += '  <text x="42" y="109" class="ok">~22 mm total thickness • UHMW flanges take 100% lift/roll • Pin sees ONLY +X shear</text>\n'
+
+    # --- A1: Side Cross-Section of the ~22 mm V-Cradle Sandwich (y = 122..262) ---
+    s += '  <rect x="36" y="118" width="486" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="46" y="134" class="dim">A1. Side Cross-Section Through Corner Pin (y = ±95 mm)</text>\n'
+
+    # Pod Internal Bulkhead Ceiling (green, y = 144..156)
+    s += '  <rect x="74" y="144" width="320" height="12" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
+    s += '  <text x="234" y="153" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">Pod Belly &amp; Twin 6 mm G10/Carbon Internal Bulkheads</text>\n'
+
+    # Top Plate (6 mm Alu, y = 156..170)
+    s += '  <rect x="86" y="156" width="296" height="14" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+    # 120° V-Stop Front Wall (solid golden block connecting top & bottom plates at left, x = 86..142, y = 170..214)
+    s += '  <rect x="86" y="170" width="56" height="44" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    s += '  <text x="114" y="190" text-anchor="middle" style="font-size:8px;fill:#78350F;font-weight:700;">120° V</text>\n'
+    s += '  <text x="114" y="201" text-anchor="middle" style="font-size:7.5px;fill:#78350F;">Stop</text>\n'
+
+    # Top & Bottom 1.5 mm UHMW Wear Strips (orange thin lines, y = 170..176 and y = 208..214)
+    s += '  <rect x="142" y="170" width="240" height="6" fill="#F97316"/>\n'
+    s += '  <rect x="142" y="208" width="240" height="6" fill="#F97316"/>\n'
+
+    # Wing V-Foot Carrier Block (14 mm thick blue tongue seated inside U-slot, x = 144..376, y = 176..208)
+    s += '  <rect x="144" y="176" width="232" height="32" rx="2" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
+    s += '  <text x="228" y="195" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">Wing V-Foot Carrier Block (14 mm)</text>\n'
+
+    # Bottom Clamping Lip / Faired Belly Skid Plate (5 mm Alu, y = 214..228, sloping down 12° at right!)
+    s += '  <polygon points="86,214 382,214 396,226 382,232 86,228" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+
+    # Flush 316 Stainless Bushing Sleeves (<0.3 mm clearance!) around vertical Ø6 mm Delrin Pin at x = 336!
+    px_s = 336
+    s += f'  <rect x="{px_s-10}" y="156" width="20" height="14" fill="#475569" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <rect x="{px_s-10}" y="176" width="20" height="32" fill="#475569" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <rect x="{px_s-10}" y="214" width="20" height="15" fill="#475569" stroke="#0F172A" stroke-width="1"/>\n'
+    # Vertical Ø6 mm Black UV-Delrin Pin (red highlight for visibility!) passing straight through all 3 sleeves!
+    s += f'  <rect x="{px_s-5}" y="154" width="10" height="79" rx="2" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
+    # Recessed Hall sensor dot in top plate
+    s += '  <circle cx="172" cy="163" r="4" fill="#059669" stroke="#064E3B" stroke-width="1"/>\n'
+
+    # Ejection arrow (+X horizontal shear!) + labels
+    s += '  <line x1="382" y1="192" x2="438" y2="192" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+    s += '  <text x="444" y="188" class="ok">OPEN REAR</text>\n'
+    s += '  <text x="444" y="200" class="lbl-sm">(+X Shear!)</text>\n'
+    s += '  <text x="172" y="248" text-anchor="middle" class="lbl-sm">Orange = 1.5 mm UHMW strips (μ≈0.07)</text>\n'
+    s += '  <text x="396" y="248" text-anchor="middle" class="warn">↑ Ø6 mm Delrin Pin + 316 SS Sleeves</text>\n'
+
+    # --- A2: GOOD vs BAD SHEAR BUSHING MINI-COMPARISON (y = 274..390) ---
+    s += '  <rect x="36" y="274" width="236" height="114" rx="6" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.1"/>\n'
+    s += '  <text x="46" y="290" class="ok">GOOD: Flush Double Shear (&lt;0.3 mm)</text>\n'
+    # Clean scissors diagram
+    s += '  <rect x="64" y="302" width="66" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
+    s += '  <rect x="78" y="317" width="66" height="18" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1"/>\n'
+    s += '  <rect x="64" y="336" width="66" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
+    s += '  <rect x="98" y="300" width="9" height="52" rx="1.5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1"/>\n'
+    s += '  <line x1="146" y1="326" x2="174" y2="326" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+    s += '  <text x="180" y="321" class="ok">Clean Snap</text>\n'
+    s += '  <text x="180" y="334" class="lbl-sm">±10% load!</text>\n'
+    s += '  <text x="46" y="374" class="lbl-sm">2 sharp SS faces slice pin cleanly.</text>\n'
+
+    s += '  <rect x="286" y="274" width="236" height="114" rx="6" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.1"/>\n'
+    s += '  <text x="296" y="290" class="warn">BAD: Wide Gap (Bends &amp; Jams!)</text>\n'
+    s += '  <rect x="310" y="302" width="60" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
+    s += '  <rect x="332" y="334" width="60" height="16" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1"/>\n'
+    # Bent red pin across wide gap!
+    s += '  <path d="M 342 300 L 342 316 L 356 334 L 356 352" fill="none" stroke="#DC2626" stroke-width="7" stroke-linecap="round"/>\n'
+    s += '  <text x="410" y="324" class="warn">Pin bends</text>\n'
+    s += '  <text x="410" y="337" class="lbl-sm">&amp; wedges!</text>\n'
+    s += '  <text x="296" y="374" class="lbl-sm">Never leave gaps or use Nylon/HDPE!</text>\n'
+
+    # =========================================================================
+    # PANEL B (TOP RIGHT): OPTION 2 (SKI-BINDING CAM) & OPTION 3 (DIY FRONT C-HOOK)
+    # =========================================================================
+    s += '  <rect x="550" y="68" width="506" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="568" y="92" class="sec">B. Detaching Alternatives: Option 2 (Cam) &amp; Option 3 (DIY Hook)</text>\n'
+    s += '  <text x="568" y="109" class="dim">Both keep halves coupled on 0.35 m leash • Compare reset speed vs. build ease</text>\n'
+
+    # --- B1: OPTION 2 — SPRING-LOADED SKI-BINDING CAM V-CRADLE (y = 118..250) ---
+    s += '  <rect x="562" y="118" width="482" height="130" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="574" y="135" class="dim">Option 2: Spring-Loaded "Ski-Binding" Cam (Zero Spare Pins!)</text>\n'
+
+    # Top-down cam jaw schematic
+    cx2, cy2 = 678, 190
+    s += f'  <path d="M {cx2-48} {cy2} L {cx2+10} {cy2-36} L {cx2+24} {cy2-36} L {cx2-28} {cy2} L {cx2+24} {cy2+36} L {cx2+10} {cy2+36} Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.4"/>\n'
+    s += f'  <path d="M {cx2-24} {cy2} L {cx2+18} {cy2-28} L {cx2+42} {cy2-28} L {cx2+42} {cy2+28} L {cx2+18} {cy2+28} Z" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
+    # Spring-loaded stainless ball-detent cam jaws top & bottom!
+    for sd in (-1, 1):
+        jy = cy2 + sd * 34
+        s += f'  <circle cx="{cx2+32}" cy="{cy2+sd*26}" r="5.5" fill="#475569" stroke="#0F172A" stroke-width="1.2"/>\n'
+        # Zigzag spring above/below ball
+        s += f'  <line x1="{cx2+32}" y1="{cy2+sd*32}" x2="{cx2+32}" y2="{cy2+sd*46}" stroke="#DC2626" stroke-width="3" stroke-dasharray="3,2"/>\n'
+    s += f'  <line x1="{cx2+48}" y1="{cy2}" x2="{cx2+88}" y2="{cy2}" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+
+    s += '  <text x="794" y="160" class="ok">Pro: 10-second click-back reset!</text>\n'
+    s += '  <text x="802" y="174" class="lbl-sm">Belleville/coil springs pop open @ ~70 kgf</text>\n'
+    s += '  <text x="802" y="187" class="lbl-sm">and snap shut when pushed back in.</text>\n'
+    s += '  <text x="794" y="208" class="warn">Con: +0.5 kg, ~38 mm thick, ~$200</text>\n'
+    s += '  <text x="802" y="222" class="lbl-sm">Fine beach sand in spring bores can</text>\n'
+    s += '  <text x="802" y="235" class="lbl-sm">shift release force unless rinsed well.</text>\n'
+
+    # --- B2: OPTION 3 — DIY FRONT C-HOOK + 2x REAR SHEAR BOLTS (y = 258..388) ---
+    s += '  <rect x="562" y="258" width="482" height="130" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="574" y="275" class="ok">Option 3: Front C-Hook + 2× Rear Shear Bolts (Easiest Garage DIY!)</text>\n'
+
+    # Side profile of Front C-Hook + Rear Flat Seat + Shear Bolt!
+    s += '  <rect x="588" y="294" width="176" height="14" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+    # Open-aft curved front C-hook lip under pod nose (x = 588..624, y = 308..332)
+    s += '  <path d="M 588 308 L 622 308 L 622 326 L 606 326 L 606 318 L 614 318 L 614 314 L 588 314 Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    # Wing saddle hooked into C-lip at left, flat against pod belly at right (x = 610..752, y = 310..326)
+    s += '  <rect x="610" y="310" width="142" height="14" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
+    # Rear breakaway shear bolt/pin at x = 732 (y = 292..330)
+    s += '  <rect x="728" y="292" width="8" height="38" rx="1.5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>\n'
+    # Steep 25° down-aft unhook path!
+    s += '  <path d="M 690 330 L 748 354" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+    s += '  <text x="638" y="352" text-anchor="middle" class="lbl-sm">Front C-Lip</text>\n'
+    s += '  <text x="732" y="376" text-anchor="middle" class="ok">25° Steep Drop-Exit!</text>\n'
+
+    s += '  <text x="794" y="302" class="ok">Pro: ZERO CNC pocket • 16 mm slim!</text>\n'
+    s += '  <text x="802" y="316" class="lbl-sm">Flat plates + simple front hook; sand</text>\n'
+    s += '  <text x="802" y="329" class="lbl-sm">cannot jam an open-bottom hook!</text>\n'
+    s += '  <text x="794" y="350" class="warn">Con: Needs rear SS shear sleeves</text>\n'
+    s += '  <text x="802" y="364" class="lbl-sm">so rear pins shear cleanly (±10%),</text>\n'
+    s += '  <text x="802" y="377" class="lbl-sm">not unpredictable tension break (±30%).</text>\n'
+
+    # =========================================================================
+    # PANEL C (BOTTOM FULL WIDTH): OPTION 4 (KINGPIN WEATHERVANE SWING) + 5-OPTION MATRIX
+    # =========================================================================
+    s += '  <rect x="24" y="414" width="1032" height="284" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="438" class="sec">C. Option 4: Central Ø20 mm Kingpin "Weathervane" Swing (Never Detaches!) &amp; 5-Option Summary</text>\n'
+    s += '  <text x="42" y="455" class="ok">Zero leash &amp; zero prop risk (stops 150 mm ahead of prop!) — pair ONLY with Fixed Upper Staggerwing or Roof Switchblade!</text>\n'
+
+    # Left half of Panel C (x = 40..535): Top-down illustration of Option 4 Kingpin Weathervane Swing!
+    s += '  <rect x="38" y="468" width="496" height="216" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="50" y="485" class="dim">Option 4 Top-Down: 0° Cruise → 82° Oblique Scissors Swing on Tip Hit</text>\n'
+
+    kx, ky = 238, 576
+    # Pod silhouette (x = 118..388, length 270 px)
+    s += f'  <rect x="{kx-120}" y="{ky-16}" width="270" height="32" rx="16" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
+    # Tail prop at x = 402
+    s += f'  <line x1="{kx+164}" y1="{ky-24}" x2="{kx+164}" y2="{ky+24}" stroke="#0284C7" stroke-width="4.2" stroke-linecap="round"/>\n'
+    s += f'  <text x="{kx+174}" y="{ky+4}" class="dim">Prop</text>\n'
+    s += f'  <text x="{kx+174}" y="{ky+16}" class="ok">(150 mm</text>\n'
+    s += f'  <text x="{kx+174}" y="{ky+27}" class="ok">clear!)</text>\n'
+
+    # Wide Ø180 mm Circular UHMW Thrust Turntable Flange under pod belly (centered at kx-30, ky)
+    tx = kx - 30
+    s += f'  <circle cx="{tx}" cy="{ky}" r="24" fill="#F97316" fill-opacity="0.35" stroke="#9A3412" stroke-width="1.6"/>\n'
+    # Normal 0° Wing (blue dashed)
+    s += f'  <rect x="{tx-9}" y="{ky-82}" width="18" height="164" rx="5" fill="url(#wingBlue)" fill-opacity="0.26" stroke="#0369A1" stroke-width="1.3" stroke-dasharray="4,2"/>\n'
+    # Swung 80° Oblique Wing (orange solid — starboard swings AFT, port swings FORWARD underneath pod nose!)
+    s += f'  <polygon points="{tx-80},{ky-24} {tx+82},{ky+6} {tx+78},{ky+22} {tx-84},{ky-8}" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.5"/>\n'
+    # Stout Central Ø20 mm Stainless Kingpin (gold) + Rear Ø5 mm Delrin Shear Pin (red, 80 mm aft!)
+    s += f'  <circle cx="{tx}" cy="{ky}" r="6.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.5"/>\n'
+    s += f'  <circle cx="{tx+24}" cy="{ky}" r="3.8" fill="#DC2626" stroke="#0F172A" stroke-width="1.1"/>\n'
+    # Curved rotation arrows showing scissors spin!
+    s += f'  <path d="M {tx-12} {ky-74} Q {tx-58} {ky-64} {tx-72} {ky-26}" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <path d="M {tx+12} {ky+74} Q {tx+58} {ky+64} {tx+74} {ky+26}" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
+    # Tip hit arrow
+    s += f'  <line x1="{tx-56}" y1="{ky+68}" x2="{tx-16}" y2="{ky+68}" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>\n'
+    s += f'  <text x="{tx-62}" y="{ky+65}" text-anchor="end" class="warn">Tip Hit</text>\n'
+    s += f'  <text x="{tx-62}" y="{ky+77}" text-anchor="end" class="lbl-sm">(~70 kgf)</text>\n'
+
+    s += f'  <text x="{tx-94}" y="{ky-44}" text-anchor="middle" class="lbl-sm">Port swings</text>\n'
+    s += f'  <text x="{tx-94}" y="{ky-32}" text-anchor="middle" class="lbl-sm">under nose</text>\n'
+    s += f'  <text x="{tx+106}" y="{ky-48}" text-anchor="middle" class="ok">Ø20 mm Kingpin</text>\n'
+    s += f'  <text x="{tx+106}" y="{ky-36}" text-anchor="middle" class="lbl-sm">+ Ø180 mm Turntable</text>\n'
+    s += '  <text x="50" y="672" style="font-size:9.3px;fill:#DC2626;font-weight:700;">Catch: +0.5 kg turntable; hits DOWN flaps (pair w/ Fixed UP Staggerwing!).</text>\n'
+
+    # Right half of Panel C (x = 550..1040): Compact 5-Option Decision Table
+    s += '  <rect x="550" y="468" width="490" height="216" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="566" y="490" class="sec">Quick Pick Guide: All 5 Central-Socket Options</text>\n'
+    rows = [
+        ("1. 120° V-Cradle + 2× Ø6 Pins", "Best overall (±10% snap, 22 mm slim, CNC)", "ok"),
+        ("2. Ski-Binding Spring Cam", "10 s click reset (0 pins), thicker (38 mm)", "dim"),
+        ("3. Front C-Hook + 2× Rear Pins", "Easiest garage DIY (16 mm, zero sand jam)", "ok"),
+        ("4. Ø20 Kingpin Weathervane", "Never detaches! Best w/ Fixed UP Staggerwing", "dim"),
+        ("5. Fixed Solid 4× M8 Bolts", "Simplest/lightest (carbon tip is $400 fuse)", "warn"),
+    ]
+    ry = 514
+    for title_r, desc_r, cls_r in rows:
+        s += f'  <text x="566" y="{ry}" class="{cls_r}">{title_r}</text>\n'
+        s += f'  <text x="764" y="{ry}" class="lbl-sm">{desc_r}</text>\n'
+        s += f'  <line x1="564" y1="{ry+8}" x2="1026" y2="{ry+8}" stroke="#E2E8F0" stroke-width="1"/>\n'
+        ry += 31
+    s += '  <text x="566" y="672" class="lbl-sm">All Options 1–4 release BOTH wing halves symmetrically → boat settles flat!</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "22-breakaway-socket-options.svg").write_text(s)
+
+
+# -------------------------------------------------------------------------
+# DIAGRAM 23: Breakaway Wing Interaction When Flaperons Are UP vs. DEPLOYED DOWN
+# -------------------------------------------------------------------------
+def gen_23_breakaway_deployed_flaperons():
+    W, H = 1080, 580
+    s = svg_header(
+        W, H,
+        "23. Main Wing Breakaway Clearance: Flaperons UP (Cruise) vs. Deployed DOWN (STOL Takeoff)",
+        "Why UP Cruise Has 57 mm Open Clearance — and the 3-Layer Anti-Collision Safeguard for the ~5 s DOWN Takeoff Window"
+    )
+
+    # =========================================================================
+    # PANEL A (LEFT): MODE 2 UP CRUISE (98% OF FLIGHT — WIDE-OPEN CLEARANCE!)
+    # =========================================================================
+    s += '  <rect x="24" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Mode 2 UP Cruise (98% of Flight, 10–22 kn)</text>\n'
+    s += '  <text x="42" y="109" class="ok">Flaperons sit at Z = +35 mm (57 mm ABOVE Main Wing) → 100% clear exit!</text>\n'
+    s += '  <rect x="36" y="118" width="484" height="292" rx="6" fill="url(#water)"/>\n'
+    s += '  <text x="46" y="134" class="lbl-sm">← BOW (High-Speed 15.5 kn Cruise)</text>\n'
+    s += '  <text x="510" y="134" text-anchor="end" class="lbl-sm">STERN →</text>\n'
+
+    # 90 mm Flying-Keel Pod side profile (y = 176..266 -> 90 px tall, cy = 221)
+    cy = 221
+    s += f'  <rect x="52" y="{cy-45}" width="404" height="90" rx="34" fill="#334155" fill-opacity="0.18" stroke="#0F172A" stroke-width="1.8"/>\n'
+    # Tail prop at x = 472 (y = 166..276)
+    s += f'  <rect x="456" y="{cy-12}" width="16" height="24" rx="3" fill="#334155"/>\n'
+    s += f'  <line x1="474" y1="{cy-56}" x2="474" y2="{cy+56}" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
+    s += f'  <text x="492" y="{cy+4}" text-anchor="middle" class="dim">Prop</text>\n'
+    s += f'  <text x="492" y="{cy+16}" text-anchor="middle" class="lbl-sm">0 RPM</text>\n'
+
+    # Mode 2 UP Flaperon safely HIGH at Z = +35 mm (y = cy - 34 = 187, x = 232)
+    fl_up = transform_pts(naca4_points(0.02, 0.4, 0.11, 60), 228, cy - 34, deg=0)
+    s += f'  <polygon points="{pts_to_str(fl_up)}" fill="#F97316" stroke="#9A3412" stroke-width="1.6"/>\n'
+    s += f'  <text x="274" y="{cy-56}" text-anchor="middle" class="ok">UP Flaperon (Z = +35 mm)</text>\n'
+
+    # Golden V-Cradle under pod belly (y = cy + 45 = 266) + Blue Seated Main Wing
+    s += f'  <polygon points="108,{cy+45} 198,{cy+45} 194,{cy+58} 114,{cy+52}" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    mw_a1 = transform_pts(naca4_points(0.02, 0.4, 0.11, 84), 114, cy + 52, deg=2)
+    s += f'  <polygon points="{pts_to_str(mw_a1)}" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+
+    # Orange Ejected Main Wing sliding 12° down-aft with MASSIVE >85 mm clearance under UP flaperon!
+    mw_a2 = transform_pts(naca4_points(0.02, 0.4, 0.11, 84), 296, cy + 92, deg=12)
+    s += f'  <polygon points="{pts_to_str(mw_a2)}" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>\n'
+    # Bold green exit corridor arrow + 0.35 m belly tether
+    s += f'  <path d="M 204 {cy+60} L 288 {cy+84}" fill="none" stroke="#059669" stroke-width="2.6" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <path d="M 88 {cy+45} Q 186 {cy+88} 304 {cy+92}" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2"/>\n'
+    s += f'  <circle cx="88" cy="{cy+45}" r="3.6" fill="#059669"/>\n'
+    # Wide vertical clearance dimension line between UP flaperon & ejected wing corridor!
+    s += dim_line(258, cy - 26, 258, cy + 74, "&gt;85 mm CLEAR!", dx=46, dy=4, cls="ok", stroke="#059669", marker="arrGreen")
+
+    s += f'  <text x="148" y="{cy+118}" text-anchor="middle" class="dim">Seated Main Wing</text>\n'
+    s += f'  <text x="356" y="{cy+128}" text-anchor="middle" class="ok">Ejected Wing (12° exit)</text>\n'
+    s += f'  <text x="356" y="{cy+140}" text-anchor="middle" class="lbl-sm">0.35 m leash stops 0.5 m before prop!</text>\n'
+
+    s += '  <text x="42" y="436" class="ok">1. Zero Conflict in Cruise (98% of flight time &amp; all high-speed hits!):</text>\n'
+    s += '  <text x="52" y="454" class="lbl-sm">• UP Staggerwing flaperons sit 57 mm above Main Wing (&gt;85 mm clear of exit!).</text>\n'
+    s += '  <text x="52" y="472" class="lbl-sm">• Works seamlessly with ALL 4 breakaway options (V-Cradle, Cam, C-Hook, Kingpin).</text>\n'
+    s += '  <text x="42" y="496" class="dim">2. Also applies 100% of the time for Fixed Upper Staggerwing &amp; Roof Switchblade:</text>\n'
+    s += '  <text x="52" y="514" class="lbl-sm">• Because rear surfaces never drop below pod belly, collision is physically impossible.</text>\n'
+
+    # =========================================================================
+    # PANEL B (RIGHT): MODE 1 DOWN TAKEOFF (~5 s, <8.5 kn) — 3-LAYER SAFEGUARD!
+    # =========================================================================
+    s += '  <rect x="548" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="566" y="92" class="sec">B. Mode 1 DOWN Takeoff (~5 s, &lt;8.5 kn): 3-Layer Safeguard</text>\n'
+    s += '  <text x="566" y="109" class="warn">Flaperons deployed +15° (TE @ Z = -47 mm) → Needs steep exit + reflex flip!</text>\n'
+    s += '  <rect x="560" y="118" width="484" height="292" rx="6" fill="url(#water)"/>\n'
+    s += '  <text x="570" y="134" class="lbl-sm">← BOW (7–8 kn STOL Takeoff • 5× Lower Impact Energy)</text>\n'
+    s += '  <text x="1034" y="134" text-anchor="end" class="lbl-sm">STERN →</text>\n'
+
+    # 90 mm Pod side profile (x = 576..980, cy = 221)
+    s += f'  <rect x="576" y="{cy-45}" width="404" height="90" rx="34" fill="#334155" fill-opacity="0.18" stroke="#0F172A" stroke-width="1.8"/>\n'
+    # Tail prop at x = 996
+    s += f'  <rect x="980" y="{cy-12}" width="16" height="24" rx="3" fill="#334155"/>\n'
+    s += f'  <line x1="998" y1="{cy-56}" x2="998" y2="{cy+56}" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
+
+    # Main Wing mounted in lower third (Z = -22 mm -> y = cy + 22 = 243)
+    mw_b1 = transform_pts(naca4_points(0.02, 0.4, 0.11, 84), 638, cy + 22, deg=2)
+    s += f'  <polygon points="{pts_to_str(mw_b1)}" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    # Hall sensor on socket
+    s += f'  <circle cx="668" cy="{cy+16}" r="4.2" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.1"/>\n'
+
+    # RED DASHED CLASH ZONE: Flaperon BEFORE reflex (deployed +15° DOWN at Z = -35 mm -> y = cy + 35 = 256, TE @ cy + 48!)
+    fl_clash = transform_pts(naca4_points(0.02, 0.4, 0.11, 60), 758, cy + 35, deg=16)
+    s += f'  <polygon points="{pts_to_str(fl_clash)}" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.4" stroke-dasharray="4,2"/>\n'
+    # GREEN/ORANGE FLAPERON AFTER REFLEX / SLIP-CLUTCH FLIP (-35° TE-UP -> lifts TE +32 mm UP out of the exit path!)
+    fl_flip = transform_pts(naca4_points(0.02, 0.4, 0.11, 60), 758, cy + 35, deg=-35)
+    s += f'  <polygon points="{pts_to_str(fl_flip)}" fill="#10B981" fill-opacity="0.88" stroke="#065F46" stroke-width="1.6"/>\n'
+    # Curved upward flip arrow on flaperon TE!
+    s += f'  <path d="M 818 {cy+48} Q 832 {cy+28} 814 {cy+6}" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+
+    # Steep 25° Down-Aft Ejected Main Wing passing CLEANLY BELOW the flipped-up flaperon!
+    mw_b2 = transform_pts(naca4_points(0.02, 0.4, 0.11, 84), 812, cy + 104, deg=24)
+    s += f'  <polygon points="{pts_to_str(mw_b2)}" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>\n'
+    # Bold green 25° steep exit arrow + 0.35 m belly tether
+    s += f'  <path d="M 716 {cy+40} L 804 {cy+96}" fill="none" stroke="#059669" stroke-width="2.6" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <path d="M 612 {cy+45} Q 704 {cy+96} 818 {cy+106}" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2"/>\n'
+    s += f'  <circle cx="612" cy="{cy+45}" r="3.6" fill="#059669"/>\n'
+
+    # Crisp non-overlapping callouts inside Panel B
+    s += f'  <text x="676" y="{cy-58}" text-anchor="middle" class="warn">Hall Sensor (&lt;0.02 s!)</text>\n'
+    s += f'  <text x="858" y="{cy-66}" text-anchor="middle" class="ok">Layer 2: -35° TE-Up Reflex!</text>\n'
+    s += f'  <text x="858" y="{cy-53}" text-anchor="middle" class="lbl-sm">(+32 mm lift in 0.08 s + slip-clutch!)</text>\n'
+    s += f'  <text x="912" y="{cy+64}" text-anchor="middle" class="warn">Red Dashed =</text>\n'
+    s += f'  <text x="912" y="{cy+76}" text-anchor="middle" class="lbl-sm">Old +15° clash</text>\n'
+    s += f'  <text x="640" y="{cy+114}" text-anchor="middle" class="ok">Layer 1: 25° Steep</text>\n'
+    s += f'  <text x="640" y="{cy+126}" text-anchor="middle" class="lbl-sm">Drop-Exit Ramp</text>\n'
+    s += f'  <text x="886" y="{cy+142}" text-anchor="middle" class="ok">Passes Cleanly Below Flaperon!</text>\n'
+
+    # Bottom 3-Layer Summary inside Panel B
+    s += '  <text x="566" y="436" class="ok">Layer 1 — Steep 25° Down-Aft Drop Exit (V-Cradle / Front C-Hook):</text>\n'
+    s += '  <text x="576" y="454" class="lbl-sm">• Water flow pushes freed wing steeply down below lowered flaperon TE.</text>\n'
+    s += '  <text x="566" y="476" class="ok">Layer 2 — Hall-Triggered -35° Flaperon Reflex (&lt;0.08 s) + 0-RPM Brake:</text>\n'
+    s += '  <text x="576" y="494" class="lbl-sm">• 2 mm socket shift commands servos full TE-UP (+32 mm) &amp; halts prop.</text>\n'
+    s += '  <text x="566" y="516" class="dim">Layer 3 — Passive Slip-Clutch Servo Saver (Works Even at 0 V Dead Battery!):</text>\n'
+    s += '  <text x="576" y="534" class="lbl-sm">• If wing grazes a DOWN flap, servo-saver horn lets flap flip up undamaged!</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "23-breakaway-deployed-flaperons.svg").write_text(s)
+
+
 if __name__ == "__main__":
     gen_01_switchblade()
     gen_02_stol_flaperons()
@@ -1559,4 +1884,6 @@ if __name__ == "__main__":
     gen_18_modular_seating()
     gen_20_morphing_stol_staggerwing()
     gen_21_center_strut_asymmetric_loads()
-    print("Generated all 12 2D engineering SVGs in", OUT_DIR)
+    gen_22_breakaway_socket_options()
+    gen_23_breakaway_deployed_flaperons()
+    print("Generated all 14 2D engineering SVGs in", OUT_DIR)

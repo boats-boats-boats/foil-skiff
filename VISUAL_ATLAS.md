@@ -1,6 +1,6 @@
 # FoilSkiff — Visual Design Atlas & 3D CAD Model Gallery
 
-A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md) and [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), pairing **interactive millimeter-scale 3D `.stl` CAD models** (orbitable directly in GitHub's native 3D viewer), **multi-material OpenSCAD 3D renderings (`renders/`)**, and **mathematically-scaled 2D engineering SVG drawings (`diagrams/`)**.
+A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), and [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), pairing **interactive millimeter-scale 3D `.stl` CAD models** (orbitable directly in GitHub's native 3D viewer), **multi-material OpenSCAD 3D renderings (`renders/`)**, and **24 mathematically-scaled engineering SVG drawings (`diagrams/`)**.
 
 * **Primary Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `60 cm` inside beam, `Ø460 mm` continuous closed-bow tubes, factory `Tru-Alu` rigid aluminum transom, `31 kg` bare weight, `500 kg` capacity).
 * **Primary Wing & Actuation:** **Deep-Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`, `400 mm` deep)** with **`2×` `IP67` brushless servos sealed INSIDE the Flying-Keel Pod** (`ZERO` boxes above the top Hard Deck, `ZERO` external strut pushrods, `ZERO` surface-piercing wave-slam wings!).
@@ -174,34 +174,40 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 12. `2×` Recessed Center Struts & Symmetric Central `120°` V-Cradle Breakaway Socket (Upper/Lower Trunnions & Impact Protection)
 ![2x Recessed Center Struts and Symmetric Central V-Cradle Breakaway Socket](diagrams/21-center-strut-asymmetric-loads.svg)
 
-### 13. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
+### 13. Central Breakaway Wing Socket: V-Cradle Sandwich Anatomy & 5 Alternative Mechanisms
+![Central Breakaway Wing Socket: V-Cradle Sandwich Anatomy and Alternative Mechanisms](diagrams/22-breakaway-socket-options.svg)
+
+### 14. Main Wing Breakaway Clearance: Flaperons UP (Cruise) vs. Deployed DOWN (STOL Takeoff Safeguards)
+![Main Wing Breakaway Clearance: Flaperons UP Cruise vs. Deployed DOWN STOL Takeoff](diagrams/23-breakaway-deployed-flaperons.svg)
+
+### 15. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
 
-### 14. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+### 16. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
 ![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
 
-### 15. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 17. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 16. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 18. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 17. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 19. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 18. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 20. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 19. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 21. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 20. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 22. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 21. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 23. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 22. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 24. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -211,7 +217,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 12 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 14 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
 # Regenerate all 10 binary 3D .stl CAD models, 10 annotated 3D SVGs, and 10 OpenSCAD PNGs

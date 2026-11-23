@@ -6,7 +6,7 @@
 * **Primary Reference Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `600 mm` inside beam, `Ø460 mm` continuous closed curved bow tubes, factory notched `Tru-Alu` rigid aluminum transom rated to `10 HP`, `31 kg` bare weight, `500 kg` capacity, `105 × 60 × 30 cm` bag).
 * **Secondary Open-Bow Reference:** **`True Kit Discovery 330`** (`330 × 165 cm`, `36 kg`) and **`Takacat LX`** (open square bow enabling a full rigid Bow-to-Transom O-Frame).
 
-Primary reference documents: [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), and [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md).
+Primary reference documents: [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), and [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md).
 
 ---
 

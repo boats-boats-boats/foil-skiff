@@ -214,6 +214,8 @@ Because **`2×` Recessed Center Struts (`100 × 18 mm` on `Y = 0`)** lack the wi
 | **Central `120°` V-Cradle Wing Pins (`2×` @ `y = ±95 mm`)** | **Vertical (`Z`-axis)** — *top flange → wing V-foot → bottom flange* (**`Ø6 mm` Delrin double shear**; `Ø8 mm` if single shear) | **Horizontal Aft (`+X`)** — tip strike cams V-foot straight aft out of open rear | **Only tiny cruise drag (`~3–6 kgf`)** — `100%` of lift (`200–400 kgf`), roll & pitch are carried by the `200 mm` UHMW flanges (pin floats unloaded in `Z`) |
 | **Upper Strut Kick-Up Fuse Pin (Front Strut LE)** | **Horizontal Lateral (`Y`-axis)** — *rail fork → strut LE tang → rail fork* (**`Ø5 mm` Delrin double shear**, parallel to `Ø16 mm` axle) | **Vertical Upward (`+Z`)** — shoal hit rotates strut aft around TE pivot (`+24 mm`), driving LE tang straight UP across pin | **`0 kgf` (completely unloaded!)** — forward cruise thrust pushes strut LE *down* onto the solid `70 mm` Alu compression stop; side loads stay on `Ø16 mm` axle + UHMW washers |
 
+> **Full Deep-Dive & Deployed-Flaperon Clearance:** See **[`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md)** for the complete 4-part `120°` V-cradle sandwich breakdown, **all 5 central wing socket alternatives** (V-Cradle, Ski-Binding Cam, DIY Front C-Hook, Non-Detaching `Ø20 mm` Kingpin Weathervane Swing, Fixed Bolted), and the **3-layer anti-collision safeguard when split STOL flaperons are deployed DOWN (`Z = -35 mm`, `+15°`)** during takeoff (`25°` steep drop-exit + Hall `<0.02 s` `-35°` TE-up servo reflex + passive slip-clutch servo-saver horn; Diagrams 22 & 23).
+
 ---
 
 ## 2. Off-the-Shelf Propulsion Showdown (`Weight`, `Compactness`, `Cost` & `Power Steering`)
