@@ -59,103 +59,103 @@
   </defs>
   <rect x="1" y="1" width="1078" height="758" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
   <rect x="12" y="56" width="1056" height="692" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">21. 2× Recessed Center Struts &amp; Unified Linked-Fold Main Wing Protection</text>
-  <text x="24" y="46" class="sub">Coupled 82° Aft-Sweep Main Foil (Zero Rollover, Zero Detachment!) + Wide T-Head &amp; Pod Saddle Trunnions</text>
+  <text x="24" y="28" class="title">21. 2× Recessed Center Struts &amp; True 90° Upper/Lower Channel Linked-Fold Protection</text>
+  <text x="24" y="46" class="sub">90° Flush Under/Above Channels (220 mm Dart!) + Wet IP68 Servo Variable-Preload Pins + Wide T-Head &amp; Pod Saddle Trunnions</text>
   <rect x="24" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="92" class="sec">A. Top-Down: Unified Linked-Fold (Both Halves Sweep Together!)</text>
-  <text x="42" y="109" class="ok">Intermeshing root gears force symmetric 82° aft sweep • Zero leash, zero rollover!</text>
+  <text x="42" y="92" class="sec">A. Bottom-Up: True 90° Lower Fold Channel (220 mm Dart!)</text>
+  <text x="42" y="109" class="ok">Pivots @ y = ±54 mm + meshed gears → BOTH halves tuck 90° flush under belly!</text>
   <rect x="36" y="118" width="484" height="128" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="46" y="134" class="dim">A1. Close-Up Inside 22 mm Belly Overhang C-Slot Bridge (Top View)</text>
+  <text x="46" y="134" class="dim">A1. Close-Up Inside 12 mm Recessed Belly Channel (Bottom-Up View)</text>
   <text x="46" y="238" class="lbl-sm">← BOW</text>
-  <text x="510" y="238" text-anchor="end" class="ok">OPEN REAR SWEEP →</text>
+  <text x="510" y="238" text-anchor="end" class="ok">90° STRAIGHT-AFT CHANNEL →</text>
   <rect x="108" y="144" width="92" height="80" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
   <rect x="138" y="138" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
   <rect x="138" y="196" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
-  <circle cx="157" cy="172" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <circle cx="157" cy="196" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <circle cx="157" cy="154" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
-  <circle cx="157" cy="214" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
-  <circle cx="184" cy="184" r="5.6" fill="#DC2626" stroke="#0F172A" stroke-width="1.4"/>
-  <path d="M 184 150 Q 216 150 232 170" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
-  <path d="M 184 218 Q 216 218 232 198" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
-  <text x="46" y="168" class="lbl-sm">72 mm Roots</text>
+  <circle cx="157" cy="172" r="11" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <circle cx="157" cy="196" r="11" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <circle cx="157" cy="156" r="5.0" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <circle cx="157" cy="212" r="5.0" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <rect x="168" y="178" width="36" height="12" rx="2" fill="#475569"/>
+  <circle cx="194" cy="184" r="5.4" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.3"/>
+  <path d="M 184 150 Q 216 150 230 170" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <path d="M 184 218 Q 216 218 230 198" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <text x="46" y="168" class="lbl-sm">40 mm Roots</text>
   <text x="46" y="180" class="lbl-sm">under Bridge</text>
   <text x="46" y="192" class="lbl-sm">(100% lift!)</text>
-  <text x="272" y="152" class="warn">1. Tip hit (~85 kgf) snaps 1× Ø8</text>
-  <text x="282" y="165" class="lbl-sm">dbl-shear Delrin pin (red, center)</text>
-  <text x="272" y="184" class="ok">2. Meshed stainless gear sectors</text>
-  <text x="282" y="197" class="lbl-sm">force BOTH halves to sweep 82° aft!</text>
-  <text x="272" y="211" class="dim">3. Manual beaching pull-lanyard</text>
-  <text x="282" y="223" class="lbl-sm">uses exact same fold (30 s reset!)</text>
+  <text x="268" y="152" class="warn">1. Wet IP68 Servo Roller Pin (red)</text>
+  <text x="278" y="165" class="lbl-sm">dials 0% Fold / 50% Reef / 100% Cruise!</text>
+  <text x="268" y="184" class="ok">2. Meshed 90° stainless gears</text>
+  <text x="278" y="197" class="lbl-sm">tuck BOTH halves 90° inside 220 mm!</text>
+  <text x="268" y="213" class="dim">3. Dyneema pulley loop deploys/folds</text>
+  <text x="278" y="225" class="lbl-sm">5-sec pull-to-reset — ZERO broken pins!</text>
   <rect x="36" y="254" width="484" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="46" y="270" class="dim">A2. Full-Pod View After Hit OR Beaching (400 mm Dart • 227 mm Ahead of Prop!)</text>
-  <rect x="133" y="316" width="230" height="28" rx="14" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
+  <text x="46" y="270" class="dim">A2. Full-Pod 90° Folded Dart (204 mm Inside 220 mm Pod • 179 mm Clear of Prop!)</text>
+  <rect x="133" y="313" width="230" height="34" rx="16" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
   <line x1="376" y1="308" x2="376" y2="352" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
   <text x="384" y="328" class="dim">Tail Prop</text>
-  <text x="384" y="340" class="ok">(227 mm</text>
+  <text x="384" y="340" class="ok">(179 mm</text>
   <text x="384" y="352" class="ok">clear!)</text>
   <rect x="174" y="274" width="16" height="112" rx="4" fill="url(#wingBlue)" fill-opacity="0.22" stroke="#0369A1" stroke-width="1.2" stroke-dasharray="3,2"/>
-  <polygon points="180,318 306,302 304,315 184,326" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
-  <polygon points="180,342 306,358 304,345 184,334" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
-  <path d="M 194 278 Q 238 274 272 300" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-  <path d="M 194 382 Q 238 386 272 360" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-  <rect x="166" y="326" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
-  <rect x="300" y="326" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
-  <line x1="176" y1="316" x2="176" y2="292" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
-  <line x1="310" y1="344" x2="310" y2="370" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
+  <rect x="180" y="316" width="136" height="12" rx="3" fill="#F97316" fill-opacity="0.94" stroke="#9A3412" stroke-width="1.2"/>
+  <rect x="180" y="332" width="136" height="12" rx="3" fill="#F97316" fill-opacity="0.94" stroke="#9A3412" stroke-width="1.2"/>
+  <path d="M 194 278 Q 238 276 262 310" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+  <path d="M 194 382 Q 238 384 262 350" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+  <rect x="166" y="326" width="18" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <rect x="300" y="326" width="18" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <line x1="175" y1="313" x2="175" y2="290" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
+  <line x1="309" y1="347" x2="309" y2="370" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
   <line x1="132" y1="374" x2="168" y2="374" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>
   <text x="128" y="371" text-anchor="end" class="warn">Tip Hit</text>
   <text x="128" y="383" text-anchor="end" class="lbl-sm">(~85 kgf)</text>
   <text x="146" y="302" text-anchor="end" class="warn">+F_lat</text>
   <text x="318" y="374" class="warn">-F_lat</text>
-  <text x="342" y="288" text-anchor="middle" class="ok">BOTH Halves Sweep 82°!</text>
-  <text x="342" y="300" text-anchor="middle" class="lbl-sm">Zero rollover • Sheds rope</text>
-  <text x="150" y="397" text-anchor="middle" class="ok">~400 mm Folded Width</text>
+  <text x="336" y="288" text-anchor="middle" class="ok">TRUE 90° FLUSH FOLD!</text>
+  <text x="336" y="300" text-anchor="middle" class="lbl-sm">204 mm inside 220 mm pod</text>
+  <text x="150" y="397" text-anchor="middle" class="ok">220 mm Total Width!</text>
   <text x="378" y="397" text-anchor="middle" class="lbl-sm">760 mm Tandem Struts (yaw ≤545 N·m)</text>
   <rect x="548" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="566" y="92" class="sec">B. Side Profile: Center Shoal Kick-Up vs. Linked-Fold Sweep</text>
-  <text x="566" y="109" class="dim">Center shoal (~140 kgf) → Struts kick up • Tip hit (~85 kgf) → Wings sweep 82° aft</text>
+  <text x="566" y="92" class="sec">B. Side Profile: Dual Servo-Pin Smart Divider (Struts + Foils)</text>
+  <text x="566" y="109" class="dim">Center shoal (~140 kgf) → Struts kick up • Tip hit (~85 kgf) → Wings fold 90° flush</text>
   <rect x="560" y="118" width="484" height="236" rx="6" fill="url(#water)"/>
   <text x="570" y="133" class="lbl-sm">← BOW (Water Flow →)</text>
   <text x="1034" y="133" text-anchor="end" class="lbl-sm">STERN →</text>
   <rect x="574" y="140" width="430" height="12" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>
-  <rect x="632" y="152" width="36" height="16" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.1"/>
-  <circle cx="650" cy="160" r="4.4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>
+  <rect x="614" y="152" width="54" height="18" rx="3" fill="#FBBF24" stroke="#92400E" stroke-width="1.2"/>
+  <circle cx="656" cy="161" r="4.6" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>
   <rect x="668" y="152" width="46" height="114" rx="5" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
   <circle cx="703" cy="162" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
   <rect x="890" y="152" width="46" height="114" rx="5" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
   <circle cx="925" cy="162" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
   <path d="M 718 198 Q 752 194 770 172" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>
-  <rect x="588" y="238" width="398" height="56" rx="24" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.6"/>
-  <rect x="664" y="238" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>
-  <rect x="668" y="238" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
-  <circle cx="679" cy="258" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <rect x="886" y="238" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>
-  <rect x="890" y="238" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
-  <circle cx="901" cy="258" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <polygon points="668,238 652,238 668,220" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>
+  <rect x="588" y="236" width="398" height="60" rx="24" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.6"/>
+  <rect x="664" y="236" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>
+  <rect x="668" y="236" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
+  <circle cx="679" cy="256" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <rect x="886" y="236" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>
+  <rect x="890" y="236" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
+  <circle cx="901" cy="256" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <polygon points="668,236 652,236 668,218" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>
   <rect x="986" y="258" width="16" height="16" rx="3" fill="#334155"/>
   <line x1="1004" y1="234" x2="1004" y2="298" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
-  <polygon points="768.0,248.0 768.1,247.7 768.3,247.3 768.7,247.0 769.3,246.7 770.0,246.3 770.9,246.0 772.0,245.7 773.2,245.5 774.6,245.2 776.1,245.0 777.7,244.8 779.4,244.7 781.2,244.6 783.1,244.6 785.0,244.6 787.0,244.7 789.0,244.8 791.0,244.9 793.0,245.0 795.0,245.2 797.0,245.4 798.9,245.6 800.8,245.8 802.6,246.1 804.2,246.3 805.8,246.6 807.3,246.8 808.7,247.0 809.9,247.2 810.9,247.4 811.9,247.6 812.6,247.7 813.2,247.8 813.7,247.9 813.9,248.0 814.0,248.0 813.9,248.0 813.6,248.0 813.2,248.1 812.6,248.1 811.8,248.1 810.9,248.2 809.8,248.3 808.6,248.3 807.2,248.4 805.7,248.5 804.1,248.6 802.4,248.7 800.7,248.8 798.8,248.9 796.9,249.0 795.0,249.1 793.0,249.2 791.0,249.3 789.0,249.4 787.0,249.5 785.1,249.6 783.2,249.6 781.4,249.7 779.6,249.7 777.9,249.7 776.3,249.7 774.9,249.7 773.5,249.6 772.3,249.5 771.2,249.4 770.3,249.2 769.5,249.1 768.9,248.8 768.4,248.6 768.1,248.3" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>
-  <rect x="652" y="290" width="76" height="12" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>
-  <rect x="688" y="294" width="234" height="8" rx="3" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.3"/>
-  <circle cx="690" cy="296" r="4" fill="#DC2626" stroke="#0F172A" stroke-width="1"/>
+  <rect x="726" y="236" width="154" height="9" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <rect x="652" y="286" width="276" height="10" rx="3" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>
+  <circle cx="716" cy="291" r="4.2" fill="#DC2626" stroke="#FFFFFF" stroke-width="1"/>
   <line x1="734" y1="312" x2="882" y2="312" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
-  <text x="646" y="182" text-anchor="end" class="warn">Strut Fuse</text>
-  <text x="646" y="194" text-anchor="end" class="lbl-sm">(~140 kgf)</text>
+  <text x="642" y="184" text-anchor="end" class="warn">Strut Servo Pin</text>
+  <text x="642" y="196" text-anchor="end" class="lbl-sm">(0% / ~140 kgf)</text>
   <text x="776" y="170" class="ok">Top Pin @ TE (+24)</text>
   <text x="748" y="206" class="ok">1. Shoal → Struts kick aft!</text>
-  <text x="648" y="226" text-anchor="end" class="warn">Line Cutter</text>
-  <text x="794" y="232" text-anchor="middle" class="lbl-sm">Upper Staggerwing / Switchblade</text>
-  <text x="802" y="280" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>
-  <text x="626" y="324" text-anchor="middle" class="dim">22 mm C-Slot</text>
-  <text x="626" y="336" text-anchor="middle" class="lbl-sm">Overhang Bridge</text>
-  <text x="860" y="334" text-anchor="middle" class="warn">2. Swept 82° Aft (Never Detaches • 227 mm Clear of Prop!)</text>
-  <text x="566" y="376" class="ok">Smart Divider: Center shoal (~140 kgf) kicks struts up (wing pin holds ~170 kgf).</text>
-  <text x="566" y="394" class="lbl-sm">One-sided tip hit (~85 kgf) shears 1× Ø8 Delrin pin → BOTH halves sweep 82° aft!</text>
+  <text x="648" y="224" text-anchor="end" class="warn">Line Cutter</text>
+  <text x="802" y="231" text-anchor="middle" class="ok">Upper Channel (13 mm roof)</text>
+  <text x="802" y="276" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>
+  <text x="626" y="324" text-anchor="middle" class="warn">Lower Channel</text>
+  <text x="626" y="336" text-anchor="middle" class="lbl-sm">(12 mm + Servo)</text>
+  <text x="860" y="334" text-anchor="middle" class="warn">2. Folded 90° Flush (220 mm • 179 mm Clear of Prop!)</text>
+  <text x="566" y="376" class="ok">1-Button BEACH MODE: Both Strut &amp; Foil servos drop preload to 0% simultaneously!</text>
+  <text x="566" y="394" class="lbl-sm">Resettable on water in 5 s (zero broken Delrin pins — see Diagram 24 for cam math!).</text>
   <rect x="24" y="428" width="1032" height="308" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="452" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>
-  <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>
+  <text x="42" y="452" class="sec">C. Front Cross-Section: Upper 260 mm T-Head, Lower 180 mm Saddle &amp; 220 mm Fold Channels</text>
+  <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× • Upper (13 mm) &amp; Lower (12 mm) channels keep the 26 L dry bay 100% intact!</text>
   <line x1="220.0" y1="492.0" x2="470.0" y2="492.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
   <text x="345.0" y="486.0" text-anchor="middle" class="ok">250 mm Bearing Span (8.3× Lower Pin Load!)</text>
   <rect x="155" y="504" width="380" height="14" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.3"/>
@@ -166,31 +166,32 @@
   <rect x="445" y="530" width="8" height="26" rx="1.5" fill="#F97316" stroke="#9A3412" stroke-width="1"/>
   <path d="M 245 530 L 445 530 L 445 556 L 367 576 L 359 632 L 421 650 L 421 674 L 269 674 L 269 650 L 331 632 L 323 576 L 245 556 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
   <rect x="199" y="539" width="292" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
-  <rect x="229" y="632" width="232" height="62" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>
-  <rect x="251" y="634" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
+  <rect x="229" y="628" width="232" height="68" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>
+  <rect x="253" y="628" width="184" height="9" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1"/>
+  <rect x="251" y="636" width="12" height="54" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
   <rect x="263" y="650" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
-  <rect x="427" y="634" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
+  <rect x="427" y="636" width="12" height="54" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
   <rect x="421" y="650" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
   <rect x="247" y="656" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
-  <rect x="247" y="692" width="196" height="8" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>
+  <rect x="249" y="688" width="192" height="10" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>
   <line x1="197" y1="594" x2="197" y2="566" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>
   <line x1="493" y1="566" x2="493" y2="594" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>
   <text x="191" y="586" text-anchor="end" class="dim">Push/Pull</text>
   <text x="191" y="599" text-anchor="end" class="lbl-sm">132 kgf/rail</text>
   <line x1="165" y1="660" x2="221" y2="660" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
   <text x="161" y="664" text-anchor="end" class="warn">±F_lat Thrust</text>
-  <line x1="247.0" y1="718.0" x2="443.0" y2="718.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
-  <text x="345.0" y="730.0" text-anchor="middle" class="dim">200 mm Overhang C-Slot &amp; 180 mm Saddle</text>
+  <line x1="249.0" y1="718.0" x2="441.0" y2="718.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
+  <text x="345.0" y="730.0" text-anchor="middle" class="ok">220 mm Folded Width (Fits Between 250 mm Rails!)</text>
   <rect x="588" y="488" width="450" height="226" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="606" y="512" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>
-  <text x="606" y="536" class="warn">1. Unified Linked-Fold Main Foil (BOTH Halves Sweep 82°!):</text>
-  <text x="616" y="552" class="lbl-sm">• 1× Ø8 mm dbl-shear Delrin pin snaps @ ~85 kgf tip hit → intermeshing</text>
-  <text x="616" y="566" class="lbl-sm">  gears sweep BOTH halves aft (0 rollover, 0 leash, 400 mm beach dart!).</text>
-  <text x="606" y="592" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>
-  <text x="616" y="608" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>
-  <text x="616" y="622" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>
-  <text x="606" y="648" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>
-  <text x="616" y="664" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>
-  <text x="616" y="678" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>
-  <text x="616" y="698" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays 0°!)</text>
+  <text x="606" y="512" class="sec">3-Stage Resettable Impact &amp; Beaching System</text>
+  <text x="606" y="536" class="warn">1. True 90° Upper &amp; Lower Fold Channels (220 mm Wide!):</text>
+  <text x="616" y="552" class="lbl-sm">• Main Wing (2×102 mm) nests 90° flush in 12 mm belly channel; Switchblade</text>
+  <text x="616" y="566" class="lbl-sm">  or Upper Staggerwing nests 90° flush in 13 mm roof channel (0 drag!).</text>
+  <text x="606" y="592" class="ok">2. Dual Wet IP68 Servo Variable-Preload Roller Pins:</text>
+  <text x="616" y="608" class="lbl-sm">• Foil pin (~85 kgf tip) &amp; Strut pin (~140 kgf shoal) lock over-center at 0 W,</text>
+  <text x="616" y="622" class="lbl-sm">  drop to 0% for Dyneema fold/beaching, &amp; reset in 5 s (0 broken pins!).</text>
+  <text x="606" y="648" class="dim">3. Wide Full-Span Trunnions + Twin 6 mm Internal Bulkheads:</text>
+  <text x="616" y="664" class="lbl-sm">• Upper 250 mm Ø16 axle + UHMW thrust washers (μ≈0.08) + Lower 180 mm</text>
+  <text x="616" y="678" class="lbl-sm">  pod saddle into twin 6 mm G10 bulkheads carry all roll &amp; side thrust.</text>
+  <text x="616" y="698" class="ok">• Bolt-On Alt: External foil-base 90° knuckles (~350 mm) if pod untouched.</text>
 </svg>

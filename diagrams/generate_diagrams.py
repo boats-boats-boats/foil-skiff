@@ -1321,160 +1321,145 @@ def gen_21_center_strut_asymmetric_loads():
     W, H = 1080, 760
     s = svg_header(
         W, H,
-        "21. 2× Recessed Center Struts & Unified Linked-Fold Main Wing Protection",
-        "Coupled 82° Aft-Sweep Main Foil (Zero Rollover, Zero Detachment!) + Wide T-Head & Pod Saddle Trunnions"
+        "21. 2× Recessed Center Struts & True 90° Upper/Lower Channel Linked-Fold Protection",
+        "90° Flush Under/Above Channels (220 mm Dart!) + Wet IP68 Servo Variable-Preload Pins + Wide T-Head & Pod Saddle Trunnions"
     )
 
     # =========================================================================
-    # PANEL A (TOP LEFT): (A1) ZOOMED LINKED-FOLD GEARS + (A2) FULL-POD SWEPT DART
+    # PANEL A (TOP LEFT): (A1) ZOOMED 90° LOWER CHANNEL + (A2) 220 mm FOLDED DART
     # =========================================================================
     s += '  <rect x="24" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">A. Top-Down: Unified Linked-Fold (Both Halves Sweep Together!)</text>\n'
-    s += '  <text x="42" y="109" class="ok">Intermeshing root gears force symmetric 82° aft sweep • Zero leash, zero rollover!</text>\n'
+    s += '  <text x="42" y="92" class="sec">A. Bottom-Up: True 90° Lower Fold Channel (220 mm Dart!)</text>\n'
+    s += '  <text x="42" y="109" class="ok">Pivots @ y = ±54 mm + meshed gears → BOTH halves tuck 90° flush under belly!</text>\n'
 
-    # --- SUB-BOX A1 (TOP HALF): ZOOMED ROOT PIVOTS + INTERMESHING GEARS + 1x PIN ---
+    # --- SUB-BOX A1 (TOP HALF): ZOOMED ROOT PIVOTS + MESHED GEARS + SERVO CAM PIN ---
     s += '  <rect x="36" y="118" width="484" height="128" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="46" y="134" class="dim">A1. Close-Up Inside 22 mm Belly Overhang C-Slot Bridge (Top View)</text>\n'
+    s += '  <text x="46" y="134" class="dim">A1. Close-Up Inside 12 mm Recessed Belly Channel (Bottom-Up View)</text>\n'
     s += '  <text x="46" y="238" class="lbl-sm">← BOW</text>\n'
-    s += '  <text x="510" y="238" text-anchor="end" class="ok">OPEN REAR SWEEP →</text>\n'
+    s += '  <text x="510" y="238" text-anchor="end" class="ok">90° STRAIGHT-AFT CHANNEL →</text>\n'
 
-    # Overhang C-Slot Bridge frame (golden U-housing at x = 108..210, y = 144..224)
     gx, gy = 160, 184
     s += f'  <rect x="{gx-52}" y="{gy-40}" width="92" height="80" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>\n'
-    # Left (Port, top) & Right (Stbd, bottom) inboard 72 mm roots extending from pivots (gy +/- 30) to meshing gears at gy!
     s += f'  <rect x="{gx-22}" y="{gy-46}" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
     s += f'  <rect x="{gx-22}" y="{gy+12}" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
-    # Intermeshing 90-deg Stainless Root Gear Sectors meeting at center (gx, gy)!
-    s += f'  <circle cx="{gx-3}" cy="{gy-12}" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>\n'
-    s += f'  <circle cx="{gx-3}" cy="{gy+12}" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>\n'
-    # 2x Gold Ø16 mm Vertical Root Pivot Pins at y = ±92 mm
-    s += f'  <circle cx="{gx-3}" cy="{gy-30}" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
-    s += f'  <circle cx="{gx-3}" cy="{gy+30}" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # 1x Central Red Ø8 mm Double-Shear Delrin Locking Pin at y = 0 (aft of gear mesh!)
-    s += f'  <circle cx="{gx+24}" cy="{gy}" r="5.6" fill="#DC2626" stroke="#0F172A" stroke-width="1.4"/>\n'
-    # Coupled sweep arrows to right
-    s += f'  <path d="M {gx+24} {gy-34} Q {gx+56} {gy-34} {gx+72} {gy-14}" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <path d="M {gx+24} {gy+34} Q {gx+56} {gy+34} {gx+72} {gy+14}" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <circle cx="{gx-3}" cy="{gy-12}" r="11" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>\n'
+    s += f'  <circle cx="{gx-3}" cy="{gy+12}" r="11" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>\n'
+    # 2x Gold Ø16 mm Vertical Root Pivot Pins at y = ±54 mm
+    s += f'  <circle cx="{gx-3}" cy="{gy-28}" r="5.0" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += f'  <circle cx="{gx-3}" cy="{gy+28}" r="5.0" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
+    # Servo-controlled variable-preload roller pin on 110 mm slider lug (red dot + gold servo box!)
+    s += f'  <rect x="{gx+8}" y="{gy-6}" width="36" height="12" rx="2" fill="#475569"/>\n'
+    s += f'  <circle cx="{gx+34}" cy="{gy}" r="5.4" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.3"/>\n'
+    s += f'  <path d="M {gx+24} {gy-34} Q {gx+56} {gy-34} {gx+70} {gy-14}" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <path d="M {gx+24} {gy+34} Q {gx+56} {gy+34} {gx+70} {gy+14}" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
 
-    # Clean non-overlapping callouts in A1
-    s += '  <text x="46" y="168" class="lbl-sm">72 mm Roots</text>\n'
+    s += '  <text x="46" y="168" class="lbl-sm">40 mm Roots</text>\n'
     s += '  <text x="46" y="180" class="lbl-sm">under Bridge</text>\n'
     s += '  <text x="46" y="192" class="lbl-sm">(100% lift!)</text>\n'
-    s += '  <text x="272" y="152" class="warn">1. Tip hit (~85 kgf) snaps 1× Ø8</text>\n'
-    s += '  <text x="282" y="165" class="lbl-sm">dbl-shear Delrin pin (red, center)</text>\n'
-    s += '  <text x="272" y="184" class="ok">2. Meshed stainless gear sectors</text>\n'
-    s += '  <text x="282" y="197" class="lbl-sm">force BOTH halves to sweep 82° aft!</text>\n'
-    s += '  <text x="272" y="211" class="dim">3. Manual beaching pull-lanyard</text>\n'
-    s += '  <text x="282" y="223" class="lbl-sm">uses exact same fold (30 s reset!)</text>\n'
+    s += '  <text x="268" y="152" class="warn">1. Wet IP68 Servo Roller Pin (red)</text>\n'
+    s += '  <text x="278" y="165" class="lbl-sm">dials 0% Fold / 50% Reef / 100% Cruise!</text>\n'
+    s += '  <text x="268" y="184" class="ok">2. Meshed 90° stainless gears</text>\n'
+    s += '  <text x="278" y="197" class="lbl-sm">tuck BOTH halves 90° inside 220 mm!</text>\n'
+    s += '  <text x="268" y="213" class="dim">3. Dyneema pulley loop deploys/folds</text>\n'
+    s += '  <text x="278" y="225" class="lbl-sm">5-sec pull-to-reset — ZERO broken pins!</text>\n'
 
-    # --- SUB-BOX A2 (BOTTOM HALF): FULL-POD TOP-DOWN IN 82° SWEPT DART MODE ---
+    # --- SUB-BOX A2 (BOTTOM HALF): FULL-POD TOP-DOWN IN 90° FLUSH 220 mm DART MODE ---
     s += '  <rect x="36" y="254" width="484" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="46" y="270" class="dim">A2. Full-Pod View After Hit OR Beaching (400 mm Dart • 227 mm Ahead of Prop!)</text>\n'
+    s += '  <text x="46" y="270" class="dim">A2. Full-Pod 90° Folded Dart (204 mm Inside 220 mm Pod • 179 mm Clear of Prop!)</text>\n'
 
     px, py = 248, 330
-    # Pod body (230 px long: x = 133..363)
-    s += f'  <rect x="{px-115}" y="{py-14}" width="230" height="28" rx="14" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
+    # Pod body (230 px long: x = 133..363, height 34 px = 220 mm!)
+    s += f'  <rect x="{px-115}" y="{py-17}" width="230" height="34" rx="16" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
     # Tail prop at x = 376
     s += f'  <line x1="{px+128}" y1="{py-22}" x2="{px+128}" y2="{py+22}" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>\n'
     s += f'  <text x="{px+136}" y="{py-2}" class="dim">Tail Prop</text>\n'
-    s += f'  <text x="{px+136}" y="{py+10}" class="ok">(227 mm</text>\n'
+    s += f'  <text x="{px+136}" y="{py+10}" class="ok">(179 mm</text>\n'
     s += f'  <text x="{px+136}" y="{py+22}" class="ok">clear!)</text>\n'
 
     # Deployed 0° Wing ghost (dashed blue) at x = 180
     s += f'  <rect x="{px-74}" y="{py-56}" width="16" height="112" rx="4" fill="url(#wingBlue)" fill-opacity="0.22" stroke="#0369A1" stroke-width="1.2" stroke-dasharray="3,2"/>\n'
-    # BOTH HALVES SWEPT 82° AFT TOGETHER alongside the pod (orange solid — stopping well ahead of prop!)
-    s += f'  <polygon points="{px-68},{py-12} {px+58},{py-28} {px+56},{py-15} {px-64},{py-4}" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>\n'
-    s += f'  <polygon points="{px-68},{py+12} {px+58},{py+28} {px+56},{py+15} {px-64},{py+4}" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>\n'
-    # Sweep arc arrows on both sides
-    s += f'  <path d="M {px-54} {py-52} Q {px-10} {py-56} {px+24} {py-30}" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <path d="M {px-54} {py+52} Q {px-10} {py+56} {px+24} {py+30}" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>\n'
+    # BOTH HALVES FOLDED TRUE 90° STRAIGHT-PARALLEL FLUSH INSIDE THE 220 mm POD FOOTPRINT! (orange solid)
+    s += f'  <rect x="{px-68}" y="{py-14}" width="136" height="12" rx="3" fill="#F97316" fill-opacity="0.94" stroke="#9A3412" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{px-68}" y="{py+2}" width="136" height="12" rx="3" fill="#F97316" fill-opacity="0.94" stroke="#9A3412" stroke-width="1.2"/>\n'
+    # Sweep arc arrows on both sides into 90° channel
+    s += f'  <path d="M {px-54} {py-52} Q {px-10} {py-54} {px+14} {py-20}" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <path d="M {px-54} {py+52} Q {px-10} {py+54} {px+14} {py+20}" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>\n'
 
     # Front & Rear Center Strut footprints (760 mm tandem spacing!)
-    s += f'  <rect x="{px-82}" y="{py-4}" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
-    s += f'  <rect x="{px+52}" y="{py-4}" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
-    # Opposite lateral reaction couple on struts
-    s += f'  <line x1="{px-72}" y1="{py-14}" x2="{px-72}" y2="{py-38}" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>\n'
-    s += f'  <line x1="{px+62}" y1="{py+14}" x2="{px+62}" y2="{py+40}" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>\n'
+    s += f'  <rect x="{px-82}" y="{py-4}" width="18" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <rect x="{px+52}" y="{py-4}" width="18" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <line x1="{px-73}" y1="{py-17}" x2="{px-73}" y2="{py-40}" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>\n'
+    s += f'  <line x1="{px+61}" y1="{py+17}" x2="{px+61}" y2="{py+40}" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>\n'
 
-    # Clean, non-overlapping labels in A2
     s += f'  <line x1="{px-116}" y1="{py+44}" x2="{px-80}" y2="{py+44}" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>\n'
     s += f'  <text x="{px-120}" y="{py+41}" text-anchor="end" class="warn">Tip Hit</text>\n'
     s += f'  <text x="{px-120}" y="{py+53}" text-anchor="end" class="lbl-sm">(~85 kgf)</text>\n'
     s += f'  <text x="{px-102}" y="{py-28}" text-anchor="end" class="warn">+F_lat</text>\n'
     s += f'  <text x="{px+70}" y="{py+44}" class="warn">-F_lat</text>\n'
-    s += f'  <text x="{px+94}" y="{py-42}" text-anchor="middle" class="ok">BOTH Halves Sweep 82°!</text>\n'
-    s += f'  <text x="{px+94}" y="{py-30}" text-anchor="middle" class="lbl-sm">Zero rollover • Sheds rope</text>\n'
-    s += f'  <text x="150" y="{py+67}" text-anchor="middle" class="ok">~400 mm Folded Width</text>\n'
+    s += f'  <text x="{px+88}" y="{py-42}" text-anchor="middle" class="ok">TRUE 90° FLUSH FOLD!</text>\n'
+    s += f'  <text x="{px+88}" y="{py-30}" text-anchor="middle" class="lbl-sm">204 mm inside 220 mm pod</text>\n'
+    s += f'  <text x="150" y="{py+67}" text-anchor="middle" class="ok">220 mm Total Width!</text>\n'
     s += f'  <text x="378" y="{py+67}" text-anchor="middle" class="lbl-sm">760 mm Tandem Struts (yaw ≤545 N·m)</text>\n'
 
     # =========================================================================
-    # PANEL B (TOP RIGHT): FULL SIDE PROFILE — SMART DIVIDER & CLEAN PLANES!
+    # PANEL B (TOP RIGHT): FULL SIDE PROFILE — DUAL SERVO-PIN SMART DIVIDER!
     # =========================================================================
     s += '  <rect x="548" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="566" y="92" class="sec">B. Side Profile: Center Shoal Kick-Up vs. Linked-Fold Sweep</text>\n'
-    s += '  <text x="566" y="109" class="dim">Center shoal (~140 kgf) → Struts kick up • Tip hit (~85 kgf) → Wings sweep 82° aft</text>\n'
+    s += '  <text x="566" y="92" class="sec">B. Side Profile: Dual Servo-Pin Smart Divider (Struts + Foils)</text>\n'
+    s += '  <text x="566" y="109" class="dim">Center shoal (~140 kgf) → Struts kick up • Tip hit (~85 kgf) → Wings fold 90° flush</text>\n'
 
-    # Water background inside Panel B
     s += '  <rect x="560" y="118" width="484" height="236" rx="6" fill="url(#water)"/>\n'
     s += '  <text x="570" y="133" class="lbl-sm">← BOW (Water Flow →)</text>\n'
     s += '  <text x="1034" y="133" text-anchor="end" class="lbl-sm">STERN →</text>\n'
 
-    # Top Under-Hull Rail (y = 140..152)
     s += '  <rect x="574" y="140" width="430" height="12" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>\n'
-    # Forward 70 mm stop block + Red ~140 kgf Horizontal Strut Kick-Up Shear Pin
-    s += '  <rect x="632" y="152" width="36" height="16" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.1"/>\n'
-    s += '  <circle cx="650" cy="160" r="4.4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>\n'
-    # Front & Rear 100x18 mm Hollow Carbon Struts descending from y = 152 to y = 266
+    # Upper Strut Servo-Controlled Variable-Preload Lock Box (gold servo + red roller pin!)
+    s += '  <rect x="614" y="152" width="54" height="18" rx="3" fill="#FBBF24" stroke="#92400E" stroke-width="1.2"/>\n'
+    s += '  <circle cx="656" cy="161" r="4.6" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>\n'
     for sx in (668, 890):
         s += f'  <rect x="{sx}" y="152" width="46" height="114" rx="5" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
         s += f'  <circle cx="{sx+35}" cy="162" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
     s += '  <path d="M 718 198 Q 752 194 770 172" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>\n'
 
-    # Flying-Keel Pod Profile (x = 588..986, y = 238..294 -> 56 px tall)
-    s += '  <rect x="588" y="238" width="398" height="56" rx="24" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.6"/>\n'
+    # Flying-Keel Pod with 13 mm Upper Fold Channel + 100% Intact Dry Bay + 12 mm Lower Fold Channel!
+    s += '  <rect x="588" y="236" width="398" height="60" rx="24" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.6"/>\n'
     for sx in (668, 890):
-        s += f'  <rect x="{sx-4}" y="238" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>\n'
-        s += f'  <rect x="{sx}" y="238" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>\n'
-        s += f'  <circle cx="{sx+11}" cy="258" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    # Orange stainless crab-pot line cutter at front strut/pod LE junction!
-    s += '  <polygon points="668,238 652,238 668,220" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
+        s += f'  <rect x="{sx-4}" y="236" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>\n'
+        s += f'  <rect x="{sx}" y="236" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>\n'
+        s += f'  <circle cx="{sx+11}" cy="256" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += '  <polygon points="668,236 652,236 668,218" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
 
     # Tail Propeller (x = 1004)
     s += '  <rect x="986" y="258" width="16" height="16" rx="3" fill="#334155"/>\n'
     s += '  <line x1="1004" y1="234" x2="1004" y2="298" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
 
-    # UP Staggerwing / Roof Switchblade sitting HIGH (+55 to +65 mm clear above Main Wing!)
-    fl_b = transform_pts(naca4_points(0.02, 0.4, 0.11, 46), 768, 248, deg=0)
-    s += f'  <polygon points="{pts_to_str(fl_b)}" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>\n'
-
-    # 22 mm Belly Overhang C-Slot Bridge + Linked-Fold Main Wing (blue deployed + orange swept aft profile!)
-    s += '  <rect x="652" y="290" width="76" height="12" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    # Orange swept-aft wing profile lying neatly alongside the pod belly, stopping WELL ahead of tail prop!
-    s += '  <rect x="688" y="294" width="234" height="8" rx="3" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.3"/>\n'
-    s += '  <circle cx="690" cy="296" r="4" fill="#DC2626" stroke="#0F172A" stroke-width="1"/>\n'
+    # UPPER FOLD CHANNEL (13 mm roof recess — Switchblade / Upper Staggerwing folded 90° flush!)
+    s += '  <rect x="726" y="236" width="154" height="9" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
+    # LOWER FOLD CHANNEL (12 mm belly recess — Main Wing folded 90° flush + wet IP68 servo lock!)
+    s += '  <rect x="652" y="286" width="276" height="10" rx="3" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>\n'
+    s += '  <circle cx="716" cy="291" r="4.2" fill="#DC2626" stroke="#FFFFFF" stroke-width="1"/>\n'
     s += '  <line x1="734" y1="312" x2="882" y2="312" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
 
-    # Clean, non-overlapping callouts in Panel B
-    s += '  <text x="646" y="182" text-anchor="end" class="warn">Strut Fuse</text>\n'
-    s += '  <text x="646" y="194" text-anchor="end" class="lbl-sm">(~140 kgf)</text>\n'
+    s += '  <text x="642" y="184" text-anchor="end" class="warn">Strut Servo Pin</text>\n'
+    s += '  <text x="642" y="196" text-anchor="end" class="lbl-sm">(0% / ~140 kgf)</text>\n'
     s += '  <text x="776" y="170" class="ok">Top Pin @ TE (+24)</text>\n'
     s += '  <text x="748" y="206" class="ok">1. Shoal → Struts kick aft!</text>\n'
-    s += '  <text x="648" y="226" text-anchor="end" class="warn">Line Cutter</text>\n'
-    s += '  <text x="794" y="232" text-anchor="middle" class="lbl-sm">Upper Staggerwing / Switchblade</text>\n'
-    s += '  <text x="802" y="280" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>\n'
-    s += '  <text x="626" y="324" text-anchor="middle" class="dim">22 mm C-Slot</text>\n'
-    s += '  <text x="626" y="336" text-anchor="middle" class="lbl-sm">Overhang Bridge</text>\n'
-    s += '  <text x="860" y="334" text-anchor="middle" class="warn">2. Swept 82° Aft (Never Detaches • 227 mm Clear of Prop!)</text>\n'
+    s += '  <text x="648" y="224" text-anchor="end" class="warn">Line Cutter</text>\n'
+    s += '  <text x="802" y="231" text-anchor="middle" class="ok">Upper Channel (13 mm roof)</text>\n'
+    s += '  <text x="802" y="276" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>\n'
+    s += '  <text x="626" y="324" text-anchor="middle" class="warn">Lower Channel</text>\n'
+    s += '  <text x="626" y="336" text-anchor="middle" class="lbl-sm">(12 mm + Servo)</text>\n'
+    s += '  <text x="860" y="334" text-anchor="middle" class="warn">2. Folded 90° Flush (220 mm • 179 mm Clear of Prop!)</text>\n'
 
-    s += '  <text x="566" y="376" class="ok">Smart Divider: Center shoal (~140 kgf) kicks struts up (wing pin holds ~170 kgf).</text>\n'
-    s += '  <text x="566" y="394" class="lbl-sm">One-sided tip hit (~85 kgf) shears 1× Ø8 Delrin pin → BOTH halves sweep 82° aft!</text>\n'
+    s += '  <text x="566" y="376" class="ok">1-Button BEACH MODE: Both Strut &amp; Foil servos drop preload to 0% simultaneously!</text>\n'
+    s += '  <text x="566" y="394" class="lbl-sm">Resettable on water in 5 s (zero broken Delrin pins — see Diagram 24 for cam math!).</text>\n'
 
     # =========================================================================
     # PANEL C (BOTTOM FULL WIDTH): FRONT CROSS-SECTION OF WIDE UPPER & LOWER TRUNNIONS
     # =========================================================================
     s += '  <rect x="24" y="428" width="1032" height="308" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="452" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>\n'
-    s += '  <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>\n'
+    s += '  <text x="42" y="452" class="sec">C. Front Cross-Section: Upper 260 mm T-Head, Lower 180 mm Saddle &amp; 220 mm Fold Channels</text>\n'
+    s += '  <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× • Upper (13 mm) &amp; Lower (12 mm) channels keep the 26 L dry bay 100% intact!</text>\n'
 
     cx_c = 345
     s += dim_line(cx_c - 125, 492, cx_c + 125, 492, "250 mm Bearing Span (8.3× Lower Pin Load!)", dy=-6, cls="ok", stroke="#059669", marker="arrGreen")
@@ -1489,15 +1474,16 @@ def gen_21_center_strut_asymmetric_loads():
     s += f'  <path d="M {cx_c-100} 530 L {cx_c+100} 530 L {cx_c+100} 556 L {cx_c+22} 576 L {cx_c+14} 632 L {cx_c+76} 650 L {cx_c+76} 674 L {cx_c-76} 674 L {cx_c-76} 650 L {cx_c-14} 632 L {cx_c-22} 576 L {cx_c-100} 556 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
     s += f'  <rect x="{cx_c-146}" y="539" width="292" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
 
-    s += f'  <rect x="{cx_c-116}" y="632" width="232" height="62" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>\n'
+    # Pod cross-section showing Upper 13 mm Channel (teal) + Dry Bay + Lower 12 mm Channel (orange)
+    s += f'  <rect x="{cx_c-116}" y="628" width="232" height="68" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>\n'
+    s += f'  <rect x="{cx_c-92}" y="628" width="184" height="9" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1"/>\n'
     for sd in (-1, 1):
         bx = cx_c + sd * 88
-        s += f'  <rect x="{bx-6}" y="634" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
+        s += f'  <rect x="{bx-6}" y="636" width="12" height="54" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
         wx = bx - sd * 9
         s += f'  <rect x="{wx-3}" y="650" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>\n'
     s += f'  <rect x="{cx_c-98}" y="656" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
-    # Wide 200 mm UHMW-lined Overhang C-Slot Bridge under pod belly (takes 100% lift/roll in compression!)
-    s += f'  <rect x="{cx_c-98}" y="692" width="196" height="8" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx_c-96}" y="688" width="192" height="10" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>\n'
 
     s += f'  <line x1="{cx_c-148}" y1="594" x2="{cx_c-148}" y2="566" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
     s += f'  <line x1="{cx_c+148}" y1="566" x2="{cx_c+148}" y2="594" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
@@ -1506,308 +1492,419 @@ def gen_21_center_strut_asymmetric_loads():
     s += f'  <line x1="{cx_c-180}" y1="660" x2="{cx_c-124}" y2="660" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
     s += f'  <text x="{cx_c-184}" y="664" text-anchor="end" class="warn">±F_lat Thrust</text>\n'
 
-    s += dim_line(cx_c - 98, 718, cx_c + 98, 718, "200 mm Overhang C-Slot &amp; 180 mm Saddle", dy=12, cls="dim")
+    s += dim_line(cx_c - 96, 718, cx_c + 96, 718, "220 mm Folded Width (Fits Between 250 mm Rails!)", dy=12, cls="ok", stroke="#059669", marker="arrGreen")
 
     s += '  <rect x="588" y="488" width="450" height="226" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="606" y="512" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>\n'
-    s += '  <text x="606" y="536" class="warn">1. Unified Linked-Fold Main Foil (BOTH Halves Sweep 82°!):</text>\n'
-    s += '  <text x="616" y="552" class="lbl-sm">• 1× Ø8 mm dbl-shear Delrin pin snaps @ ~85 kgf tip hit → intermeshing</text>\n'
-    s += '  <text x="616" y="566" class="lbl-sm">  gears sweep BOTH halves aft (0 rollover, 0 leash, 400 mm beach dart!).</text>\n'
-    s += '  <text x="606" y="592" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>\n'
-    s += '  <text x="616" y="608" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>\n'
-    s += '  <text x="616" y="622" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>\n'
-    s += '  <text x="606" y="648" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>\n'
-    s += '  <text x="616" y="664" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>\n'
-    s += '  <text x="616" y="678" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>\n'
-    s += '  <text x="616" y="698" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays 0°!)</text>\n'
+    s += '  <text x="606" y="512" class="sec">3-Stage Resettable Impact &amp; Beaching System</text>\n'
+    s += '  <text x="606" y="536" class="warn">1. True 90° Upper &amp; Lower Fold Channels (220 mm Wide!):</text>\n'
+    s += '  <text x="616" y="552" class="lbl-sm">• Main Wing (2×102 mm) nests 90° flush in 12 mm belly channel; Switchblade</text>\n'
+    s += '  <text x="616" y="566" class="lbl-sm">  or Upper Staggerwing nests 90° flush in 13 mm roof channel (0 drag!).</text>\n'
+    s += '  <text x="606" y="592" class="ok">2. Dual Wet IP68 Servo Variable-Preload Roller Pins:</text>\n'
+    s += '  <text x="616" y="608" class="lbl-sm">• Foil pin (~85 kgf tip) &amp; Strut pin (~140 kgf shoal) lock over-center at 0 W,</text>\n'
+    s += '  <text x="616" y="622" class="lbl-sm">  drop to 0% for Dyneema fold/beaching, &amp; reset in 5 s (0 broken pins!).</text>\n'
+    s += '  <text x="606" y="648" class="dim">3. Wide Full-Span Trunnions + Twin 6 mm Internal Bulkheads:</text>\n'
+    s += '  <text x="616" y="664" class="lbl-sm">• Upper 250 mm Ø16 axle + UHMW thrust washers (μ≈0.08) + Lower 180 mm</text>\n'
+    s += '  <text x="616" y="678" class="lbl-sm">  pod saddle into twin 6 mm G10 bulkheads carry all roll &amp; side thrust.</text>\n'
+    s += '  <text x="616" y="698" class="ok">• Bolt-On Alt: External foil-base 90° knuckles (~350 mm) if pod untouched.</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "21-center-strut-asymmetric-loads.svg").write_text(s)
 
 
 # -------------------------------------------------------------------------
-# DIAGRAM 22: Unified Linked-Fold Mechanics (Overhang Bridge, Root Gears & Dog-Clutch)
+# DIAGRAM 22: True 90° Upper/Lower Fold Channels + Dyneema Pulley Loop & Dog-Clutch
 # -------------------------------------------------------------------------
 def gen_22_breakaway_socket_options():
     W, H = 1080, 720
     s = svg_header(
         W, H,
-        "22. Unified Linked-Fold Mechanics: Overhang Bridge, Root Gears & Flaperon Dog-Clutch",
-        "One Mechanism Solves Impact Relief, 600 mm Tunnel Beaching & Storage — Zero Detaching Leash, Zero Outer Wingtip Hinges!"
+        "22. True 90° Upper & Lower Fold Channels, Dyneema Pulley Loop & Flaperon Dog-Clutch",
+        "220 mm Total Folded Width (Fits Between 250 mm Rails!) • 100% Intact 26 L Dry Battery Bay • Zero Underwater Sweep Motors!"
     )
 
     # =========================================================================
-    # PANEL A (TOP LEFT): 22 mm OVERHANG C-SLOT BRIDGE + DOUBLE-SHEAR BUSHING RULE
+    # PANEL A (TOP LEFT): FRONT CROSS-SECTION OF UPPER & LOWER FOLD CHANNELS
     # =========================================================================
     s += '  <rect x="24" y="68" width="510" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">A. 22 mm Overhang C-Slot Bridge &amp; Double-Shear Pin Rule</text>\n'
-    s += '  <text x="42" y="109" class="ok">72 mm inboard root takes 100% lift/roll in compression — pivots see ZERO bending!</text>\n'
+    s += '  <text x="42" y="92" class="sec">A. Front Cross-Section: Upper (13 mm) &amp; Lower (12 mm) Channels</text>\n'
+    s += '  <text x="42" y="109" class="ok">2×102 mm Main Wing + 2×105 mm Roof Blades nest 90° flush inside 220 mm!</text>\n'
 
-    # --- A1: Front Cross-Section of Overhang C-Slot Bridge (y = 118..266) ---
-    s += '  <rect x="36" y="118" width="486" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="46" y="134" class="dim">A1. Front Cross-Section Through Root Pivots (y = ±92 mm) &amp; Central Gear Mesh</text>\n'
+    # Pod cross-section (x = 84..468 -> 384 px = 220 mm; cy = 228)
+    cx_a, cy_a = 276, 224
+    # Outer Pod Shell (rounded rectangle 360 x 154 px)
+    s += f'  <rect x="{cx_a-180}" y="{cy_a-78}" width="360" height="156" rx="34" fill="#F1F5F9" stroke="#0F172A" stroke-width="2.4"/>\n'
+    # 13 mm UPPER FOLD CHANNEL recessed flush in roof (Switchblade 2x105 mm OR Upper Staggerwing 2x55 mm!)
+    s += f'  <rect x="{cx_a-156}" y="{cy_a-78}" width="312" height="22" rx="4" fill="#CCFBF1" stroke="#0F766E" stroke-width="1.4"/>\n'
+    s += f'  <rect x="{cx_a-148}" y="{cy_a-74}" width="140" height="14" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx_a+8}" y="{cy_a-74}" width="140" height="14" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>\n'
+    s += f'  <text x="{cx_a}" y="{cy_a-88}" text-anchor="middle" class="ok">Upper Fold Channel (13 mm): Switchblade OR Staggerwing (210 mm)</text>\n'
 
-    # Pod Internal Bulkheads Ceiling (green, y = 144..156)
-    s += '  <rect x="64" y="144" width="424" height="12" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
-    s += '  <text x="276" y="153" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">Pod Belly &amp; Twin 6 mm G10/Carbon Internal Bulkheads (Zero Battery Intrusion!)</text>\n'
+    # 100% INTACT 26 L DRY IP68 BATTERY BAY in center!
+    s += f'  <rect x="{cx_a-136}" y="{cy_a-44}" width="272" height="86" rx="8" fill="#10B981" fill-opacity="0.22" stroke="#059669" stroke-width="1.6"/>\n'
+    s += f'  <text x="{cx_a}" y="{cy_a-6}" text-anchor="middle" class="sec">100% Intact 26 L Dry IP68 Battery Bay</text>\n'
+    s += f'  <text x="{cx_a}" y="{cy_a+12}" text-anchor="middle" class="lbl-sm">(2× Swappable 14 kg Cartridges + VESCs + IMU — ZERO intrusion!)</text>\n'
 
-    # Upper Overhang Bridge Plate (6 mm Alu, y = 156..168)
-    s += '  <rect x="92" y="156" width="368" height="12" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
-    # Top & bottom 1.5 mm UHMW wear strips (orange)
-    s += '  <rect x="112" y="168" width="328" height="5" fill="#F97316"/>\n'
-    s += '  <rect x="112" y="207" width="328" height="5" fill="#F97316"/>\n'
-    # Port & Starboard 72 mm Inboard Wing Roots sliding tightly inside the C-Slot!
-    s += '  <rect x="46" y="173" width="212" height="34" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
-    s += '  <rect x="294" y="173" width="212" height="34" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
-    # Meshed Stainless Gear Sectors at center (x = 256..296)
-    s += '  <rect x="256" y="177" width="40" height="26" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>\n'
-    s += '  <text x="276" y="193" text-anchor="middle" style="font-size:7.8px;fill:#0F172A;font-weight:700;">Gears</text>\n'
-    # Lower Overhang Clamping Lip (5 mm Faired Alu, y = 212..224)
-    s += '  <rect x="92" y="212" width="368" height="12" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+    # 12 mm LOWER FOLD CHANNEL recessed flush in belly (Main Wing 2x102 mm = 204 mm inside 220 mm!)
+    s += f'  <rect x="{cx_a-156}" y="{cy_a+54}" width="312" height="24" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.4"/>\n'
+    # Top/bottom UHMW strips inside overhang bridge
+    s += f'  <rect x="{cx_a-148}" y="{cy_a+54}" width="296" height="4" fill="#F97316"/>\n'
+    s += f'  <rect x="{cx_a-148}" y="{cy_a+74}" width="296" height="4" fill="#F97316"/>\n'
+    # Port & Stbd Main Wing halves nested 90° flush side-by-side + y = ±54 mm golden pivots + center gear mesh!
+    s += f'  <rect x="{cx_a-146}" y="{cy_a+59}" width="136" height="14" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{cx_a+10}" y="{cy_a+59}" width="136" height="14" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{cx_a-92}" y="{cy_a+50}" width="10" height="32" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{cx_a+82}" y="{cy_a+50}" width="10" height="32" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{cx_a-12}" y="{cy_a+60}" width="24" height="12" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.1"/>\n'
+    s += f'  <text x="{cx_a}" y="{cy_a+98}" text-anchor="middle" class="warn">Lower Fold Channel (12 mm): Main Wing 2×102 mm (Pivots @ y = ±54 mm)</text>\n'
 
-    # 2x Vertical Ø16 mm Stainless Pivot Pins at y = ±92 mm (x = 132 and x = 420)
-    for px_p in (132, 420):
-        s += f'  <rect x="{px_p-6}" y="154" width="12" height="72" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    # Upward lift compression arrows showing how lift pushes inboard roots DOWN against lower lip & outboard UP against top bridge!
-    s += '  <line x1="66" y1="234" x2="66" y2="212" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
-    s += '  <line x1="486" y1="234" x2="486" y2="212" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
-    s += '  <text x="66" y="248" text-anchor="middle" class="dim">+Lift</text>\n'
-    s += '  <text x="486" y="248" text-anchor="middle" class="dim">+Lift</text>\n'
-    s += '  <text x="276" y="248" text-anchor="middle" class="ok">72 mm Inboard Roots React 100% Bending in Compression (0 Pivot Load!)</text>\n'
-
-    # --- A2: GOOD vs BAD DOUBLE-SHEAR BUSHING MINI-COMPARISON (y = 274..390) ---
-    s += '  <rect x="36" y="274" width="236" height="114" rx="6" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.1"/>\n'
-    s += '  <text x="46" y="290" class="ok">GOOD: Flush Double Shear (&lt;0.3 mm)</text>\n'
-    s += '  <rect x="64" y="302" width="66" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
-    s += '  <rect x="78" y="317" width="66" height="18" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1"/>\n'
-    s += '  <rect x="64" y="336" width="66" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
-    s += '  <rect x="98" y="300" width="9" height="52" rx="1.5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1"/>\n'
-    s += '  <line x1="146" y1="326" x2="174" y2="326" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
-    s += '  <text x="180" y="321" class="ok">Clean Snap</text>\n'
-    s += '  <text x="180" y="334" class="lbl-sm">±10% load!</text>\n'
-    s += '  <text x="46" y="374" class="lbl-sm">316 SS sleeves slice Ø8 Delrin cleanly.</text>\n'
-
-    s += '  <rect x="286" y="274" width="236" height="114" rx="6" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.1"/>\n'
-    s += '  <text x="296" y="290" class="warn">BAD: Wide Gap (Bends &amp; Jams!)</text>\n'
-    s += '  <rect x="310" y="302" width="60" height="14" fill="url(#alu)" stroke="#334155" stroke-width="1"/>\n'
-    s += '  <rect x="332" y="334" width="60" height="16" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1"/>\n'
-    s += '  <path d="M 342 300 L 342 316 L 356 334 L 356 352" fill="none" stroke="#DC2626" stroke-width="7" stroke-linecap="round"/>\n'
-    s += '  <text x="410" y="324" class="warn">Pin bends</text>\n'
-    s += '  <text x="410" y="337" class="lbl-sm">&amp; wedges!</text>\n'
-    s += '  <text x="296" y="374" class="lbl-sm">Never leave gaps or use Nylon/HDPE!</text>\n'
+    # Dimension & bottom summary notes
+    s += '  <text x="42" y="346" class="ok">40 mm Inboard Overhang Roots: Carry 100% lift/roll in compression (~35 MPa, &gt;10×!).</text>\n'
+    s += '  <text x="42" y="366" class="lbl-sm">Zero Side-Wall Cutouts: Unlike hollowing the pod sides, top/bottom channels keep 100% dry bay!</text>\n'
+    s += '  <text x="42" y="384" class="dim">Total Pod Height: ~95–105 mm (vs 80 mm fixed) • Zero external hubs = ~0 lbf extra drag!</text>\n'
 
     # =========================================================================
-    # PANEL B (TOP RIGHT): INTERMESHING ROOT GEARS + 1x CENTRAL PIN + LANYARD
+    # PANEL B (TOP RIGHT): CLOSED-LOOP DYNEEMA PULLEY DEPLOY/FOLD SYSTEM
     # =========================================================================
     s += '  <rect x="550" y="68" width="506" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="568" y="92" class="sec">B. Synchronized Root Gear Mesh &amp; Single Fuse Pin (Top View)</text>\n'
-    s += '  <text x="568" y="109" class="dim">1× Ø8 mm Delrin pin locks BOTH halves • Pull lanyard for 5-sec beach fold!</text>\n'
+    s += '  <text x="568" y="92" class="sec">B. Closed-Loop Dyneema Pulley Deploy/Fold (Zero Sweep Motors!)</text>\n'
+    s += '  <text x="568" y="109" class="dim">Ø2.5 mm SK78 Dyneema (2:1 pulley = &lt;8 kgf pull) • Coaxial over strut hinge axles!</text>\n'
 
-    s += '  <rect x="562" y="118" width="482" height="184" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    # Left: 0 deg Locked Deployed | Right: 82 deg Swept Aft
-    # Pod belly box outline (x = 610..770, y = 136..286)
-    cx_g, cy_g = 678, 212
-    s += f'  <rect x="{cx_g-62}" y="{cy_g-70}" width="144" height="140" rx="14" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>\n'
-    # Forward compression stop bar (solid Alu at left x = cx_g - 52)
-    s += f'  <rect x="{cx_g-52}" y="{cy_g-58}" width="12" height="116" rx="2" fill="#334155"/>\n'
+    s += '  <rect x="562" y="118" width="482" height="196" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
 
-    # Port (top) & Stbd (bottom) root tongues with meshing 90° gear sectors at center!
-    s += f'  <rect x="{cx_g-38}" y="{cy_g-84}" width="44" height="62" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
-    s += f'  <rect x="{cx_g-38}" y="{cy_g+22}" width="44" height="62" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>\n'
-    # Meshed stainless gear wheels
-    s += f'  <circle cx="{cx_g-14}" cy="{cy_g-18}" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.6" stroke-dasharray="4,2"/>\n'
-    s += f'  <circle cx="{cx_g-14}" cy="{cy_g+18}" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.6" stroke-dasharray="4,2"/>\n'
-    # 2x Gold Ø16 mm Root Pivot Pins
-    s += f'  <circle cx="{cx_g-14}" cy="{cy_g-50}" r="6.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.5"/>\n'
-    s += f'  <circle cx="{cx_g-14}" cy="{cy_g+50}" r="6.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.5"/>\n'
-    # Central Locking Slider Lug extending right to Red 1x Ø8 mm Double-Shear Delrin Pin!
-    s += f'  <rect x="{cx_g+4}" y="{cy_g-10}" width="58" height="20" rx="4" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
-    s += f'  <circle cx="{cx_g+44}" cy="{cy_g}" r="6.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.4"/>\n'
-    # Manual beaching lanyard pulling aft
-    s += f'  <line x1="{cx_g+52}" y1="{cy_g}" x2="{cx_g+108}" y2="{cy_g}" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>\n'
-    # Sand flush drain ports at aft of belly pocket
-    s += f'  <rect x="{cx_g+76}" y="{cy_g-44}" width="6" height="16" fill="#0284C7"/>\n'
-    s += f'  <rect x="{cx_g+76}" y="{cy_g+28}" width="6" height="16" fill="#0284C7"/>\n'
+    # Left: Cockpit Dry Control Pull Handles (x = 576..692, y = 132..200)
+    s += '  <rect x="576" y="132" width="124" height="62" rx="6" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.4"/>\n'
+    s += '  <text x="638" y="148" text-anchor="middle" class="dim">Dry Cockpit Loop</text>\n'
+    s += '  <rect x="586" y="156" width="48" height="22" rx="4" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
+    s += '  <text x="610" y="170" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">DEPLOY</text>\n'
+    s += '  <rect x="642" y="156" width="48" height="22" rx="4" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
+    s += '  <text x="666" y="170" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">FOLD</text>\n'
 
-    # Clean right-side labels in Panel B
-    s += '  <text x="800" y="148" class="ok">1. Twin Ø16 mm Vertical Pivots</text>\n'
-    s += '  <text x="810" y="161" class="lbl-sm">at y = ±92 mm (carry sweep only!)</text>\n'
-    s += '  <text x="800" y="182" class="dim">2. 90° 316 SS Gear Sectors</text>\n'
-    s += '  <text x="810" y="195" class="lbl-sm">6–8 teeth mesh at y = 0 (symmetric!)</text>\n'
-    s += '  <text x="800" y="216" class="warn">3. 1× Central Ø8 mm Delrin Pin</text>\n'
-    s += '  <text x="810" y="229" class="lbl-sm">~85 kgf tip / ~170 kgf center shoal</text>\n'
-    s += '  <text x="800" y="250" class="ok">4. Pull Lanyard + 3 mm Drain Slots</text>\n'
-    s += '  <text x="810" y="263" class="lbl-sm">Manual beach fold + sand flush-out</text>\n'
-    s += '  <text x="572" y="136" class="lbl-sm">← BOW</text>\n'
+    # Coaxial Strut Hinge Fairlead Pulleys (top & bottom hinge pins — constant length across 86.5° fold!)
+    s += '  <rect x="742" y="136" width="22" height="114" rx="4" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += '  <circle cx="753" cy="146" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    s += '  <circle cx="753" cy="240" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    s += '  <text x="753" y="129" text-anchor="middle" class="lbl-sm">Coaxial Pulleys</text>\n'
 
-    # Bottom specs inside Panel B
-    s += '  <text x="568" y="324" class="ok">Reset on Water (&lt;30 s): Swing wings forward to 0°, drop 1× $0.35 Delrin pin!</text>\n'
-    s += '  <text x="568" y="344" class="lbl-sm">Smart Divider: Center hit (~140 kgf) trips struts first; tip hit (~85 kgf) sweeps wings.</text>\n'
-    s += '  <text x="568" y="364" class="dim">Hardware Delta: +0.5–0.7 kg, ~$180–$260 CNC — replaces ALL separate tip hinges/leashes!</text>\n'
-    s += '  <text x="568" y="384" class="lbl-sm">Zero-Fold Simple Alt: Fixed 4× M8 bolted wing (deep rock-free water only).</text>\n'
+    # Dyneema lines routing from cockpit handles -> coaxial top pulley -> down strut channel -> bottom coaxial pulley -> wing gear drum!
+    s += '  <path d="M 610 178 L 610 212 L 748 146 L 748 240 L 844 252" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+    s += '  <path d="M 666 178 L 666 226 L 758 146 L 758 240 L 944 252" fill="none" stroke="#F97316" stroke-width="2.2" stroke-dasharray="5,2" marker-end="url(#arrRed)"/>\n'
+
+    # Bottom-right: Synchronized Gear Sector Pulley Drum inside Belly Channel (x = 816..1026, y = 216..298)
+    s += '  <rect x="814" y="196" width="218" height="106" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.4"/>\n'
+    s += '  <text x="923" y="212" text-anchor="middle" class="warn">Belly Channel Gear + Pulley Drum</text>\n'
+    # Meshed gears + 2:1 turning sheave + servo roller lock pin
+    s += '  <circle cx="876" cy="248" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
+    s += '  <circle cx="912" cy="248" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
+    s += '  <circle cx="876" cy="248" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
+    s += '  <circle cx="912" cy="248" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
+    # Servo lock box right beside gear slider
+    s += '  <rect x="952" y="232" width="66" height="32" rx="4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
+    s += '  <text x="985" y="246" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">IP68 Servo</text>\n'
+    s += '  <text x="985" y="257" text-anchor="middle" style="font-size:7.4px;fill:#FEE2E2;">0%–100% Pin</text>\n'
+    s += '  <text x="894" y="288" text-anchor="middle" class="ok">Green = Deploy 90°→0° • Orange = Fold 0°→90°</text>\n'
+
+    # Key notes below Panel B box
+    s += '  <text x="568" y="334" class="ok">1. Constant Line Length: Coaxial hinge pulleys eliminate slack/binding on 86.5° fold!</text>\n'
+    s += '  <text x="568" y="352" class="lbl-sm">2. Sand &amp; Saltwater Proof: Ø2.5 mm SK78 Dyneema (700 kg!) + open Delrin sheaves.</text>\n'
+    s += '  <text x="568" y="370" class="dim">3. Zero Underwater Sweep Motors: All pulling effort is dry &amp; manual (&lt;8 kgf, 2 s!).</text>\n'
+    s += '  <text x="568" y="388" class="lbl-sm">4. Rear 90° Spring Detent clicks wings locked flat inside channel for beaching!</text>\n'
 
     # =========================================================================
-    # PANEL C (BOTTOM FULL WIDTH): FLAPERON BEVEL DOG-CLUTCH KNUCKLE (ZERO BEVEL GEARS!)
+    # PANEL C (BOTTOM FULL WIDTH): FLAPERON BEVEL DOG-CLUTCH KNUCKLE (90° ROOF FOLD!)
     # =========================================================================
     s += '  <rect x="24" y="414" width="1032" height="284" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="438" class="sec">C. Active Flaperon Linked-Fold: Spring-Loaded Bevel Dog-Clutch Knuckle (Zero Bevel Gears!)</text>\n'
-    s += '  <text x="42" y="455" class="ok">Delivers zero-play ±15° / ±3° active pitch when deployed — disengages cleanly &amp; self-feathers 0° on 82° aft fold!</text>\n'
+    s += '  <text x="42" y="438" class="sec">C. Active Flaperon 90° Fold: Spring-Loaded Bevel Dog-Clutch Knuckle (Zero Bevel Gears!)</text>\n'
+    s += '  <text x="42" y="455" class="ok">Zero-play ±15° / ±3° active pitch when deployed — disengages cleanly &amp; self-feathers 0° to tuck 90° flush in roof channel!</text>\n'
 
     # Left Sub-Box (C1): DEPLOYED (0° ENGAGED ACTIVE PITCH)
     s += '  <rect x="38" y="468" width="484" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
     s += '  <text x="50" y="486" class="ok">C1. Deployed (0° Flight): Male V-Key Engaged in Ø8 mm Servo Cup</text>\n'
 
-    # Pod wall (left) + CNC Double-O-Ring Seal + Ø8 mm Servo Shaft + Female V-Cup + Engaged Flaperon Root + Ø10 TE Sweep Pin!
     y_c = 576
     s += f'  <rect x="64" y="{y_c-66}" width="84" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
     s += f'  <text x="106" y="{y_c-46}" text-anchor="middle" class="lbl-sm">Sealed Pod</text>\n'
     s += f'  <rect x="74" y="{y_c-22}" width="52" height="44" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>\n'
     s += f'  <text x="100" y="{y_c+4}" text-anchor="middle" style="font-size:8.2px;fill:#0F172A;font-weight:700;">IP68 Servo</text>\n'
-    # CNC Double-O-Ring gland on pod wall (x = 148)
     s += f'  <rect x="142" y="{y_c-18}" width="14" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
-    # Ø8 mm stainless pitch shaft extending to Female V-Notch Drive Cup at x = 204!
     s += f'  <rect x="126" y="{y_c-5}" width="72" height="10" fill="#DC2626"/>\n'
     s += f'  <polygon points="196,{y_c-14} 222,{y_c-14} 208,{y_c} 222,{y_c+14} 196,{y_c+14}" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # Male V-Key on Flaperon 20%-chord pitch barrel mated snugly inside the Female V-Cup!
     s += f'  <polygon points="212,{y_c} 228,{y_c-11} 262,{y_c-11} 262,{y_c+11} 228,{y_c+11}" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    # Active Flaperon blade extending right (x = 262..486)
     s += f'  <rect x="262" y="{y_c-20}" width="218" height="54" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
     s += f'  <text x="370" y="{y_c+4}" text-anchor="middle" style="font-size:10px;fill:#FFFFFF;font-weight:700;">Active Flaperon (20%-Chord Pitch)</text>\n'
     s += f'  <text x="370" y="{y_c+19}" text-anchor="middle" style="font-size:8.5px;fill:#E0F2FE;">Zero-play ±15° STOL / ±3° roll control!</text>\n'
-    # Vertical Ø10 mm Trailing-Edge Sweep Hinge Pin (offset aft at y_c + 26!)
     s += f'  <circle cx="236" cy="{y_c+28}" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
     s += f'  <text x="236" y="{y_c+54}" text-anchor="middle" class="ok">Ø10 mm Vertical TE Sweep Pin</text>\n'
     s += f'  <text x="220" y="{y_c-30}" text-anchor="middle" class="warn">Bevel V-Dog-Clutch</text>\n'
     s += '  <text x="50" y="670" class="lbl-sm">Internal pod O-ring seal NEVER moves — clutch lives outside the watertight wall!</text>\n'
 
-    # Right Sub-Box (C2): SWEPT 82° AFT (DISENGAGED & SELF-FEATHERED 0°!)
+    # Right Sub-Box (C2): FOLDED 90° AFT (DISENGAGED & SELF-FEATHERED 0°!)
     s += '  <rect x="546" y="468" width="494" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="558" y="486" class="warn">C2. Swept 82° Aft (Impact OR Beaching): Disengaged &amp; Self-Feathered 0°!</text>\n'
+    s += '  <text x="558" y="486" class="warn">C2. Folded 90° Straight Aft: Disengaged &amp; Self-Feathered 0° in Roof Channel!</text>\n'
 
-    # Pod wall + Female V-Cup left cleanly behind while Flaperon pivots 82° aft around green Ø10 TE Sweep Pin!
     s += f'  <rect x="572" y="{y_c-66}" width="72" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
     s += f'  <rect x="638" y="{y_c-18}" width="12" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
     s += f'  <rect x="626" y="{y_c-5}" width="54" height="10" fill="#DC2626"/>\n'
     s += f'  <polygon points="676,{y_c-14} 698,{y_c-14} 686,{y_c} 698,{y_c+14} 676,{y_c+14}" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # Green Ø10 mm TE sweep pin + Flaperon swung cleanly downward/aft (representing 82° aft sweep!)
     s += f'  <circle cx="712" cy="{y_c+24}" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
     s += f'  <rect x="700" y="{y_c+24}" width="38" height="62" rx="5" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>\n'
-    # Sweep arrow showing detachment out of the V-cup
     s += f'  <path d="M 738 {y_c-6} Q 768 {y_c+12} 748 {y_c+48}" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
 
     s += '  <text x="784" y="528" class="ok">1. Zero Servo Gear Stripping:</text>\n'
-    s += '  <text x="794" y="542" class="lbl-sm">Pivoting aft pulls V-key right out of</text>\n'
+    s += '  <text x="794" y="542" class="lbl-sm">Pivoting 90° pulls V-key right out of</text>\n'
     s += '  <text x="794" y="555" class="lbl-sm">the servo cup — servo stays isolated!</text>\n'
     s += '  <text x="784" y="578" class="dim">2. Automatic 0° Self-Feathering:</text>\n'
     s += '  <text x="794" y="592" class="lbl-sm">20%-chord balance lets water pressure</text>\n'
     s += '  <text x="794" y="605" class="lbl-sm">flatten the blade to 0° instantly!</text>\n'
     s += '  <text x="784" y="628" class="ok">3. Auto Re-Engagement on Reset:</text>\n'
-    s += '  <text x="794" y="642" class="lbl-sm">Swing back to 0° → bevel V-key self-</text>\n'
-    s += '  <text x="794" y="655" class="lbl-sm">centers into cup (works w/ 0 V battery!).</text>\n'
+    s += '  <text x="794" y="642" class="lbl-sm">Pull Dyneema Deploy → bevel V-key</text>\n'
+    s += '  <text x="794" y="655" class="lbl-sm">self-centers cleanly into servo cup!</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "22-breakaway-socket-options.svg").write_text(s)
 
 
 # -------------------------------------------------------------------------
-# DIAGRAM 23: Unified Linked-Fold Clearance Across All 3 Wing Tracks & 600 mm Tunnel
+# DIAGRAM 23: True 90° Upper/Lower Channels — All 3 Wing Tracks & 220 mm Folded Dart
 # -------------------------------------------------------------------------
 def gen_23_breakaway_deployed_flaperons():
     W, H = 1080, 580
     s = svg_header(
         W, H,
-        "23. Unified Linked-Fold Clearance: All 3 Wing Tracks & 600 mm Tunnel Beaching Dart",
-        "Zero Collision Across Switchblade (+65 mm), Upper Staggerwing (+55 mm) & Feathered DOWN STOL (-7.5 mm) — 400 mm Folded Width!"
+        "23. True 90° Upper & Lower Fold Channels: All 3 Wing Tracks & 220 mm Beaching Dart",
+        "Zero Collision Across Switchblade / Upper Staggerwing (Roof) & Main Wing (Belly) — Fits Even Between 250 mm Rails!"
     )
 
     # =========================================================================
-    # PANEL A (LEFT): SIDE PROFILE OF ALL 3 VERTICAL SWEEP PLANES (ZERO CLASH!)
+    # PANEL A (LEFT): SIDE PROFILE OF UPPER & LOWER 90° FOLD CHANNELS
     # =========================================================================
     s += '  <rect x="24" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">A. Side Profile: Separate Vertical Sweep Planes (0° → 82°)</text>\n'
-    s += '  <text x="42" y="109" class="ok">Every secondary track sweeps on its own Z-plane — physically impossible to clash!</text>\n'
+    s += '  <text x="42" y="92" class="sec">A. Side Profile: Upper (13 mm) &amp; Lower (12 mm) Fold Channels</text>\n'
+    s += '  <text x="42" y="109" class="ok">Every wing folds 90° straight aft in its own dedicated channel — zero clash!</text>\n'
     s += '  <rect x="36" y="118" width="484" height="292" rx="6" fill="url(#water)"/>\n'
-    s += '  <text x="46" y="134" class="lbl-sm">← BOW (All 3 Tracks Shown on 90 mm Pod)</text>\n'
+    s += '  <text x="46" y="134" class="lbl-sm">← BOW (95–105 mm Pod w/ 100% Intact 26 L Dry Bay)</text>\n'
     s += '  <text x="510" y="134" text-anchor="end" class="lbl-sm">STERN →</text>\n'
 
-    # 90 mm Flying-Keel Pod side profile (cy = 248 -> top = 194, bot = 302 -> 108 px visual = 90 mm)
     cy = 248
     s += f'  <rect x="52" y="{cy-54}" width="404" height="108" rx="38" fill="#334155" fill-opacity="0.16" stroke="#0F172A" stroke-width="1.8"/>\n'
     # Tail prop at x = 474
     s += f'  <rect x="456" y="{cy-14}" width="16" height="28" rx="3" fill="#334155"/>\n'
     s += f'  <line x1="474" y1="{cy-60}" x2="474" y2="{cy+60}" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
 
-    # PLANE 1 (TOP ROOF, Z = +45 mm): Flush-Nested Switchblade (teal) sweeping 85° aft inside roof pocket!
-    s += f'  <rect x="128" y="{cy-58}" width="218" height="10" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>\n'
-    s += f'  <text x="236" y="{cy-68}" text-anchor="middle" class="ok">Track A: Roof Switchblade (Z = +45 mm, +65 mm clear!)</text>\n'
+    # UPPER CHANNEL (13 mm Roof Recess): Switchblade (2x105 mm) OR Upper Staggerwing Flaperons (2x55 mm)
+    s += f'  <rect x="116" y="{cy-56}" width="246" height="12" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.4"/>\n'
+    s += f'  <text x="242" y="{cy-66}" text-anchor="middle" class="ok">Upper Fold Channel (13 mm Roof): Switchblade OR Staggerwing</text>\n'
 
-    # PLANE 2 (UPPER SHOULDER, Z = +35 mm): Fixed Upper Staggerwing / UP Flaperon (orange) sweeping 82° aft!
-    s += f'  <rect x="228" y="{cy-38}" width="152" height="10" rx="3" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>\n'
-    s += f'  <text x="304" y="{cy-16}" text-anchor="middle" class="warn">Track B: Upper Staggerwing (Z = +35 mm)</text>\n'
+    # 100% INTACT 26 L DRY BATTERY BAY in center
+    s += f'  <rect x="116" y="{cy-32}" width="270" height="62" rx="8" fill="#10B981" fill-opacity="0.22" stroke="#059669" stroke-width="1.4" stroke-dasharray="4,2"/>\n'
+    s += f'  <text x="251" y="{cy+4}" text-anchor="middle" class="sec">100% Intact 26 L Dry Bay</text>\n'
 
-    # PLANE 3 (LOWER THIRD, Z = -20 mm): Linked-Fold Main Wing (blue) sweeping 82° aft!
-    s += f'  <rect x="116" y="{cy+16}" width="256" height="13" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
-    s += f'  <text x="244" y="{cy+10}" text-anchor="middle" class="dim">Linked-Fold Main Wing (Z = -20 mm, 10 mm thick)</text>\n'
+    # LOWER CHANNEL (12 mm Belly Recess): Linked-Fold Main Wing (2x102 mm = 204 mm side-by-side!)
+    s += f'  <rect x="128" y="{cy+42}" width="252" height="12" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    s += f'  <text x="254" y="{cy+72}" text-anchor="middle" class="dim">Lower Fold Channel (12 mm Belly): Main Wing 90° Flush!</text>\n'
+    s += f'  <text x="254" y="{cy+86}" text-anchor="middle" class="lbl-sm">1.55 m (AR 14) tips stop 179 mm ahead of tail prop</text>\n'
 
-    # PLANE 4 (BELOW MAIN WING, Z = -36 mm): Feathered 0° DOWN STOL Flaperon (green, 7.5 mm daylight below Main Wing!)
-    s += f'  <rect x="228" y="{cy+40}" width="152" height="9" rx="3" fill="#10B981" stroke="#065F46" stroke-width="1.3"/>\n'
-    s += f'  <text x="304" y="{cy+68}" text-anchor="middle" class="ok">Track C: Triggered DOWN STOL Flap (Z = -36 mm)</text>\n'
-    s += f'  <text x="304" y="{cy+81}" text-anchor="middle" class="lbl-sm">Dog-clutch releases → feathers 0° (7.5 mm below Main Wing!)</text>\n'
+    # Vertical separation dimension callout
+    s += dim_line(92, cy - 48, 92, cy + 48, "80 mm", dx=-24, dy=4, cls="ok", stroke="#059669", marker="arrGreen")
 
-    # Vertical separation dimension callouts
-    s += dim_line(102, cy - 53, 102, cy + 22, "+65 mm", dx=-24, dy=4, cls="ok", stroke="#059669", marker="arrGreen")
-    s += dim_line(402, cy + 29, 402, cy + 40, "7.5 mm", dx=26, dy=4, cls="ok", stroke="#059669", marker="arrGreen")
-
-    s += '  <text x="42" y="436" class="ok">1. Track A (Switchblade) &amp; Track B (Fixed Upper Staggerwing) = Simplest:</text>\n'
-    s += '  <text x="52" y="454" class="lbl-sm">• 55–65 mm vertical clearance above Main Wing → zero timing/trigger needed!</text>\n'
-    s += '  <text x="42" y="478" class="dim">2. Track C (Split STOL / Morphing DOWN Flaperons) = Triggered Self-Feather:</text>\n'
-    s += '  <text x="52" y="496" class="lbl-sm">• Internal trigger cable releases flaperon dog-clutches @ 5° Main Wing sweep →</text>\n'
-    s += '  <text x="52" y="512" class="lbl-sm">  flaps self-feather to 0° (20% balance) and sweep 82° aft 7.5 mm below Main Wing!</text>\n'
+    s += '  <text x="42" y="436" class="ok">1. Primary Approach: Upper Channel (Roof) + Lower Channel (Belly):</text>\n'
+    s += '  <text x="52" y="454" class="lbl-sm">• 80 mm vertical separation across the dry bay → zero collision at every angle!</text>\n'
+    s += '  <text x="52" y="472" class="lbl-sm">• Works identically for Flush Switchblade OR Fixed Upper Staggerwing flaperons.</text>\n'
+    s += '  <text x="42" y="496" class="dim">2. Optional Morphing STOL Mode (DOWN ~5 s Takeoff):</text>\n'
+    s += '  <text x="52" y="514" class="lbl-sm">• Triggered dog-clutch feathers flaps 0° to sweep 90° cleanly below Main Wing.</text>\n'
 
     # =========================================================================
-    # PANEL B (RIGHT): TOP-DOWN FOLDED DART INSIDE 600 mm NAVIGATOR 300 TUNNEL!
+    # PANEL B (RIGHT): TOP-DOWN 220 mm FOLDED DART INSIDE 250 mm RAILS & 600 mm TUNNEL!
     # =========================================================================
     s += '  <rect x="548" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="566" y="92" class="sec">B. Top-Down: Folded 400 mm Dart Inside 600 mm Tunnel</text>\n'
-    s += '  <text x="566" y="109" class="ok">1.55 m (AR 14) foil + 1.12 m flaperons fold 100% between Ø460 mm tubes!</text>\n'
+    s += '  <text x="566" y="92" class="sec">B. Top-Down: True 90° 220 mm Dart (Fits Between 250 mm Rails!)</text>\n'
+    s += '  <text x="566" y="109" class="ok">ZERO overhang outside pod — 190 mm clear per side inside 600 mm tunnel!</text>\n'
     s += '  <rect x="560" y="118" width="484" height="292" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
 
-    # Navigator 300 600 mm Inside Tunnel Walls (horizontal dashed tube edges at y = 152 and y = 376 -> 224 px = 600 mm!)
     my = 264
-    s += f'  <rect x="566" y="126" width="472" height="28" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>\n'
-    s += f'  <rect x="566" y="374" width="472" height="28" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>\n'
-    s += '  <text x="802" y="144" text-anchor="middle" class="lbl-sm">Port Ø460 mm Inflatable Tube Edge</text>\n'
-    s += '  <text x="802" y="392" text-anchor="middle" class="lbl-sm">Starboard Ø460 mm Inflatable Tube Edge</text>\n'
+    # Navigator 300 600 mm Inside Tunnel Walls
+    s += '  <rect x="566" y="126" width="472" height="26" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>\n'
+    s += '  <rect x="566" y="376" width="472" height="26" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>\n'
+    s += '  <text x="802" y="143" text-anchor="middle" class="lbl-sm">Port Ø460 mm Inflatable Tube Edge</text>\n'
+    s += '  <text x="802" y="393" text-anchor="middle" class="lbl-sm">Starboard Ø460 mm Inflatable Tube Edge</text>\n'
 
-    # Flying-Keel Pod (x = 604..954 -> 350 px = 1.3 m; width 82 px = 220 mm)
-    s += f'  <rect x="604" y="{my-38}" width="350" height="76" rx="34" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
-    # Roof Switchblade nested flush inside 220 mm pod roof (teal)
-    s += f'  <rect x="646" y="{my-28}" width="176" height="22" rx="4" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>\n'
-    s += f'  <rect x="646" y="{my+6}" width="176" height="22" rx="4" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>\n'
+    # Dashed 250 mm Under-Hull Twin Rails showing the 220 mm folded dart fits INSIDE the rails!
+    s += f'  <line x1="590" y1="{my-50}" x2="980" y2="{my-50}" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,3"/>\n'
+    s += f'  <line x1="590" y1="{my+50}" x2="980" y2="{my+50}" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,3"/>\n'
+    s += f'  <text x="720" y="{my-56}" text-anchor="middle" class="lbl-sm">250 mm Under-Hull Twin Rails (Pod tucks between!)</text>\n'
+
+    # 220 mm Flying-Keel Pod (height 84 px = 220 mm!)
+    s += f'  <rect x="604" y="{my-42}" width="350" height="84" rx="36" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
+    # BOTH Main Wing Halves (2x102 mm = 204 mm, orange) AND Roof Blades (teal) folded TRUE 90° FLUSH INSIDE the 220 mm pod!
+    s += f'  <rect x="650" y="{my-36}" width="246" height="32" rx="4" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>\n'
+    s += f'  <rect x="650" y="{my+4}" width="246" height="32" rx="4" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>\n'
+    # Inner teal overlay showing Upper Channel Roof Blades nested right above!
+    s += f'  <rect x="666" y="{my-28}" width="176" height="22" rx="3" fill="#0F766E" fill-opacity="0.88" stroke="#134E4A" stroke-width="1.1"/>\n'
+    s += f'  <rect x="666" y="{my+6}" width="176" height="22" rx="3" fill="#0F766E" fill-opacity="0.88" stroke="#134E4A" stroke-width="1.1"/>\n'
+    # Twin y = ±54 mm golden root pivots
+    s += f'  <circle cx="662" cy="{my-20}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <circle cx="662" cy="{my+20}" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+
     # Tail Prop at x = 974
     s += f'  <line x1="974" y1="{my-34}" x2="974" y2="{my+34}" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
     s += f'  <text x="1008" y="{my+4}" text-anchor="middle" class="dim">Prop</text>\n'
 
-    # Swept 82° Linked-Fold Main Wing Halves (orange, x = 670..898, outer width = 148 px = ~400 mm!)
-    s += f'  <polygon points="670,{my-36} 898,{my-74} 896,{my-54} 674,{my-20}" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>\n'
-    s += f'  <polygon points="670,{my+36} 898,{my+74} 896,{my+54} 674,{my+20}" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>\n'
-    # Swept 82° Flaperons (blue, x = 720..862, width ~346 mm!)
-    s += f'  <polygon points="724,{my-38} 860,{my-58} 858,{my-46} 726,{my-28}" fill="url(#wingBlue)" fill-opacity="0.92" stroke="#0369A1" stroke-width="1.3"/>\n'
-    s += f'  <polygon points="724,{my+38} 860,{my+58} 858,{my+46} 726,{my+28}" fill="url(#wingBlue)" fill-opacity="0.92" stroke="#0369A1" stroke-width="1.3"/>\n'
+    # Crisp non-overlapping dimensions
+    s += dim_line(586, 152, 586, 376, "600 mm", dx=26, dy=-82, cls="dim")
+    s += dim_line(916, my - 42, 916, my + 42, "220 mm!", dx=30, dy=64, cls="ok", stroke="#059669", marker="arrGreen")
+    s += dim_line(896, my - 72, 974, my - 72, "179 mm clear!", dy=-6, cls="ok", stroke="#059669", marker="arrGreen")
 
-    # Dimension lines showing 600 mm tunnel vs ~400 mm folded dart + 227 mm prop clearance!
-    s += dim_line(586, 154, 586, 374, "600 mm", dx=24, dy=-82, cls="dim")
-    s += dim_line(916, my - 72, 916, my + 72, "~400 mm", dx=30, dy=88, cls="ok", stroke="#059669", marker="arrGreen")
-    s += dim_line(898, my - 92, 974, my - 92, "227 mm clear!", dy=-6, cls="ok", stroke="#059669", marker="arrGreen")
-
-    s += '  <text x="566" y="436" class="ok">Why Unified Linked-Fold Replaces 4 Separate Mechanisms:</text>\n'
-    s += '  <text x="576" y="454" class="lbl-sm">• Impact Protection: Both halves sweep 82° together (0 rollover, 0 leash!).</text>\n'
-    s += '  <text x="576" y="472" class="lbl-sm">• Dry-Sand Beaching: 1.55 m LR foil folds to ~400 mm inside 600 mm tunnel!</text>\n'
-    s += '  <text x="576" y="490" class="lbl-sm">• Eliminates fragile mid-span wingtip hinges &amp; 1.12 m rear flaperon overhang.</text>\n'
-    s += '  <text x="576" y="508" class="lbl-sm">• Compact Storage: Entire folded pod drops straight into a 1.3 m × 0.4 m bag!</text>\n'
+    s += '  <text x="566" y="436" class="ok">Why True 90° Upper &amp; Lower Fold Channels Win:</text>\n'
+    s += '  <text x="576" y="454" class="lbl-sm">• Narrowest Possible Fold: 220 mm total width (zero wider than pod itself!).</text>\n'
+    s += '  <text x="576" y="472" class="lbl-sm">• Fits cleanly BETWEEN the 250 mm rails on 86.5° retraction (+5.5" sand clear).</text>\n'
+    s += '  <text x="576" y="490" class="lbl-sm">• Zero external hubs = ~0 lbf interference drag at 15.5–22 kn cruise!</text>\n'
+    s += '  <text x="576" y="508" class="lbl-sm">• 5-Second Water Reset: Pull Dyneema Deploy line → servo roller clicks locked!</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "23-breakaway-deployed-flaperons.svg").write_text(s)
+
+
+# -------------------------------------------------------------------------
+# DIAGRAM 24: Wet IP68 Servo-Controlled Variable-Preload Roller Pins (Foils & Struts)
+# -------------------------------------------------------------------------
+def gen_24_servo_preload_pins():
+    W, H = 1080, 620
+    s = svg_header(
+        W, H,
+        "24. Wet IP68 Servo-Controlled Variable-Preload Roller Pins (Foils & Struts)",
+        "100% Resettable Ski-Binding Cam-and-Rocker Lock: 0% Fold/Deploy • 50% Reef Mode • 100% Over-Center Cruise (0 W Hold!)"
+    )
+
+    # =========================================================================
+    # PANEL A (LEFT): FOIL LOCK MECHANISM (LOWER & UPPER CHANNELS — ~85 kgf TIP)
+    # =========================================================================
+    s += '  <rect x="24" y="68" width="508" height="528" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Foil Channel Lock: Over-Center Cam + 3.5:1 Rocker + 20° Roller</text>\n'
+    s += '  <text x="42" y="109" class="ok">18× lever reduction lets a 75 kg·cm IP68 servo hold ~85 kgf tip / ~170 kgf center!</text>\n'
+    s += '  <rect x="36" y="118" width="484" height="252" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+
+    # 1. Wet IP68 Billet Servo (gold) + 12 mm Eccentric Over-Center Cam at top-left (x = 96..176, y = 138..184)
+    s += '  <rect x="74" y="138" width="92" height="44" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.5"/>\n'
+    s += '  <text x="120" y="158" text-anchor="middle" style="font-size:8.8px;fill:#0F172A;font-weight:700;">Wet IP68 Servo</text>\n'
+    s += '  <text x="120" y="170" text-anchor="middle" style="font-size:7.8px;fill:#451A03;">75 kg·cm (0 W TDC)</text>\n'
+    # Eccentric Cam disc pushing DOWN onto Grease-Booted 316 SS Die Spring (x = 120, y = 196)
+    s += '  <circle cx="120" cy="196" r="14" fill="#475569" stroke="#0F172A" stroke-width="1.4"/>\n'
+    s += '  <circle cx="120" cy="191" r="4" fill="#FBBF24"/>\n'
+
+    # 2. Grease-Booted 316 SS Die Spring (37 kgf @ 100%, sealed inside green silicone sand boot! y = 210..268)
+    s += '  <rect x="104" y="210" width="32" height="54" rx="6" fill="#10B981" fill-opacity="0.28" stroke="#059669" stroke-width="1.6"/>\n'
+    s += '  <path d="M 110 216 L 130 223 L 110 230 L 130 237 L 110 244 L 130 251 L 110 258" fill="none" stroke="#334155" stroke-width="2.2"/>\n'
+
+    # 3. 3.5:1 Stainless Rocker Lever (70 mm spring arm left -> fulcrum @ x=298 -> 20 mm roller pin arm right @ x=356!)
+    s += '  <rect x="108" y="264" width="262" height="12" rx="4" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5"/>\n'
+    # Fulcrum pivot pin at x = 296 (creating 3.5:1 leverage: 188 px left vs 54 px right!)
+    s += '  <polygon points="296,276 284,296 308,296" fill="#334155" stroke="#0F172A" stroke-width="1.2"/>\n'
+    s += '  <circle cx="296" cy="270" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+
+    # 4. Hardened 316 SS Roller Pin (y = 276..314) pressed DOWN into 20° Detent Notch on 110 mm Wing Slider Lug!
+    s += '  <rect x="348" y="276" width="16" height="28" rx="3" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += '  <circle cx="356" cy="308" r="8" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>\n'
+
+    # 5. Wing Gear Slider Lug (110 mm arm, blue) with steep 20° hardened detent notch!
+    s += '  <polygon points="184,316 336,316 346,326 366,326 376,316 462,316 462,344 184,344" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    s += '  <text x="270" y="334" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">110 mm Wing Gear Slider Lug</text>\n'
+    # Aft drag arrow on impact
+    s += '  <line x1="466" y1="330" x2="508" y2="330" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
+    # Upward cam-out force arrow at roller
+    s += '  <line x1="382" y1="308" x2="382" y2="278" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
+
+    # Clean non-overlapping callouts inside Panel A
+    s += '  <text x="182" y="156" class="ok">12 mm Eccentric Cam (62 kgf push)</text>\n'
+    s += '  <text x="182" y="170" class="lbl-sm">Static 3-wire gland → 0 moving hull seals!</text>\n'
+    s += '  <text x="148" y="226" class="ok">Grease-Booted 316 SS Spring</text>\n'
+    s += '  <text x="148" y="239" class="lbl-sm">37 kgf @ 100% (sand-proof boot!)</text>\n'
+    s += '  <text x="206" y="294" text-anchor="middle" class="dim">3.5:1 Rocker (70:20 mm)</text>\n'
+    s += '  <text x="444" y="284" text-anchor="middle" class="warn">130 kgf Clamp</text>\n'
+    s += '  <text x="444" y="297" text-anchor="middle" class="lbl-sm">20° Roller (μ≈0.08)</text>\n'
+    s += '  <text x="456" y="358" text-anchor="middle" class="warn">4,605 N @ 85 kgf Tip!</text>\n'
+
+    # 3-Mode Calibration Table below Panel A diagram (y = 386..580)
+    s += '  <rect x="36" y="382" width="484" height="198" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="52" y="404" class="sec">3 Cockpit-Selectable Foil Modes (1× Servo Dial)</text>\n'
+    modes_a = [
+        ("0° Servo (0% Preload):", "Roller lifted clear → effortless Dyneema 0° ↔ 90° fold/deploy!", "ok"),
+        ("90° Servo (50% Reef Mode):", "~45 kgf tip pop-out → soft resettable release in dense crab pots!", "dim"),
+        ("180° Servo (100% TDC, 0 W):", "~85 kgf tip / ~170 kgf center → high-speed cruise lock!", "warn"),
+    ]
+    my_a = 428
+    for mt, md, mc in modes_a:
+        s += f'  <text x="52" y="{my_a}" class="{mc}">{mt}</text>\n'
+        s += f'  <text x="218" y="{my_a}" class="lbl-sm">{md}</text>\n'
+        my_a += 26
+    s += '  <line x1="50" y1="504" x2="506" y2="504" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="52" y="524" class="ok">5-Second On-Water Reset: Pull Deploy Dyneema → roller clicks back in!</text>\n'
+    s += '  <text x="52" y="544" class="lbl-sm">Upper Switchblade Channel: Uses smaller 45 kg·cm IP68 servo (~45 kgf pop-out).</text>\n'
+    s += '  <text x="52" y="564" class="dim">Emergency Backup: Manual M6 stainless lock-pin hole if 12 V power ever fails.</text>\n'
+
+    # =========================================================================
+    # PANEL B (RIGHT): UPPER STRUT KICK-UP SERVO LOCK (~140 kgf SHOAL)
+    # =========================================================================
+    s += '  <rect x="548" y="68" width="508" height="528" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="566" y="92" class="sec">B. Upper Strut Lock: Front Rail Anti-Splay Bridge (0%–140 kgf)</text>\n'
+    s += '  <text x="566" y="109" class="dim">Unloaded in cruise • Auto kicks up @ ~140 kgf shoal • 0% for 1-button beaching!</text>\n'
+    s += '  <rect x="560" y="118" width="484" height="252" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+
+    # Twin Under-Hull Rail + Anti-Splay Bridge ceiling (y = 136..152)
+    s += '  <rect x="580" y="136" width="444" height="16" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
+    s += '  <text x="802" y="148" text-anchor="middle" style="font-size:8.4px;fill:#0F172A;font-weight:700;">Under-Hull Twin Rails &amp; Anti-Splay Bridge (Above Waterline!)</text>\n'
+
+    # Front Strut (100x18 mm carbon) descending on right (x = 846..930, y = 152..354)
+    s += '  <rect x="846" y="152" width="84" height="202" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
+    # Top Ø16 mm Stainless Hinge Axle offset to TRAILING EDGE (+24 mm -> x = 910, y = 172)
+    s += '  <circle cx="910" cy="172" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.5"/>\n'
+    # 100 mm Forward Leading-Edge Lock Tang extending left from strut (x = 768..846, y = 180..218)
+    s += '  <polygon points="846,180 768,180 768,218 846,218" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
+    # Solid 70 mm Aluminum Forward Compression Stop Shoulder directly BELOW the LE tang (takes 100% cruise thrust!)
+    s += '  <rect x="762" y="218" width="84" height="24" rx="3" fill="#334155" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += '  <text x="804" y="233" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">Solid Cruise Stop</text>\n'
+
+    # Horizontal 20° Roller Pin engaging the TOP edge of the LE tang (resisting upward kick-up rotation!)
+    s += '  <circle cx="764" cy="188" r="8" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>\n'
+    # 3.5:1 Vertical Rocker Lever + Grease-Booted Spring + IP68 Servo Cam mounted forward under bridge (x = 602..756)
+    s += '  <rect x="720" y="176" width="38" height="16" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += '  <rect x="670" y="172" width="50" height="26" rx="5" fill="#10B981" fill-opacity="0.28" stroke="#059669" stroke-width="1.5"/>\n'
+    s += '  <path d="M 676 185 L 683 177 L 690 193 L 697 177 L 704 193 L 711 185" fill="none" stroke="#334155" stroke-width="2"/>\n'
+    # IP68 Servo + Over-Center Cam (gold box at x = 584..664, y = 164..206)
+    s += '  <rect x="584" y="164" width="80" height="42" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.5"/>\n'
+    s += '  <text x="624" y="183" text-anchor="middle" style="font-size:8.4px;fill:#0F172A;font-weight:700;">IP68 Servo</text>\n'
+    s += '  <text x="624" y="195" text-anchor="middle" style="font-size:7.6px;fill:#451A03;">Cam + Rocker</text>\n'
+
+    # Kick-up force arrows showing how shoal hit drives LE tang UP against roller pin while strut rotates aft!
+    s += '  <path d="M 936 286 Q 974 276 994 236" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+    s += '  <line x1="802" y1="180" x2="802" y2="156" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>\n'
+
+    # Clean non-overlapping callouts inside Panel B
+    s += '  <text x="984" y="176" text-anchor="middle" class="ok">TE Pivot</text>\n'
+    s += '  <text x="984" y="188" text-anchor="middle" class="lbl-sm">(Ø16 mm)</text>\n'
+    s += '  <text x="984" y="298" text-anchor="middle" class="ok">Kicks Aft</text>\n'
+    s += '  <text x="984" y="310" text-anchor="middle" class="lbl-sm">0° → 86.5°</text>\n'
+    s += '  <text x="668" y="226" text-anchor="middle" class="ok">37 kgf Booted Spring</text>\n'
+    s += '  <text x="668" y="239" text-anchor="middle" class="lbl-sm">(0% Unlock → 100% Cruise)</text>\n'
+    s += '  <text x="720" y="274" text-anchor="middle" class="dim">Cruise Thrust pushes LE</text>\n'
+    s += '  <text x="720" y="287" text-anchor="middle" class="lbl-sm">DOWN onto solid Alu stop</text>\n'
+    s += '  <text x="720" y="300" text-anchor="middle" class="ok">(0 kgf on pin in flight!)</text>\n'
+    s += '  <text x="720" y="328" text-anchor="middle" class="warn">Shoal Hit (~140 kgf) drives</text>\n'
+    s += '  <text x="720" y="341" text-anchor="middle" class="lbl-sm">100 mm LE tang UP across roller!</text>\n'
+
+    # 1-Button Beach Sequence & Smart Divider Box below Panel B (y = 382..580)
+    s += '  <rect x="560" y="382" width="484" height="198" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="576" y="404" class="sec">1-Button Cockpit "BEACH MODE" &amp; Auto-Reset</text>\n'
+    s += '  <text x="576" y="428" class="ok">Step 1 — Press BEACH MODE:</text>\n'
+    s += '  <text x="586" y="443" class="lbl-sm">• Both Foil &amp; Strut IP68 servos rotate to 0% preload (pins retracted!).</text>\n'
+    s += '  <text x="576" y="466" class="ok">Step 2 — Pull Fold Dyneema Handle (2 s):</text>\n'
+    s += '  <text x="586" y="481" class="lbl-sm">• All wings fold true 90° flush inside 220 mm upper/lower pod channels!</text>\n'
+    s += '  <text x="576" y="504" class="ok">Step 3 — Pull 3:1 Strut Tackle (3 s):</text>\n'
+    s += '  <text x="586" y="519" class="lbl-sm">• 220 mm pod tucks 86.5° flat BETWEEN the 250 mm rails (5.5" sand clear!).</text>\n'
+    s += '  <text x="576" y="544" class="dim">Auto-Reset After Sandbar Kick-Up:</text>\n'
+    s += '  <text x="586" y="559" class="lbl-sm">• Lower struts back to 0° → roller pin snaps automatically into cruise notch!</text>\n'
+    s += '  <text x="586" y="573" class="warn">• Smart Divider preserved: Shoal (~140 kgf) kicks struts before wings (~170 kgf)!</text>\n'
+
+    s += "</svg>\n"
+    (OUT_DIR / "24-servo-preload-pins-mechanics.svg").write_text(s)
 
 
 if __name__ == "__main__":
@@ -1825,4 +1922,5 @@ if __name__ == "__main__":
     gen_21_center_strut_asymmetric_loads()
     gen_22_breakaway_socket_options()
     gen_23_breakaway_deployed_flaperons()
-    print("Generated all 14 2D engineering SVGs in", OUT_DIR)
+    gen_24_servo_preload_pins()
+    print("Generated all 15 2D engineering SVGs in", OUT_DIR)

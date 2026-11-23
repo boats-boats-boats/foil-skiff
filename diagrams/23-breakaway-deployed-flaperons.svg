@@ -59,61 +59,60 @@
   </defs>
   <rect x="1" y="1" width="1078" height="578" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
   <rect x="12" y="56" width="1056" height="512" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">23. Unified Linked-Fold Clearance: All 3 Wing Tracks &amp; 600 mm Tunnel Beaching Dart</text>
-  <text x="24" y="46" class="sub">Zero Collision Across Switchblade (+65 mm), Upper Staggerwing (+55 mm) &amp; Feathered DOWN STOL (-7.5 mm) — 400 mm Folded Width!</text>
+  <text x="24" y="28" class="title">23. True 90° Upper &amp; Lower Fold Channels: All 3 Wing Tracks &amp; 220 mm Beaching Dart</text>
+  <text x="24" y="46" class="sub">Zero Collision Across Switchblade / Upper Staggerwing (Roof) &amp; Main Wing (Belly) — Fits Even Between 250 mm Rails!</text>
   <rect x="24" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="92" class="sec">A. Side Profile: Separate Vertical Sweep Planes (0° → 82°)</text>
-  <text x="42" y="109" class="ok">Every secondary track sweeps on its own Z-plane — physically impossible to clash!</text>
+  <text x="42" y="92" class="sec">A. Side Profile: Upper (13 mm) &amp; Lower (12 mm) Fold Channels</text>
+  <text x="42" y="109" class="ok">Every wing folds 90° straight aft in its own dedicated channel — zero clash!</text>
   <rect x="36" y="118" width="484" height="292" rx="6" fill="url(#water)"/>
-  <text x="46" y="134" class="lbl-sm">← BOW (All 3 Tracks Shown on 90 mm Pod)</text>
+  <text x="46" y="134" class="lbl-sm">← BOW (95–105 mm Pod w/ 100% Intact 26 L Dry Bay)</text>
   <text x="510" y="134" text-anchor="end" class="lbl-sm">STERN →</text>
   <rect x="52" y="194" width="404" height="108" rx="38" fill="#334155" fill-opacity="0.16" stroke="#0F172A" stroke-width="1.8"/>
   <rect x="456" y="234" width="16" height="28" rx="3" fill="#334155"/>
   <line x1="474" y1="188" x2="474" y2="308" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
-  <rect x="128" y="190" width="218" height="10" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.3"/>
-  <text x="236" y="180" text-anchor="middle" class="ok">Track A: Roof Switchblade (Z = +45 mm, +65 mm clear!)</text>
-  <rect x="228" y="210" width="152" height="10" rx="3" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>
-  <text x="304" y="232" text-anchor="middle" class="warn">Track B: Upper Staggerwing (Z = +35 mm)</text>
-  <rect x="116" y="264" width="256" height="13" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
-  <text x="244" y="258" text-anchor="middle" class="dim">Linked-Fold Main Wing (Z = -20 mm, 10 mm thick)</text>
-  <rect x="228" y="288" width="152" height="9" rx="3" fill="#10B981" stroke="#065F46" stroke-width="1.3"/>
-  <text x="304" y="316" text-anchor="middle" class="ok">Track C: Triggered DOWN STOL Flap (Z = -36 mm)</text>
-  <text x="304" y="329" text-anchor="middle" class="lbl-sm">Dog-clutch releases → feathers 0° (7.5 mm below Main Wing!)</text>
-  <line x1="102.0" y1="195.0" x2="102.0" y2="270.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
-  <text x="78.0" y="236.5" text-anchor="middle" class="ok">+65 mm</text>
-  <line x1="402.0" y1="277.0" x2="402.0" y2="288.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
-  <text x="428.0" y="286.5" text-anchor="middle" class="ok">7.5 mm</text>
-  <text x="42" y="436" class="ok">1. Track A (Switchblade) &amp; Track B (Fixed Upper Staggerwing) = Simplest:</text>
-  <text x="52" y="454" class="lbl-sm">• 55–65 mm vertical clearance above Main Wing → zero timing/trigger needed!</text>
-  <text x="42" y="478" class="dim">2. Track C (Split STOL / Morphing DOWN Flaperons) = Triggered Self-Feather:</text>
-  <text x="52" y="496" class="lbl-sm">• Internal trigger cable releases flaperon dog-clutches @ 5° Main Wing sweep →</text>
-  <text x="52" y="512" class="lbl-sm">  flaps self-feather to 0° (20% balance) and sweep 82° aft 7.5 mm below Main Wing!</text>
+  <rect x="116" y="192" width="246" height="12" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.4"/>
+  <text x="242" y="182" text-anchor="middle" class="ok">Upper Fold Channel (13 mm Roof): Switchblade OR Staggerwing</text>
+  <rect x="116" y="216" width="270" height="62" rx="8" fill="#10B981" fill-opacity="0.22" stroke="#059669" stroke-width="1.4" stroke-dasharray="4,2"/>
+  <text x="251" y="252" text-anchor="middle" class="sec">100% Intact 26 L Dry Bay</text>
+  <rect x="128" y="290" width="252" height="12" rx="3" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <text x="254" y="320" text-anchor="middle" class="dim">Lower Fold Channel (12 mm Belly): Main Wing 90° Flush!</text>
+  <text x="254" y="334" text-anchor="middle" class="lbl-sm">1.55 m (AR 14) tips stop 179 mm ahead of tail prop</text>
+  <line x1="92.0" y1="200.0" x2="92.0" y2="296.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
+  <text x="68.0" y="252.0" text-anchor="middle" class="ok">80 mm</text>
+  <text x="42" y="436" class="ok">1. Primary Approach: Upper Channel (Roof) + Lower Channel (Belly):</text>
+  <text x="52" y="454" class="lbl-sm">• 80 mm vertical separation across the dry bay → zero collision at every angle!</text>
+  <text x="52" y="472" class="lbl-sm">• Works identically for Flush Switchblade OR Fixed Upper Staggerwing flaperons.</text>
+  <text x="42" y="496" class="dim">2. Optional Morphing STOL Mode (DOWN ~5 s Takeoff):</text>
+  <text x="52" y="514" class="lbl-sm">• Triggered dog-clutch feathers flaps 0° to sweep 90° cleanly below Main Wing.</text>
   <rect x="548" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="566" y="92" class="sec">B. Top-Down: Folded 400 mm Dart Inside 600 mm Tunnel</text>
-  <text x="566" y="109" class="ok">1.55 m (AR 14) foil + 1.12 m flaperons fold 100% between Ø460 mm tubes!</text>
+  <text x="566" y="92" class="sec">B. Top-Down: True 90° 220 mm Dart (Fits Between 250 mm Rails!)</text>
+  <text x="566" y="109" class="ok">ZERO overhang outside pod — 190 mm clear per side inside 600 mm tunnel!</text>
   <rect x="560" y="118" width="484" height="292" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <rect x="566" y="126" width="472" height="28" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>
-  <rect x="566" y="374" width="472" height="28" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>
-  <text x="802" y="144" text-anchor="middle" class="lbl-sm">Port Ø460 mm Inflatable Tube Edge</text>
-  <text x="802" y="392" text-anchor="middle" class="lbl-sm">Starboard Ø460 mm Inflatable Tube Edge</text>
-  <rect x="604" y="226" width="350" height="76" rx="34" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
-  <rect x="646" y="236" width="176" height="22" rx="4" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>
-  <rect x="646" y="270" width="176" height="22" rx="4" fill="#0F766E" stroke="#134E4A" stroke-width="1.1"/>
+  <rect x="566" y="126" width="472" height="26" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>
+  <rect x="566" y="376" width="472" height="26" rx="12" fill="#CBD5E1" stroke="#64748B" stroke-width="1.3"/>
+  <text x="802" y="143" text-anchor="middle" class="lbl-sm">Port Ø460 mm Inflatable Tube Edge</text>
+  <text x="802" y="393" text-anchor="middle" class="lbl-sm">Starboard Ø460 mm Inflatable Tube Edge</text>
+  <line x1="590" y1="214" x2="980" y2="214" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="590" y1="314" x2="980" y2="314" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="720" y="208" text-anchor="middle" class="lbl-sm">250 mm Under-Hull Twin Rails (Pod tucks between!)</text>
+  <rect x="604" y="222" width="350" height="84" rx="36" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
+  <rect x="650" y="228" width="246" height="32" rx="4" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>
+  <rect x="650" y="268" width="246" height="32" rx="4" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.3"/>
+  <rect x="666" y="236" width="176" height="22" rx="3" fill="#0F766E" fill-opacity="0.88" stroke="#134E4A" stroke-width="1.1"/>
+  <rect x="666" y="270" width="176" height="22" rx="3" fill="#0F766E" fill-opacity="0.88" stroke="#134E4A" stroke-width="1.1"/>
+  <circle cx="662" cy="244" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
+  <circle cx="662" cy="284" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
   <line x1="974" y1="230" x2="974" y2="298" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
   <text x="1008" y="268" text-anchor="middle" class="dim">Prop</text>
-  <polygon points="670,228 898,190 896,210 674,244" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
-  <polygon points="670,300 898,338 896,318 674,284" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
-  <polygon points="724,226 860,206 858,218 726,236" fill="url(#wingBlue)" fill-opacity="0.92" stroke="#0369A1" stroke-width="1.3"/>
-  <polygon points="724,302 860,322 858,310 726,292" fill="url(#wingBlue)" fill-opacity="0.92" stroke="#0369A1" stroke-width="1.3"/>
-  <line x1="586.0" y1="154.0" x2="586.0" y2="374.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
-  <text x="610.0" y="182.0" text-anchor="middle" class="dim">600 mm</text>
-  <line x1="916.0" y1="192.0" x2="916.0" y2="336.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
-  <text x="946.0" y="352.0" text-anchor="middle" class="ok">~400 mm</text>
-  <line x1="898.0" y1="172.0" x2="974.0" y2="172.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
-  <text x="936.0" y="166.0" text-anchor="middle" class="ok">227 mm clear!</text>
-  <text x="566" y="436" class="ok">Why Unified Linked-Fold Replaces 4 Separate Mechanisms:</text>
-  <text x="576" y="454" class="lbl-sm">• Impact Protection: Both halves sweep 82° together (0 rollover, 0 leash!).</text>
-  <text x="576" y="472" class="lbl-sm">• Dry-Sand Beaching: 1.55 m LR foil folds to ~400 mm inside 600 mm tunnel!</text>
-  <text x="576" y="490" class="lbl-sm">• Eliminates fragile mid-span wingtip hinges &amp; 1.12 m rear flaperon overhang.</text>
-  <text x="576" y="508" class="lbl-sm">• Compact Storage: Entire folded pod drops straight into a 1.3 m × 0.4 m bag!</text>
+  <line x1="586.0" y1="152.0" x2="586.0" y2="376.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="612.0" y="182.0" text-anchor="middle" class="dim">600 mm</text>
+  <line x1="916.0" y1="222.0" x2="916.0" y2="306.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
+  <text x="946.0" y="328.0" text-anchor="middle" class="ok">220 mm!</text>
+  <line x1="896.0" y1="192.0" x2="974.0" y2="192.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
+  <text x="935.0" y="186.0" text-anchor="middle" class="ok">179 mm clear!</text>
+  <text x="566" y="436" class="ok">Why True 90° Upper &amp; Lower Fold Channels Win:</text>
+  <text x="576" y="454" class="lbl-sm">• Narrowest Possible Fold: 220 mm total width (zero wider than pod itself!).</text>
+  <text x="576" y="472" class="lbl-sm">• Fits cleanly BETWEEN the 250 mm rails on 86.5° retraction (+5.5" sand clear).</text>
+  <text x="576" y="490" class="lbl-sm">• Zero external hubs = ~0 lbf interference drag at 15.5–22 kn cruise!</text>
+  <text x="576" y="508" class="lbl-sm">• 5-Second Water Reset: Pull Dyneema Deploy line → servo roller clicks locked!</text>
 </svg>

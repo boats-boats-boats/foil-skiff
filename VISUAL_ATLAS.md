@@ -1,6 +1,6 @@
 # FoilSkiff — Visual Design Atlas & 3D CAD Model Gallery
 
-A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), and [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), pairing **interactive millimeter-scale 3D `.stl` CAD models** (orbitable directly in GitHub's native 3D viewer), **multi-material OpenSCAD 3D renderings (`renders/`)**, and **24 mathematically-scaled engineering SVG drawings (`diagrams/`)**.
+A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), and [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), pairing **interactive millimeter-scale 3D `.stl` CAD models** (orbitable directly in GitHub's native 3D viewer), **multi-material OpenSCAD 3D renderings (`renders/`)**, and **25 mathematically-scaled engineering SVG drawings (`diagrams/`)**.
 
 * **Primary Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `60 cm` inside beam, `Ø460 mm` continuous closed-bow tubes, factory `Tru-Alu` rigid aluminum transom, `31 kg` bare weight, `500 kg` capacity).
 * **Primary Wing & Actuation:** **Deep-Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`, `400 mm` deep)** with **`2×` `IP67` brushless servos sealed INSIDE the Flying-Keel Pod** (`ZERO` boxes above the top Hard Deck, `ZERO` external strut pushrods, `ZERO` surface-piercing wave-slam wings!).
@@ -16,7 +16,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **1** | [`models/01_navigator300_stol_flaperons.stl`](models/01_navigator300_stol_flaperons.stl) | **`Navigator 300`** *(PRIMARY)* | **Bow-Contoured Hard Deck & Under-Hull Hybrid C-Frame** + **`6 mm` Dyneema Bow Sling** + **Deep-Submerged Split STOL Flaperons** (internal pod servos, `0` deck boxes, clean wave zone!) |
 | **2** | [`models/02_switchblade_pod.stl`](models/02_switchblade_pod.stl) | *Secondary Wing Pod* | **Flush-Nested Top-Deck Switchblade Wing** (`+1,300 cm²` deployed + `70 mm` carbon overhang bridge + contoured bow-bent under-plate) |
 | **3** | [`models/03_stol_flaperon_pod.stl`](models/03_stol_flaperon_pod.stl) | *Primary Pod Cutaway* | **Split STOL Flaperons (`+18°` / `-8°` differential bank)** with **translucent pod showing `2×` internal `IP67` servos, `Ø8 mm` sealed shafts & `ESP32`/IMU** (`ZERO` boxes above flush Hard Deck!) |
-| **4** | [`models/04_navigator300_retracted_beaching.stl`](models/04_navigator300_retracted_beaching.stl) | **`Navigator 300`** *(PRIMARY)* | **Retracted `86.5°` Parallelogram Beaching Mode** tucked cleanly beneath the `Tru-Alu` transom (`~135–140 mm` / `5.5"` sand clearance; **Unified Linked-Fold `82°` aft-swept wings** in `~400 mm` dart inside `600 mm` tunnel!) |
+| **4** | [`models/04_navigator300_retracted_beaching.stl`](models/04_navigator300_retracted_beaching.stl) | **`Navigator 300`** *(PRIMARY)* | **Retracted `86.5°` Parallelogram Beaching Mode** tucked cleanly beneath the `Tru-Alu` transom (`~130–140 mm` / `5.1–5.5"` sand clearance; **True `90°` Upper/Lower Fold Channels** tuck wings inside **`220 mm` dart** right between the `250 mm` rails!) |
 | **5** | [`models/05_discovery330_oframe_stol.stl`](models/05_discovery330_oframe_stol.stl) | `Discovery 330` *(Secondary Hull)* | Secondary open-bow reference showing **Bow-Contoured Hard Deck + Full Rigid O-Frame** + identical swappable **Split STOL Flaperon Pod** (also applies to `Takacat LX`) |
 | **6** | [`models/06_navigator300_lr_8020_sweetspot.stl`](models/06_navigator300_lr_8020_sweetspot.stl) | **`Navigator 300`** *(LR 80/20 Tandem)* | **Long-Range 80/20 Tandem (`65–79 nm`):** **2 inline low-sit ergonomic chairs** on flush L-Tracks + `4×` easy blades + Split STOL + **Single `65161` (`10"` CNC prop)** + `AR 13.5` wing + `60 mm` Deck Pack & Bow Dodger |
 | **7** | [`models/07_navigator300_lr_max_range.stl`](models/07_navigator300_lr_max_range.stl) | **`Navigator 300`** *(Full LR Solo)* | **Full 4-Swap Long-Range Solo (`70–84 nm`):** **1 low-sit pilot chair slid over CoG** (open aft gear/extender bay!) + `2×` Recessed Center Struts + `AR 14` Flush Switchblade + Single `65161` (`10"` prop) & Bow Dodger |
@@ -69,7 +69,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ---
 
 ### 4. PRIMARY Retracted Beaching Mode: `86.5°` Parallelogram Fold on `True Kit Navigator 300`
-*Tunnel-level view of the **`True Kit Navigator 300`** resting on flat beach sand (`Z = -232 mm`). All `4×` `60 × 9 mm` side-straddling blades fold `86.5°` aft **beside** the `80 mm`-thick pod (zero vertical chord stack-up, zero upper wing, zero external pushrod binding!), sliding smoothly beneath the factory `Tru-Alu` transom with **Unified Linked-Fold wings & flaperons swept `82°` aft into a `~400 mm` narrow dart** cleanly inside the `600 mm` tunnel (**`~130–140 mm` / `5.1–5.5"` clear above flat sand** within the `300 cm` LOA).*
+*Tunnel-level view of the **`True Kit Navigator 300`** resting on flat beach sand (`Z = -232 mm`). One press of **`BEACH MODE`** rotates both Foil & Strut `IP68` servo pins to `0%`, the closed-loop Dyneema pulley folds all wings **true `90°` flush inside the `13 mm` upper & `12 mm` lower pod channels (`220 mm` total width — zero overhang!)**, and all `4×` `60 × 9 mm` side-straddling blades fold `86.5°` aft beside the `95 mm` pod right **between the `250 mm` under-hull rails** beneath the factory `Tru-Alu` transom (**`~130–140 mm` / `5.1–5.5"` clear above flat sand** within the `300 cm` LOA).*
 
 ![OpenSCAD 3D Render: True Kit Navigator 300 Retracted 86.5-deg Beaching Mode](renders/04-navigator300-retracted-3d.png)
 
@@ -171,43 +171,46 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 11. 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (Wet-Slot / Dry-Bay Mechanics & Wake Clearance)
 ![100% Internal-Pod Morphing STOL-to-Staggerwing Wet-Slot Elevator Sled](diagrams/20-morphing-stol-staggerwing.svg)
 
-### 12. `2×` Recessed Center Struts & Unified Linked-Fold Main Wing Protection (Upper/Lower Trunnions & `82°` Coupled Sweep)
-![2x Recessed Center Struts and Unified Linked-Fold Main Wing Protection](diagrams/21-center-strut-asymmetric-loads.svg)
+### 12. `2×` Recessed Center Struts & True `90°` Upper/Lower Fold-Channel Protection (Dual Servo-Pin Smart Divider)
+![2x Recessed Center Struts and True 90-deg Upper/Lower Channel Linked-Fold Protection](diagrams/21-center-strut-asymmetric-loads.svg)
 
-### 13. Unified Linked-Fold Mechanics: `22 mm` Overhang C-Slot Bridge, Intermeshing Root Gears & Flaperon Dog-Clutch
-![Unified Linked-Fold Mechanics: Overhang Bridge, Root Gears and Flaperon Dog-Clutch](diagrams/22-breakaway-socket-options.svg)
+### 13. True `90°` Upper (`13 mm`) & Lower (`12 mm`) Fold Channels, Closed-Loop Dyneema Pulleys & Flaperon Dog-Clutch
+![True 90-deg Upper and Lower Fold Channels, Dyneema Pulley Loop and Flaperon Dog-Clutch](diagrams/22-breakaway-socket-options.svg)
 
-### 14. Unified Linked-Fold Clearance: All 3 Wing Tracks (`Switchblade`, `Staggerwing`, `STOL`) & `600 mm` Tunnel Beaching Dart
-![Unified Linked-Fold Clearance: All 3 Wing Tracks and 600 mm Tunnel Beaching Dart](diagrams/23-breakaway-deployed-flaperons.svg)
+### 14. True `90°` Upper & Lower Fold Channels: All 3 Wing Tracks & `220 mm` Beaching Dart (Fits Between `250 mm` Rails!)
+![True 90-deg Upper and Lower Fold Channels: All 3 Wing Tracks and 220 mm Beaching Dart](diagrams/23-breakaway-deployed-flaperons.svg)
 
-### 15. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
+### 15. Wet `IP68` Servo-Controlled Variable-Preload Roller Pins for Foils & Upper Struts (`0%` Fold / `50%` Reef / `100%` `0 W` Cruise)
+![Wet IP68 Servo-Controlled Variable-Preload Roller Pins for Foils and Struts](diagrams/24-servo-preload-pins-mechanics.svg)
+
+### 16. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
 
-### 16. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
+### 17. Long-Range (`60–75+ nm`) Hydro Package Swaps & Battery Recipes Comparison
 ![Long-Range Hydro Package Swaps and Battery Recipes](diagrams/16-long-range-hydro-packages.svg)
 
-### 17. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
+### 18. PRIMARY Wing Cross-Section: Submerged Split STOL Flaperons & Internal Pod Servos
 ![Staggerwing vs. STOL External Slotted Flaperon Cross-Sections](diagrams/02-stol-flaperons-cross-section.svg)
 
-### 18. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
+### 19. Flying-Keel Pod Internal Cutaway (`26 L` Swappable Cartridges, Internal Servos, Seawater Cooling & Safety)
 ![Flying-Keel Pod Internal Cutaway](diagrams/09-swappable-cartridge-cutaway.svg)
 
-### 19. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
+### 20. Secondary Wing: Flush-Nested Top-Deck Switchblade Wing (Top-Down Closed vs. Deployed)
 ![Flush-Nested Switchblade Top-Down Geometry](diagrams/01-switchblade-wing-topdown.svg)
 
-### 20. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
+### 21. Contoured Bow-Bent Hard Deck & Under-Hull Coupling Options (`Navigator 300` Primary + Magnets + `Discovery 330` O-Frame + OEM Slot)
 ![Drop-In Rigid Spine Floor Coupling Options](diagrams/03-spine-floor-coupling-options.svg)
 
-### 21. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
+### 22. Grounding Kick-Up Kinematics: Why a Single Central Mast Fails vs. 4-Bar Parallelogram
 ![Single Central Mast Collision vs. 4-Bar Parallelogram Kick-Up](diagrams/04-grounding-kickup-geometry.svg)
 
-### 22. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
+### 23. Strut Architecture & Folded Stack-Up Clearance Inside the `Navigator 300` Tunnel (`600 mm` Wide × `230 mm` High)
 ![Strut Architecture & Folded Beaching Stack-Up](diagrams/05-strut-folded-stackup.svg)
 
-### 23. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
+### 24. Integrated Battery-Hull Architecture Comparison on `True Kit Navigator 300`
 ![Integrated Battery-Hull Architecture Comparison](diagrams/10-alt-architectures-comparison.svg)
 
-### 24. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
+### 25. Rejected Concept Physics: Why Surface-Piercing Step-Out Wings Fail in Chop (Forward & Deep-Aft)
 ![Rejected Concept Physics: Surface-Piercing Step-Out Wing Wave-Slam Hazards](diagrams/12-rejected-concepts-physics.svg)
 
 ---
@@ -217,7 +220,7 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 All `.stl` models, `.svg` technical drawings, and OpenSCAD `.png` renderings are generated deterministically with **zero Python third-party dependencies** (plus optional `openscad` CLI for shaded PNG renders):
 
 ```bash
-# Regenerate all 14 scaled 2D engineering SVGs (pure Python 3)
+# Regenerate all 15 scaled 2D engineering SVGs (pure Python 3)
 python3 diagrams/generate_diagrams.py
 
 # Regenerate all 10 binary 3D .stl CAD models, 10 annotated 3D SVGs, and 10 OpenSCAD PNGs

@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" width="1080" height="620">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="carbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="wingBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="wingTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="kevlar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="55%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #0F172A; }
+      .sub { font-size: 12px; fill: #475569; }
+      .sec { font-size: 13.5px; font-weight: 700; fill: #0F172A; }
+      .lbl { font-size: 11px; font-weight: 600; fill: #1E293B; }
+      .lbl-sm { font-size: 10px; fill: #475569; }
+      .lbl-w { font-size: 10.5px; font-weight: 700; fill: #FFFFFF; }
+      .dim { font-size: 10px; font-weight: 600; fill: #0284C7; }
+      .ok { font-size: 10.5px; font-weight: 700; fill: #059669; }
+      .warn { font-size: 10.5px; font-weight: 700; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1078" height="618" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="12" y="56" width="1056" height="552" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="24" y="28" class="title">24. Wet IP68 Servo-Controlled Variable-Preload Roller Pins (Foils &amp; Struts)</text>
+  <text x="24" y="46" class="sub">100% Resettable Ski-Binding Cam-and-Rocker Lock: 0% Fold/Deploy • 50% Reef Mode • 100% Over-Center Cruise (0 W Hold!)</text>
+  <rect x="24" y="68" width="508" height="528" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="42" y="92" class="sec">A. Foil Channel Lock: Over-Center Cam + 3.5:1 Rocker + 20° Roller</text>
+  <text x="42" y="109" class="ok">18× lever reduction lets a 75 kg·cm IP68 servo hold ~85 kgf tip / ~170 kgf center!</text>
+  <rect x="36" y="118" width="484" height="252" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="74" y="138" width="92" height="44" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.5"/>
+  <text x="120" y="158" text-anchor="middle" style="font-size:8.8px;fill:#0F172A;font-weight:700;">Wet IP68 Servo</text>
+  <text x="120" y="170" text-anchor="middle" style="font-size:7.8px;fill:#451A03;">75 kg·cm (0 W TDC)</text>
+  <circle cx="120" cy="196" r="14" fill="#475569" stroke="#0F172A" stroke-width="1.4"/>
+  <circle cx="120" cy="191" r="4" fill="#FBBF24"/>
+  <rect x="104" y="210" width="32" height="54" rx="6" fill="#10B981" fill-opacity="0.28" stroke="#059669" stroke-width="1.6"/>
+  <path d="M 110 216 L 130 223 L 110 230 L 130 237 L 110 244 L 130 251 L 110 258" fill="none" stroke="#334155" stroke-width="2.2"/>
+  <rect x="108" y="264" width="262" height="12" rx="4" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5"/>
+  <polygon points="296,276 284,296 308,296" fill="#334155" stroke="#0F172A" stroke-width="1.2"/>
+  <circle cx="296" cy="270" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <rect x="348" y="276" width="16" height="28" rx="3" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>
+  <circle cx="356" cy="308" r="8" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>
+  <polygon points="184,316 336,316 346,326 366,326 376,316 462,316 462,344 184,344" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <text x="270" y="334" text-anchor="middle" style="font-size:8.8px;fill:#FFFFFF;font-weight:700;">110 mm Wing Gear Slider Lug</text>
+  <line x1="466" y1="330" x2="508" y2="330" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
+  <line x1="382" y1="308" x2="382" y2="278" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <text x="182" y="156" class="ok">12 mm Eccentric Cam (62 kgf push)</text>
+  <text x="182" y="170" class="lbl-sm">Static 3-wire gland → 0 moving hull seals!</text>
+  <text x="148" y="226" class="ok">Grease-Booted 316 SS Spring</text>
+  <text x="148" y="239" class="lbl-sm">37 kgf @ 100% (sand-proof boot!)</text>
+  <text x="206" y="294" text-anchor="middle" class="dim">3.5:1 Rocker (70:20 mm)</text>
+  <text x="444" y="284" text-anchor="middle" class="warn">130 kgf Clamp</text>
+  <text x="444" y="297" text-anchor="middle" class="lbl-sm">20° Roller (μ≈0.08)</text>
+  <text x="456" y="358" text-anchor="middle" class="warn">4,605 N @ 85 kgf Tip!</text>
+  <rect x="36" y="382" width="484" height="198" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="52" y="404" class="sec">3 Cockpit-Selectable Foil Modes (1× Servo Dial)</text>
+  <text x="52" y="428" class="ok">0° Servo (0% Preload):</text>
+  <text x="218" y="428" class="lbl-sm">Roller lifted clear → effortless Dyneema 0° ↔ 90° fold/deploy!</text>
+  <text x="52" y="454" class="dim">90° Servo (50% Reef Mode):</text>
+  <text x="218" y="454" class="lbl-sm">~45 kgf tip pop-out → soft resettable release in dense crab pots!</text>
+  <text x="52" y="480" class="warn">180° Servo (100% TDC, 0 W):</text>
+  <text x="218" y="480" class="lbl-sm">~85 kgf tip / ~170 kgf center → high-speed cruise lock!</text>
+  <line x1="50" y1="504" x2="506" y2="504" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="52" y="524" class="ok">5-Second On-Water Reset: Pull Deploy Dyneema → roller clicks back in!</text>
+  <text x="52" y="544" class="lbl-sm">Upper Switchblade Channel: Uses smaller 45 kg·cm IP68 servo (~45 kgf pop-out).</text>
+  <text x="52" y="564" class="dim">Emergency Backup: Manual M6 stainless lock-pin hole if 12 V power ever fails.</text>
+  <rect x="548" y="68" width="508" height="528" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="566" y="92" class="sec">B. Upper Strut Lock: Front Rail Anti-Splay Bridge (0%–140 kgf)</text>
+  <text x="566" y="109" class="dim">Unloaded in cruise • Auto kicks up @ ~140 kgf shoal • 0% for 1-button beaching!</text>
+  <rect x="560" y="118" width="484" height="252" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="580" y="136" width="444" height="16" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>
+  <text x="802" y="148" text-anchor="middle" style="font-size:8.4px;fill:#0F172A;font-weight:700;">Under-Hull Twin Rails &amp; Anti-Splay Bridge (Above Waterline!)</text>
+  <rect x="846" y="152" width="84" height="202" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
+  <circle cx="910" cy="172" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.5"/>
+  <polygon points="846,180 768,180 768,218 846,218" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>
+  <rect x="762" y="218" width="84" height="24" rx="3" fill="#334155" stroke="#0F172A" stroke-width="1.3"/>
+  <text x="804" y="233" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">Solid Cruise Stop</text>
+  <circle cx="764" cy="188" r="8" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.4"/>
+  <rect x="720" y="176" width="38" height="16" rx="3" fill="url(#alu)" stroke="#0F172A" stroke-width="1.3"/>
+  <rect x="670" y="172" width="50" height="26" rx="5" fill="#10B981" fill-opacity="0.28" stroke="#059669" stroke-width="1.5"/>
+  <path d="M 676 185 L 683 177 L 690 193 L 697 177 L 704 193 L 711 185" fill="none" stroke="#334155" stroke-width="2"/>
+  <rect x="584" y="164" width="80" height="42" rx="5" fill="#FBBF24" stroke="#92400E" stroke-width="1.5"/>
+  <text x="624" y="183" text-anchor="middle" style="font-size:8.4px;fill:#0F172A;font-weight:700;">IP68 Servo</text>
+  <text x="624" y="195" text-anchor="middle" style="font-size:7.6px;fill:#451A03;">Cam + Rocker</text>
+  <path d="M 936 286 Q 974 276 994 236" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>
+  <line x1="802" y1="180" x2="802" y2="156" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>
+  <text x="984" y="176" text-anchor="middle" class="ok">TE Pivot</text>
+  <text x="984" y="188" text-anchor="middle" class="lbl-sm">(Ø16 mm)</text>
+  <text x="984" y="298" text-anchor="middle" class="ok">Kicks Aft</text>
+  <text x="984" y="310" text-anchor="middle" class="lbl-sm">0° → 86.5°</text>
+  <text x="668" y="226" text-anchor="middle" class="ok">37 kgf Booted Spring</text>
+  <text x="668" y="239" text-anchor="middle" class="lbl-sm">(0% Unlock → 100% Cruise)</text>
+  <text x="720" y="274" text-anchor="middle" class="dim">Cruise Thrust pushes LE</text>
+  <text x="720" y="287" text-anchor="middle" class="lbl-sm">DOWN onto solid Alu stop</text>
+  <text x="720" y="300" text-anchor="middle" class="ok">(0 kgf on pin in flight!)</text>
+  <text x="720" y="328" text-anchor="middle" class="warn">Shoal Hit (~140 kgf) drives</text>
+  <text x="720" y="341" text-anchor="middle" class="lbl-sm">100 mm LE tang UP across roller!</text>
+  <rect x="560" y="382" width="484" height="198" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="576" y="404" class="sec">1-Button Cockpit "BEACH MODE" &amp; Auto-Reset</text>
+  <text x="576" y="428" class="ok">Step 1 — Press BEACH MODE:</text>
+  <text x="586" y="443" class="lbl-sm">• Both Foil &amp; Strut IP68 servos rotate to 0% preload (pins retracted!).</text>
+  <text x="576" y="466" class="ok">Step 2 — Pull Fold Dyneema Handle (2 s):</text>
+  <text x="586" y="481" class="lbl-sm">• All wings fold true 90° flush inside 220 mm upper/lower pod channels!</text>
+  <text x="576" y="504" class="ok">Step 3 — Pull 3:1 Strut Tackle (3 s):</text>
+  <text x="586" y="519" class="lbl-sm">• 220 mm pod tucks 86.5° flat BETWEEN the 250 mm rails (5.5" sand clear!).</text>
+  <text x="576" y="544" class="dim">Auto-Reset After Sandbar Kick-Up:</text>
+  <text x="586" y="559" class="lbl-sm">• Lower struts back to 0° → roller pin snaps automatically into cruise notch!</text>
+  <text x="586" y="573" class="warn">• Smart Divider preserved: Shoal (~140 kgf) kicks struts before wings (~170 kgf)!</text>
+</svg>

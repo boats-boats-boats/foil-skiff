@@ -492,9 +492,10 @@ def add_stol_flaperons_and_servos(mb: MeshBuilder, dx=0.0, dz=-702.0, deg_port=1
     PRIMARY WING ARCHITECTURE: Compact 1,000 cm² Main Wing + 2x 250 cm² Independent Split Junkers STOL Flaperons
     driven directly by 2x IP67 70-80 kg·cm brushless servos SEALED INSIDE THE FLYING-KEEL POD via Ø8 mm double-O-ring
     stainless torque tubes (ZERO protruding boxes above top Hard Deck, ZERO external brackets/hinges sticking out of hull!).
-    When linked_fold=True, BOTH Main Wing halves & flaperons sweep 82° aft cleanly alongside the pod (~400 mm beach dart!).
+    When linked_fold=True, Main Wing folds TRUE 90° straight aft inside the 12 mm lower belly channel (200 mm inside 220 mm pod!)
+    and flaperons fold TRUE 90° straight aft inside the 13 mm upper roof channel (220 mm total dart — fits between 250 mm rails!).
     """
-    add_lower_wings(mb, dx=dx, dz=dz - 14.0, half_span=525.0, root_chord=100.0, x_le=-245.0, linked_fold=linked_fold)
+    add_lower_wings(mb, dx=dx, dz=dz - (42.0 if linked_fold else 14.0), half_span=525.0, root_chord=100.0, x_le=-245.0, linked_fold=linked_fold)
 
     fl_sec = naca4_section(0.02, 0.4, 0.11, 60.0, n=10)
     piv_x = dx - 92.0
@@ -513,15 +514,13 @@ def add_stol_flaperons_and_servos(mb: MeshBuilder, dx=0.0, dz=-702.0, deg_port=1
                 rings.append([(piv_x + (xl - 12.0) * math.cos(rad) + zl * math.sin(rad), y, piv_z - (xl - 12.0) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
             mb.add_loft(rings, col, 1.0, stl=True)
         else:
-            # Linked-Fold 82° aft-swept & 0° self-feathered flaperons tucked cleanly alongside pod (~346 mm wide!)
+            # True 90° Upper Roof Fold Channel (13 mm recess): flaperons disengage via bevel dog-clutch & nest 90° flush on pod roof!
             flap_len = 435.0
-            sw_rad = math.radians(82.0)
+            roof_z = dz + 40.0
             rings = []
             for frac in (0.0, 0.5, 1.0):
-                s_d = frac * flap_len
-                bx = piv_x + s_d * math.sin(sw_rad)
-                by = side * (112.0 + s_d * math.cos(sw_rad))
-                rings.append([(bx + (xl - 12.0) * math.cos(sw_rad), by + side * (xl - 12.0) * math.sin(sw_rad) * 0.45, piv_z + zl) for xl, zl in fl_sec])
+                bx = dx - 205.0 + frac * flap_len
+                rings.append([(bx, side * 44.0 + side * (xl - 30.0), roof_z + zl) for xl, zl in fl_sec])
             mb.add_loft(rings, col, 1.0, stl=True)
 
     if show_internal:
@@ -545,19 +544,16 @@ def add_lower_wings(mb: MeshBuilder, dx=0.0, dz=-712.0, half_span=670.0, root_ch
             rings.append([(dx + x_le + sweep + xl * taper, y, dz + dih + zl * taper) for xl, zl in lo_sec])
         mb.add_loft(rings, C_WING_LOW, 1.0, stl=True)
     else:
-        # Unified Linked-Fold: BOTH Main Wing halves pivot at y = ±92 mm & sweep 82° aft cleanly alongside pod (~400 mm dart!)
-        wing_len = half_span - 92.0
-        sw_rad = math.radians(82.0)
+        # True 90° Lower Belly Fold Channel (12 mm recess): pivots at y = ±54 mm -> 2×100 mm = 200 mm flush inside 220 mm pod!
+        wing_len = half_span - 54.0
         x_piv = dx + x_le + 22.0
         for side in (-1, 1):
             rings = []
             for frac in (0.0, 0.45, 0.80, 1.0):
-                u = (92.0 + frac * wing_len) / half_span
+                u = (54.0 + frac * wing_len) / half_span
                 taper = 1.0 - 0.42 * (u**1.8)
-                s_d = frac * wing_len
-                bx = x_piv + s_d * math.sin(sw_rad)
-                by = side * (96.0 + s_d * math.cos(sw_rad))
-                rings.append([(bx + (xl - 22.0) * taper * math.cos(sw_rad), by + side * (xl - 22.0) * taper * math.sin(sw_rad) * 0.45, dz + zl * taper) for xl, zl in lo_sec])
+                bx = x_piv + frac * wing_len
+                rings.append([(bx, side * 54.0 + side * (xl - root_chord * 0.5) * taper, dz + zl * taper) for xl, zl in lo_sec])
             mb.add_loft(rings, C_WING_LOW, 1.0, stl=True)
 
 
@@ -853,23 +849,23 @@ def build_model_04_navigator300_retracted():
     fold = 86.5
     dx_bot, z_pod = add_4x_blades(mb, z_top=z_top, z_bot=z_bot, fold_deg=fold, x_front=x_f, x_rear=x_r, y_half=122)
     dx_pod = -160.0 + dx_bot
-    add_flying_keel_pod(mb, dx=dx_pod, dz=z_pod, pod_h=80.0)
+    add_flying_keel_pod(mb, dx=dx_pod, dz=z_pod, pod_h=95.0)
     add_stol_flaperons_and_servos(mb, dx=dx_pod, dz=z_pod, deg_port=0.0, deg_stbd=0.0, linked_fold=True, show_internal=False)
     add_plane_grid(mb, -232.0, C_SAND, 0.32, n=6)
 
     write_binary_stl(mb, MODELS_DIR / "04_navigator300_retracted_beaching.stl", "FoilSkiff 04 (PRIMARY): True Kit Navigator 300 Retracted 86.5-deg Beaching (mm)")
     callouts = [
         ((-1210, 0, 102), "left", 102, 235, "Bow-Contoured Hard Deck & Ski-Plate", "Follows curved bow up to D-ring • 0 boxes above deck"),
-        ((-200, 122, -45), "left", 242, 240, "4× Side-Straddling Blades Folded 86.5°", "60 mm blades fold BESIDE pod • 0 upper wing stack!"),
-        ((dx_pod - 550, 0, z_pod), "left", 425, 240, "STOL Pod Stays 100% Horizontal!", "Internal servos = zero pushrod fold binding!"),
-        ((1050, -240, 180), "right", 112, 800, "Clears Beneath Tru-Alu Transom!", "Pod slides smoothly under open-bottom transom"),
-        ((dx_pod + 620, -135, z_pod), "right", 275, 795, "Props Protected Inside Rear Cones", "Within 300 cm LOA, high & dry above sand"),
-        ((150, -350, -168), "right", 455, 800, "~130–140 mm (5.1–5.5\") Sand Clear!", "Linked-Fold wings sweep 82° aft (~400 mm dart in tunnel!)"),
+        ((-200, 122, -45), "left", 242, 240, "4× Side-Straddling Blades Folded 86.5°", "1-Button BEACH MODE drops Strut & Foil servo pins to 0%!"),
+        ((dx_pod - 550, 0, z_pod), "left", 425, 240, "95 mm Pod + Upper/Lower 90° Channels", "100% intact 26 L dry bay • Dyneema pulley fold (0 motors!)"),
+        ((1050, -240, 180), "right", 112, 800, "Clears Beneath Tru-Alu Transom!", "220 mm folded dart fits cleanly BETWEEN 250 mm rails!"),
+        ((dx_pod + 620, -135, z_pod), "right", 275, 795, "Props Protected Inside Rear Cones", "Folded wings stop well ahead of props • High & dry"),
+        ((150, -350, -168), "right", 455, 800, "~130–140 mm (5.1–5.5\") Sand Clear!", "True 90° flush wings inside 220 mm pod (zero overhang!)"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "08-navigator300-retracted-3d.svg",
         "3D CAD Model 4 (PRIMARY): True Kit Navigator 300 Retracted Beaching Mode (86.5° Fold)",
-        "4× blades fold flat beside Split STOL pod beneath Tru-Alu transom • Zero upper wing, zero deck boxes, ~5.1–5.5\" clear!",
+        "True 90° Upper/Lower Fold Channels (220 mm dart fits between 250 mm rails!) • 1-Button BEACH MODE • ~5.1–5.5\" clear!",
         callouts, az_deg=-138, el_deg=14, scale=0.295, z_center=120,
         footer="Interactive 3D STL: models/04_navigator300_retracted_beaching.stl (click on GitHub to inspect under-tunnel clearance in 3D)",
     )
@@ -939,8 +935,12 @@ def add_2x_center_recessed_struts(mb: MeshBuilder, z_top=-22.0, z_bot=-702.0, x_
         for sy in (-88, 88):
             mb.add_box(bx - 48, bx + 18, sy - 5, sy + 5, z_bot - 34, z_bot + 34, C_WING_UP, 0.85, stl=False)
             mb.add_box(bx - 36, bx - 12, sy - (6 if sy > 0 else -12) + (-6 if sy < 0 else 0), sy + (0 if sy > 0 else 6), z_bot + 4, z_bot + 28, C_FLAP_R, 1.0, stl=True)
-    # Front strut Delrin kick-up shear-pin fuse block + crab-pot line cutter notch at LE/pod junction
-    mb.add_box(x_front - 58, x_front - 26, -24, 24, z_top - 26, z_top - 4, C_PUSHROD, 1.0, stl=True)
+    # Front strut Wet IP68 Servo Variable-Preload Roller Lock (0% BEACH / 50% Shoal / 100% Cruise ~140 kgf @ 0 W!)
+    # Gold IP68 75 kg·cm servo + cam/rocker block under front anti-splay bridge + red hardened 316 SS roller on LE tang
+    mb.add_box(x_front - 110, x_front - 58, -26, 26, z_top - 30, z_top - 4, C_KEVLAR, 1.0, stl=True)
+    mb.add_box(x_front - 58, x_front - 28, -20, 20, z_top - 28, z_top - 16, C_ALU, 1.0, stl=True)      # Solid Cruise Stop
+    mb.add_cylinder_y(x_front - 46, -18, 18, z_top - 10, 5.5, C_PUSHROD, n=10, alpha=1.0, stl=True)    # 20° Roller Pin
+    # Crab-pot line cutter notch at LE/pod junction
     mb.add_box(x_front - 64, x_front - 46, -6, 6, z_bot + 34, z_bot + 64, C_FLAP_R, 1.0, stl=True)
 
 
@@ -1056,21 +1056,23 @@ def build_model_06_lr_8020():
 
 def add_linked_fold_root_box(mb: MeshBuilder, dx=0.0, dz_wing=-638.0, x_le=-220.0):
     """
-    Unified Linked-Fold ("F-14" Interlinked Overhang-Bridge Aft-Sweep) Belly Root Housing:
-      - 22 mm UHMW-lined Overhang C-Slot Bridge under pod belly: 72 mm inboard wing roots carry 100% of lift/roll in compression!
-      - 2× Ø16 mm vertical stainless root pivot pins at y = ±92 mm + intermeshing 90° stainless gear sectors at y = 0.
-      - 1× central vertical Ø8 mm double-shear black UV-Delrin pin (~85 kgf tip / ~170 kgf center shoal):
-        BOTH halves sweep 82° aft together (zero rollover, zero tether, ~400 mm beaching dart, 227 mm ahead of prop!).
+    True 90° Lower Belly Fold Channel (12 mm recess) + Wet IP68 Servo Variable-Preload Roller Lock:
+      - 12 mm recessed UHMW-lined Overhang Bridge under pod belly: 40 mm inboard wing roots carry 100% of lift/roll (~35 MPa)!
+      - 2× Ø16 mm vertical stainless root pivot pins at y = ±54 mm + intermeshing 90° stainless gear sectors at y = ±18 mm.
+      - Wet IP68 75 kg·cm servo + 12 mm over-center cam + 37 kgf grease-booted spring + 3.5:1 rocker + 20° hardened 316 SS roller
+        (0% Fold/Deploy ↔ 50% Reef ~45 kgf ↔ 100% Cruise ~85 kgf tip / ~170 kgf center @ 0 W hold!).
+        BOTH halves fold true 90° straight aft flush inside the 220 mm pod (204 mm total, 179 mm ahead of prop!).
     """
     x_piv = dx + x_le + 22.0
-    # 22 mm Overhang C-Slot Bridge clamping box under pod belly (200 mm wide)
-    mb.add_box(dx + x_le - 16.0, dx + x_le + 72.0, -104.0, 104.0, dz_wing - 10.0, dz_wing + 12.0, C_ALU, 0.94, stl=True)
-    # 2× Gold Ø16 mm vertical stainless root pivot pins at y = ±92 mm + meshed 90° gear sectors at y = ±20 mm
+    # 12 mm recessed Lower Fold Channel Overhang Bridge under pod belly (212 mm wide inside 220 mm pod)
+    mb.add_box(dx + x_le - 14.0, dx + x_le + 114.0, -106.0, 106.0, dz_wing - 9.0, dz_wing + 11.0, C_ALU, 0.94, stl=True)
+    # 2× Gold Ø16 mm vertical stainless root pivot pins at y = ±54 mm + meshed 90° gear sectors at y = ±18 mm
     for side in (-1, 1):
-        mb.add_rod((x_piv, side * 92.0, dz_wing - 14.0), (x_piv, side * 92.0, dz_wing + 16.0), 8.0, C_KEVLAR, n=10, alpha=1.0, stl=True)
-        mb.add_rod((x_piv, side * 20.0, dz_wing - 7.0), (x_piv, side * 20.0, dz_wing + 7.0), 19.0, C_CARBON_DARK, n=12, alpha=1.0, stl=False)
-    # 1× Central Red Ø8 mm double-shear Delrin locking pin at y = 0 (aft of gear mesh!)
-    mb.add_rod((x_piv + 42.0, 0.0, dz_wing - 14.0), (x_piv + 42.0, 0.0, dz_wing + 16.0), 5.5, C_PUSHROD, n=10, alpha=1.0, stl=True)
+        mb.add_rod((x_piv, side * 54.0, dz_wing - 13.0), (x_piv, side * 54.0, dz_wing + 15.0), 8.0, C_KEVLAR, n=10, alpha=1.0, stl=True)
+        mb.add_rod((x_piv, side * 18.0, dz_wing - 6.0), (x_piv, side * 18.0, dz_wing + 6.0), 17.5, C_CARBON_DARK, n=12, alpha=1.0, stl=False)
+    # Red 20° hardened 316 SS roller detent pin + Gold Wet IP68 75 kg·cm Servo & Over-Center Cam/Rocker module aft of gear mesh
+    mb.add_rod((x_piv + 44.0, 0.0, dz_wing - 12.0), (x_piv + 44.0, 0.0, dz_wing + 14.0), 6.0, C_PUSHROD, n=10, alpha=1.0, stl=True)
+    mb.add_box(x_piv + 52.0, x_piv + 106.0, -24.0, 24.0, dz_wing - 11.0, dz_wing + 13.0, C_KEVLAR, 1.0, stl=True)
 
 
 # ---------------------------------------------------------------------------
@@ -1084,30 +1086,30 @@ def build_model_07_lr_max_range():
     x_f, x_r = -540.0, 220.0
     z_top, z_bot = -22.0, -702.0
     add_2x_center_recessed_struts(mb, z_top=z_top, z_bot=z_bot, x_front=x_f, x_rear=x_r)
-    add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, pod_h=90.0, with_motors=False)
+    add_flying_keel_pod(mb, dx=-160.0, dz=z_bot, pod_h=95.0, with_motors=False)
     add_single_centerline_prop_and_rudder(mb, dx=-160.0, dz=z_bot, show_internal=False)
-    add_lower_wings(mb, dx=-160.0, dz=z_bot - 18.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
-    add_linked_fold_root_box(mb, dx=-160.0, dz_wing=z_bot - 18.0, x_le=-220.0)
-    # Flush-nested Switchblade blades recessed cleanly INSIDE the 90 mm pod roof behind front center strut (ZERO floating plate!)
+    add_lower_wings(mb, dx=-160.0, dz=z_bot - 42.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
+    add_linked_fold_root_box(mb, dx=-160.0, dz_wing=z_bot - 42.0, x_le=-220.0)
+    # Upper Fold Channel (13 mm roof recess): Switchblade blades recessed cleanly INSIDE pod roof behind front strut!
     for side in (-1, 1):
-        mb.add_box(-470, 120, side * 44 - 38, side * 44 + 38, z_bot + 36, z_bot + 44, C_WING_UP, 0.72, stl=False)
+        mb.add_box(-470, 120, side * 44 - 38, side * 44 + 38, z_bot + 38, z_bot + 46, C_WING_UP, 0.72, stl=False)
     add_plane_grid(mb, -370.0, C_WATER, 0.16)
 
     write_binary_stl(mb, MODELS_DIR / "07_navigator300_lr_max_range.stl", "FoilSkiff 07 (Full LR Solo 1-Chair): Navigator 300 70-84 nm Build (mm)")
     callouts = [
         ((-1050, 0, 500), "left", 96, 235, "Swap #4: Aerodynamic Bow Dodger", "Pilot tucks low behind dodger (-8 Wh/nm aero!)"),
         ((-120, -225, 380), "left", 204, 240, "Solo Low-Sit Chair Slid Over CoG!", "5-sec L-Track slide balances foil CoL • Open aft bay"),
-        ((-300, 720, -695), "left", 345, 235, "Swap #2: AR 14 (1.55 m) Linked-Fold Foil", "Both halves sweep 82° aft (~400 mm beach dart, 0 leash!)"),
-        ((-795, 0, -702), "left", 478, 235, "90 mm Recessed Switchblade Pod", "Blades sit 100% flush in roof at cruise (>9 kn)"),
+        ((-300, 720, -718), "left", 345, 235, "Swap #2: AR 14 (1.55 m) 90° Belly Foil", "Folds 90° flush in 220 mm pod (179 mm ahead of prop!)"),
+        ((-795, 0, -702), "left", 478, 235, "95 mm Upper/Lower Fold-Channel Pod", "13 mm roof + 12 mm belly • 100% intact 26 L dry bay!"),
         ((720, -195, 65), "right", 96, 800, "Open Aft Flush L-Track Cargo Bay", "Clip 2nd chair, dry bag, or plug-in extender pack!"),
-        ((220, 0, -330), "right", 225, 805, "Swap #3: 2× Hollow Center Struts", "100×18 mm recessed • Wide T-heads & pod saddles (9.1 lbf)"),
+        ((220, 0, -330), "right", 225, 805, "Swap #3: 2× Hollow Center Struts", "Wide T-heads + IP68 Servo Strut Pin (0% Beach / ~140 kgf)"),
         ((380, 0, -565), "right", 370, 795, "Internal-Servo Tailfin Rudder", "Zero deck boxes, zero external steering rods"),
         ((575, 0, -702), "right", 495, 805, "Swap #1: Single 65161 + 10\" CNC 2-Blade", "70–84 nm (10.8 kWh LFP) • 55–67 nm (8.2 kWh NMC)"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "14-navigator300-lr-max-range-3d-cad.svg",
         "3D CAD Model 7 (Full LR Solo 1-Chair): True Kit Navigator 300 (70–84 nm)",
-        "Solo ergonomic low-sit chair on L-Tracks + Single 65161 (10\" prop), AR 14 Linked-Fold Wing, 2× Struts & Dodger",
+        "Solo chair on L-Tracks + Single 65161 (10\" prop), AR 14 90° Fold Channels, Dual IP68 Servo Pins & Dodger",
         callouts, az_deg=-138, el_deg=20, scale=0.285, z_center=245,
         footer="Interactive 3D STL: models/07_navigator300_lr_max_range.stl (Solo 1-Chair Full 4-Swap Max-Range Build)",
     )
@@ -1133,33 +1135,33 @@ def build_model_08_lr_pod_closeup():
     for sy in (-125, 125):
         mb.add_box(-740, 760, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
 
-    # 2x Recessed Center Tandem Struts (100x18 mm, T-heads bolting across both 250 mm rails!)
+    # 2x Recessed Center Tandem Struts (100x18 mm, T-heads bolting across both 250 mm rails + Wet IP68 Servo Lock!)
     add_2x_center_recessed_struts(mb, z_top=-22.0, z_bot=-620.0, x_front=-420.0, x_rear=310.0)
-    # Translucent 90 mm pod revealing swappable cartridges, 1x 75100 VESC, ESP32/IMU & internal aft rudder servo!
-    add_flying_keel_pod(mb, dx=0.0, dz=-620.0, pod_h=90.0, with_motors=False, shell_alpha=0.38)
+    # Translucent 95 mm pod revealing swappable cartridges, 1x 75100 VESC, ESP32/IMU & internal aft rudder servo!
+    add_flying_keel_pod(mb, dx=0.0, dz=-620.0, pod_h=95.0, with_motors=False, shell_alpha=0.38)
     add_single_centerline_prop_and_rudder(mb, dx=0.0, dz=-620.0, show_internal=True)
-    # High-aspect AR 14 (1.55 m) lower wing in Unified Linked-Fold Overhang C-Slot Root Box!
-    add_lower_wings(mb, dx=0.0, dz=-638.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
-    add_linked_fold_root_box(mb, dx=0.0, dz_wing=-638.0, x_le=-220.0)
-    # Flush-nested Switchblade blades recessed cleanly inside the 90 mm pod roof behind front center strut (ZERO floating plate!)
+    # High-aspect AR 14 (1.55 m) lower wing in True 90° Lower Belly Fold Channel (12 mm) + Wet IP68 Servo Roller Lock!
+    add_lower_wings(mb, dx=0.0, dz=-662.0, half_span=775.0, root_chord=102.0, x_le=-220.0)
+    add_linked_fold_root_box(mb, dx=0.0, dz_wing=-662.0, x_le=-220.0)
+    # Upper Fold Channel (13 mm roof recess): Switchblade blades recessed cleanly inside pod roof behind front center strut!
     for side in (-1, 1):
-        mb.add_box(-330, 240, side * 44 - 38, side * 44 + 38, -584, -576, C_WING_UP, 0.48, stl=False)
+        mb.add_box(-330, 240, side * 44 - 38, side * 44 + 38, -582, -574, C_WING_UP, 0.48, stl=False)
 
-    write_binary_stl(mb, MODELS_DIR / "08_lr_pod_closeup.stl", "FoilSkiff 08 (LR Cutaway): Single-Prop Pod, 2x Recessed Struts & Linked-Fold Wing (mm)")
+    write_binary_stl(mb, MODELS_DIR / "08_lr_pod_closeup.stl", "FoilSkiff 08 (LR Cutaway): Single-Prop Pod, 2x Recessed Struts & 90-deg Fold Channels (mm)")
     callouts = [
         ((-940, 0, 62), "left", 104, 245, "60 mm Bow-Contoured Battery Deck", "Houses 5.38 kWh dry EVE LF105 (100% flush top!)"),
-        ((-420, 0, -280), "left", 228, 245, "2× Hollow Center Struts (100×18 mm)", "260 mm T-heads + 180 mm pod saddles + line cutter!"),
-        ((-200, 92, -638), "left", 375, 245, "Unified Linked-Fold Root Bridge (22 mm)", "Intermeshing gears + 1× Ø8 Delrin pin (0 leash!)"),
-        ((-120, 680, -630), "left", 495, 245, "High-Aspect AR 14 Main Wing (1.55 m)", "Sweeps 82° aft to ~400 mm dart • -30% induced drag"),
+        ((-475, 0, -36), "left", 228, 245, "Strut Wet IP68 Servo Roller Lock", "0% Beach / ~140 kgf Shoal (0 W TDC) + 260 mm T-heads!"),
+        ((-150, 0, -662), "left", 375, 245, "12 mm Belly Channel + IP68 Servo Pin", "y=±54 mm pivots + gears + 0%/50%/100% roller cam!"),
+        ((-120, 680, -654), "left", 495, 245, "High-Aspect AR 14 Main Wing (1.55 m)", "Folds true 90° into 220 mm pod (Dyneema pulley loop!)"),
         ((310, 0, -280), "right", 118, 795, "Rear Strut Drafts in Front Wake", "Twin 6 mm G10 internal bulkheads take roll & yaw!"),
-        ((500, 0, -605), "right", 252, 795, "Internal Aft Rudder Servo + 1× VESC", "Single 75100 VESC + IMU inside sealed pod"),
+        ((500, 0, -605), "right", 252, 795, "Internal Aft Rudder Servo + 1× VESC", "100% intact 26 L dry bay between upper/lower channels"),
         ((540, 0, -490), "right", 375, 795, "Compact Tailfin & Hinged Rudder (+14°)", "Direct-drive shaft seal — zero deck boxes!"),
-        ((725, 0, -620), "right", 498, 800, "Single 65161 + 10\"×11\" 2-Blade CNC Prop", "Swept wing stops 227 mm ahead of prop • ~32 Wh/nm saved"),
+        ((725, 0, -620), "right", 498, 800, "Single 65161 + 10\"×11\" 2-Blade CNC Prop", "90° folded wing stops 179 mm ahead of prop!"),
     ]
     render_3d_svg(
         mb, DIAG_DIR / "15-lr-pod-closeup-3d-cad.svg",
-        "3D CAD Model 8 (Long-Range Pod Cutaway): Single-Prop, 2× Recessed Struts & Linked-Fold Wing",
-        "Translucent pod shows twin G10 bulkheads, 22 mm Linked-Fold Overhang Bridge (root pivots + gears) & 10\" CNC prop",
+        "3D CAD Model 8 (Long-Range Pod Cutaway): 90° Fold Channels & Dual IP68 Servo Pins",
+        "Translucent 95 mm pod shows 100% intact 26 L bay, 12 mm belly channel (y=±54 mm pivots + servo cam) & upper strut servo lock",
         callouts, az_deg=-134, el_deg=22, scale=0.35, z_center=295,
         footer="Interactive 3D STL: models/08_lr_pod_closeup.stl (Long-Range Hydro Package internal cutaway)",
     )
