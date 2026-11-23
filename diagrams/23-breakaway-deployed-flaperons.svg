@@ -83,7 +83,7 @@
   <text x="52" y="454" class="lbl-sm">• 80 mm vertical separation across the dry bay → zero collision at every angle!</text>
   <text x="52" y="472" class="lbl-sm">• Works identically for Flush Switchblade OR Fixed Upper Staggerwing flaperons.</text>
   <text x="42" y="496" class="dim">2. Optional Morphing STOL Mode (DOWN ~5 s Takeoff):</text>
-  <text x="52" y="514" class="lbl-sm">• Triggered dog-clutch feathers flaps 0° to sweep 90° cleanly below Main Wing.</text>
+  <text x="52" y="514" class="lbl-sm">• Embedded rotating IP68 servo commands exact 0.0° flat to sweep cleanly below Main Wing.</text>
   <rect x="548" y="68" width="508" height="486" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="566" y="92" class="sec">B. Top-Down: True 90° 220 mm Dart (Fits Between 250 mm Rails!)</text>
   <text x="566" y="109" class="ok">ZERO overhang outside pod — 190 mm clear per side inside 600 mm tunnel!</text>

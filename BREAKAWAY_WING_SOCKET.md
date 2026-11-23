@@ -12,7 +12,7 @@ Instead of bolting together fragile separate mechanisms (detaching belly leashes
 
 ## 1. True `90°` Upper & Lower Fold Channels (`220 mm` Dart, `100%` Intact `26 L` Dry Bay)
 
-![True 90-deg Upper and Lower Fold Channels, Dyneema Pulley Loop and Flaperon Dog-Clutch](diagrams/22-breakaway-socket-options.svg)
+![True 90-deg Upper and Lower Fold Channels, Dyneema Pulley Loop and Rotating Foil-Base Servo](diagrams/22-breakaway-socket-options.svg)
 
 ### Why Upper & Lower Channels Beat Sideways Pod Cutouts
 Folding a `102 mm`-chord foil `90°` sideways *into* the pod core would carve `2 × 102 = 204 mm` out of a `220 mm` wide pod — destroying **`93%` of the dry battery bay**. Placing dedicated **`12 mm` lower (belly)** and **`13 mm` upper (roof)** fold channels *above and below* the waterproof core raises total pod height by only `~15–25 mm` (`~95–105 mm` total vs. `80 mm` fixed) while preserving **`100%` of the `26 L` dry battery bay** (`2×` swappable `14 kg` cartridges + VESCs + IMU) and achieving the narrowest physically possible folded profile (**`220 mm`** — zero wider than the pod itself, zero external hub drag!).
@@ -85,18 +85,19 @@ Mounted right under the dry-side front under-hull rail anti-splay bridge (`250 m
 
 ![True 90-deg Upper and Lower Fold Channels: All 3 Wing Tracks and 220 mm Beaching Dart](diagrams/23-breakaway-deployed-flaperons.svg)
 
-### Spring-Loaded Bevel Dog-Clutch Knuckle (Zero Bevel Gears, Zero Moving Pod Seals)
-To let active split flaperons (`2 × 250 cm²`) **both** pitch with zero play (`±15°` STOL / `±3°` roll) **and** fold **`90°` straight aft** into the `13 mm` upper roof channel (see **Diagram 22, Panel C**):
-* **Outside the Watertight Wall:** Each internal pod `IP68` pitch servo drives a stationary CNC double-O-ring cheek gland into a **female V-notch drive cup**.
-* **Zero Servo Gear Stripping & Auto `0°` Feathering:** Each flaperon carries a **male bevel V-key** on its `20%`-chord pitch barrel, pivoting for `90°` sweep on an aft vertical `Ø10 mm` pin. The instant the flaperon sweeps aft, the V-key pulls cleanly **out of the servo cup** (isolating the servo!) and water flow **automatically feathers the balanced blade to `0°`**.
-* **Auto Re-Engagement:** Pulling the green **DEPLOY** Dyneema handle swings the flaperon to `0°`, sliding the bevel V-key cleanly back into the servo cup with zero play.
+### Embedded Rotating Wet `IP68` Foil-Base Servo (Direct-Drive or Leveraged — Exact `0.0°` Pitch Control!)
+Rather than using a mechanical dog-clutch that disengages and relies on unpredictable water flow to feather the blade flat (where cross-currents, waves, or dry beaching can flop a free blade and jam the `13 mm` channel lip), **each active flaperon embeds its waterproof `IP68` servo directly inside the folding root carrier so the servo and blade rotate `90°` together as one rigid unit** (see **Diagram 22, Panel C**):
+
+* **Exact `0.0°` Commanded Flat-Lock Before Folding:** When you press **`BEACH MODE`** (or `FOLD`), the flight controller commands both embedded `IP68` servos to **exact `0.0°` flat** (closed-loop position control) *before* pulling the Dyneema fold line — guaranteeing clean entry into the upper roof channel regardless of waves, cross-current, or dry land.
+* **Direct-Drive (`20 mm`) or Ultra-Slim Leveraged (`15 mm`) Packaging:** A `20 mm`-thick low-profile `IP68` brushless servo (`40 × 20 × 28 mm`, `45–60 kg·cm`) direct-driving the `Ø8 mm` pitch spar — OR a `15 mm`-thin `IP68` wing servo driving a short `1.5:1` control horn — sits completely inside the `60 mm` blade root chord (`2 × 60 = 120 mm` total width inside the `220 mm` pod roof channel, `100%` intact `26 L` dry bay!).
+* **Zero Dynamic O-Rings & Zero Clutch Misalignment:** Because the servo stays permanently splined/levered to the flaperon at every angle, only a **soft `Ø4 mm` 3-wire silicone pigtail** flexes gently `90°` around the vertical `Ø10 mm` sweep pivot through a **100% stationary static `IP68` bulkhead gland** into the dry pod bay. If struck on impact, the entire carrier + servo sweeps `90°` aft around the vertical pivot, protecting the pitch gears.
 
 ### Zero-Collision Vertical Separation Across All 3 Secondary Wing Tracks
 | Secondary Wing Track | Vertical Channel vs. Main Wing (`12 mm` Belly) | True `90°` Fold Behavior (`0° → 90°` Aft) | Folded Width & Prop Clearance |
 | :--- | :---: | :--- | :---: |
 | **Track A: + Flush-Nested Switchblade (`13 mm` Roof)** | **`+80 mm` higher** *(across intact `26 L` dry bay)* | Roof blades (`2 × 105 = 210 mm`) fold **`90°` flush** in the `13 mm` roof channel (`>9 kn` cruise); belly Main Wing folds **`90°` flush** (`2 × 102 = 204 mm`) on beaching or tip hit | **`220 mm` total dart** (fits between `250 mm` rails!), `179 mm` ahead of prop — **cleanest long-range build!** |
-| **Track B: + Fixed Upper Staggerwing Flaperons (`13 mm` Roof)** | **`+80 mm` higher** *(across intact `26 L` dry bay)* | Active flaperons (`2 × 55 = 110 mm`) stay permanently out of the Main Wing wake (**zero vertical elevator sled, zero cheek slots**); bevel dog-clutch lets them fold **`90°` flush** in the roof channel | **`220 mm` total dart** (flaps `110 mm`), `179–328 mm` ahead of prop! |
-| **Track C: + Morphing STOL Flaperons (`Z = -35 mm` DOWN ↔ `+35 mm` UP)** | **Clears below belly** in `~5 s` DOWN mode (**`+80 mm` roof** in UP mode) | If struck during `~5 s` DOWN STOL takeoff, trigger link disengages flaperon dog-clutches to feather `0°` and sweep `90°` cleanly below Main Wing; normal beaching folds in UP roof channel | **`220 mm` total dart** — zero collision at any angle! |
+| **Track B: + Fixed Upper Staggerwing Flaperons (`13 mm` Roof)** | **`+80 mm` higher** *(across intact `26 L` dry bay)* | Active flaperons (`2 × 60 = 120 mm` incl. embedded rotating `IP68` servos) stay permanently out of the Main Wing wake (**zero vertical elevator sled, zero cheek slots**) and lock at exact `0.0°` to fold **`90°` flush** in the roof channel | **`220 mm` total dart** (flaps `120 mm`), `179–328 mm` ahead of prop! |
+| **Track C: + Morphing STOL Flaperons (`Z = -35 mm` DOWN ↔ `+35 mm` UP)** | **Clears below belly** in `~5 s` DOWN mode (**`+80 mm` roof** in UP mode) | Embedded rotating `IP68` servos command exact `0.0°` flat-lock to sweep `90°` cleanly below the Main Wing if needed in DOWN mode; normal beaching folds at exact `0.0°` in the UP roof channel | **`220 mm` total dart** — zero collision at any angle! |
 
 ---
 

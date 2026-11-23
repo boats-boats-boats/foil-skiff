@@ -514,7 +514,7 @@ def add_stol_flaperons_and_servos(mb: MeshBuilder, dx=0.0, dz=-702.0, deg_port=1
                 rings.append([(piv_x + (xl - 12.0) * math.cos(rad) + zl * math.sin(rad), y, piv_z - (xl - 12.0) * math.sin(rad) + zl * math.cos(rad)) for xl, zl in fl_sec])
             mb.add_loft(rings, col, 1.0, stl=True)
         else:
-            # True 90° Upper Roof Fold Channel (13 mm recess): flaperons disengage via bevel dog-clutch & nest 90° flush on pod roof!
+            # True 90° Upper Roof Fold Channel (13 mm recess): embedded rotating IP68 servo commands 0.0° flat-lock & rotates 90° WITH blade!
             flap_len = 435.0
             roof_z = dz + 40.0
             rings = []

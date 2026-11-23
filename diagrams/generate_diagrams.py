@@ -1518,8 +1518,8 @@ def gen_22_breakaway_socket_options():
     W, H = 1080, 720
     s = svg_header(
         W, H,
-        "22. True 90° Upper & Lower Fold Channels, Dyneema Pulley Loop & Flaperon Dog-Clutch",
-        "220 mm Total Folded Width (Fits Between 250 mm Rails!) • 100% Intact 26 L Dry Battery Bay • Zero Underwater Sweep Motors!"
+        "22. True 90° Upper & Lower Fold Channels, Dyneema Pulley Loop & Rotating Foil-Base Servo",
+        "220 mm Total Folded Width (Fits Between 250 mm Rails!) • 100% Intact 26 L Dry Bay • Active 0.0° Pitch Control!"
     )
 
     # =========================================================================
@@ -1668,54 +1668,77 @@ def gen_22_breakaway_socket_options():
     s += '  <text x="568" y="391" class="lbl-sm">Sand/saltwater-proof Ø2.5 mm SK78 Dyneema (700 kg!) + open Delrin sheaves • Zero motors!</text>\n'
 
     # =========================================================================
-    # PANEL C (BOTTOM FULL WIDTH): FLAPERON BEVEL DOG-CLUTCH KNUCKLE (90° ROOF FOLD!)
+    # PANEL C (BOTTOM FULL WIDTH): EMBEDDED ROTATING WET IP68 FOIL-BASE SERVO (PRECISE 0.0° CONTROL!)
     # =========================================================================
     s += '  <rect x="24" y="414" width="1032" height="284" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="438" class="sec">C. Active Flaperon 90° Fold: Spring-Loaded Bevel Dog-Clutch Knuckle (Zero Bevel Gears!)</text>\n'
-    s += '  <text x="42" y="455" class="ok">Zero-play ±15° / ±3° active pitch when deployed — disengages cleanly &amp; self-feathers 0° to tuck 90° flush in roof channel!</text>\n'
+    s += '  <text x="42" y="438" class="sec">C. Active Flaperon 90° Fold: Embedded Rotating Wet IP68 Foil-Base Servo (Direct-Drive or Leveraged)</text>\n'
+    s += '  <text x="42" y="455" class="ok">Servo rides INSIDE the folding root carrier &amp; rotates 90° WITH the blade — exact 0.0° flat-lock before folding (never relies on water flow!)</text>\n'
 
-    # Left Sub-Box (C1): DEPLOYED (0° ENGAGED ACTIVE PITCH)
+    # Left Sub-Box (C1): DEPLOYED (0° ACTIVE FLIGHT — SERVO EMBEDDED IN ROOT CARRIER!)
     s += '  <rect x="38" y="468" width="484" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="50" y="486" class="ok">C1. Deployed (0° Flight): Male V-Key Engaged in Ø8 mm Servo Cup</text>\n'
+    s += '  <text x="50" y="486" class="ok">C1. Deployed (0° Flight): Embedded IP68 Servo Direct-Drives (or Levers) Pitch Spar</text>\n'
 
     y_c = 576
-    s += f'  <rect x="64" y="{y_c-66}" width="84" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
-    s += f'  <text x="106" y="{y_c-46}" text-anchor="middle" class="lbl-sm">Sealed Pod</text>\n'
-    s += f'  <rect x="74" y="{y_c-22}" width="52" height="44" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>\n'
-    s += f'  <text x="100" y="{y_c+4}" text-anchor="middle" style="font-size:8.2px;fill:#0F172A;font-weight:700;">IP68 Servo</text>\n'
-    s += f'  <rect x="142" y="{y_c-18}" width="14" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
-    s += f'  <rect x="126" y="{y_c-5}" width="72" height="10" fill="#DC2626"/>\n'
-    s += f'  <polygon points="196,{y_c-14} 222,{y_c-14} 208,{y_c} 222,{y_c+14} 196,{y_c+14}" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
-    s += f'  <polygon points="212,{y_c} 228,{y_c-11} 262,{y_c-11} 262,{y_c+11} 228,{y_c+11}" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    s += f'  <rect x="262" y="{y_c-20}" width="218" height="54" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
-    s += f'  <text x="370" y="{y_c+4}" text-anchor="middle" style="font-size:10px;fill:#FFFFFF;font-weight:700;">Active Flaperon (20%-Chord Pitch)</text>\n'
-    s += f'  <text x="370" y="{y_c+19}" text-anchor="middle" style="font-size:8.5px;fill:#E0F2FE;">Zero-play ±15° STOL / ±3° roll control!</text>\n'
-    s += f'  <circle cx="236" cy="{y_c+28}" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
-    s += f'  <text x="236" y="{y_c+54}" text-anchor="middle" class="ok">Ø10 mm Vertical TE Sweep Pin</text>\n'
-    s += f'  <text x="220" y="{y_c-30}" text-anchor="middle" class="warn">Bevel V-Dog-Clutch</text>\n'
-    s += '  <text x="50" y="670" class="lbl-sm">Internal pod O-ring seal NEVER moves — clutch lives outside the watertight wall!</text>\n'
+    # Stationary Dry Pod Wall + Static Bulkhead Cable Gland (ZERO moving rotary O-rings!)
+    s += f'  <rect x="58" y="{y_c-66}" width="76" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
+    s += f'  <text x="96" y="{y_c-46}" text-anchor="middle" class="lbl-sm">Dry Pod</text>\n'
+    s += f'  <text x="96" y="{y_c-34}" text-anchor="middle" style="font-size:7.6px;fill:#475569;">(ESP32/IMU)</text>\n'
+    # Static IP68 wire gland in pod wall
+    s += f'  <rect x="128" y="{y_c-12}" width="14" height="24" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
+    s += f'  <text x="104" y="{y_c+28}" text-anchor="middle" style="font-size:7.5px;fill:#0F766E;font-weight:700;">Static Gland</text>\n'
+    s += f'  <text x="104" y="{y_c+38}" text-anchor="middle" style="font-size:7.2px;fill:#64748B;">(0 rotary seals!)</text>\n'
 
-    # Right Sub-Box (C2): FOLDED 90° AFT (DISENGAGED & SELF-FEATHERED 0°!)
+    # Rotating Root Carrier Block pivoted on Ø10 mm vertical sweep pin (houses Wet IP68 Servo!)
+    s += f'  <rect x="166" y="{y_c-28}" width="114" height="62" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>\n'
+    # Vertical Ø10 mm Sweep Pivot Pin at inboard edge of carrier
+    s += f'  <circle cx="182" cy="{y_c+18}" r="6.5" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
+    # Embedded Wet IP68 Low-Profile Servo (20 mm flat direct-drive OR 15 mm leveraged wing servo!)
+    s += f'  <rect x="196" y="{y_c-21}" width="58" height="38" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.4"/>\n'
+    s += f'  <text x="225" y="{y_c-4}" text-anchor="middle" style="font-size:8px;fill:#0F172A;font-weight:700;">Wet IP68</text>\n'
+    s += f'  <text x="225" y="{y_c+8}" text-anchor="middle" style="font-size:7.6px;fill:#78350F;font-weight:700;">Servo</text>\n'
+    # Direct-drive Ø8 mm splined shaft / leveraged horn straight into flaperon root spar!
+    s += f'  <rect x="254" y="{y_c-6}" width="38" height="10" rx="2" fill="#DC2626"/>\n'
+    # Flexible 3-wire silicone servo cable curving smoothly from static gland around pivot to rotating servo!
+    s += f'  <path d="M 142 {y_c} Q 162 {y_c-26} 196 {y_c-8}" fill="none" stroke="#0284C7" stroke-width="2.4" stroke-dasharray="4,2"/>\n'
+    s += f'  <text x="190" y="{y_c-36}" text-anchor="middle" class="dim">3-Wire Flex Loop</text>\n'
+
+    # Active Flaperon Blade attached to Rotating Root Carrier
+    s += f'  <rect x="280" y="{y_c-24}" width="218" height="54" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    s += f'  <text x="389" y="{y_c}" text-anchor="middle" style="font-size:10px;fill:#FFFFFF;font-weight:700;">Active Flaperon (Exact Closed-Loop Pitch)</text>\n'
+    s += f'  <text x="389" y="{y_c+15}" text-anchor="middle" style="font-size:8.4px;fill:#E0F2FE;">±15° STOL / ±3° roll • Direct or 1.5:1 horn!</text>\n'
+    s += f'  <text x="228" y="{y_c+54}" text-anchor="middle" class="ok">Ø10 mm Vertical Sweep Pivot</text>\n'
+    s += '  <text x="50" y="670" class="lbl-sm">Zero dog-clutch, zero dynamic O-rings — servo &amp; blade form 1 rigid watertight assembly!</text>\n'
+
+    # Right Sub-Box (C2): FOLDED 90° STRAIGHT AFT (SERVO ROTATES 90° WITH BLADE AT EXACT 0.0°!)
     s += '  <rect x="546" y="468" width="494" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
-    s += '  <text x="558" y="486" class="warn">C2. Folded 90° Straight Aft: Disengaged &amp; Self-Feathered 0° in Roof Channel!</text>\n'
+    s += '  <text x="558" y="486" class="warn">C2. Folded 90° Straight Aft: Commanded 0.0° Flat-Lock (Servo Swings WITH Blade!)</text>\n'
 
-    s += f'  <rect x="572" y="{y_c-66}" width="72" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
-    s += f'  <rect x="638" y="{y_c-18}" width="12" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
-    s += f'  <rect x="626" y="{y_c-5}" width="54" height="10" fill="#DC2626"/>\n'
-    s += f'  <polygon points="676,{y_c-14} 698,{y_c-14} 686,{y_c} 698,{y_c+14} 676,{y_c+14}" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>\n'
-    s += f'  <circle cx="712" cy="{y_c+24}" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
-    s += f'  <rect x="700" y="{y_c+24}" width="38" height="62" rx="5" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>\n'
-    s += f'  <path d="M 738 {y_c-6} Q 768 {y_c+12} 748 {y_c+48}" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+    # Dry Pod Wall + Static Gland
+    s += f'  <rect x="566" y="{y_c-66}" width="64" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>\n'
+    s += f'  <rect x="624" y="{y_c-12}" width="12" height="24" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
 
-    s += '  <text x="784" y="528" class="ok">1. Zero Servo Gear Stripping:</text>\n'
-    s += '  <text x="794" y="542" class="lbl-sm">Pivoting 90° pulls V-key right out of</text>\n'
-    s += '  <text x="794" y="555" class="lbl-sm">the servo cup — servo stays isolated!</text>\n'
-    s += '  <text x="784" y="578" class="dim">2. Automatic 0° Self-Feathering:</text>\n'
-    s += '  <text x="794" y="592" class="lbl-sm">20%-chord balance lets water pressure</text>\n'
-    s += '  <text x="794" y="605" class="lbl-sm">flatten the blade to 0° instantly!</text>\n'
-    s += '  <text x="784" y="628" class="ok">3. Auto Re-Engagement on Reset:</text>\n'
-    s += '  <text x="794" y="642" class="lbl-sm">Pull Dyneema Deploy → bevel V-key</text>\n'
-    s += '  <text x="794" y="655" class="lbl-sm">self-centers cleanly into servo cup!</text>\n'
+    # Entire Rotating Root Carrier + Embedded Servo + Flaperon pivoted 90° STRAIGHT AFT together!
+    s += f'  <rect x="668" y="{y_c-22}" width="54" height="58" rx="7" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>\n'
+    s += f'  <circle cx="680" cy="{y_c-10}" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>\n'
+    s += f'  <rect x="684" y="{y_c-2}" width="32" height="32" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>\n'
+    s += f'  <text x="700" y="{y_c+17}" text-anchor="middle" style="font-size:7px;fill:#0F172A;font-weight:700;">IP68</text>\n'
+    # Flexible 3-wire silicone cable flexing gently 90° around the vertical sweep pivot!
+    s += f'  <path d="M 636 {y_c} Q 656 {y_c+14} 684 {y_c+14}" fill="none" stroke="#0284C7" stroke-width="2.4" stroke-dasharray="4,2"/>\n'
+    # Folded Orange Blade locked at exact 0.0° flat inside the 220 mm roof channel!
+    s += f'  <rect x="676" y="{y_c+34}" width="42" height="60" rx="5" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>\n'
+    s += f'  <text x="697" y="{y_c+67}" text-anchor="middle" style="font-size:7.6px;fill:#FFFFFF;font-weight:700;">0.0°</text>\n'
+    s += f'  <path d="M 730 {y_c-12} Q 758 {y_c+8} 736 {y_c+48}" fill="none" stroke="#059669" stroke-width="2.3" marker-end="url(#arrGreen)"/>\n'
+
+    s += '  <text x="768" y="520" class="ok">1. Exact 0.0° Flat-Lock Before Folding:</text>\n'
+    s += '  <text x="778" y="534" class="lbl-sm">Controller commands exact 0.0° flat —</text>\n'
+    s += '  <text x="778" y="547" class="lbl-sm">cross-currents/waves NEVER jam the slot!</text>\n'
+    s += '  <text x="768" y="569" class="dim">2. Zero Clutch Misalignment or Wear:</text>\n'
+    s += '  <text x="778" y="583" class="lbl-sm">Servo stays splined/levered at all angles;</text>\n'
+    s += '  <text x="778" y="596" class="lbl-sm">only a soft 3-wire pigtail flexes 90°!</text>\n'
+    s += '  <text x="768" y="618" class="warn">3. Compact Packaging Inside 220 mm Pod:</text>\n'
+    s += '  <text x="778" y="632" class="lbl-sm">20 mm direct-drive (or 15 mm levered)</text>\n'
+    s += '  <text x="778" y="645" class="lbl-sm">fits inside 60 mm chord (2×60 = 120 mm!).</text>\n'
+    s += '  <text x="778" y="666" class="ok">Impact safe: whole carrier sweeps aft!</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "22-breakaway-socket-options.svg").write_text(s)
@@ -1768,7 +1791,7 @@ def gen_23_breakaway_deployed_flaperons():
     s += '  <text x="52" y="454" class="lbl-sm">• 80 mm vertical separation across the dry bay → zero collision at every angle!</text>\n'
     s += '  <text x="52" y="472" class="lbl-sm">• Works identically for Flush Switchblade OR Fixed Upper Staggerwing flaperons.</text>\n'
     s += '  <text x="42" y="496" class="dim">2. Optional Morphing STOL Mode (DOWN ~5 s Takeoff):</text>\n'
-    s += '  <text x="52" y="514" class="lbl-sm">• Triggered dog-clutch feathers flaps 0° to sweep 90° cleanly below Main Wing.</text>\n'
+    s += '  <text x="52" y="514" class="lbl-sm">• Embedded rotating IP68 servo commands exact 0.0° flat to sweep cleanly below Main Wing.</text>\n'
 
     # =========================================================================
     # PANEL B (RIGHT): TOP-DOWN 220 mm FOLDED DART INSIDE 250 mm RAILS & 600 mm TUNNEL!

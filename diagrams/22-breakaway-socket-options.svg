@@ -59,8 +59,8 @@
   </defs>
   <rect x="1" y="1" width="1078" height="718" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
   <rect x="12" y="56" width="1056" height="652" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">22. True 90° Upper &amp; Lower Fold Channels, Dyneema Pulley Loop &amp; Flaperon Dog-Clutch</text>
-  <text x="24" y="46" class="sub">220 mm Total Folded Width (Fits Between 250 mm Rails!) • 100% Intact 26 L Dry Battery Bay • Zero Underwater Sweep Motors!</text>
+  <text x="24" y="28" class="title">22. True 90° Upper &amp; Lower Fold Channels, Dyneema Pulley Loop &amp; Rotating Foil-Base Servo</text>
+  <text x="24" y="46" class="sub">220 mm Total Folded Width (Fits Between 250 mm Rails!) • 100% Intact 26 L Dry Bay • Active 0.0° Pitch Control!</text>
   <rect x="24" y="68" width="510" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="42" y="92" class="sec">A. Front Cross-Section: Upper (13 mm) &amp; Lower (12 mm) Channels</text>
   <text x="42" y="109" class="ok">2×102 mm Main Wing + 2×105 mm Roof Blades nest 90° flush inside 220 mm!</text>
@@ -149,41 +149,49 @@
   <text x="568" y="374" class="dim">3. Coaxial Hinge Pulleys: Line length stays constant as struts fold 0° ↔ 86.5° (0 slack!).</text>
   <text x="568" y="391" class="lbl-sm">Sand/saltwater-proof Ø2.5 mm SK78 Dyneema (700 kg!) + open Delrin sheaves • Zero motors!</text>
   <rect x="24" y="414" width="1032" height="284" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="438" class="sec">C. Active Flaperon 90° Fold: Spring-Loaded Bevel Dog-Clutch Knuckle (Zero Bevel Gears!)</text>
-  <text x="42" y="455" class="ok">Zero-play ±15° / ±3° active pitch when deployed — disengages cleanly &amp; self-feathers 0° to tuck 90° flush in roof channel!</text>
+  <text x="42" y="438" class="sec">C. Active Flaperon 90° Fold: Embedded Rotating Wet IP68 Foil-Base Servo (Direct-Drive or Leveraged)</text>
+  <text x="42" y="455" class="ok">Servo rides INSIDE the folding root carrier &amp; rotates 90° WITH the blade — exact 0.0° flat-lock before folding (never relies on water flow!)</text>
   <rect x="38" y="468" width="484" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="50" y="486" class="ok">C1. Deployed (0° Flight): Male V-Key Engaged in Ø8 mm Servo Cup</text>
-  <rect x="64" y="510" width="84" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>
-  <text x="106" y="530" text-anchor="middle" class="lbl-sm">Sealed Pod</text>
-  <rect x="74" y="554" width="52" height="44" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>
-  <text x="100" y="580" text-anchor="middle" style="font-size:8.2px;fill:#0F172A;font-weight:700;">IP68 Servo</text>
-  <rect x="142" y="558" width="14" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
-  <rect x="126" y="571" width="72" height="10" fill="#DC2626"/>
-  <polygon points="196,562 222,562 208,576 222,590 196,590" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>
-  <polygon points="212,576 228,565 262,565 262,587 228,587" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>
-  <rect x="262" y="556" width="218" height="54" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
-  <text x="370" y="580" text-anchor="middle" style="font-size:10px;fill:#FFFFFF;font-weight:700;">Active Flaperon (20%-Chord Pitch)</text>
-  <text x="370" y="595" text-anchor="middle" style="font-size:8.5px;fill:#E0F2FE;">Zero-play ±15° STOL / ±3° roll control!</text>
-  <circle cx="236" cy="604" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>
-  <text x="236" y="630" text-anchor="middle" class="ok">Ø10 mm Vertical TE Sweep Pin</text>
-  <text x="220" y="546" text-anchor="middle" class="warn">Bevel V-Dog-Clutch</text>
-  <text x="50" y="670" class="lbl-sm">Internal pod O-ring seal NEVER moves — clutch lives outside the watertight wall!</text>
+  <text x="50" y="486" class="ok">C1. Deployed (0° Flight): Embedded IP68 Servo Direct-Drives (or Levers) Pitch Spar</text>
+  <rect x="58" y="510" width="76" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>
+  <text x="96" y="530" text-anchor="middle" class="lbl-sm">Dry Pod</text>
+  <text x="96" y="542" text-anchor="middle" style="font-size:7.6px;fill:#475569;">(ESP32/IMU)</text>
+  <rect x="128" y="564" width="14" height="24" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <text x="104" y="604" text-anchor="middle" style="font-size:7.5px;fill:#0F766E;font-weight:700;">Static Gland</text>
+  <text x="104" y="614" text-anchor="middle" style="font-size:7.2px;fill:#64748B;">(0 rotary seals!)</text>
+  <rect x="166" y="548" width="114" height="62" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+  <circle cx="182" cy="594" r="6.5" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>
+  <rect x="196" y="555" width="58" height="38" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.4"/>
+  <text x="225" y="572" text-anchor="middle" style="font-size:8px;fill:#0F172A;font-weight:700;">Wet IP68</text>
+  <text x="225" y="584" text-anchor="middle" style="font-size:7.6px;fill:#78350F;font-weight:700;">Servo</text>
+  <rect x="254" y="570" width="38" height="10" rx="2" fill="#DC2626"/>
+  <path d="M 142 576 Q 162 550 196 568" fill="none" stroke="#0284C7" stroke-width="2.4" stroke-dasharray="4,2"/>
+  <text x="190" y="540" text-anchor="middle" class="dim">3-Wire Flex Loop</text>
+  <rect x="280" y="552" width="218" height="54" rx="6" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
+  <text x="389" y="576" text-anchor="middle" style="font-size:10px;fill:#FFFFFF;font-weight:700;">Active Flaperon (Exact Closed-Loop Pitch)</text>
+  <text x="389" y="591" text-anchor="middle" style="font-size:8.4px;fill:#E0F2FE;">±15° STOL / ±3° roll • Direct or 1.5:1 horn!</text>
+  <text x="228" y="630" text-anchor="middle" class="ok">Ø10 mm Vertical Sweep Pivot</text>
+  <text x="50" y="670" class="lbl-sm">Zero dog-clutch, zero dynamic O-rings — servo &amp; blade form 1 rigid watertight assembly!</text>
   <rect x="546" y="468" width="494" height="214" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="558" y="486" class="warn">C2. Folded 90° Straight Aft: Disengaged &amp; Self-Feathered 0° in Roof Channel!</text>
-  <rect x="572" y="510" width="72" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>
-  <rect x="638" y="558" width="12" height="36" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
-  <rect x="626" y="571" width="54" height="10" fill="#DC2626"/>
-  <polygon points="676,562 698,562 686,576 698,590 676,590" fill="#475569" stroke="#0F172A" stroke-width="1.3"/>
-  <circle cx="712" cy="600" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>
-  <rect x="700" y="600" width="38" height="62" rx="5" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>
-  <path d="M 738 570 Q 768 588 748 624" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>
-  <text x="784" y="528" class="ok">1. Zero Servo Gear Stripping:</text>
-  <text x="794" y="542" class="lbl-sm">Pivoting 90° pulls V-key right out of</text>
-  <text x="794" y="555" class="lbl-sm">the servo cup — servo stays isolated!</text>
-  <text x="784" y="578" class="dim">2. Automatic 0° Self-Feathering:</text>
-  <text x="794" y="592" class="lbl-sm">20%-chord balance lets water pressure</text>
-  <text x="794" y="605" class="lbl-sm">flatten the blade to 0° instantly!</text>
-  <text x="784" y="628" class="ok">3. Auto Re-Engagement on Reset:</text>
-  <text x="794" y="642" class="lbl-sm">Pull Dyneema Deploy → bevel V-key</text>
-  <text x="794" y="655" class="lbl-sm">self-centers cleanly into servo cup!</text>
+  <text x="558" y="486" class="warn">C2. Folded 90° Straight Aft: Commanded 0.0° Flat-Lock (Servo Swings WITH Blade!)</text>
+  <rect x="566" y="510" width="64" height="132" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.6"/>
+  <rect x="624" y="564" width="12" height="24" rx="3" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>
+  <rect x="668" y="554" width="54" height="58" rx="7" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <circle cx="680" cy="566" r="6" fill="#10B981" stroke="#065F46" stroke-width="1.4"/>
+  <rect x="684" y="574" width="32" height="32" rx="4" fill="#FBBF24" stroke="#92400E" stroke-width="1.3"/>
+  <text x="700" y="593" text-anchor="middle" style="font-size:7px;fill:#0F172A;font-weight:700;">IP68</text>
+  <path d="M 636 576 Q 656 590 684 590" fill="none" stroke="#0284C7" stroke-width="2.4" stroke-dasharray="4,2"/>
+  <rect x="676" y="610" width="42" height="60" rx="5" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>
+  <text x="697" y="643" text-anchor="middle" style="font-size:7.6px;fill:#FFFFFF;font-weight:700;">0.0°</text>
+  <path d="M 730 564 Q 758 584 736 624" fill="none" stroke="#059669" stroke-width="2.3" marker-end="url(#arrGreen)"/>
+  <text x="768" y="520" class="ok">1. Exact 0.0° Flat-Lock Before Folding:</text>
+  <text x="778" y="534" class="lbl-sm">Controller commands exact 0.0° flat —</text>
+  <text x="778" y="547" class="lbl-sm">cross-currents/waves NEVER jam the slot!</text>
+  <text x="768" y="569" class="dim">2. Zero Clutch Misalignment or Wear:</text>
+  <text x="778" y="583" class="lbl-sm">Servo stays splined/levered at all angles;</text>
+  <text x="778" y="596" class="lbl-sm">only a soft 3-wire pigtail flexes 90°!</text>
+  <text x="768" y="618" class="warn">3. Compact Packaging Inside 220 mm Pod:</text>
+  <text x="778" y="632" class="lbl-sm">20 mm direct-drive (or 15 mm levered)</text>
+  <text x="778" y="645" class="lbl-sm">fits inside 60 mm chord (2×60 = 120 mm!).</text>
+  <text x="778" y="666" class="ok">Impact safe: whole carrier sweeps aft!</text>
 </svg>

@@ -174,8 +174,8 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 12. `2×` Recessed Center Struts & True `90°` Upper/Lower Fold-Channel Protection (Dual Servo-Pin Smart Divider)
 ![2x Recessed Center Struts and True 90-deg Upper/Lower Channel Linked-Fold Protection](diagrams/21-center-strut-asymmetric-loads.svg)
 
-### 13. True `90°` Upper (`13 mm`) & Lower (`12 mm`) Fold Channels, Closed-Loop Dyneema Pulleys & Flaperon Dog-Clutch
-![True 90-deg Upper and Lower Fold Channels, Dyneema Pulley Loop and Flaperon Dog-Clutch](diagrams/22-breakaway-socket-options.svg)
+### 13. True `90°` Upper (`13 mm`) & Lower (`12 mm`) Fold Channels, Closed-Loop Dyneema Pulleys & Rotating Foil-Base Servo
+![True 90-deg Upper and Lower Fold Channels, Dyneema Pulley Loop and Rotating Foil-Base Servo](diagrams/22-breakaway-socket-options.svg)
 
 ### 14. True `90°` Upper & Lower Fold Channels: All 3 Wing Tracks & `220 mm` Beaching Dart (Fits Between `250 mm` Rails!)
 ![True 90-deg Upper and Lower Fold Channels: All 3 Wing Tracks and 220 mm Beaching Dart](diagrams/23-breakaway-deployed-flaperons.svg)
