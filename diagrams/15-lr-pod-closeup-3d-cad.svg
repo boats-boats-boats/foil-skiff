@@ -2585,7 +2585,7 @@
   <line x1="245" y1="375" x2="600.7" y2="432.1" stroke="#0F172A" stroke-width="1.2" marker-end="url(#arr3d)"/>
   <circle cx="600.7" cy="432.1" r="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
   <text x="26" y="373" text-anchor="start" class="l">Central 120° V-Cradle Breakaway Socket</text>
-  <text x="26" y="386" text-anchor="start" class="ls">2× Ø8 mm corner pins pop BOTH halves + 0.35 m leash!</text>
+  <text x="26" y="386" text-anchor="start" class="ls">2× Ø6 mm dbl-shear pins pop BOTH halves + 0.35 m leash!</text>
   <line x1="245" y1="495" x2="711.8" y2="481.1" stroke="#0F172A" stroke-width="1.2" marker-end="url(#arr3d)"/>
   <circle cx="711.8" cy="481.1" r="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
   <text x="26" y="493" text-anchor="start" class="l">High-Aspect AR 14 Main Wing (1.55 m)</text>

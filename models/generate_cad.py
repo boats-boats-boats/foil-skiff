@@ -1243,7 +1243,7 @@ def build_model_08_lr_pod_closeup():
     callouts = [
         ((-940, 0, 62), "left", 104, 245, "60 mm Bow-Contoured Battery Deck", "Houses 5.38 kWh dry EVE LF105 (100% flush top!)"),
         ((-420, 0, -280), "left", 228, 245, "2× Hollow Center Struts (100×18 mm)", "260 mm T-heads + 180 mm pod saddles + line cutter!"),
-        ((-220, 95, -638), "left", 375, 245, "Central 120° V-Cradle Breakaway Socket", "2× Ø8 mm corner pins pop BOTH halves + 0.35 m leash!"),
+        ((-220, 95, -638), "left", 375, 245, "Central 120° V-Cradle Breakaway Socket", "2× Ø6 mm dbl-shear pins pop BOTH halves + 0.35 m leash!"),
         ((-120, 680, -630), "left", 495, 245, "High-Aspect AR 14 Main Wing (1.55 m)", "Continuous or 2-half carrier block • -30% induced drag"),
         ((310, 0, -280), "right", 118, 795, "Rear Strut Drafts in Front Wake", "Twin 6 mm G10 internal bulkheads take roll & yaw!"),
         ((500, 0, -605), "right", 252, 795, "Internal Aft Rudder Servo + 1× VESC", "Single 75100 VESC + Hall 0-RPM breakaway cutoff"),

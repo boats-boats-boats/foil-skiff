@@ -1359,8 +1359,8 @@ def gen_21_center_strut_asymmetric_loads():
     # Clean non-overlapping callouts on right side of A1 (x = 285..510)
     s += '  <text x="286" y="154" class="warn">1. Starboard tip hit (~70 kgf)</text>\n'
     s += '  <text x="296" y="167" class="lbl-sm">pivots wing on green Port fulcrum</text>\n'
-    s += '  <text x="286" y="184" class="warn">2. 3.9× lever shears Stbd Ø8 pin</text>\n'
-    s += '  <text x="296" y="197" class="lbl-sm">(190 mm pin span) → pops Port pin!</text>\n'
+    s += '  <text x="286" y="184" class="warn">2. 3.9× lever shears Stbd Ø6 pin</text>\n'
+    s += '  <text x="296" y="197" class="lbl-sm">(dbl-shear, 190 mm) → pops Port!</text>\n'
     s += '  <text x="286" y="214" class="ok">3. BOTH halves slide aft together</text>\n'
     s += '  <text x="296" y="227" class="lbl-sm">Zero side walls = impossible to jam!</text>\n'
     # Left callout in A1
@@ -1532,7 +1532,7 @@ def gen_21_center_strut_asymmetric_loads():
     s += '  <rect x="588" y="488" width="450" height="226" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
     s += '  <text x="606" y="512" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>\n'
     s += '  <text x="606" y="536" class="warn">1. Central 120° V-Cradle Breakaway Socket (BOTH Halves!):</text>\n'
-    s += '  <text x="616" y="552" class="lbl-sm">• 2× Ø8 mm corner Delrin pins (y=±95 mm) pop BOTH halves @ ~70 kgf tip</text>\n'
+    s += '  <text x="616" y="552" class="lbl-sm">• 2× vertical Ø6 mm dbl-shear Delrin pins (y=±95 mm) pop BOTH @ ~70 kgf</text>\n'
     s += '  <text x="616" y="566" class="lbl-sm">  hit (zero half-wing flip!); UHMW flanges take 100% lift/roll, 0.35 m leash.</text>\n'
     s += '  <text x="606" y="592" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>\n'
     s += '  <text x="616" y="608" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>\n'
