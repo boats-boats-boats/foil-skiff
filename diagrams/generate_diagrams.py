@@ -1567,47 +1567,105 @@ def gen_22_breakaway_socket_options():
     # =========================================================================
     s += '  <rect x="550" y="68" width="506" height="332" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
     s += '  <text x="568" y="92" class="sec">B. Closed-Loop Dyneema Pulley Deploy/Fold (Zero Sweep Motors!)</text>\n'
-    s += '  <text x="568" y="109" class="dim">Ø2.5 mm SK78 Dyneema (2:1 pulley = &lt;8 kgf pull) • Coaxial over strut hinge axles!</text>\n'
+    s += '  <text x="568" y="109" class="dim">One Ø2.5 mm SK78 loop wraps a single belly drum — drives BOTH meshed wings 0° ↔ 90° (&lt;8 kgf)!</text>\n'
 
-    s += '  <rect x="562" y="118" width="482" height="196" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    # --- SUB-BOX B1 (LEFT): SIDE VIEW — COCKPIT TO POD COAXIAL ROUTING ---
+    s += '  <rect x="562" y="118" width="222" height="202" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="572" y="133" class="ok">B1. Side View: Coaxial Strut Routing</text>\n'
 
-    # Left: Cockpit Dry Control Pull Handles (x = 576..692, y = 132..200)
-    s += '  <rect x="576" y="132" width="124" height="62" rx="6" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.4"/>\n'
-    s += '  <text x="638" y="148" text-anchor="middle" class="dim">Dry Cockpit Loop</text>\n'
-    s += '  <rect x="586" y="156" width="48" height="22" rx="4" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
-    s += '  <text x="610" y="170" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">DEPLOY</text>\n'
-    s += '  <rect x="642" y="156" width="48" height="22" rx="4" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
-    s += '  <text x="666" y="170" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">FOLD</text>\n'
+    # Stacked dry-cockpit handles (zero line crossing over buttons!) above Hard Deck bar
+    s += '  <rect x="572" y="139" width="54" height="13" rx="3" fill="#10B981" stroke="#065F46" stroke-width="1.1"/>\n'
+    s += '  <text x="599" y="148" text-anchor="middle" style="font-size:7.6px;fill:#FFFFFF;font-weight:700;">← DEPLOY</text>\n'
+    s += '  <rect x="572" y="155" width="54" height="13" rx="3" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>\n'
+    s += '  <text x="599" y="164" text-anchor="middle" style="font-size:7.6px;fill:#FFFFFF;font-weight:700;">← FOLD</text>\n'
+    # Cockpit Hard Deck bar (y = 171..177)
+    s += '  <rect x="572" y="171" width="198" height="6" rx="2" fill="#475569" stroke="#0F172A" stroke-width="1"/>\n'
 
-    # Coaxial Strut Hinge Fairlead Pulleys (top & bottom hinge pins — constant length across 86.5° fold!)
-    s += '  <rect x="742" y="136" width="22" height="114" rx="4" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.4"/>\n'
-    s += '  <circle cx="753" cy="146" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    s += '  <circle cx="753" cy="240" r="8" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
-    s += '  <text x="753" y="129" text-anchor="middle" class="lbl-sm">Coaxial Pulleys</text>\n'
+    # Ghosted 86.5° folded strut from exact same top hinge pin (showing constant length!)
+    s += '  <line x1="714" y1="184" x2="774" y2="192" stroke="#94A3B8" stroke-width="9" stroke-linecap="round" stroke-dasharray="4,3"/>\n'
+    s += '  <path d="M 728 224 A 34 34 0 0 0 750 198" fill="none" stroke="#64748B" stroke-width="1.3" stroke-dasharray="3,2"/>\n'
+    s += '  <text x="764" y="216" text-anchor="middle" style="font-size:7.6px;fill:#475569;font-weight:700;">86.5°</text>\n'
+    s += '  <text x="764" y="226" text-anchor="middle" style="font-size:7.2px;fill:#475569;">fold</text>\n'
 
-    # Dyneema lines routing from cockpit handles -> coaxial top pulley -> down strut channel -> bottom coaxial pulley -> wing gear drum!
-    s += '  <path d="M 610 178 L 610 212 L 748 146 L 748 240 L 844 252" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
-    s += '  <path d="M 666 178 L 666 226 L 758 146 L 758 240 L 944 252" fill="none" stroke="#F97316" stroke-width="2.2" stroke-dasharray="5,2" marker-end="url(#arrRed)"/>\n'
+    # Vertical Deployed Strut (x = 706..722, y = 184..278)
+    s += '  <rect x="706" y="184" width="16" height="94" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.3"/>\n'
+    # Pod Belly Channel strip at strut bottom
+    s += '  <rect x="688" y="278" width="88" height="22" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.2"/>\n'
 
-    # Bottom-right: Synchronized Gear Sector Pulley Drum inside Belly Channel (x = 816..1026, y = 216..298)
-    s += '  <rect x="814" y="196" width="218" height="106" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.4"/>\n'
-    s += '  <text x="923" y="212" text-anchor="middle" class="warn">Belly Channel Gear + Pulley Drum</text>\n'
-    # Meshed gears + 2:1 turning sheave + servo roller lock pin
-    s += '  <circle cx="876" cy="248" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
-    s += '  <circle cx="912" cy="248" r="18" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
-    s += '  <circle cx="876" cy="248" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
-    s += '  <circle cx="912" cy="248" r="5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
-    # Servo lock box right beside gear slider
-    s += '  <rect x="952" y="232" width="66" height="32" rx="4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/>\n'
-    s += '  <text x="985" y="246" text-anchor="middle" style="font-size:8px;fill:#FFFFFF;font-weight:700;">IP68 Servo</text>\n'
-    s += '  <text x="985" y="257" text-anchor="middle" style="font-size:7.4px;fill:#FEE2E2;">0%–100% Pin</text>\n'
-    s += '  <text x="894" y="288" text-anchor="middle" class="ok">Green = Deploy 90°→0° • Orange = Fold 0°→90°</text>\n'
+    # Top & Bottom Coaxial Pulleys centered directly on strut hinge axles!
+    s += '  <circle cx="714" cy="184" r="9" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    s += '  <circle cx="714" cy="184" r="2.6" fill="#0F172A"/>\n'
+    s += '  <circle cx="714" cy="278" r="9" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    s += '  <circle cx="714" cy="278" r="2.6" fill="#0F172A"/>\n'
 
-    # Key notes below Panel B box
-    s += '  <text x="568" y="334" class="ok">1. Constant Line Length: Coaxial hinge pulleys eliminate slack/binding on 86.5° fold!</text>\n'
-    s += '  <text x="568" y="352" class="lbl-sm">2. Sand &amp; Saltwater Proof: Ø2.5 mm SK78 Dyneema (700 kg!) + open Delrin sheaves.</text>\n'
-    s += '  <text x="568" y="370" class="dim">3. Zero Underwater Sweep Motors: All pulling effort is dry &amp; manual (&lt;8 kgf, 2 s!).</text>\n'
-    s += '  <text x="568" y="388" class="lbl-sm">4. Rear 90° Spring Detent clicks wings locked flat inside channel for beaching!</text>\n'
+    # Continuous Green (DEPLOY) & Orange (FOLD) lines: handles -> top coaxial pulley -> strut TE groove -> bottom coaxial pulley -> right to B2!
+    s += '  <path d="M 626 145 L 708 145 L 708 284 L 774 284" fill="none" stroke="#059669" stroke-width="2.1" marker-end="url(#arrGreen)"/>\n'
+    s += '  <path d="M 626 161 L 720 161 L 720 294 L 774 294" fill="none" stroke="#F97316" stroke-width="2.1" stroke-dasharray="4,2" marker-end="url(#arrRed)"/>\n'
+
+    # Clear callouts on left side of B1
+    s += '  <text x="696" y="191" text-anchor="end" class="lbl-sm">Top Coaxial Pulley</text>\n'
+    s += '  <text x="696" y="202" text-anchor="end" style="font-size:7.6px;fill:#64748B;">(on strut hinge pin)</text>\n'
+    s += '  <text x="696" y="228" text-anchor="end" class="dim">2 lines inside</text>\n'
+    s += '  <text x="696" y="239" text-anchor="end" class="lbl-sm">strut TE groove</text>\n'
+    s += '  <text x="696" y="266" text-anchor="end" class="lbl-sm">Bottom Coaxial</text>\n'
+    s += '  <text x="696" y="276" text-anchor="end" style="font-size:7.6px;fill:#64748B;">Pulley (constant L!)</text>\n'
+    s += '  <text x="673" y="313" text-anchor="middle" class="warn">Lines enter Belly Drum → (B2)</text>\n'
+
+    # --- SUB-BOX B2 (RIGHT): BOTTOM-UP VIEW — BELLY DRUM & MESHED GEARS ---
+    s += '  <rect x="790" y="118" width="256" height="202" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="800" y="133" class="warn">B2. Bottom-Up: Belly Drum &amp; Wings</text>\n'
+
+    # Pod Belly Channel outline (x = 810..1034, y = 178..258; centerline y = 218)
+    s += '  <rect x="810" y="178" width="224" height="80" rx="22" fill="#FEF3C7" fill-opacity="0.72" stroke="#D97706" stroke-width="1.4"/>\n'
+    s += '  <text x="816" y="173" style="font-size:7.4px;fill:#64748B;font-weight:700;">← BOW</text>\n'
+    s += '  <text x="1030" y="173" text-anchor="end" style="font-size:7.4px;fill:#64748B;font-weight:700;">STERN (90° AFT) →</text>\n'
+
+    # DEPLOYED 0° WINGS (Blue, sticking UP for Port & DOWN for Stbd!)
+    s += '  <rect x="862" y="140" width="24" height="58" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.3"/>\n'
+    s += '  <rect x="862" y="238" width="24" height="58" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.3"/>\n'
+    # Cleanly placed labels on LEFT of top blue wing (zero overlap with green arc!)
+    s += '  <text x="856" y="150" text-anchor="end" class="ok">0° Deployed</text>\n'
+    s += '  <text x="856" y="160" text-anchor="end" style="font-size:7.6px;fill:#047857;">(Pull Green)</text>\n'
+
+    # FOLDED 90° WINGS (Dashed Orange, lying straight right inside 220 mm belly channel!)
+    s += '  <rect x="882" y="186" width="110" height="22" rx="4" fill="#F97316" fill-opacity="0.32" stroke="#EA580C" stroke-width="1.4" stroke-dasharray="4,2"/>\n'
+    s += '  <rect x="882" y="228" width="110" height="22" rx="4" fill="#F97316" fill-opacity="0.32" stroke="#EA580C" stroke-width="1.4" stroke-dasharray="4,2"/>\n'
+    s += '  <text x="944" y="200" text-anchor="middle" style="font-size:8px;fill:#9A3412;font-weight:700;">90° Folded</text>\n'
+    s += '  <text x="944" y="242" text-anchor="middle" style="font-size:8px;fill:#9A3412;font-weight:700;">(Pull Orange)</text>\n'
+
+    # Meshed 90° Stainless Root Gears (Port cy=198, Stbd cy=238, r=19 — meshing right at y=218!)
+    s += '  <circle cx="874" cy="198" r="19" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
+    s += '  <circle cx="874" cy="238" r="19" fill="url(#alu)" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="4,2"/>\n'
+    # Grooved Pulley Drum mounted directly on Port gear hub (r = 11.5, gold!)
+    s += '  <circle cx="874" cy="198" r="11.5" fill="#FBBF24" stroke="#78350F" stroke-width="1.5"/>\n'
+    # Visible continuous loop wrapping right around the Port pulley drum!
+    s += '  <path d="M 800 186.5 L 874 186.5 A 11.5 11.5 0 0 1 885.5 198" fill="none" stroke="#059669" stroke-width="2.3"/>\n'
+    s += '  <path d="M 885.5 198 A 11.5 11.5 0 0 1 874 209.5 L 800 209.5" fill="none" stroke="#F97316" stroke-width="2.3" stroke-dasharray="4,2"/>\n'
+    # Crisp pull arrowheads at left entry inside B2
+    s += '  <line x1="824" y1="186.5" x2="800" y2="186.5" stroke="#059669" stroke-width="2.3" marker-end="url(#arrGreen)"/>\n'
+    s += '  <line x1="824" y1="209.5" x2="800" y2="209.5" stroke="#F97316" stroke-width="2.3" marker-end="url(#arrRed)"/>\n'
+    s += '  <circle cx="874" cy="198" r="4" fill="#0F172A"/>\n'
+    s += '  <circle cx="874" cy="238" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>\n'
+
+    # Curved motion arrows showing simultaneous symmetric wing swing (completely clear of all text!)
+    s += '  <path d="M 964 176 A 72 72 0 0 0 894 146" fill="none" stroke="#059669" stroke-width="1.9" marker-end="url(#arrGreen)"/>\n'
+    s += '  <text x="952" y="152" class="ok">DEPLOY</text>\n'
+    s += '  <path d="M 894 288 A 72 72 0 0 0 964 260" fill="none" stroke="#F97316" stroke-width="1.9" marker-end="url(#arrRed)"/>\n'
+    s += '  <text x="952" y="286" class="warn">FOLD</text>\n'
+
+    # Red Servo Pin behind gear mesh + Rear 90° Ball Detent!
+    s += '  <circle cx="902" cy="218" r="5.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.1"/>\n'
+    s += '  <text x="911" y="221" style="font-size:7.6px;fill:#B91C1C;font-weight:700;">Servo Pin</text>\n'
+    s += '  <circle cx="998" cy="218" r="4.5" fill="#0F766E" stroke="#FFFFFF" stroke-width="1"/>\n'
+    s += '  <text x="1005" y="221" style="font-size:7.4px;fill:#0F766E;font-weight:700;">Detent</text>\n'
+
+    s += '  <text x="918" y="313" text-anchor="middle" class="dim">1 Drum + Meshed Gears = Symmetric Swing!</text>\n'
+
+    # Crisp 3-step summary below Panel B sub-boxes
+    s += '  <text x="568" y="338" class="ok">1. Pull Green (DEPLOY, &lt;8 kgf): Turns Port drum CCW + Stbd gear CW → wings lock at 0°!</text>\n'
+    s += '  <text x="568" y="356" class="warn">2. Drop Servo Pin to 0% &amp; Pull Orange (FOLD): Reverses drum → wings click 90° flat!</text>\n'
+    s += '  <text x="568" y="374" class="dim">3. Coaxial Hinge Pulleys: Line length stays constant as struts fold 0° ↔ 86.5° (0 slack!).</text>\n'
+    s += '  <text x="568" y="391" class="lbl-sm">Sand/saltwater-proof Ø2.5 mm SK78 Dyneema (700 kg!) + open Delrin sheaves • Zero motors!</text>\n'
 
     # =========================================================================
     # PANEL C (BOTTOM FULL WIDTH): FLAPERON BEVEL DOG-CLUTCH KNUCKLE (90° ROOF FOLD!)

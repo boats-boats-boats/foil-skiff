@@ -33,11 +33,12 @@ Folding a `102 mm`-chord foil `90°` sideways *into* the pod core would carve `2
 
 ## 2. Closed-Loop `Ø2.5 mm` `SK78` Dyneema + Coaxial Hinge Pulleys (Zero Sweep Motors!)
 
-All wing deployment (`90° → 0°`) and folding (`0° → 90°`) is driven by a **manual dry-cockpit `2:1` closed-loop line** — keeping **zero underwater sweep motors, zero sliding hull seals, and zero gearbox flood points** (see **Diagram 22, Panel B**):
+All wing deployment (`90° → 0°`) and folding (`0° → 90°`) is driven by **one continuous `Ø2.5 mm` `SK78` Dyneema loop** (`~700 kg` break strength, sand- and saltwater-proof) pulled from the dry cockpit — keeping **zero underwater sweep motors, zero sliding hull seals, and zero gearbox flood points** (see **Diagram 22, Panel B**):
 
-* **Sand- & Saltwater-Proof Cordage:** `Ø2.5 mm` `SK78` Dyneema (`~700 kg` break strength, zero water absorption) running over open-cheek `Ø16 mm` grooved Delrin sheaves onto a grooved drum keyed to one of the meshed belly gear sectors (`<8 kgf` cockpit pull, `2` seconds full travel).
-* **Coaxial Strut-Hinge Routing:** Both the **DEPLOY (green)** and **FOLD (orange)** legs route coaxially around `Ø16 mm` pulleys centered on the top and bottom strut hinge axles — guaranteeing **constant line length** across the entire `0° → 86.5°` strut folding arc with zero slack or binding.
-* **Rear `90°` Spring Detent:** A simple stainless spring ball-detent at the aft end of the channel clicks both wings flat into the `90°` folded position for dry-sand beaching and trunk storage.
+* **B1 — Coaxial Strut Routing (Constant Line Length):** Both ends of the loop terminate at two cockpit T-handles (**Green `← DEPLOY`** and **Orange `← FOLD`**). From the deck, the two lines wrap over a **Top Coaxial Pulley** mounted *directly on the upper strut hinge axle*, run straight down a recessed trailing-edge groove inside the front strut, wrap around a **Bottom Coaxial Pulley** on the lower strut hinge axle, and enter the pod belly channel. Because both pulleys sit concentrically on the strut's pivot axes, **total line length stays constant** across the entire `0° ↔ 86.5°` strut retraction/kick-up arc (zero slack, zero binding).
+* **B2 — Single Belly Drum + Meshed Gears (How Pulling Swings Both Wings):** Inside the `12 mm` belly channel, the continuous loop wraps directly around **one grooved pulley drum** keyed to the **Port root gear hub**:
+  1. **Deploy (`90° → 0°`):** Pull the **Green (`DEPLOY`)** handle (`<8 kgf`, `2 s`). Pulling the top leg of the drum rotates the Port gear **CCW** and forces the meshed Starboard gear **CW** — swinging **both wings out symmetrically to `0°`** until the red `IP68` servo roller pin clicks locked behind the gear mesh.
+  2. **Fold (`0° → 90°`):** Drop the `IP68` servo pin to `0%` preload and pull the **Orange (`FOLD`)** handle (`<8 kgf`, `2 s`). Pulling the bottom leg reverses the drum — folding **both wings straight aft to `90°` flush inside the `220 mm` channel**, where a stainless **rear spring ball-detent** clicks them flat for dry-sand beaching and storage.
 
 ---
 
