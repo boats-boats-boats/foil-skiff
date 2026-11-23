@@ -59,57 +59,64 @@
   </defs>
   <rect x="1" y="1" width="1038" height="638" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
   <rect x="12" y="56" width="1016" height="572" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">21. 2× Recessed Center Struts: Upper/Lower Trunnions &amp; One-Sided Impact Protection</text>
-  <text x="24" y="46" class="sub">How Wide T-Head / Pod Saddle Trunnions + Wingtip Shear Fuse Survive Asymmetric Roll &amp; One-Sided Crab-Pot / Rock Strikes</text>
+  <text x="24" y="28" class="title">21. 2× Recessed Center Struts &amp; Symmetric Central V-Cradle Breakaway Socket</text>
+  <text x="24" y="46" class="sub">Anti-Jam 120° Open-Aft V-Cradle (Both Wing Halves Eject Together!) + Wide T-Head &amp; Pod Saddle Trunnions</text>
   <rect x="24" y="68" width="484" height="262" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="92" class="sec">A. Top-Down: One-Sided Crab-Pot / Rock Strike</text>
-  <text x="42" y="109" class="ok">Stage 1 Tip Fuse sheds impact • 760 mm struts convert Yaw Mz into lateral couple!</text>
-  <rect x="153" y="190" width="190" height="32" rx="14" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
-  <rect x="192" y="162" width="26" height="88" rx="5" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
-  <rect x="194" y="114" width="22" height="48" rx="5" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
-  <circle cx="205" cy="162" r="3.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.1"/>
-  <rect x="194" y="250" width="22" height="48" rx="5" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4,2"/>
-  <path d="M 205 250 L 262 272 L 252 292 L 197 266 Z" fill="#F97316" stroke="#9A3412" stroke-width="1.5"/>
-  <circle cx="205" cy="250" r="4.2" fill="#DC2626" stroke="#0F172A" stroke-width="1.2"/>
-  <circle cx="180" cy="280" r="11" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8"/>
-  <line x1="152" y1="280" x2="188" y2="280" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
-  <text x="146" y="276" text-anchor="end" class="warn">Crab Pot /</text>
-  <text x="146" y="289" text-anchor="end" class="warn">Rock Hit!</text>
-  <path d="M 216 292 Q 238 302 260 288" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-  <rect x="188" y="201" width="26" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <rect x="296" y="201" width="26" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
-  <line x1="201" y1="200" x2="201" y2="168" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>
-  <line x1="309" y1="212" x2="309" y2="248" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>
-  <text x="254" y="182" text-anchor="middle" class="warn">+F_lat (Port)</text>
-  <text x="363" y="244" class="warn">-F_lat (Stbd)</text>
-  <line x1="201.0" y1="142.0" x2="309.0" y2="142.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
-  <text x="255.0" y="136.0" text-anchor="middle" class="dim">760 mm Tandem</text>
-  <text x="42" y="302" class="ok">Stage 1 Fuse: Ø5 mm Delrin tip pin shears @ ~70 kgf → tip folds 90° aft!</text>
-  <text x="42" y="318" class="lbl-sm">Caps yaw torque Mz ≤ 500 N·m (3× lower) &amp; sheds crab-pot lines cleanly.</text>
+  <text x="42" y="92" class="sec">A. Top-Down: Symmetric Central 120° V-Cradle Socket</text>
+  <text x="42" y="109" class="ok">BOTH halves pop aft together (0 half-wing flip!) • 760 mm struts react yaw!</text>
+  <rect x="153" y="187" width="210" height="34" rx="15" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="370" y1="180" x2="370" y2="228" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
+  <text x="384" y="208" class="lbl-sm">Prop</text>
+  <path d="M 184 204 L 216 178 L 226 178 L 198 204 L 226 230 L 216 230 Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>
+  <rect x="202" y="118" width="22" height="172" rx="5" fill="url(#wingBlue)" fill-opacity="0.30" stroke="#0369A1" stroke-width="1.3" stroke-dasharray="4,2"/>
+  <circle cx="218" cy="183" r="3.8" fill="#DC2626" stroke="#0F172A" stroke-width="1.1"/>
+  <circle cx="218" cy="225" r="3.8" fill="#DC2626" stroke="#0F172A" stroke-width="1.1"/>
+  <polygon points="236,120 256,122 268,290 248,292" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.5"/>
+  <path d="M 180 204 Q 214 218 248 206" fill="none" stroke="#059669" stroke-width="2.4" stroke-dasharray="4,2"/>
+  <circle cx="180" cy="204" r="3.2" fill="#059669"/>
+  <circle cx="194" cy="278" r="10" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8"/>
+  <line x1="160" y1="278" x2="200" y2="278" stroke="#DC2626" stroke-width="2.5" marker-end="url(#arrRed)"/>
+  <text x="154" y="274" text-anchor="end" class="warn">Crab Pot /</text>
+  <text x="154" y="287" text-anchor="end" class="warn">Rock (~70 kgf)</text>
+  <line x1="226" y1="146" x2="256" y2="146" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <line x1="226" y1="262" x2="256" y2="262" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <rect x="192" y="199" width="24" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <rect x="312" y="199" width="24" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>
+  <line x1="204" y1="198" x2="204" y2="168" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>
+  <line x1="324" y1="210" x2="324" y2="242" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>
+  <text x="304" y="178" text-anchor="middle" class="warn">±F_lat Couple</text>
+  <text x="376" y="260" text-anchor="middle" class="ok">0.35 m Leash</text>
+  <text x="376" y="272" text-anchor="middle" class="lbl-sm">(0.5 m clear</text>
+  <text x="376" y="283" text-anchor="middle" class="lbl-sm">of tail prop!)</text>
+  <line x1="204.0" y1="136.0" x2="324.0" y2="136.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="264.0" y="130.0" text-anchor="middle" class="dim">760 mm Tandem</text>
+  <text x="42" y="302" class="ok">Stage 1 Fuse: 2× Ø8 mm corner pins (190 mm apart) pop BOTH halves @ ~70 kgf tip hit!</text>
+  <text x="42" y="318" class="lbl-sm">Zero half-wing flip (boat drops flat!) • Caps yaw ≤455 N·m • Hall cuts prop in 0.05 s.</text>
   <rect x="532" y="68" width="484" height="262" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="550" y="92" class="sec">B. Side Profile: Offset Pins, Stop Shoulder &amp; Fuse</text>
-  <text x="550" y="109" class="dim">Zero cruise backlash • Clean kick-up @ ~140 kgf • Crab-pot line cutter</text>
-  <rect x="560" y="136" width="420" height="16" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>
-  <rect x="652" y="152" width="44" height="20" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.2"/>
-  <circle cx="674" cy="162" r="4.8" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>
-  <rect x="696" y="148" width="68" height="122" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
-  <circle cx="748" cy="160" r="6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
-  <circle cx="712" cy="256" r="6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
-  <rect x="595" y="236" width="365" height="54" rx="22" fill="#334155" fill-opacity="0.24" stroke="#0F172A" stroke-width="1.6"/>
-  <rect x="688" y="236" width="84" height="36" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.3"/>
-  <rect x="696" y="236" width="68" height="34" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
-  <circle cx="712" cy="256" r="5.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.4"/>
-  <polygon points="696,236 680,236 696,216" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>
-  <path d="M 768 205 Q 810 202 835 178" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>
-  <text x="646" y="185" text-anchor="end" class="warn">Delrin Shear Pin</text>
-  <text x="646" y="197" text-anchor="end" class="lbl-sm">(~140 kgf release)</text>
-  <text x="795" y="168" class="ok">Top Pin @ TE (+24 mm)</text>
-  <text x="795" y="218" class="lbl-sm">Kicks aft cleanly on impact</text>
-  <text x="676" y="224" text-anchor="end" class="warn">Line Cutter</text>
-  <text x="795" y="264" class="dim">Bottom Pin @ LE (-24 mm)</text>
-  <text x="795" y="278" class="lbl-sm">(55 mm recess → 135 mm fold)</text>
-  <text x="550" y="306" class="ok">Forward 70 mm stop shoulder takes 100% cruise thrust in solid compression.</text>
-  <text x="550" y="320" class="lbl-sm">±45° carbon torsion wrap + 0° UD spars hold stress &lt;140 MPa (&gt;5.5× safety).</text>
+  <text x="550" y="92" class="sec">B. Side Profile: Strut Kick-Up vs. 12° Down-Exit Socket</text>
+  <text x="550" y="109" class="dim">Center shoal (~140 kgf) → Strut kicks up • Tip hit (~70 kgf) → Wing pops down-aft</text>
+  <rect x="560" y="132" width="420" height="15" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>
+  <rect x="652" y="147" width="44" height="19" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.2"/>
+  <circle cx="674" cy="156" r="4.6" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>
+  <rect x="696" y="144" width="66" height="110" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
+  <circle cx="746" cy="156" r="5.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <rect x="595" y="224" width="365" height="50" rx="20" fill="#334155" fill-opacity="0.24" stroke="#0F172A" stroke-width="1.6"/>
+  <rect x="688" y="224" width="82" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.3"/>
+  <rect x="696" y="224" width="66" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>
+  <circle cx="712" cy="242" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <polygon points="696,224 680,224 696,204" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>
+  <polygon points="670,274 756,274 752,286 676,282" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
+  <path d="M 758 281 L 830 293" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <path d="M 768 195 Q 810 192 835 168" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>
+  <text x="646" y="176" text-anchor="end" class="warn">Strut Fuse</text>
+  <text x="646" y="188" text-anchor="end" class="lbl-sm">(~140 kgf shoal)</text>
+  <text x="795" y="160" class="ok">Top Pin @ TE (+24 mm)</text>
+  <text x="795" y="206" class="lbl-sm">Kicks aft on center hit</text>
+  <text x="676" y="214" text-anchor="end" class="warn">Line Cutter</text>
+  <text x="795" y="246" class="dim">Bottom Pin @ LE (-24 mm)</text>
+  <text x="838" y="294" class="ok">12° Down-Exit (under UP flaps!)</text>
+  <text x="664" y="292" text-anchor="end" class="lbl-sm">V-Cradle + Hall</text>
+  <text x="550" y="314" class="ok">Center hit (&gt;140 kgf) kicks struts up; Tip hit (~70 kgf) pops V-cradle cleanly!</text>
   <rect x="24" y="344" width="992" height="272" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="42" y="368" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>
   <text x="42" y="385" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>
@@ -121,32 +128,33 @@
   <rect x="445" y="426" width="8" height="26" rx="1.5" fill="#F97316" stroke="#9A3412" stroke-width="1"/>
   <path d="M 245 426 L 445 426 L 445 452 L 367 472 L 359 532 L 421 550 L 421 574 L 269 574 L 269 550 L 331 532 L 323 472 L 245 452 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>
   <rect x="199" y="435" width="292" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
-  <rect x="229" y="532" width="232" height="66" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>
-  <rect x="251" y="534" width="12" height="62" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
-  <rect x="263" y="550" width="6" height="24" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
-  <rect x="427" y="534" width="12" height="62" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
-  <rect x="421" y="550" width="6" height="24" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
-  <rect x="247" y="558" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
+  <rect x="229" y="532" width="232" height="62" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>
+  <rect x="251" y="534" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
+  <rect x="263" y="550" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
+  <rect x="427" y="534" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>
+  <rect x="421" y="550" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>
+  <rect x="247" y="556" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>
+  <rect x="247" y="592" width="196" height="8" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>
   <line x1="197" y1="490" x2="197" y2="462" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>
   <line x1="493" y1="462" x2="493" y2="490" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>
   <text x="191" y="484" text-anchor="end" class="dim">Push/Pull</text>
   <text x="191" y="497" text-anchor="end" class="lbl-sm">132 kgf/rail</text>
-  <line x1="165" y1="562" x2="221" y2="562" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
-  <text x="161" y="566" text-anchor="end" class="warn">±F_lat Thrust</text>
+  <line x1="165" y1="560" x2="221" y2="560" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
+  <text x="161" y="564" text-anchor="end" class="warn">±F_lat Thrust</text>
   <line x1="220.0" y1="408.0" x2="470.0" y2="408.0" stroke="#059669" stroke-width="1.2" marker-start="url(#arrGreen)" marker-end="url(#arrGreen)"/>
   <text x="345.0" y="402.0" text-anchor="middle" class="ok">250 mm Bearing Span (8.3× Lower Load!)</text>
-  <line x1="257.0" y1="606.0" x2="433.0" y2="606.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
-  <text x="345.0" y="602.0" text-anchor="middle" class="dim">180 mm Pod Saddle Span</text>
+  <line x1="247.0" y1="610.0" x2="443.0" y2="610.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
+  <text x="345.0" y="606.0" text-anchor="middle" class="dim">200 mm V-Cradle &amp; 180 mm Saddle</text>
   <rect x="572" y="400" width="426" height="202" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="588" y="422" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>
-  <text x="588" y="444" class="ok">1. Upper End (250 mm Full-Span T-Head Trunnion):</text>
-  <text x="598" y="460" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>
-  <text x="598" y="474" class="lbl-sm">• Anti-splay bridge + orange UHMW/bronze thrust washers take ±220 kgf</text>
-  <text x="598" y="487" class="lbl-sm">  sideways thrust with μ ≈ 0.08 so struts NEVER bind during kick-up!</text>
-  <text x="588" y="510" class="dim">2. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>
-  <text x="598" y="526" class="lbl-sm">• Strut flares inside 55 mm top recess onto Ø16 mm axle anchored into</text>
-  <text x="598" y="539" class="lbl-sm">  twin 6 mm G10/carbon full-height internal pod bulkheads (green).</text>
-  <text x="588" y="562" class="warn">3. One-Sided Crab-Pot / Rock Hit Fuse (Outer Wingtips):</text>
-  <text x="598" y="578" class="lbl-sm">• $0.50 Ø5 mm Delrin tip pin shears @ ~70 kgf → tip folds 90° aft cleanly,</text>
-  <text x="598" y="591" class="lbl-sm">  shedding crab-pot lines &amp; capping yaw torque before struts even flex!</text>
+  <text x="588" y="444" class="warn">1. Central 120° V-Cradle Breakaway Socket (BOTH Halves!):</text>
+  <text x="598" y="460" class="lbl-sm">• 2× Ø8 mm corner Delrin pins (y=±95 mm) pop BOTH halves @ ~70 kgf tip</text>
+  <text x="598" y="473" class="lbl-sm">  hit (zero half-wing flip!); UHMW flanges take 100% lift/roll, 0.35 m leash.</text>
+  <text x="588" y="496" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>
+  <text x="598" y="512" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>
+  <text x="598" y="525" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>
+  <text x="588" y="548" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>
+  <text x="598" y="564" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>
+  <text x="598" y="577" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>
+  <text x="598" y="593" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays on!)</text>
 </svg>

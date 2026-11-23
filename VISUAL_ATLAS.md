@@ -171,8 +171,8 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 11. 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (Wet-Slot / Dry-Bay Mechanics & Wake Clearance)
 ![100% Internal-Pod Morphing STOL-to-Staggerwing Wet-Slot Elevator Sled](diagrams/20-morphing-stol-staggerwing.svg)
 
-### 12. `2×` Recessed Center Struts: Upper/Lower Trunnions & One-Sided Crab-Pot / Rock Impact Protection
-![2x Recessed Center Struts: Upper/Lower Trunnions & One-Sided Impact Protection](diagrams/21-center-strut-asymmetric-loads.svg)
+### 12. `2×` Recessed Center Struts & Symmetric Central `120°` V-Cradle Breakaway Socket (Upper/Lower Trunnions & Impact Protection)
+![2x Recessed Center Struts and Symmetric Central V-Cradle Breakaway Socket](diagrams/21-center-strut-asymmetric-loads.svg)
 
 ### 13. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)
