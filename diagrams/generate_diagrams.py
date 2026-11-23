@@ -1184,7 +1184,7 @@ def gen_20_morphing_stol_staggerwing():
     s += f'  <rect x="294" y="{cy-71}" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
     s += f'  <rect x="404" y="{cy-71}" width="10" height="142" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2"/>\n'
     s += f'  <text x="168" y="{cy-52}" text-anchor="middle" class="lbl-sm">Dry IP68 Bay (Battery + VESC + IMU)</text>\n'
-    s += f'  <text x="354" y="{cy-55}" text-anchor="middle" style="font-size:8.5px;fill:#0F766E;font-weight:700;">Wet Wing-Box</text>\n'
+    s += f'  <text x="354" y="{cy-80}" text-anchor="middle" style="font-size:8.8px;fill:#0F766E;font-weight:700;">Wet Wing-Box</text>\n'
 
     # Twin Ø10 mm vertical guide rods + central gold Tr10x2 leadscrew inside wet wing-box
     s += f'  <rect x="330" y="{cy-68}" width="5" height="136" fill="url(#alu)" stroke="#475569" stroke-width="0.9"/>\n'
@@ -1244,7 +1244,7 @@ def gen_20_morphing_stol_staggerwing():
     cx_b, cy_b = 795, 266
     # 220 x 90 mm Flying-Keel Pod cross-section (220 px wide x 144 px tall -> x=685..905, y=194..338)
     s += f'  <rect x="{cx_b-110}" y="{cy_b-72}" width="220" height="144" rx="28" fill="#E0F2FE" stroke="#0F172A" stroke-width="2.4"/>\n'
-    s += f'  <text x="{cx_b}" y="176" text-anchor="middle" class="lbl-sm">220 × 90 mm Free-Flooding Wing-Box (Front View)</text>\n'
+    s += f'  <text x="{cx_b}" y="144" text-anchor="middle" class="lbl-sm">220 × 90 mm Free-Flooding Wing-Box (Front View)</text>\n'
 
     # Flush Silicone Cheek Wiper Skirts (centerboard-style gaskets at pod walls x = cx_b +/- 110)
     for sd in (-1, 1):
@@ -1318,157 +1318,229 @@ def gen_20_morphing_stol_staggerwing():
 # DIAGRAM 21: 2x Recessed Center Struts — Asymmetric Loads & One-Sided Impact
 # -------------------------------------------------------------------------
 def gen_21_center_strut_asymmetric_loads():
-    W, H = 1040, 640
+    W, H = 1080, 760
     s = svg_header(
         W, H,
         "21. 2× Recessed Center Struts & Symmetric Central V-Cradle Breakaway Socket",
         "Anti-Jam 120° Open-Aft V-Cradle (Both Wing Halves Eject Together!) + Wide T-Head & Pod Saddle Trunnions"
     )
 
-    # --- PANEL A (TOP LEFT): TOP-DOWN SYMMETRIC CENTRAL 120° V-CRADLE BREAKAWAY ---
-    s += '  <rect x="24" y="68" width="484" height="262" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="92" class="sec">A. Top-Down: Symmetric Central 120° V-Cradle Socket</text>\n'
-    s += '  <text x="42" y="109" class="ok">BOTH halves pop aft together (0 half-wing flip!) • 760 mm struts react yaw!</text>\n'
+    # =========================================================================
+    # PANEL A (TOP LEFT): TWO CLEAN SUB-VIEWS — (A1) ZOOMED V-CRADLE + (A2) FULL-POD EJECTION
+    # =========================================================================
+    s += '  <rect x="24" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="92" class="sec">A. Top-Down: How the 120° V-Cradle Ejects BOTH Halves</text>\n'
+    s += '  <text x="42" y="109" class="ok">No tight side walls (zero jam!) • Tip hit shears corner pin → both halves pop aft</text>\n'
 
-    # Pod + continuous 1.55 m Main Wing top-down (bow=LEFT, stern=RIGHT)
-    cx_a, cy_a = 258, 204
-    # Pod body (200 px long)
-    s += f'  <rect x="{cx_a-105}" y="{cy_a-17}" width="210" height="34" rx="15" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
-    # Tail prop silhouette at far right (cx_a + 108) to show 0.35 m leash stops wing well ahead of prop!
-    s += f'  <line x1="{cx_a+112}" y1="{cy_a-24}" x2="{cx_a+112}" y2="{cy_a+24}" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>\n'
-    s += f'  <text x="{cx_a+126}" y="{cy_a+4}" class="lbl-sm">Prop</text>\n'
+    # --- SUB-BOX A1 (TOP HALF): ZOOMED CLOSE-UP OF THE 120° V-CRADLE SOCKET ---
+    s += '  <rect x="36" y="118" width="484" height="128" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="46" y="134" class="dim">A1. Close-Up of Central V-Cradle (Looking Down Through Pod Belly)</text>\n'
+    s += '  <text x="46" y="238" class="lbl-sm">← BOW</text>\n'
+    s += '  <text x="510" y="238" text-anchor="end" class="ok">OPEN REAR EXIT →</text>\n'
 
-    # Open-aft 120° V-Cradle Socket mounted on pod belly (NO tight parallel side cheeks -> zero drawer jam!)
-    s += f'  <path d="M {cx_a-74} {cy_a} L {cx_a-42} {cy_a-26} L {cx_a-32} {cy_a-26} L {cx_a-60} {cy_a} L {cx_a-32} {cy_a+26} L {cx_a-42} {cy_a+26} Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    # Zoomed 120° Open-Aft V-Cradle (golden aluminum/UHMW frame, NO parallel side cheeks!)
+    vx, vy = 148, 184
+    # Outer golden V-cradle housing (open cleanly to the RIGHT!)
+    s += f'  <path d="M {vx-20} {vy} L {vx+42} {vy-44} L {vx+62} {vy-44} L {vx+4} {vy} L {vx+62} {vy+44} L {vx+42} {vy+44} Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.6"/>\n'
+    # Seated Wing Carrier Block (blue, matching 120° nose wedged snugly inside V-cradle, wings extending up/down)
+    s += f'  <path d="M {vx+6} {vy} L {vx+54} {vy-36} L {vx+78} {vy-36} L {vx+78} {vy+36} L {vx+54} {vy+36} Z" fill="url(#wingBlue)" fill-opacity="0.82" stroke="#0369A1" stroke-width="1.5"/>\n'
+    # Wing roots extending top (Port) & bottom (Starboard) from the carrier block
+    s += f'  <rect x="{vx+54}" y="{vy-48}" width="24" height="12" rx="2" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>\n'
+    s += f'  <rect x="{vx+54}" y="{vy+36}" width="24" height="12" rx="2" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>\n'
+    # 2x Red Ø8 mm Delrin Corner Shear Pins at y = +/-95 mm (190 mm apart!)
+    s += f'  <circle cx="{vx+52}" cy="{vy-30}" r="5.2" fill="#DC2626" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += f'  <circle cx="{vx+52}" cy="{vy+30}" r="5.2" fill="#DC2626" stroke="#0F172A" stroke-width="1.3"/>\n'
+    # Port Fulcrum highlight ring
+    s += f'  <circle cx="{vx+32}" cy="{vy-22}" r="4" fill="#059669" stroke="#FFFFFF" stroke-width="1.2"/>\n'
+    # Pop-out motion arrows to the right (OPEN REAR!)
+    s += f'  <line x1="{vx+84}" y1="{vy-14}" x2="{vx+122}" y2="{vy-14}" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+    s += f'  <line x1="{vx+84}" y1="{vy+14}" x2="{vx+122}" y2="{vy+18}" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
 
-    # Continuous 1-piece / Carrier-Block Main Wing SEATED in V-cradle (blue dashed = seated position)
-    s += f'  <rect x="{cx_a-56}" y="{cy_a-86}" width="22" height="172" rx="5" fill="url(#wingBlue)" fill-opacity="0.30" stroke="#0369A1" stroke-width="1.3" stroke-dasharray="4,2"/>\n'
-    # 2x Outer-Corner Ø8 mm Delrin Shear Pins at y = +/-95 mm (190 mm apart!)
-    s += f'  <circle cx="{cx_a-40}" cy="{cy_a-21}" r="3.8" fill="#DC2626" stroke="#0F172A" stroke-width="1.1"/>\n'
-    s += f'  <circle cx="{cx_a-40}" cy="{cy_a+21}" r="3.8" fill="#DC2626" stroke="#0F172A" stroke-width="1.1"/>\n'
+    # Clean non-overlapping callouts on right side of A1 (x = 285..510)
+    s += '  <text x="286" y="154" class="warn">1. Starboard tip hit (~70 kgf)</text>\n'
+    s += '  <text x="296" y="167" class="lbl-sm">pivots wing on green Port fulcrum</text>\n'
+    s += '  <text x="286" y="184" class="warn">2. 3.9× lever shears Stbd Ø8 pin</text>\n'
+    s += '  <text x="296" y="197" class="lbl-sm">(190 mm pin span) → pops Port pin!</text>\n'
+    s += '  <text x="286" y="214" class="ok">3. BOTH halves slide aft together</text>\n'
+    s += '  <text x="296" y="227" class="lbl-sm">Zero side walls = impossible to jam!</text>\n'
+    # Left callout in A1
+    s += '  <text x="46" y="168" class="lbl-sm">120° V-Cradle</text>\n'
+    s += '  <text x="46" y="180" class="lbl-sm">(UHMW clamped</text>\n'
+    s += '  <text x="46" y="192" class="lbl-sm">top &amp; bottom)</text>\n'
 
-    # BOTH HALVES EJECTING TOGETHER symmetrically aft out of the open-aft 120° V-cradle (orange solid, slightly yawed & popped aft!)
-    s += f'  <polygon points="{cx_a-22},{cy_a-84} {cx_a-2},{cy_a-82} {cx_a+10},{cy_a+86} {cx_a-10},{cy_a+88}" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.5"/>\n'
-    # Forward-anchored 0.35 m Dyneema safety leash catching wing center WELL ahead of tail prop!
-    s += f'  <path d="M {cx_a-78} {cy_a} Q {cx_a-44} {cy_a+14} {cx_a-10} {cy_a+2}" fill="none" stroke="#059669" stroke-width="2.4" stroke-dasharray="4,2"/>\n'
-    s += f'  <circle cx="{cx_a-78}" cy="{cy_a}" r="3.2" fill="#059669"/>\n'
+    # --- SUB-BOX A2 (BOTTOM HALF): FULL-POD TOP-DOWN AFTER SYMMETRIC EJECTION ---
+    s += '  <rect x="36" y="254" width="484" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>\n'
+    s += '  <text x="46" y="270" class="dim">A2. Full-Pod View After Tip Hit (Wing Tethered 0.5 m Clear of Prop)</text>\n'
 
-    # Crab-pot / rock impact burst at starboard tip (y = +0.65 m)!
-    s += f'  <circle cx="{cx_a-64}" cy="{cy_a+74}" r="10" fill="#DC2626" fill-opacity="0.22" stroke="#DC2626" stroke-width="1.8"/>\n'
-    s += f'  <line x1="{cx_a-98}" y1="{cy_a+74}" x2="{cx_a-58}" y2="{cy_a+74}" stroke="#DC2626" stroke-width="2.5" marker-end="url(#arrRed)"/>\n'
-    s += f'  <text x="{cx_a-104}" y="{cy_a+70}" text-anchor="end" class="warn">Crab Pot /</text>\n'
-    s += f'  <text x="{cx_a-104}" y="{cy_a+83}" text-anchor="end" class="warn">Rock (~70 kgf)</text>\n'
-    # Ejection arrow showing BOTH halves popping free aft!
-    s += f'  <line x1="{cx_a-32}" y1="{cy_a-58}" x2="{cx_a-2}" y2="{cy_a-58}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
-    s += f'  <line x1="{cx_a-32}" y1="{cy_a+58}" x2="{cx_a-2}" y2="{cy_a+58}" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>\n'
+    px, py = 248, 330
+    # Pod body (230 px long: x = 133..363)
+    s += f'  <rect x="{px-115}" y="{py-14}" width="230" height="28" rx="14" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
+    # Tail prop at x = 376
+    s += f'  <line x1="{px+128}" y1="{py-22}" x2="{px+128}" y2="{py+22}" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>\n'
+    s += f'  <text x="{px+136}" y="{py-2}" class="dim">Tail Prop</text>\n'
+    s += f'  <text x="{px+136}" y="{py+10}" class="lbl-sm">(Hall cuts</text>\n'
+    s += f'  <text x="{px+136}" y="{py+22}" class="lbl-sm">0 RPM!)</text>\n'
 
-    # Front & Rear Center Strut positions (760 mm tandem spacing!)
-    s += f'  <rect x="{cx_a-66}" y="{cy_a-5}" width="24" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += f'  <rect x="{cx_a+54}" y="{cy_a-5}" width="24" height="10" rx="3" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
-    # Opposite lateral force couple reacting residual Yaw Mz (<=455 N·m)!
-    s += f'  <line x1="{cx_a-54}" y1="{cy_a-6}" x2="{cx_a-54}" y2="{cy_a-36}" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>\n'
-    s += f'  <line x1="{cx_a+66}" y1="{cy_a+6}" x2="{cx_a+66}" y2="{cy_a+38}" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>\n'
-    s += f'  <text x="{cx_a+46}" y="{cy_a-26}" text-anchor="middle" class="warn">±F_lat Couple</text>\n'
-    s += f'  <text x="{cx_a+118}" y="{cy_a+56}" text-anchor="middle" class="ok">0.35 m Leash</text>\n'
-    s += f'  <text x="{cx_a+118}" y="{cy_a+68}" text-anchor="middle" class="lbl-sm">(0.5 m clear</text>\n'
-    s += f'  <text x="{cx_a+118}" y="{cy_a+79}" text-anchor="middle" class="lbl-sm">of tail prop!)</text>\n'
-    s += dim_line(cx_a - 54, cy_a - 68, cx_a + 66, cy_a - 68, "760 mm Tandem", dy=-6)
+    # Seated wing ghost (dashed blue) at x = 180
+    s += f'  <rect x="{px-74}" y="{py-56}" width="16" height="112" rx="4" fill="url(#wingBlue)" fill-opacity="0.24" stroke="#0369A1" stroke-width="1.2" stroke-dasharray="3,2"/>\n'
+    # Ejected 1-piece/coupled wing (solid orange) popped aft to x = 236 (WELL ahead of tail prop at x = 376!)
+    s += f'  <polygon points="{px-20},{py-55} {px-4},{py-53} {px+4},{py+55} {px-12},{py+57}" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>\n'
+    # Forward-anchored 0.35 m green Dyneema leash from nose belly (x = 152) to wing center (x = 240)
+    s += f'  <path d="M {px-96} {py} Q {px-56} {py+16} {px-12} {py+2}" fill="none" stroke="#059669" stroke-width="2.6"/>\n'
+    s += f'  <circle cx="{px-96}" cy="{py}" r="3.5" fill="#059669"/>\n'
 
-    s += '  <text x="42" y="302" class="ok">Stage 1 Fuse: 2× Ø8 mm corner pins (190 mm apart) pop BOTH halves @ ~70 kgf tip hit!</text>\n'
-    s += '  <text x="42" y="318" class="lbl-sm">Zero half-wing flip (boat drops flat!) • Caps yaw ≤455 N·m • Hall cuts prop in 0.05 s.</text>\n'
+    # Front & Rear Center Strut footprints (760 mm tandem spacing!)
+    s += f'  <rect x="{px-82}" y="{py-4}" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+    s += f'  <rect x="{px+52}" y="{py-4}" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>\n'
+    # Opposite lateral reaction couple on struts (cleanly offset from wings!)
+    s += f'  <line x1="{px-72}" y1="{py-14}" x2="{px-72}" y2="{py-40}" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>\n'
+    s += f'  <line x1="{px+62}" y1="{py+14}" x2="{px+62}" y2="{py+42}" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>\n'
 
-    # --- PANEL B (TOP RIGHT): SIDE-PROFILE OFFSET PINS, STOP SHOULDER & 12° DOWN-EXIT ---
-    s += '  <rect x="532" y="68" width="484" height="262" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="550" y="92" class="sec">B. Side Profile: Strut Kick-Up vs. 12° Down-Exit Socket</text>\n'
-    s += '  <text x="550" y="109" class="dim">Center shoal (~140 kgf) → Strut kicks up • Tip hit (~70 kgf) → Wing pops down-aft</text>\n'
+    # Clean, non-overlapping labels in A2
+    s += f'  <line x1="{px-116}" y1="{py+44}" x2="{px-80}" y2="{py+44}" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>\n'
+    s += f'  <text x="{px-120}" y="{py+41}" text-anchor="end" class="warn">Tip Hit</text>\n'
+    s += f'  <text x="{px-120}" y="{py+53}" text-anchor="end" class="lbl-sm">(~70 kgf)</text>\n'
+    s += f'  <text x="{px-102}" y="{py-28}" text-anchor="end" class="warn">+F_lat</text>\n'
+    s += f'  <text x="{px+70}" y="{py+44}" class="warn">-F_lat</text>\n'
+    s += f'  <text x="{px+62}" y="{py-42}" text-anchor="middle" class="ok">BOTH Halves Free →</text>\n'
+    s += f'  <text x="{px+62}" y="{py-30}" text-anchor="middle" class="lbl-sm">Boat drops flat!</text>\n'
+    s += f'  <text x="132" y="{py+67}" text-anchor="middle" class="ok">0.35 m Belly Leash</text>\n'
+    s += f'  <text x="368" y="{py+67}" text-anchor="middle" class="lbl-sm">760 mm Tandem Struts (yaw ≤455 N·m)</text>\n'
 
-    # Top rail + T-head stop block (y = 144)
-    s += '  <rect x="560" y="132" width="420" height="15" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>\n'
-    # Forward compression stop shoulder + Delrin shear-pin fuse block
-    s += '  <rect x="652" y="147" width="44" height="19" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.2"/>\n'
-    s += '  <circle cx="674" cy="156" r="4.6" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.2"/>\n'
-    # 100x18 mm Hollow Carbon Front Strut descending from y=144 to y=252
-    s += '  <rect x="696" y="144" width="66" height="110" rx="6" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
-    # Top pin offset to TRAILING EDGE (+24 mm), Bottom pin offset to LEADING EDGE (-24 mm)!
-    s += '  <circle cx="746" cy="156" r="5.5" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # Pod outline & 55 mm top recess pocket (y = 224..274)
-    s += '  <rect x="595" y="224" width="365" height="50" rx="20" fill="#334155" fill-opacity="0.24" stroke="#0F172A" stroke-width="1.6"/>\n'
-    s += '  <rect x="688" y="224" width="82" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.3"/>\n'
-    s += '  <rect x="696" y="224" width="66" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>\n'
-    s += '  <circle cx="712" cy="242" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>\n'
-    # Stainless crab-pot line cutter notch at strut/pod LE junction!
-    s += '  <polygon points="696,224 680,224 696,204" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
-    # 12° Downward-Sloping V-Cradle Breakaway Socket under pod belly + ejected wing arrow below UP flaperons!
-    s += '  <polygon points="670,274 756,274 752,286 676,282" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
-    s += '  <path d="M 758 281 L 830 293" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>\n'
-    # Aft kick-up arrow
-    s += '  <path d="M 768 195 Q 810 192 835 168" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>\n'
+    # =========================================================================
+    # PANEL B (TOP RIGHT): FULL SIDE PROFILE SHOWING BOTH SCENARIOS EXPLICITLY!
+    # =========================================================================
+    s += '  <rect x="548" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="566" y="92" class="sec">B. Side Profile: Center Shoal vs. Wingtip Hit</text>\n'
+    s += '  <text x="566" y="109" class="dim">Scenario 1: Center shoal → Struts kick up • Scenario 2: Tip hit → Wing exits 12° down</text>\n'
 
-    # Clean non-overlapping callouts in Panel B
-    s += '  <text x="646" y="176" text-anchor="end" class="warn">Strut Fuse</text>\n'
-    s += '  <text x="646" y="188" text-anchor="end" class="lbl-sm">(~140 kgf shoal)</text>\n'
-    s += '  <text x="795" y="160" class="ok">Top Pin @ TE (+24 mm)</text>\n'
-    s += '  <text x="795" y="206" class="lbl-sm">Kicks aft on center hit</text>\n'
-    s += '  <text x="676" y="214" text-anchor="end" class="warn">Line Cutter</text>\n'
-    s += '  <text x="795" y="246" class="dim">Bottom Pin @ LE (-24 mm)</text>\n'
-    s += '  <text x="838" y="294" class="ok">12° Down-Exit (under UP flaps!)</text>\n'
-    s += '  <text x="664" y="292" text-anchor="end" class="lbl-sm">V-Cradle + Hall</text>\n'
-    s += '  <text x="550" y="314" class="ok">Center hit (&gt;140 kgf) kicks struts up; Tip hit (~70 kgf) pops V-cradle cleanly!</text>\n'
+    # Water background inside Panel B
+    s += '  <rect x="560" y="118" width="484" height="236" rx="6" fill="url(#water)"/>\n'
+    s += '  <text x="570" y="133" class="lbl-sm">← BOW (Water Flow →)</text>\n'
+    s += '  <text x="1034" y="133" text-anchor="end" class="lbl-sm">STERN →</text>\n'
 
-    # --- PANEL C (BOTTOM FULL WIDTH): FRONT CROSS-SECTION OF WIDE UPPER & LOWER TRUNNIONS ---
-    s += '  <rect x="24" y="344" width="992" height="272" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="42" y="368" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>\n'
-    s += '  <text x="42" y="385" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>\n'
+    # Top Under-Hull Rail (y = 140..152)
+    s += '  <rect x="574" y="140" width="430" height="12" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.3"/>\n'
+
+    # Front Strut (x = 668..716, chord 48 px) + Rear Strut (x = 890..938) — BOTH struts shown in 4-bar parallelogram!
+    # Forward 70 mm stop block + Red ~140 kgf Strut Kick-Up Shear Pin on Front Strut
+    s += '  <rect x="632" y="152" width="36" height="16" rx="2" fill="#334155" stroke="#0F172A" stroke-width="1.1"/>\n'
+    s += '  <circle cx="650" cy="160" r="4.4" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.1"/>\n'
+    # Front & Rear 100x18 mm Hollow Carbon Struts descending from y = 152 to y = 266
+    for sx in (668, 890):
+        s += f'  <rect x="{sx}" y="152" width="46" height="114" rx="5" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>\n'
+        # Top pin offset to TRAILING EDGE (+24 mm)
+        s += f'  <circle cx="{sx+35}" cy="162" r="4.8" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    # Kick-up dashed arc on front strut
+    s += '  <path d="M 718 198 Q 752 194 770 172" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrGreen)"/>\n'
+
+    # Flying-Keel Pod Profile (x = 588..986, y = 238..294 -> 56 px tall)
+    s += '  <rect x="588" y="238" width="398" height="56" rx="24" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.6"/>\n'
+    # 55 mm local pod top recesses + bottom pins offset to LEADING EDGE (-24 mm)
+    for sx in (668, 890):
+        s += f'  <rect x="{sx-4}" y="238" width="54" height="32" rx="3" fill="#E2E8F0" stroke="#475569" stroke-width="1.1"/>\n'
+        s += f'  <rect x="{sx}" y="238" width="46" height="30" rx="3" fill="url(#carbon)" fill-opacity="0.72"/>\n'
+        s += f'  <circle cx="{sx+11}" cy="258" r="4.6" fill="#FBBF24" stroke="#0F172A" stroke-width="1.2"/>\n'
+    # Orange stainless crab-pot line cutter at front strut/pod LE junction!
+    s += '  <polygon points="668,238 652,238 668,220" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>\n'
+
+    # Tail Propeller (x = 1002, y = 236..296) & Rudder fin
+    s += '  <rect x="986" y="258" width="16" height="16" rx="3" fill="#334155"/>\n'
+    s += '  <line x1="1004" y1="234" x2="1004" y2="298" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>\n'
+
+    # UP Flaperon (Mode 2 Cruise, sitting HIGH at y = 248 behind Main Wing, clear ABOVE ejected wing!)
+    fl_b = transform_pts(naca4_points(0.02, 0.4, 0.11, 46), 768, 252, deg=0)
+    s += f'  <polygon points="{pts_to_str(fl_b)}" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>\n'
+
+    # Golden 12° Sloped V-Cradle Socket under pod belly (x = 648..728, y = 294..304)
+    s += '  <polygon points="646,294 728,294 724,306 652,300" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>\n'
+    # SEATED Main Wing Airfoil (blue) INSIDE the V-cradle!
+    mw_seat = transform_pts(naca4_points(0.02, 0.4, 0.11, 66), 656, 300, deg=2)
+    s += f'  <polygon points="{pts_to_str(mw_seat)}" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>\n'
+    # EJECTED Main Wing Airfoil (orange) sliding 12° DOWN-AFT cleanly BELOW the UP Flaperon and caught by the 0.35 m leash!
+    mw_ej = transform_pts(naca4_points(0.02, 0.4, 0.11, 66), 808, 326, deg=12)
+    s += f'  <polygon points="{pts_to_str(mw_ej)}" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>\n'
+    # Bold green 12° down-aft exit arrow from seated wing to ejected wing!
+    s += '  <path d="M 728 306 L 798 320" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>\n'
+    # Green 0.35 m belly tether anchored forward at x = 626, holding ejected wing WELL ahead of tail prop (x = 1004)!
+    s += '  <path d="M 626 294 Q 710 326 812 326" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2"/>\n'
+    s += '  <circle cx="626" cy="294" r="3.4" fill="#059669"/>\n'
+
+    # Clean, spacious, non-overlapping callouts in Panel B
+    s += '  <text x="646" y="182" text-anchor="end" class="warn">Strut Fuse</text>\n'
+    s += '  <text x="646" y="194" text-anchor="end" class="lbl-sm">(~140 kgf)</text>\n'
+    s += '  <text x="776" y="170" class="ok">Top Pin @ TE (+24)</text>\n'
+    s += '  <text x="748" y="206" class="ok">1. Shoal → Struts kick aft!</text>\n'
+    s += '  <text x="648" y="226" text-anchor="end" class="warn">Line Cutter</text>\n'
+    s += '  <text x="792" y="232" text-anchor="middle" class="lbl-sm">UP Flaperon (safe!)</text>\n'
+    s += '  <text x="802" y="280" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>\n'
+    s += '  <text x="614" y="328" text-anchor="middle" class="dim">Seated Wing</text>\n'
+    s += '  <text x="614" y="340" text-anchor="middle" class="lbl-sm">(in V-Cradle)</text>\n'
+    s += '  <text x="954" y="328" text-anchor="middle" class="warn">2. Ejected Wing</text>\n'
+    s += '  <text x="954" y="340" text-anchor="middle" class="lbl-sm">12° down • 0.5 m clear of prop!</text>\n'
+
+    # Bottom summary lines inside Panel B
+    s += '  <text x="566" y="376" class="ok">Smart Divider: Center shoal (~140 kgf) trips struts first (wing stays ON!).</text>\n'
+    s += '  <text x="566" y="394" class="lbl-sm">One-sided tip hit (~70 kgf) pops V-cradle 12° down-aft below UP flaps + Hall 0-RPM.</text>\n'
+
+    # =========================================================================
+    # PANEL C (BOTTOM FULL WIDTH): FRONT CROSS-SECTION OF WIDE UPPER & LOWER TRUNNIONS
+    # =========================================================================
+    s += '  <rect x="24" y="428" width="1032" height="308" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="42" y="452" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>\n'
+    s += '  <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>\n'
 
     cx_c = 345
-    # Top Hard Deck & Twin 250 mm-spaced Hybrid C-Frame / O-Frame Rails
-    s += f'  <rect x="{cx_c-190}" y="400" width="380" height="14" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.3"/>\n'
-    s += f'  <rect x="{cx_c-148}" y="416" width="296" height="8" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
+    # Dimension line CLEANLY ABOVE the dark Hard Deck bar (y = 492 -> ZERO collision!)
+    s += dim_line(cx_c - 125, 492, cx_c + 125, 492, "250 mm Bearing Span (8.3× Lower Pin Load!)", dy=-6, cls="ok", stroke="#059669", marker="arrGreen")
+
+    # Top Hard Deck & Twin 250 mm-spaced Hybrid C-Frame / O-Frame Rails (shifted down 24 px -> y = 504!)
+    s += f'  <rect x="{cx_c-190}" y="504" width="380" height="14" rx="3" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.3"/>\n'
+    s += f'  <rect x="{cx_c-148}" y="520" width="296" height="8" rx="2" fill="url(#alu)" stroke="#334155" stroke-width="1.2"/>\n'
     for sd in (-1, 1):
         rx = cx_c + sd * 125
-        s += f'  <rect x="{rx-18}" y="424" width="36" height="30" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
+        s += f'  <rect x="{rx-18}" y="528" width="36" height="30" rx="3" fill="url(#alu)" stroke="#334155" stroke-width="1.4"/>\n'
         wx = rx - sd * 21
-        s += f'  <rect x="{wx-4}" y="426" width="8" height="26" rx="1.5" fill="#F97316" stroke="#9A3412" stroke-width="1"/>\n'
+        s += f'  <rect x="{wx-4}" y="530" width="8" height="26" rx="1.5" fill="#F97316" stroke="#9A3412" stroke-width="1"/>\n'
     # Wide 260 mm Tapered T-Head Yoke & 180 mm Lower Pod Saddle
-    s += f'  <path d="M {cx_c-100} 426 L {cx_c+100} 426 L {cx_c+100} 452 L {cx_c+22} 472 L {cx_c+14} 532 L {cx_c+76} 550 L {cx_c+76} 574 L {cx_c-76} 574 L {cx_c-76} 550 L {cx_c-14} 532 L {cx_c-22} 472 L {cx_c-100} 452 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
-    s += f'  <rect x="{cx_c-146}" y="435" width="292" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
+    s += f'  <path d="M {cx_c-100} 530 L {cx_c+100} 530 L {cx_c+100} 556 L {cx_c+22} 576 L {cx_c+14} 632 L {cx_c+76} 650 L {cx_c+76} 674 L {cx_c-76} 674 L {cx_c-76} 650 L {cx_c-14} 632 L {cx_c-22} 576 L {cx_c-100} 556 Z" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.6"/>\n'
+    s += f'  <rect x="{cx_c-146}" y="539" width="292" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
 
     # Lower 220 mm wide Pod Cross-Section + Twin 6 mm G10/Carbon Internal Bulkhead Cheek Plates + Belly V-Cradle Flange!
-    s += f'  <rect x="{cx_c-116}" y="532" width="232" height="62" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>\n'
+    s += f'  <rect x="{cx_c-116}" y="632" width="232" height="62" rx="20" fill="#334155" fill-opacity="0.22" stroke="#0F172A" stroke-width="1.8"/>\n'
     for sd in (-1, 1):
         bx = cx_c + sd * 88
-        s += f'  <rect x="{bx-6}" y="534" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
+        s += f'  <rect x="{bx-6}" y="634" width="12" height="58" rx="2" fill="#10B981" stroke="#065F46" stroke-width="1.2"/>\n'
         wx = bx - sd * 9
-        s += f'  <rect x="{wx-3}" y="550" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>\n'
-    s += f'  <rect x="{cx_c-98}" y="556" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
+        s += f'  <rect x="{wx-3}" y="650" width="6" height="22" rx="1" fill="#F97316" stroke="#9A3412" stroke-width="0.9"/>\n'
+    s += f'  <rect x="{cx_c-98}" y="656" width="196" height="8" rx="3" fill="#FBBF24" stroke="#78350F" stroke-width="1.2"/>\n'
     # Wide 200 mm UHMW-clamped V-cradle under pod belly (carries 100% upward lift & roll in compression!)
-    s += f'  <rect x="{cx_c-98}" y="592" width="196" height="8" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>\n'
+    s += f'  <rect x="{cx_c-98}" y="692" width="196" height="8" rx="2" fill="#F97316" stroke="#9A3412" stroke-width="1.1"/>\n'
 
     # Roll moment + lateral impact force arrows
-    s += f'  <line x1="{cx_c-148}" y1="490" x2="{cx_c-148}" y2="462" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
-    s += f'  <line x1="{cx_c+148}" y1="462" x2="{cx_c+148}" y2="490" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
-    s += f'  <text x="{cx_c-154}" y="484" text-anchor="end" class="dim">Push/Pull</text>\n'
-    s += f'  <text x="{cx_c-154}" y="497" text-anchor="end" class="lbl-sm">132 kgf/rail</text>\n'
-    s += f'  <line x1="{cx_c-180}" y1="560" x2="{cx_c-124}" y2="560" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
-    s += f'  <text x="{cx_c-184}" y="564" text-anchor="end" class="warn">±F_lat Thrust</text>\n'
+    s += f'  <line x1="{cx_c-148}" y1="594" x2="{cx_c-148}" y2="566" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
+    s += f'  <line x1="{cx_c+148}" y1="566" x2="{cx_c+148}" y2="594" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrBlue)"/>\n'
+    s += f'  <text x="{cx_c-154}" y="586" text-anchor="end" class="dim">Push/Pull</text>\n'
+    s += f'  <text x="{cx_c-154}" y="599" text-anchor="end" class="lbl-sm">132 kgf/rail</text>\n'
+    s += f'  <line x1="{cx_c-180}" y1="660" x2="{cx_c-124}" y2="660" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>\n'
+    s += f'  <text x="{cx_c-184}" y="664" text-anchor="end" class="warn">±F_lat Thrust</text>\n'
 
-    # Dimension lines
-    s += dim_line(cx_c - 125, 408, cx_c + 125, 408, "250 mm Bearing Span (8.3× Lower Load!)", dy=-6, cls="ok", stroke="#059669", marker="arrGreen")
-    s += dim_line(cx_c - 98, 610, cx_c + 98, 610, "200 mm V-Cradle &amp; 180 mm Saddle", dy=-4, cls="dim")
+    # Bottom dimension line CLEANLY BELOW the orange V-cradle bar (y = 718 -> ZERO collision!)
+    s += dim_line(cx_c - 98, 718, cx_c + 98, 718, "200 mm V-Cradle &amp; 180 mm Saddle Span", dy=12, cls="dim")
 
-    # Right-side structured engineering spec callout box inside Panel C (x = 572..998)
-    s += '  <rect x="572" y="400" width="426" height="202" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
-    s += '  <text x="588" y="422" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>\n'
-    s += '  <text x="588" y="444" class="warn">1. Central 120° V-Cradle Breakaway Socket (BOTH Halves!):</text>\n'
-    s += '  <text x="598" y="460" class="lbl-sm">• 2× Ø8 mm corner Delrin pins (y=±95 mm) pop BOTH halves @ ~70 kgf tip</text>\n'
-    s += '  <text x="598" y="473" class="lbl-sm">  hit (zero half-wing flip!); UHMW flanges take 100% lift/roll, 0.35 m leash.</text>\n'
-    s += '  <text x="588" y="496" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>\n'
-    s += '  <text x="598" y="512" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>\n'
-    s += '  <text x="598" y="525" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>\n'
-    s += '  <text x="588" y="548" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>\n'
-    s += '  <text x="598" y="564" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>\n'
-    s += '  <text x="598" y="577" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>\n'
-    s += '  <text x="598" y="593" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays on!)</text>\n'
+    # Right-side structured engineering spec callout box inside Panel C (x = 588..1038)
+    s += '  <rect x="588" y="488" width="450" height="226" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>\n'
+    s += '  <text x="606" y="512" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>\n'
+    s += '  <text x="606" y="536" class="warn">1. Central 120° V-Cradle Breakaway Socket (BOTH Halves!):</text>\n'
+    s += '  <text x="616" y="552" class="lbl-sm">• 2× Ø8 mm corner Delrin pins (y=±95 mm) pop BOTH halves @ ~70 kgf tip</text>\n'
+    s += '  <text x="616" y="566" class="lbl-sm">  hit (zero half-wing flip!); UHMW flanges take 100% lift/roll, 0.35 m leash.</text>\n'
+    s += '  <text x="606" y="592" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>\n'
+    s += '  <text x="616" y="608" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>\n'
+    s += '  <text x="616" y="622" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>\n'
+    s += '  <text x="606" y="648" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>\n'
+    s += '  <text x="616" y="664" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>\n'
+    s += '  <text x="616" y="678" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>\n'
+    s += '  <text x="616" y="698" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays on!)</text>\n'
 
     s += "</svg>\n"
     (OUT_DIR / "21-center-strut-asymmetric-loads.svg").write_text(s)
