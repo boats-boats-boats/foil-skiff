@@ -171,14 +171,14 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 ### 11. 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (Wet-Slot / Dry-Bay Mechanics & Wake Clearance)
 ![100% Internal-Pod Morphing STOL-to-Staggerwing Wet-Slot Elevator Sled](diagrams/20-morphing-stol-staggerwing.svg)
 
-### 12. `2×` Recessed Center Struts & Symmetric Central `120°` V-Cradle Breakaway Socket (Upper/Lower Trunnions & Impact Protection)
-![2x Recessed Center Struts and Symmetric Central V-Cradle Breakaway Socket](diagrams/21-center-strut-asymmetric-loads.svg)
+### 12. `2×` Recessed Center Struts & Unified Linked-Fold Main Wing Protection (Upper/Lower Trunnions & `82°` Coupled Sweep)
+![2x Recessed Center Struts and Unified Linked-Fold Main Wing Protection](diagrams/21-center-strut-asymmetric-loads.svg)
 
-### 13. Central Breakaway Wing Socket: V-Cradle Sandwich Anatomy & 5 Alternative Mechanisms
-![Central Breakaway Wing Socket: V-Cradle Sandwich Anatomy and Alternative Mechanisms](diagrams/22-breakaway-socket-options.svg)
+### 13. Unified Linked-Fold Mechanics: `22 mm` Overhang C-Slot Bridge, Intermeshing Root Gears & Flaperon Dog-Clutch
+![Unified Linked-Fold Mechanics: Overhang Bridge, Root Gears and Flaperon Dog-Clutch](diagrams/22-breakaway-socket-options.svg)
 
-### 14. Main Wing Breakaway Clearance: Flaperons UP (Cruise) vs. Deployed DOWN (STOL Takeoff Safeguards)
-![Main Wing Breakaway Clearance: Flaperons UP Cruise vs. Deployed DOWN STOL Takeoff](diagrams/23-breakaway-deployed-flaperons.svg)
+### 14. Unified Linked-Fold Clearance: All 3 Wing Tracks (`Switchblade`, `Staggerwing`, `STOL`) & `600 mm` Tunnel Beaching Dart
+![Unified Linked-Fold Clearance: All 3 Wing Tracks and 600 mm Tunnel Beaching Dart](diagrams/23-breakaway-deployed-flaperons.svg)
 
 ### 15. Modular Hard Deck Seating Ergonomics & CoG Trim (Solo 1-Chair, Tandem 2-Chair & Flush L-Track Detail)
 ![Modular Hard Deck Seating Ergonomics and L-Track Detail](diagrams/18-modular-seating-ergonomics.svg)

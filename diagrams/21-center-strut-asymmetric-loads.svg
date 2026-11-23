@@ -59,60 +59,62 @@
   </defs>
   <rect x="1" y="1" width="1078" height="758" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
   <rect x="12" y="56" width="1056" height="692" rx="8" fill="url(#grid)" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="24" y="28" class="title">21. 2× Recessed Center Struts &amp; Symmetric Central V-Cradle Breakaway Socket</text>
-  <text x="24" y="46" class="sub">Anti-Jam 120° Open-Aft V-Cradle (Both Wing Halves Eject Together!) + Wide T-Head &amp; Pod Saddle Trunnions</text>
+  <text x="24" y="28" class="title">21. 2× Recessed Center Struts &amp; Unified Linked-Fold Main Wing Protection</text>
+  <text x="24" y="46" class="sub">Coupled 82° Aft-Sweep Main Foil (Zero Rollover, Zero Detachment!) + Wide T-Head &amp; Pod Saddle Trunnions</text>
   <rect x="24" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="42" y="92" class="sec">A. Top-Down: How the 120° V-Cradle Ejects BOTH Halves</text>
-  <text x="42" y="109" class="ok">No tight side walls (zero jam!) • Tip hit shears corner pin → both halves pop aft</text>
+  <text x="42" y="92" class="sec">A. Top-Down: Unified Linked-Fold (Both Halves Sweep Together!)</text>
+  <text x="42" y="109" class="ok">Intermeshing root gears force symmetric 82° aft sweep • Zero leash, zero rollover!</text>
   <rect x="36" y="118" width="484" height="128" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="46" y="134" class="dim">A1. Close-Up of Central V-Cradle (Looking Down Through Pod Belly)</text>
+  <text x="46" y="134" class="dim">A1. Close-Up Inside 22 mm Belly Overhang C-Slot Bridge (Top View)</text>
   <text x="46" y="238" class="lbl-sm">← BOW</text>
-  <text x="510" y="238" text-anchor="end" class="ok">OPEN REAR EXIT →</text>
-  <path d="M 128 184 L 190 140 L 210 140 L 152 184 L 210 228 L 190 228 Z" fill="#FBBF24" stroke="#78350F" stroke-width="1.6"/>
-  <path d="M 154 184 L 202 148 L 226 148 L 226 220 L 202 220 Z" fill="url(#wingBlue)" fill-opacity="0.82" stroke="#0369A1" stroke-width="1.5"/>
-  <rect x="202" y="136" width="24" height="12" rx="2" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>
-  <rect x="202" y="220" width="24" height="12" rx="2" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.2"/>
-  <circle cx="200" cy="154" r="5.2" fill="#DC2626" stroke="#0F172A" stroke-width="1.3"/>
-  <circle cx="200" cy="214" r="5.2" fill="#DC2626" stroke="#0F172A" stroke-width="1.3"/>
-  <circle cx="180" cy="162" r="4" fill="#059669" stroke="#FFFFFF" stroke-width="1.2"/>
-  <line x1="232" y1="170" x2="270" y2="170" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>
-  <line x1="232" y1="198" x2="270" y2="202" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>
-  <text x="286" y="154" class="warn">1. Starboard tip hit (~70 kgf)</text>
-  <text x="296" y="167" class="lbl-sm">pivots wing on green Port fulcrum</text>
-  <text x="286" y="184" class="warn">2. 3.9× lever shears Stbd Ø6 pin</text>
-  <text x="296" y="197" class="lbl-sm">(dbl-shear, 190 mm) → pops Port!</text>
-  <text x="286" y="214" class="ok">3. BOTH halves slide aft together</text>
-  <text x="296" y="227" class="lbl-sm">Zero side walls = impossible to jam!</text>
-  <text x="46" y="168" class="lbl-sm">120° V-Cradle</text>
-  <text x="46" y="180" class="lbl-sm">(UHMW clamped</text>
-  <text x="46" y="192" class="lbl-sm">top &amp; bottom)</text>
+  <text x="510" y="238" text-anchor="end" class="ok">OPEN REAR SWEEP →</text>
+  <rect x="108" y="144" width="92" height="80" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+  <rect x="138" y="138" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
+  <rect x="138" y="196" width="38" height="34" rx="4" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.4"/>
+  <circle cx="157" cy="172" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <circle cx="157" cy="196" r="12" fill="url(#alu)" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <circle cx="157" cy="154" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <circle cx="157" cy="214" r="5.2" fill="#FBBF24" stroke="#0F172A" stroke-width="1.3"/>
+  <circle cx="184" cy="184" r="5.6" fill="#DC2626" stroke="#0F172A" stroke-width="1.4"/>
+  <path d="M 184 150 Q 216 150 232 170" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <path d="M 184 218 Q 216 218 232 198" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
+  <text x="46" y="168" class="lbl-sm">72 mm Roots</text>
+  <text x="46" y="180" class="lbl-sm">under Bridge</text>
+  <text x="46" y="192" class="lbl-sm">(100% lift!)</text>
+  <text x="272" y="152" class="warn">1. Tip hit (~85 kgf) snaps 1× Ø8</text>
+  <text x="282" y="165" class="lbl-sm">dbl-shear Delrin pin (red, center)</text>
+  <text x="272" y="184" class="ok">2. Meshed stainless gear sectors</text>
+  <text x="282" y="197" class="lbl-sm">force BOTH halves to sweep 82° aft!</text>
+  <text x="272" y="211" class="dim">3. Manual beaching pull-lanyard</text>
+  <text x="282" y="223" class="lbl-sm">uses exact same fold (30 s reset!)</text>
   <rect x="36" y="254" width="484" height="148" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-  <text x="46" y="270" class="dim">A2. Full-Pod View After Tip Hit (Wing Tethered 0.5 m Clear of Prop)</text>
+  <text x="46" y="270" class="dim">A2. Full-Pod View After Hit OR Beaching (400 mm Dart • 227 mm Ahead of Prop!)</text>
   <rect x="133" y="316" width="230" height="28" rx="14" fill="url(#carbon)" stroke="#0F172A" stroke-width="1.5"/>
   <line x1="376" y1="308" x2="376" y2="352" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
   <text x="384" y="328" class="dim">Tail Prop</text>
-  <text x="384" y="340" class="lbl-sm">(Hall cuts</text>
-  <text x="384" y="352" class="lbl-sm">0 RPM!)</text>
-  <rect x="174" y="274" width="16" height="112" rx="4" fill="url(#wingBlue)" fill-opacity="0.24" stroke="#0369A1" stroke-width="1.2" stroke-dasharray="3,2"/>
-  <polygon points="228,275 244,277 252,385 236,387" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>
-  <path d="M 152 330 Q 192 346 236 332" fill="none" stroke="#059669" stroke-width="2.6"/>
-  <circle cx="152" cy="330" r="3.5" fill="#059669"/>
+  <text x="384" y="340" class="ok">(227 mm</text>
+  <text x="384" y="352" class="ok">clear!)</text>
+  <rect x="174" y="274" width="16" height="112" rx="4" fill="url(#wingBlue)" fill-opacity="0.22" stroke="#0369A1" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <polygon points="180,318 306,302 304,315 184,326" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
+  <polygon points="180,342 306,358 304,345 184,334" fill="#F97316" fill-opacity="0.92" stroke="#9A3412" stroke-width="1.4"/>
+  <path d="M 194 278 Q 238 274 272 300" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+  <path d="M 194 382 Q 238 386 272 360" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
   <rect x="166" y="326" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
   <rect x="300" y="326" width="20" height="8" rx="2" fill="#FBBF24" stroke="#0F172A" stroke-width="1"/>
-  <line x1="176" y1="316" x2="176" y2="290" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>
-  <line x1="310" y1="344" x2="310" y2="372" stroke="#DC2626" stroke-width="2.2" marker-end="url(#arrRed)"/>
+  <line x1="176" y1="316" x2="176" y2="292" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
+  <line x1="310" y1="344" x2="310" y2="370" stroke="#DC2626" stroke-width="2" marker-end="url(#arrRed)"/>
   <line x1="132" y1="374" x2="168" y2="374" stroke="#DC2626" stroke-width="2.4" marker-end="url(#arrRed)"/>
   <text x="128" y="371" text-anchor="end" class="warn">Tip Hit</text>
-  <text x="128" y="383" text-anchor="end" class="lbl-sm">(~70 kgf)</text>
+  <text x="128" y="383" text-anchor="end" class="lbl-sm">(~85 kgf)</text>
   <text x="146" y="302" text-anchor="end" class="warn">+F_lat</text>
   <text x="318" y="374" class="warn">-F_lat</text>
-  <text x="310" y="288" text-anchor="middle" class="ok">BOTH Halves Free →</text>
-  <text x="310" y="300" text-anchor="middle" class="lbl-sm">Boat drops flat!</text>
-  <text x="132" y="397" text-anchor="middle" class="ok">0.35 m Belly Leash</text>
-  <text x="368" y="397" text-anchor="middle" class="lbl-sm">760 mm Tandem Struts (yaw ≤455 N·m)</text>
+  <text x="342" y="288" text-anchor="middle" class="ok">BOTH Halves Sweep 82°!</text>
+  <text x="342" y="300" text-anchor="middle" class="lbl-sm">Zero rollover • Sheds rope</text>
+  <text x="150" y="397" text-anchor="middle" class="ok">~400 mm Folded Width</text>
+  <text x="378" y="397" text-anchor="middle" class="lbl-sm">760 mm Tandem Struts (yaw ≤545 N·m)</text>
   <rect x="548" y="68" width="508" height="346" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
-  <text x="566" y="92" class="sec">B. Side Profile: Center Shoal vs. Wingtip Hit</text>
-  <text x="566" y="109" class="dim">Scenario 1: Center shoal → Struts kick up • Scenario 2: Tip hit → Wing exits 12° down</text>
+  <text x="566" y="92" class="sec">B. Side Profile: Center Shoal Kick-Up vs. Linked-Fold Sweep</text>
+  <text x="566" y="109" class="dim">Center shoal (~140 kgf) → Struts kick up • Tip hit (~85 kgf) → Wings sweep 82° aft</text>
   <rect x="560" y="118" width="484" height="236" rx="6" fill="url(#water)"/>
   <text x="570" y="133" class="lbl-sm">← BOW (Water Flow →)</text>
   <text x="1034" y="133" text-anchor="end" class="lbl-sm">STERN →</text>
@@ -134,26 +136,23 @@
   <polygon points="668,238 652,238 668,220" fill="#F97316" stroke="#9A3412" stroke-width="1.2"/>
   <rect x="986" y="258" width="16" height="16" rx="3" fill="#334155"/>
   <line x1="1004" y1="234" x2="1004" y2="298" stroke="#0284C7" stroke-width="4.5" stroke-linecap="round"/>
-  <polygon points="768.0,252.0 768.1,251.7 768.3,251.3 768.7,251.0 769.3,250.7 770.0,250.3 770.9,250.0 772.0,249.7 773.2,249.5 774.6,249.2 776.1,249.0 777.7,248.8 779.4,248.7 781.2,248.6 783.1,248.6 785.0,248.6 787.0,248.7 789.0,248.8 791.0,248.9 793.0,249.0 795.0,249.2 797.0,249.4 798.9,249.6 800.8,249.8 802.6,250.1 804.2,250.3 805.8,250.6 807.3,250.8 808.7,251.0 809.9,251.2 810.9,251.4 811.9,251.6 812.6,251.7 813.2,251.8 813.7,251.9 813.9,252.0 814.0,252.0 813.9,252.0 813.6,252.0 813.2,252.1 812.6,252.1 811.8,252.1 810.9,252.2 809.8,252.3 808.6,252.3 807.2,252.4 805.7,252.5 804.1,252.6 802.4,252.7 800.7,252.8 798.8,252.9 796.9,253.0 795.0,253.1 793.0,253.2 791.0,253.3 789.0,253.4 787.0,253.5 785.1,253.6 783.2,253.6 781.4,253.7 779.6,253.7 777.9,253.7 776.3,253.7 774.9,253.7 773.5,253.6 772.3,253.5 771.2,253.4 770.3,253.2 769.5,253.1 768.9,252.8 768.4,252.6 768.1,252.3" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>
-  <polygon points="646,294 728,294 724,306 652,300" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>
-  <polygon points="656.0,300.0 656.1,299.5 656.4,299.1 657.0,298.6 657.9,298.2 659.0,297.7 660.3,297.3 661.9,297.0 663.6,296.6 665.6,296.3 667.7,296.1 670.1,295.9 672.5,295.8 675.1,295.8 677.8,295.9 680.6,296.0 683.4,296.2 686.3,296.4 689.2,296.7 692.1,297.0 694.9,297.3 697.7,297.7 700.5,298.1 703.1,298.5 705.6,299.0 708.1,299.4 710.3,299.8 712.4,300.2 714.3,300.6 716.1,301.0 717.6,301.3 718.9,301.6 720.0,301.8 720.9,302.0 721.5,302.2 721.8,302.3 722.0,302.3 721.8,302.3 721.5,302.3 720.8,302.3 719.9,302.4 718.8,302.4 717.5,302.4 715.9,302.5 714.2,302.5 712.2,302.6 710.1,302.6 707.8,302.7 705.4,302.7 702.8,302.8 700.1,302.9 697.4,302.9 694.6,303.0 691.7,303.0 688.9,303.1 686.0,303.1 683.2,303.1 680.4,303.1 677.7,303.1 675.1,303.1 672.5,303.0 670.1,303.0 667.9,302.9 665.8,302.8 663.8,302.6 662.1,302.4 660.5,302.2 659.2,301.9 658.1,301.6 657.2,301.3 656.6,300.9 656.2,300.5" fill="url(#wingBlue)" stroke="#0369A1" stroke-width="1.5"/>
-  <polygon points="808.0,326.0 808.2,325.6 808.6,325.2 809.3,324.8 810.2,324.5 811.3,324.3 812.7,324.1 814.3,324.0 816.1,324.0 818.1,324.1 820.2,324.2 822.5,324.4 825.0,324.8 827.5,325.2 830.2,325.7 832.9,326.3 835.7,327.0 838.5,327.7 841.2,328.5 844.0,329.3 846.8,330.1 849.5,331.0 852.1,331.9 854.6,332.8 857.1,333.6 859.4,334.4 861.5,335.3 863.5,336.0 865.4,336.7 867.0,337.4 868.4,338.0 869.7,338.5 870.7,338.9 871.5,339.3 872.1,339.5 872.4,339.7 872.6,339.7 872.4,339.7 872.1,339.6 871.4,339.6 870.6,339.4 869.5,339.3 868.1,339.1 866.6,338.8 864.9,338.6 862.9,338.3 860.8,338.0 858.5,337.6 856.1,337.3 853.6,336.9 851.0,336.5 848.3,336.1 845.5,335.6 842.7,335.2 839.8,334.7 837.0,334.3 834.2,333.8 831.5,333.3 828.8,332.8 826.2,332.3 823.8,331.9 821.4,331.4 819.2,330.9 817.2,330.4 815.3,329.9 813.6,329.4 812.1,328.9 810.8,328.4 809.8,327.9 809.0,327.4 808.4,327.0 808.1,326.5" fill="#F97316" fill-opacity="0.90" stroke="#9A3412" stroke-width="1.5"/>
-  <path d="M 728 306 L 798 320" fill="none" stroke="#059669" stroke-width="2.4" marker-end="url(#arrGreen)"/>
-  <path d="M 626 294 Q 710 326 812 326" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="4,2"/>
-  <circle cx="626" cy="294" r="3.4" fill="#059669"/>
+  <polygon points="768.0,248.0 768.1,247.7 768.3,247.3 768.7,247.0 769.3,246.7 770.0,246.3 770.9,246.0 772.0,245.7 773.2,245.5 774.6,245.2 776.1,245.0 777.7,244.8 779.4,244.7 781.2,244.6 783.1,244.6 785.0,244.6 787.0,244.7 789.0,244.8 791.0,244.9 793.0,245.0 795.0,245.2 797.0,245.4 798.9,245.6 800.8,245.8 802.6,246.1 804.2,246.3 805.8,246.6 807.3,246.8 808.7,247.0 809.9,247.2 810.9,247.4 811.9,247.6 812.6,247.7 813.2,247.8 813.7,247.9 813.9,248.0 814.0,248.0 813.9,248.0 813.6,248.0 813.2,248.1 812.6,248.1 811.8,248.1 810.9,248.2 809.8,248.3 808.6,248.3 807.2,248.4 805.7,248.5 804.1,248.6 802.4,248.7 800.7,248.8 798.8,248.9 796.9,249.0 795.0,249.1 793.0,249.2 791.0,249.3 789.0,249.4 787.0,249.5 785.1,249.6 783.2,249.6 781.4,249.7 779.6,249.7 777.9,249.7 776.3,249.7 774.9,249.7 773.5,249.6 772.3,249.5 771.2,249.4 770.3,249.2 769.5,249.1 768.9,248.8 768.4,248.6 768.1,248.3" fill="#F97316" stroke="#9A3412" stroke-width="1.3"/>
+  <rect x="652" y="290" width="76" height="12" rx="2" fill="#FBBF24" stroke="#78350F" stroke-width="1.3"/>
+  <rect x="688" y="294" width="234" height="8" rx="3" fill="#F97316" fill-opacity="0.88" stroke="#9A3412" stroke-width="1.3"/>
+  <circle cx="690" cy="296" r="4" fill="#DC2626" stroke="#0F172A" stroke-width="1"/>
+  <line x1="734" y1="312" x2="882" y2="312" stroke="#059669" stroke-width="2.2" marker-end="url(#arrGreen)"/>
   <text x="646" y="182" text-anchor="end" class="warn">Strut Fuse</text>
   <text x="646" y="194" text-anchor="end" class="lbl-sm">(~140 kgf)</text>
   <text x="776" y="170" class="ok">Top Pin @ TE (+24)</text>
   <text x="748" y="206" class="ok">1. Shoal → Struts kick aft!</text>
   <text x="648" y="226" text-anchor="end" class="warn">Line Cutter</text>
-  <text x="792" y="232" text-anchor="middle" class="lbl-sm">UP Flaperon (safe!)</text>
+  <text x="794" y="232" text-anchor="middle" class="lbl-sm">Upper Staggerwing / Switchblade</text>
   <text x="802" y="280" text-anchor="middle" class="dim">Bottom Pins @ LE (-24)</text>
-  <text x="614" y="328" text-anchor="middle" class="dim">Seated Wing</text>
-  <text x="614" y="340" text-anchor="middle" class="lbl-sm">(in V-Cradle)</text>
-  <text x="954" y="328" text-anchor="middle" class="warn">2. Ejected Wing</text>
-  <text x="954" y="340" text-anchor="middle" class="lbl-sm">12° down • 0.5 m clear of prop!</text>
-  <text x="566" y="376" class="ok">Smart Divider: Center shoal (~140 kgf) trips struts first (wing stays ON!).</text>
-  <text x="566" y="394" class="lbl-sm">One-sided tip hit (~70 kgf) pops V-cradle 12° down-aft below UP flaps + Hall 0-RPM.</text>
+  <text x="626" y="324" text-anchor="middle" class="dim">22 mm C-Slot</text>
+  <text x="626" y="336" text-anchor="middle" class="lbl-sm">Overhang Bridge</text>
+  <text x="860" y="334" text-anchor="middle" class="warn">2. Swept 82° Aft (Never Detaches • 227 mm Clear of Prop!)</text>
+  <text x="566" y="376" class="ok">Smart Divider: Center shoal (~140 kgf) kicks struts up (wing pin holds ~170 kgf).</text>
+  <text x="566" y="394" class="lbl-sm">One-sided tip hit (~85 kgf) shears 1× Ø8 Delrin pin → BOTH halves sweep 82° aft!</text>
   <rect x="24" y="428" width="1032" height="308" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="42" y="452" class="sec">C. Front Cross-Section: How Upper 260 mm T-Head &amp; Lower 180 mm Pod Saddle Carry Roll &amp; Side Thrust</text>
   <text x="42" y="469" class="lbl-sm">Wide full-span axles cut pin bearing loads 8.3× vs. narrow clevis • Flanged UHMW/bronze thrust washers prevent sideways kick-up binding!</text>
@@ -181,17 +180,17 @@
   <line x1="165" y1="660" x2="221" y2="660" stroke="#DC2626" stroke-width="2.6" marker-end="url(#arrRed)"/>
   <text x="161" y="664" text-anchor="end" class="warn">±F_lat Thrust</text>
   <line x1="247.0" y1="718.0" x2="443.0" y2="718.0" stroke="#0284C7" stroke-width="1.2" marker-start="url(#arrBlue)" marker-end="url(#arrBlue)"/>
-  <text x="345.0" y="730.0" text-anchor="middle" class="dim">200 mm V-Cradle &amp; 180 mm Saddle Span</text>
+  <text x="345.0" y="730.0" text-anchor="middle" class="dim">200 mm Overhang C-Slot &amp; 180 mm Saddle</text>
   <rect x="588" y="488" width="450" height="226" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
   <text x="606" y="512" class="sec">3-Stage Asymmetric Load &amp; Impact Protection</text>
-  <text x="606" y="536" class="warn">1. Central 120° V-Cradle Breakaway Socket (BOTH Halves!):</text>
-  <text x="616" y="552" class="lbl-sm">• 2× vertical Ø6 mm dbl-shear Delrin pins (y=±95 mm) pop BOTH @ ~70 kgf</text>
-  <text x="616" y="566" class="lbl-sm">  hit (zero half-wing flip!); UHMW flanges take 100% lift/roll, 0.35 m leash.</text>
+  <text x="606" y="536" class="warn">1. Unified Linked-Fold Main Foil (BOTH Halves Sweep 82°!):</text>
+  <text x="616" y="552" class="lbl-sm">• 1× Ø8 mm dbl-shear Delrin pin snaps @ ~85 kgf tip hit → intermeshing</text>
+  <text x="616" y="566" class="lbl-sm">  gears sweep BOTH halves aft (0 rollover, 0 leash, 400 mm beach dart!).</text>
   <text x="606" y="592" class="ok">2. Upper End (250 mm Full-Span T-Head Trunnion):</text>
   <text x="616" y="608" class="lbl-sm">• Ø16 mm SS axle across BOTH rails cuts pin load 8.3× (1.1 t → 132 kgf).</text>
   <text x="616" y="622" class="lbl-sm">• Anti-splay bridge + UHMW thrust washers (μ≈0.08) stop kick-up binding!</text>
   <text x="606" y="648" class="dim">3. Lower End (180 mm Recessed Pod Saddle Trunnion):</text>
   <text x="616" y="664" class="lbl-sm">• Strut flares inside 55 mm recess onto Ø16 mm axle anchored into twin</text>
   <text x="616" y="678" class="lbl-sm">  6 mm G10/carbon full-height internal pod bulkheads (green) + line cutter.</text>
-  <text x="616" y="698" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays on!)</text>
+  <text x="616" y="698" class="ok">• Smart Divider: Center shoal (~140 kgf) → Strut kicks up (wing stays 0°!)</text>
 </svg>
