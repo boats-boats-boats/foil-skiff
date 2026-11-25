@@ -12,7 +12,7 @@ It combines **four breakthroughs** into one cohesive, `100%` prop-free, zero-und
    * **3-Stage Flight Progression on `600 mm` Struts:**
      * **`0–5 kn` Takeoff:** All `4` floats `~75%` submerged (`~100 kgf` total pre-lift buoyancy with center pod) $\rightarrow$ effortless **`~5.0–5.5 kn`** takeoff!
      * **`6–10 kn` Post-Takeoff Climb:** Tubes `+100 mm` clear while all `4` floats remain `150 mm` in water $\rightarrow$ rock-solid 4-corner passive pitch & roll stability!
-     * **`12–15.5 kn` High-Speed Cruise:** All `4` floats lift **`+30 mm` DRY IN AIR (`0 N` float water drag!)**, leaving only the thin `18 mm` lower vertical blades (w/ red anti-ventilation fences) wet $\rightarrow$ **`~33 nm` @ `12.0 kn` / `~20.5 nm` @ `15.5 kn`**!
+     * **`12–15.5 kn` High-Speed Cruise:** All `4` floats lift **`+30 mm` DRY IN AIR (`0 N` float water drag!)**, leaving only the thin `12–18 mm` lower vertical blades (w/ red anti-ventilation fences) wet $\rightarrow$ **`~36.5 nm` @ `12.0 kn` / `~24.2 nm` @ `15.5 kn`** on `5.38 kWh` (up to **`~27.3 nm` @ `15.5 kn`** with sleek `12 mm` outer blades + `2×` tandem center struts)!
 4. **Parallel-Float Dry 4-Channel Wing-Warping (`±3.0°` Foil AoA — ZERO Telescoping Tubes & ZERO Underwater Actuators!):**
    * The `4` corner floats and **solid fixed-length `Ø34 mm` above-water carbon tie-bars** form one `100%` rigid, always-parallel outer frame (`+330 mm` dry in air, `0` telescoping slip-joints!).
    * Each foil's `18 mm` vertical blade pivots around a **fixed `Ø10 mm` `316L` pin at the bottom of the float** (`+30 mm` dry in cruise) and continues `320 mm` straight up as an internal blade tang inside a **free-flooding vertical center trunk** (fore & aft foam float chambers stay `100%` sealed & unsinkable, zero dynamic water seals!).
@@ -79,13 +79,16 @@ It combines **four breakthroughs** into one cohesive, `100%` prop-free, zero-und
 
 ---
 
-## 4. Drag, Power, Range & Beaching Summary (`5.38 kWh` `16S LiFePO4` Pack)
+## 4. Apples-to-Apples Drag, Power & Range (`5.38 kWh` `16S LiFePO4`, Same Basis as `Model 1`)
 
-| Operating Point (`235 kg` All-Up, `60%` Twin Fixed `Ø108 mm` Jets) | Total Drag | Battery Draw (`DC kW`) | Energy (`Wh/nm`) | Usable Range (`92%` Pack) |
+| Operating Point (`235 kg` All-Up, `~60%` Twin Fixed `Ø108 mm` Jets) | Total Drag | Battery Draw (`DC kW`) | Energy (`Wh/nm`) | Gross / `92%` Usable Range |
 | :--- | :---: | :---: | :---: | :---: |
-| **`5.2 kn` Pre-Lifted Takeoff** (`~100 kgf` buoyancy, `+2.5°` twist) | `~260 N` (`58 lbf`) | `~1.8 kW` *(brief)* | — | `2–3 sec` lift-off |
-| **`12.0 kn` Eco Dry-Float Cruise** *(Sweet Spot)* | **`~175 N`** (`39 lbf`) | **`1.80 kW`** (`35 A`) | **`150 Wh/nm`** | **`~33.0 nm`** (`2.75 hrs`) |
-| **`15.5 kn` Fast Dry-Float Cruise** | **`~281 N`** (`63 lbf`) | **`3.75 kW`** (`73 A`) | **`242 Wh/nm`** | **`~20.5 nm`** (`1.32 hrs`) |
+| **`5.2 kn` Pre-Lifted Takeoff** (`~100 kgf` buoyancy, `+2.5°` twist) | `~245 N` (`55 lbf`) | `~1.7 kW` *(brief)* | — | `2–3 sec` lift-off |
+| **`12.0 kn` Eco Dry-Float Cruise** *(Sweet Spot)* | **`~172 N`** (`39 lbf`) | **`1.77 kW`** (`35 A`) | **`147 Wh/nm`** | **`36.5 nm`** / `33.6 nm` usable |
+| **`15.5 kn` Fast Cruise (Standard `4×` Center + `4× 18 mm` Outer Blades)** | **`~257 N`** (`58 lbf`) | **`3.44 kW`** (`67 A`) | **`222 Wh/nm`** | **`24.2 nm`** / `22.3 nm` usable |
+| **`15.5 kn` Optimized (`2×` Tandem Center + `4× 12 mm` Outer Blades)** | **`~229 N`** (`51 lbf`) | **`3.05 kW`** (`60 A`) | **`197 Wh/nm`** | **`27.3 nm`** / `25.1 nm` usable |
+
+* **Why `15.5 kn` is `~2.5–5.5 nm` shy of bare open-prop `Model 1` (`29.8 nm` gross):** At `15.5+ kn`, induced drag is tiny (`9 N` vs `15 N`) while $V^2$ wetted skin friction dominates. The small gap comes purely from (a) the `4` extra outer surface-piercing vertical blades (`+22–38 N`, ~`60%` of the gap) and (b) shrouded pump-jets (`~60%` eff.) vs. bare open propellers (`~63%` eff., ~`30%` of the gap)—the direct physical price of `100%` prop-free safety, `~5 kn` pre-lifted takeoff, and `0` underwater moving parts. At `12 kn` eco cruise, the wide `1.80 m` U-foils close the gap almost completely (`~36.5 nm` vs `~34.7 nm` for `Model 1`!).
 
 * **Beaching & Shallow Water (Honest `~3"` Tunnel Accounting):** Retracting the `4×` central struts lifts the flat U-foils snug beneath the `Ø460 mm` tube bottoms (`~10.5"` shallow motoring draft) while lifting all `4` outer tip floats **`~200 mm` clear above beach sand**; flip down **`Ø320 mm` QuickLok stern launching wheels** on the `Tru-Alu` transom to roll smoothly up rocky beaches (`+2.5"–4"` clear under the center pod).
 * **Estimated DIY Conversion BOM (`~$4,050` incl. `5.38 kWh` `LiFePO4`):** `2 × Ø54 mm` sealed inrunners + `2 × Flipsky 75100` `VESC`s + fixed `Ø108 mm` shrouds (`$950`), `2 × 14 kg` swappable `IP68` `LiFePO4` cartridges (`$700`), central pod + `2×` wide U-foils + `4×` `24 L` floats + `2×` solid fixed `Ø34 mm` carbon tie-bars (`$1,800`), `4×` dry `IP67` `Tr8` micro linear actuators (`$160`) + `ESP32`/`BNO085` IMU (`$140`), contoured hard deck / rail carriage & stern wheels (`$300`).

@@ -25,7 +25,7 @@ flowchart LR
 1. **3-Stage Flight Progression (`0–5` / `6–10` / `12–15.5 kn`) on `600 mm` Struts:**
    * **`0–5 kn` Takeoff:** All `4 × 24 L` corner floats are `~75%` submerged (`~100 kgf` total pre-lift buoyancy with the `28 L` center pod) $\rightarrow$ inflatable tubes `50%–75%` unloaded $\rightarrow$ effortless **`~5.0–5.5 kn`** takeoff (`-74%` induced drag vs. `1.05 m` wings!).
    * **`6–10 kn` Post-Takeoff Climb:** Tubes `+100 mm` clear while all `4` always-parallel floats remain `150 mm` in water, unloading linearly (`~10.5 kgf / 10 cm`) for rock-solid passive pitch + roll stabilization.
-   * **`12–15.5 kn` High-Speed Cruise:** All `4` floats lift **`+30 mm` DRY IN AIR (`0 N` float water drag!)**, leaving only thin `18 mm` vertical blades (w/ red anti-ventilation fences) and the single `28 L` center pod wet while the Front/Rear foils stay `320 / 190 mm` deep underwater $\rightarrow$ **`~33 nm` @ `12.0 kn` (`1.80 kW`) / `~20.5 nm` @ `15.5 kn` (`3.75 kW`)**!
+   * **`12–15.5 kn` High-Speed Cruise:** All `4` floats lift **`+30 mm` DRY IN AIR (`0 N` float water drag!)**, leaving only thin `12–18 mm` vertical blades (w/ red anti-ventilation fences) and the single `28 L` center pod wet while the Front/Rear foils stay `320 / 190 mm` deep underwater $\rightarrow$ **`~36.5 nm` @ `12.0 kn` (`1.77 kW`) / `~24.2 nm` @ `15.5 kn` (`3.44 kW`)** on standard `4×` center struts (up to **`~27.3 nm` @ `15.5 kn`** with sleek `12 mm` outer blades + `2×` tandem center struts — within `~2.5 nm` of bare open props!).
 2. **Parallel-Float Dry 4-Channel Wing-Warping (`ZERO` Telescoping Bars, `ZERO` Wet Seals!):** The four floats stay `100%` parallel on solid fixed-length `Ø34 mm` above-water carbon tie-bars. Each `18 mm` vertical blade pivots around a fixed `Ø10 mm` pin at the float bottom and extends `320 mm` up inside a free-flooding center trunk where a `$35` dry `IP67` `Tr8` linear actuator pushes the tang **`±17 mm`** (`~100 N` force, `0 W` hold) to twist each foil half **`±3.0°`** (`0.06%` strain, `>150 N·m` roll torque, `±336 N` cruise altitude lock, `>50–60 kn` divergence safety!).
 3. **`100%` Prop-Free, Dual-Drive Offshore Redundancy:** Twin fixed `Ø108 mm` wide-bore rear axial pump-jets (`132.5 cm²` total exit, `~60%` wire-to-thrust efficiency) give `360°` CAN-bus differential steering, instant reverse, kelp/swimmer safety, and limp-home redundancy—with **`0` moving tail parts**.
 4. **Honest `~3"` Tunnel Accounting & Rocky Beaching:** Retracting the `4×` central struts lifts the flat U-foils snug beneath the `Ø460 mm` tube bottoms while keeping all `4` outer floats `~200 mm` clear above beach sand; flip-down **`Ø320 mm` QuickLok stern launching wheels** roll the rigid frame ashore `+2.5"–4"` clear of rocks.
@@ -46,11 +46,27 @@ xychart-beta
 
 ---
 
+## Top 3 Architectures at a Glance
+
+| 1. PRIMARY: 4-Float Wing-Warp Jet U-Foil (`Model 13`) | 1B. Dry Wing-Warp Close-Up (`Model 14`) |
+| :---: | :---: |
+| ![PRIMARY Model 13: Central Keel + 2 Staggered U-Foils + 4 Parallel Floats + Twin Fixed Jets](renders/16-center-keel-tip-float-ufoil-3d.png) | ![Model 14 Close-Up: Rigid Tie-Bar + Fixed Lower Pivot + Dry Tr8 Linear Actuators](renders/17-wing-warp-tiebar-closeup-3d.png) |
+| **Prop-free, `0` underwater moving parts • `~5.2 kn` pre-lifted TO • `~36.5 nm` @ `12 kn` / `24.2–27.3 nm` @ `15.5 kn`** | **Solid fixed `Ø34 mm` tie-bar (`0` slip-tubes!) • `±3°` foil twist (`>150 N·m` roll) • `>50 kn` divergence safe** |
+
+| 2. Propeller Track: Split STOL Flaperons (`Model 1`) | 3. Long-Range `65–84 nm` Expedition (`Model 6`) |
+| :---: | :---: |
+| ![Model 1: Navigator 300 + Split STOL Flaperon Pod + Open Props](renders/01-navigator300-stol-3d.png) | ![Model 6: Long-Range 80/20 Tandem Expedition Build](renders/06-navigator300-lr-8020-3d.png) |
+| **Narrow `1.05 m` beam • Twin `65161` open props • `29.8 nm` @ `15.5 kn` (`2.80 kW`)** | **Single `65161` + `10"` CNC prop + `10.8 kWh` dual pack • `65–79 nm` (`84 nm` w/ `Model 7`)** |
+
+---
+
 ## Configuration Matrix
+
+*(All `5.38 kWh` ranges below use the same apples-to-apples gross pack basis; multiply by `0.92` for conservative `8%` reserve.)*
 
 | Configuration | Drive & Battery Architecture | Key Performance & Thrust | Range (`5.38 kWh` Pack) | Complete DIY Cost (incl. Pack) |
 | :--- | :--- | :--- | :---: | :---: |
-| **PRIMARY: Central-Keel 4-Float Staggered U-Foil + Dry Wing-Warping (`Models 13 & 14`)** | Single `28 L` central pod (`2 × 14 kg` `IP68` `LiFePO4`) + **Twin Fixed `Ø108 mm` Rear Diff. Pump-Jets** (`0` moving tail parts) + **`2×` Wide-Staggered `1.80 m` U-Foils** + **`4× 24 L` Parallel Floats** + **Solid Fixed Tie-Bars & `4×` Dry `Tr8` Internal Blade-Tang Actuators** | **`~5.2 kn` pre-lifted TO** (`~100 kgf` buoyancy), **3-stage flight** (floats `+30 mm` DRY @ `12–15.5 kn`), `>150 N·m` dry roll warp, **`100%` prop-free** & **`0` underwater moving parts** | **`~33.0 nm` @ `12.0 kn`**<br>**`~20.5 nm` @ `15.5 kn`** | **`~$4,150`** |
+| **PRIMARY: Central-Keel 4-Float Staggered U-Foil + Dry Wing-Warping (`Models 13 & 14`)** | Single `28 L` central pod (`2 × 14 kg` `IP68` `LiFePO4`) + **Twin Fixed `Ø108 mm` Rear Diff. Pump-Jets** (`0` moving tail parts) + **`2×` Wide-Staggered `1.80 m` U-Foils** + **`4× 24 L` Parallel Floats** + **Solid Fixed Tie-Bars & `4×` Dry `Tr8` Internal Blade-Tang Actuators** | **`~5.2 kn` pre-lifted TO** (`~100 kgf` buoyancy), **3-stage flight** (floats `+30 mm` DRY @ `12–15.5 kn`), `>150 N·m` dry roll warp, **`100%` prop-free** & **`0` underwater moving parts** | **`~36.5 nm` @ `12.0 kn`**<br>**`~24.2 nm` @ `15.5 kn`**<br>*(`~27.3 nm` w/ `12 mm` blades + `2×` center struts)* | **`~$4,050`** |
 | **Propeller Track: Split STOL Flaperon Pod (`Model 1`, Open Props)** | Bow-contoured `28 mm` Hard Deck (`0` deck boxes!) + bow-bent `Tru-Alu` Hybrid C-Frame & Dyneema Sling + `4×` `60×9 mm` blades + `2 × Flipsky 65161` + `2 × 75100 VESC` + `26 L` bay w/ **`2 × 14 kg` `IP68` cartridges** + **Split STOL Flaperons (`1,000 + 2×250 cm²`) & internal pod servos** *(or **Secondary Flush-Nested Switchblade**)* | **`7.2 kn` TO** (`6.7 kn` Switchblade), **`15.5 kn` @ `2.80 kW`** (`2.71 kW` Switchblade), narrow `1.05 m` beam | **`29.8 nm` @ `15.5 kn`**<br>*(`30.8 nm` Switchblade)* | **`~$4,280`** *(`$4,200` Switchblade)* |
 | **Long-Range Expedition (`60–75+ nm` `Navigator 300`)** *(Models 6–8)* | Single centerline `65161` + `10"×11"` 2-blade CNC prop + internal-servo tail rudder + `AR 13.5–14` (`1.50–1.55 m`) wing + Bow Dodger + **`10.76 kWh` Dual `LiFePO4`** (`5.4` pod + `5.4` `60 mm` deck/plug-in) *(or `8.2 kWh` Single-Pod `NMC`)* | **`118–125 Wh/nm` @ `12 kn`** / **`142–152 Wh/nm` @ `15.5 kn`**; keeps `4×` blades + Split STOL (80/20) OR `2×` center struts + Switchblade (Max) | **`65–70 nm` @ `15.5 kn`**<br>**`79–84 nm` @ `12 kn`** | **`~$4,450 – $4,750`** *(1× motor/VESC offsets 2nd pack!)* |
 | **Alt A: Dry `60 mm` Rigid Battery-Floor + Foil-Strut Pods** *(Rocky-Beach Pick)* | `2 × Flipsky 65161` + `2 × 75100 VESC` + dry 2-piece `EVE LF105` RIB floor + `2-sec` flip-up thin foils | `9.5 kn` takeoff, **`15.5 kn` @ `2.62 kW`**, `22.5 kn` max cont., zero submerged lithium risk | **`31.8 nm` @ `15.5 kn`** | **`~$3,350`** |
