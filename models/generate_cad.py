@@ -7,7 +7,7 @@ Secondary Open-Bow Reference: True Kit Discovery 330 (330 cm, open square bow, f
 
 Zero external Python dependencies (pure Python 3 standard library + optional OpenSCAD CLI).
 
-Generates 10 interactive binary 3D STL CAD models, 10 shaded 3D isometric SVGs, and 10 OpenSCAD PNGs:
+Generates 12 interactive binary 3D STL CAD models, 12 shaded 3D isometric SVGs, and 12 OpenSCAD PNGs:
   1. models/01_navigator300_stol_flaperons.stl       + renders/01-navigator300-stol-3d.png          + diagrams/00-navigator300-3d-cad.svg
   2. models/02_switchblade_pod.stl                   + renders/02-switchblade-pod-3d.png            + diagrams/06-switchblade-3d-cad.svg
   3. models/03_stol_flaperon_pod.stl                 + renders/03-stol-flaperon-pod-3d.png          + diagrams/07-stol-flaperons-3d-cad.svg
@@ -18,6 +18,9 @@ Generates 10 interactive binary 3D STL CAD models, 10 shaded 3D isometric SVGs, 
   8. models/08_lr_pod_closeup.stl                    + renders/08-lr-pod-closeup-3d.png             + diagrams/15-lr-pod-closeup-3d-cad.svg
   9. models/09_modular_hard_deck_seating.stl         + renders/09-modular-deck-seating-3d.png       + diagrams/17-modular-deck-seating-3d-cad.svg
  10. models/10_morphing_stol_staggerwing_pod.stl     + renders/10-morphing-stol-staggerwing-3d.png  + diagrams/19-morphing-stol-staggerwing-3d-cad.svg
+ 11. models/11_split_keel_jet_ccv_pod.stl            + renders/11-split-keel-jet-ccv-pod-3d.png     + diagrams/25-split-keel-jet-ccv-pod-3d-cad.svg
+ 12. models/12_quad_swath_tandem_jet.stl             + renders/15-quad-swath-tandem-jet-3d.png      + diagrams/26-quad-swath-tandem-jet-3d-cad.svg
+ 13. models/13_center_keel_tip_float_ufoil.stl       + renders/16-center-keel-tip-float-ufoil-3d.png + diagrams/27-center-keel-tip-float-ufoil-3d-cad.svg
 """
 
 import html
@@ -1349,6 +1352,599 @@ def build_model_10_morphing_stol_staggerwing():
     render_openscad_png(mb, RENDERS_DIR / "10-morphing-stol-staggerwing-3d.png", "10,0,-305,66,0,226,3150")
 
 
+# ---------------------------------------------------------------------------
+# MODEL 11 (PROP-FREE JET-CCV): 70/30 Split Keel Pod + Gimbaled Ring-Nozzle + Mag-Drive CCV
+# ---------------------------------------------------------------------------
+def build_model_11_split_keel_jet_ccv_pod():
+    """
+    1,450 mm (77/23 effective, ~70/30 conceptual) Split Keel Jet-CCV Pod for True Kit Navigator 300:
+      - Rigid Front/Mid Power Pod (1,120 mm, x = -730..+390 mm, 220 x 96 mm):
+          * 20 mm Kevlar crush-nose + 5 mm G10 crash bulkhead
+          * 2x Swappable IP68 LiFePO4 battery cartridges (5.38 kWh, 28 kg) right over Main Wing CoL (X_CoG = 545 mm)
+          * 4x 60x9 mm side-straddling parallelogram blades at x = -410 / +230 mm (160 mm ahead of gimbal split)
+          * 1,250 cm^2 (1.05 m span) Main Wing with thickened 15.5% inboard CCV roots (2 x 250 mm, 60x8 mm internal plenum):
+              - Starboard (+Y, foreground): Flush pop-up top door OPEN (+2.5 mm, differential roll trim!)
+              - Port (-Y): Flush pop-up top door CLOSED (clean cruise contour)
+          * Twin mid-pod Ø80 mm Mag-Drive Centrifugal CCV Pumps (2x 5065 dry motors above 1.5 mm solid carbon wall ->
+            N52 mag couplings -> 2x wet Ø80 mm impellers feeding Port & Stbd wing roots, ZERO shaft seals!)
+          * Inline Flipsky 65161 (100 Kv) + BLI annular intake + Ø140 mm axial/mixed-flow impeller & stator vanes
+      - Articulated Rear Ring-Nozzle (330 mm, x = +390..+720 mm):
+          * Zero-leak spherical gimbal collar (R = 75 mm at x = +390 mm, shown deflected +12° Yaw & +4° Pitch)
+          * Hollow converging carbon ring-shroud (Ø150 OD -> Ø132 mm exit bore; doubles as power-off ring-tail stabilizer!)
+          * 3x thin spider vanes INSIDE the gimbaled shroud carrying the sliding Ø65 -> Ø20 mm teardrop throttling plug
+            concentrically (ZERO collision at ±15° yaw!)
+    """
+    mb = MeshBuilder()
+
+    # Bow-contoured 28 mm Hard Deck (0 deck boxes!) + under-hull rails (context matching Models 8 & 10)
+    deck_st = [
+        (-1050, 220, 48, 72),
+        (-900, 295, 18, 42),
+        (-740, 320, 3, 28),
+        (60, 320, 3, 28),
+        (72, 320, 3, 28),
+        (760, 320, 3, 28),
+    ]
+    under_st = [(-1040, 130, 38, 48), (-900, 148, 8, 18), (-740, 152, -16, -2), (760, 152, -16, -2)]
+    add_contoured_deck_and_underplate(mb, deck_st, under_st, latch_x=66.0)
+    add_flush_ltracks(mb, z_top=28.0, x0=-680.0, x1=720.0, y_track=195.0)
+    for sy in (-125, 125):
+        mb.add_box(-740, 760, sy - 22, sy + 22, -24, -12, C_ALU, 1.0, stl=True)
+
+    dz = -620.0
+    # 4x Side-straddling blades anchored strictly to the rigid front/mid chassis (160 mm ahead of gimbal!)
+    add_4x_blades(mb, z_top=-22.0, z_bot=dz, fold_deg=0.0, x_front=-410.0, x_rear=230.0, y_half=122.0)
+
+    # 1. Rigid Front/Mid Keel Pod Shell (x = -730..+260 mm, 220x96 mm translucent superellipse)
+    n_ang = 24
+    pod_st = [
+        (-730, 12, 10), (-705, 58, 30), (-650, 96, 44), (-570, 110, 48),
+        (100, 110, 48), (210, 92, 54), (275, 76, 75),
+    ]
+    def make_pod_rings(st_list):
+        out = []
+        for x, ry, rz in st_list:
+            ring = []
+            for i in range(n_ang):
+                a = 2 * math.pi * i / n_ang
+                ca, sa = math.cos(a), math.sin(a)
+                exp = 0.85 if x < 180 else 1.0
+                ring.append((x, ry * math.copysign(abs(ca) ** exp, ca), dz + rz * math.copysign(abs(sa) ** exp, sa)))
+            out.append(ring)
+        return out
+
+    # Gold Kevlar crush-nose (-730..-650) + translucent carbon rigid fuselage (-650..+275)
+    mb.add_loft(make_pod_rings(pod_st[:3]), C_KEVLAR, 1.0, stl=True)
+    mb.add_loft(make_pod_rings(pod_st[2:]), C_CARBON, 0.34, stl=True)
+
+    # Internal G10 crash bulkhead (sized inside tapered nose) + 2x Swappable IP68 LiFePO4 Cartridges (5.38 kWh)
+    mb.add_box(-676, -670, -48, 48, dz - 22, dz + 22, C_ALU, 0.90, stl=False)
+    for cz in (dz - 20, dz + 16):
+        mb.add_box(-655, -75, -88, 88, cz - 14, cz + 14, C_WING_UP, 0.55, stl=False)
+
+    # 2. Main Wing (1.05 m span, 1,250 cm^2) with Thickened 15.5% Inboard CCV Roots (y = ±96..±355 mm)
+    #    and clean 10% tapered outer wingtips (y = ±355..±525 mm)
+    x_le_w = -210.0
+    dz_w = dz - 16.0
+    sec_root = naca4_section(0.025, 0.4, 0.155, 160.0, n=14)
+    sec_tip = naca4_section(0.02, 0.4, 0.10, 160.0, n=14)
+    for side in (-1, 1):
+        # Inboard thickened CCV root section (y = 96 -> 355 mm)
+        root_rings = []
+        for dist in (96.0, 225.0, 355.0):
+            root_rings.append([(x_le_w + xl, side * dist, dz_w + zl) for xl, zl in sec_root])
+        mb.add_loft(root_rings, C_WING_LOW, 1.0, stl=True)
+        # Outer clean tapered wingtip (y = 355 -> 525 mm)
+        tip_rings = []
+        for dist, taper, sweep, dih in [(355.0, 1.0, 0.0, 0.0), (445.0, 0.76, 18.0, 10.0), (525.0, 0.52, 38.0, 24.0)]:
+            tip_rings.append([(x_le_w + sweep + xl * taper, side * dist, dz_w + dih + zl * taper) for xl, zl in sec_tip])
+        mb.add_loft(tip_rings, C_WING_LOW, 1.0, stl=True)
+        # Internal 60x8 mm water plenum duct strip running from mid-pod CCV pump out through root
+        mb.add_box(x_le_w + 56, x_le_w + 114, side * 56, side * 340, dz_w - 4, dz_w + 5, C_FLAP_L, 0.55, stl=False)
+
+    # Differential Roll Trim Demonstration on Pop-Up Upper CCV Doors (x = 55%..68% chord -> -122..-101 mm):
+    # - Starboard (+Y, foreground): Orange pop-up door LIFTED OPEN (+7 mm visual lift) + Coanda jet plume!
+    # - Port (-Y): Flush closed door (dark teal)
+    mb.add_quad(
+        (x_le_w + 88, 106, dz_w + 14), (x_le_w + 88, 348, dz_w + 14),
+        (x_le_w + 126, 348, dz_w + 22), (x_le_w + 126, 106, dz_w + 22),
+        C_FLAP_R, 1.0, stl=True,
+    )
+    # Coanda jet sheet hugging starboard aft ramp
+    mb.add_quad(
+        (x_le_w + 122, 110, dz_w + 13), (x_le_w + 122, 344, dz_w + 13),
+        (x_le_w + 195, 344, dz_w - 6), (x_le_w + 195, 110, dz_w - 6),
+        C_PROP, 0.65, stl=False,
+    )
+    # Port door flush closed
+    mb.add_quad(
+        (x_le_w + 88, -348, dz_w + 14), (x_le_w + 88, -106, dz_w + 14),
+        (x_le_w + 126, -106, dz_w + 10), (x_le_w + 126, -348, dz_w + 10),
+        C_WING_UP, 1.0, stl=True,
+    )
+
+    # 3. Mid-Pod Twin Ø80 mm Mag-Drive Centrifugal CCV Pumps (x = -48..+82 mm, y = ±52 mm)
+    # Solid 1.5 mm waterproof horizontal carbon floor separating dry motors from wet impellers!
+    mb.add_box(-55, 86, -98, 98, dz - 8, dz - 4, C_CARBON_DARK, 0.90, stl=False)
+    for sy in (-52.0, 52.0):
+        # Dry 5065 motor above barrier + gold N52 drive hub
+        mb.add_rod((16.0, sy, dz + 8.0), (16.0, sy, dz + 34.0), 25.0, C_MOTOR, n=14, alpha=0.95, stl=False)
+        mb.add_rod((16.0, sy, dz - 2.0), (16.0, sy, dz + 7.0), 36.0, C_KEVLAR, n=14, alpha=0.95, stl=False)
+        # Wet Ø80 mm centrifugal impeller + volute ring below barrier (ZERO shaft seals!)
+        mb.add_rod((16.0, sy, dz - 28.0), (16.0, sy, dz - 10.0), 40.0, C_PROP, n=16, alpha=0.95, stl=False)
+        mb.add_rod((16.0, sy, dz - 36.0), (16.0, sy, dz - 28.0), 46.0, C_CARBON_DARK, n=16, alpha=0.75, stl=False)
+
+    # 4. Main Propulsion Bay (x = +100..+390 mm): Inline Flipsky 65161 + Stationary Ø150 OD Stator Casing + Impeller
+    # Inline 65161 motor (Ø65 x 162 mm) + VESC/IMU
+    mb.add_rod((105.0, 0.0, dz), (267.0, 0.0, dz), 32.5, C_MOTOR, n=16, alpha=1.0, stl=True)
+    mb.add_box(120, 210, -56, 56, dz + 28, dz + 42, C_ALU, 0.90, stl=False)  # 75100 VESC
+
+    # Helper to loft a thick-walled hollow axisymmetric shroud (watertight STL!)
+    def add_hollow_shroud(x_radii_in_out, color, alpha=1.0, transform_fn=None, n_seg=24, stl=True):
+        # x_radii_in_out: [(x, r_in, r_out), ...]
+        outer_rings, inner_rings = [], []
+        for x, ri, ro in x_radii_in_out:
+            ro_ring, ri_ring = [], []
+            for i in range(n_seg):
+                a = 2 * math.pi * i / n_seg
+                ca, sa = math.cos(a), math.sin(a)
+                po = (x, ro * ca, dz + ro * sa)
+                pi = (x, ri * ca, dz + ri * sa)
+                if transform_fn:
+                    po = transform_fn(po)
+                    pi = transform_fn(pi)
+                ro_ring.append(po)
+                ri_ring.append(pi)
+            outer_rings.append(ro_ring)
+            inner_rings.append(ri_ring)
+        # Outer wall
+        mb.add_loft(outer_rings, color, alpha=alpha, stl=stl, cap_ends=False)
+        # Inner wall (reversed winding)
+        mb.add_loft([list(reversed(r)) for r in inner_rings], color, alpha=alpha, stl=stl, cap_ends=False)
+        # Front & rear annular rim caps
+        for r_out, r_in, flip in [(outer_rings[0], inner_rings[0], True), (outer_rings[-1], inner_rings[-1], False)]:
+            for i in range(n_seg):
+                j = (i + 1) % n_seg
+                if flip:
+                    mb.add_quad(r_out[i], r_in[i], r_in[j], r_out[j], color, alpha, stl)
+                else:
+                    mb.add_quad(r_out[i], r_out[j], r_in[j], r_in[i], color, alpha, stl)
+
+    # Stationary Ø150 OD / Ø140 ID Pump/Stator Shroud (x = +265..+392 mm) + BLI intake lip
+    add_hollow_shroud([
+        (262.0, 68.0, 74.0),
+        (275.0, 70.0, 76.0),
+        (355.0, 70.0, 76.0),
+        (392.0, 70.0, 75.0),
+    ], C_CARBON, alpha=0.55, stl=True)
+
+    # Stationary center hub cone + 5-blade axial/mixed-flow impeller (x=300) + 7-vane stator (x=352)
+    mb.add_rod((267.0, 0.0, dz), (390.0, 0.0, dz), 32.5, C_CARBON_DARK, n=16, alpha=1.0, stl=True)
+    for k in range(5):
+        a = math.radians(k * 72 + 15)
+        mb.add_quad(
+            (292, 32 * math.cos(a), dz + 32 * math.sin(a)),
+            (312, 32 * math.cos(a + 0.35), dz + 32 * math.sin(a + 0.35)),
+            (308, 69 * math.cos(a + 0.25), dz + 69 * math.sin(a + 0.25)),
+            (294, 69 * math.cos(a - 0.05), dz + 69 * math.sin(a - 0.05)),
+            C_PROP, 1.0, stl=True,
+        )
+    for k in range(7):
+        a = math.radians(k * (360.0 / 7.0))
+        mb.add_quad(
+            (336, 32 * math.cos(a), dz + 32 * math.sin(a)),
+            (374, 32 * math.cos(a), dz + 32 * math.sin(a)),
+            (374, 70 * math.cos(a), dz + 70 * math.sin(a)),
+            (336, 70 * math.cos(a), dz + 70 * math.sin(a)),
+            C_ALU, 1.0, stl=True,
+        )
+
+    # Gold Spherical Gimbal Collar at x = +390 mm (R = 75 mm)
+    add_hollow_shroud([
+        (380.0, 70.0, 77.0),
+        (390.0, 70.0, 79.0),
+        (402.0, 70.0, 77.0),
+    ], C_KEVLAR, alpha=1.0, stl=True)
+
+    # 5. Articulated 330 mm Rear Ring-Nozzle (x = +390..+720 mm) deflected +12 deg Yaw & +4 deg Pitch!
+    x_piv = 390.0
+    yaw_r = math.radians(12.0)
+    pit_r = math.radians(4.0)
+    cy, sy_r = math.cos(yaw_r), math.sin(yaw_r)
+    cp, sp_r = math.cos(pit_r), math.sin(pit_r)
+
+    def rot_gimbal(p):
+        lx, ly, lz = p[0] - x_piv, p[1], p[2] - dz
+        # Pitch around Y
+        x1 = lx * cp + lz * sp_r
+        y1 = ly
+        z1 = -lx * sp_r + lz * cp
+        # Yaw around Z
+        x2 = x1 * cy - y1 * sy_r
+        y2 = x1 * sy_r + y1 * cy
+        z2 = z1
+        return (x_piv + x2, y2, dz + z2)
+
+    # Hollow converging carbon rear ring-shroud (Ø150 OD -> Ø132 ID exit bore)
+    add_hollow_shroud([
+        (392.0, 70.5, 76.5),
+        (490.0, 69.0, 75.0),
+        (610.0, 67.0, 72.5),
+        (720.0, 66.0, 70.5),
+    ], C_CARBON_DARK, alpha=0.82, transform_fn=rot_gimbal, stl=True)
+
+    # 3x Thin streamlined spider vanes INSIDE the gimbaled shroud holding the sliding plug concentrically!
+    for k in range(3):
+        a = math.radians(k * 120 + 90)
+        ca, sa = math.cos(a), math.sin(a)
+        p0 = rot_gimbal((458.0, 28.0 * ca, dz + 28.0 * sa))
+        p1 = rot_gimbal((494.0, 28.0 * ca, dz + 28.0 * sa))
+        p2 = rot_gimbal((494.0, 68.5 * ca, dz + 68.5 * sa))
+        p3 = rot_gimbal((458.0, 68.5 * ca, dz + 68.5 * sa))
+        mb.add_quad(p0, p1, p2, p3, C_ALU, 1.0, stl=True)
+
+    # Spider-mounted Gold Sliding Teardrop Throttling Plug (Ø65 -> Ø20 mm, gimbals WITH shroud!)
+    plug_st = [(432.0, 6.0), (455.0, 26.0), (495.0, 32.5), (565.0, 26.0), (645.0, 14.0), (705.0, 4.0)]
+    plug_rings = []
+    for px, pr in plug_st:
+        plug_rings.append([rot_gimbal((px, pr * math.cos(2 * math.pi * i / 18), dz + pr * math.sin(2 * math.pi * i / 18))) for i in range(18)])
+    mb.add_loft(plug_rings, C_KEVLAR, 1.0, stl=True)
+
+    # Twin Red Gimbal Servo Pushrods (Top = Pitch, Starboard Side = Yaw) from dry pod to rear shroud collar
+    mb.add_rod((290.0, 0.0, dz + 82.0), rot_gimbal((435.0, 0.0, dz + 77.0)), 4.2, C_PUSHROD, n=8, alpha=1.0, stl=True)
+    mb.add_rod((290.0, 82.0, dz), rot_gimbal((435.0, 77.0, dz)), 4.2, C_PUSHROD, n=8, alpha=1.0, stl=True)
+
+    write_binary_stl(mb, MODELS_DIR / "11_split_keel_jet_ccv_pod.stl", "FoilSkiff 11: 70/30 Split Keel Jet-CCV Pod + Gimbaled Ring-Nozzle & Mag-Drive CCV (mm)")
+    callouts = [
+        ((-920, 0, 56), "left", 96, 245, "100% Flush Bow-Contoured Hard Deck", "Zero deck boxes • Fits 250 mm Navigator 300 rails!"),
+        ((-360, 0, dz), "left", 218, 245, "Rigid Front/Mid Pod (1,120 mm)", "5.38 kWh cartridges @ CoG (545 mm) + 4× clean blades"),
+        ((-100, 230, dz_w + 18), "left", 352, 245, "Stbd Pop-Up CCV Door OPEN (+2.5 mm)", "Differential roll trim (88 N·m) + proverse yaw!"),
+        ((16, 52, dz - 20), "left", 488, 245, "Twin Ø80 mm Mag-Drive CCV Pumps", "Dry 5065 motors over 1.5 mm barrier — 0 shaft seals!"),
+        ((230, -122, -290), "right", 104, 795, "All 4× Blades on Rigid Front Chassis", "160 mm ahead of gimbal • 3.5\" beach sand clearance"),
+        ((300, 0, dz + 82), "right", 232, 795, "Inline 65161 + Ø140 BLI Pump-Jet", "3,300 RPM cruise (~60% η, 25–26 nm — 3.4× BP100!)"),
+        ((390, 0, dz + 78), "right", 365, 795, "Spherical 2-Axis Gimbal (±15°Y/±6°P)", "Balanced hinge (4.5 N·m) • Dual dry pushrods"),
+        ((625, 45, dz - 10), "right", 495, 800, "Hollow Ring-Nozzle + Spider Plug", "Plug gimbals WITH shroud (0 clash) • Ring stabilizer!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "25-split-keel-jet-ccv-pod-3d-cad.svg",
+        "3D CAD Model 11: 70/30 Split Keel Jet-CCV Pod (Gimbaled Ring-Nozzle + Mag-Drive CCV)",
+        "100% Prop-Free Foiling Pod: 1,120 mm Rigid Chassis + Twin Ø80 Mag-Drive CCV + 330 mm Articulated Nozzle (+12° Yaw / +4° Pitch)",
+        callouts, az_deg=-134, el_deg=22, scale=0.35, z_center=295,
+        footer="Interactive 3D STL: models/11_split_keel_jet_ccv_pod.stl (70/30 Split Keel Jet-CCV Pod + Mag-Drive Pumps)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "11-split-keel-jet-ccv-pod-3d.png", "30,0,-305,67,0,224,3350")
+
+
+# ---------------------------------------------------------------------------
+# MODEL 12 (QUAD-SWATH): 4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH
+# ---------------------------------------------------------------------------
+def build_model_12_quad_swath_tandem_jet():
+    """
+    4-Corner Twin-Torpedo Wide-Staggered Tandem Foiling SWATH on True Kit Navigator 300:
+      - Exact Navigator 300 hull (300 x 155 cm, Ø460 mm tubes at Y = ±545 mm, Z_center = 0,
+        realistic ~85 mm / 3.3" under-floor tunnel clearance at Z_web = -145 mm!).
+      - Twin over-tube anodized aluminum Cross-Beam Saddles at X = -520 / +520 mm (Z = +238 mm)
+        straddling the Ø460 mm tubes with vertical slide-up collars at Y = ±880 mm (ZERO hull holes,
+        ZERO interference with the cramped ~3" tunnel!).
+      - 4x Corner Surface-Piercing Buoyant Wing-Struts (NACA 0013, 220 x 28 mm at X = ±520, Y = ±880)
+        with ~820 mm OPEN MIDDLE GAP, horizontal red anti-ventilation fences (Z = -210 mm), and
+        outer rubber dock rub-strakes.
+      - 2x Sleek Lower Torpedoes (Y = ±880 mm, Z = -460 mm, Ø115 x 1,500 mm, NO 3rd center pod!):
+        each housing a 2.7 kWh cylindrical 21700 pack + VESC + Ø54 mm motor driving a fixed rear
+        Ø108 mm wide-bore axial pump-jet (132.5 cm^2 total exit, 1.76 m differential yaw lever!).
+      - Wide-Staggered Tandem Foils (1.76 m span, 65/35 lift split, 1,400 cm^2 total):
+          * Front Main Foil (900 cm^2, c = 58 mm) low at X = -520, Z = -480 mm
+          * Rear Staggerwing (500 cm^2, c = 38 mm) 140 mm higher at X = +520, Z = -340 mm (clean above wake!)
+      - Retracted QuickLok transom beach wheels shown folded up on the Tru-Alu transom.
+    """
+    mb = MeshBuilder()
+
+    # 1. Translucent True Kit Navigator 300 Tubes + Tru-Alu Transom + Realistic Low (~3.3") Air Floor
+    path = [
+        (1490, -545, 0, 45), (1360, -545, 0, 175), (1100, -545, 0, 230),
+        (450, -545, 0, 230), (-300, -545, 0, 230), (-780, -545, 18, 226),
+        (-1060, -490, 62, 212), (-1280, -340, 118, 196), (-1410, -140, 152, 188),
+        (-1445, 0, 162, 186),
+        (-1410, 140, 152, 188), (-1280, 340, 118, 196), (-1060, 490, 62, 212),
+        (-780, 545, 18, 226), (-300, 545, 0, 230), (450, 545, 0, 230),
+        (1100, 545, 0, 230), (1360, 545, 0, 175), (1490, 545, 0, 45),
+    ]
+    mb.add_tube_along_path(path, C_TUBE_GREY, n=18, alpha=0.34, stl=True, cap_ends=True)
+    # Realistic ~85 mm (3.3") tunnel web (Z = -145 mm) + 100 mm drop-stitch air floor (Z = -145..-45 mm)
+    mb.add_box(-980, 1035, -340, 340, -145, -45, C_CARBON, alpha=0.55, stl=True)
+    # Factory Tru-Alu aluminum transom
+    mb.add_box(1035, 1065, -455, 455, -145, 220, C_TRANSOM_ALU, alpha=0.85, stl=True)
+    mb.add_box(1035, 1065, -455, -180, 220, 295, C_TRANSOM_ALU, alpha=0.85, stl=True)
+    mb.add_box(1035, 1065, 180, 455, 220, 295, C_TRANSOM_ALU, alpha=0.85, stl=True)
+
+    # Folded-up QuickLok transom beach wheels (flip down for rolling rigid box-frame up rocky beaches!)
+    for sy in (-330, 330):
+        mb.add_rod((1070, sy, 80), (1185, sy, 290), 14.0, C_ALU, n=8, alpha=1.0, stl=True)
+        mb.add_cylinder_y(1195, sy - 42, sy + 42, 305, 145.0, C_CARBON_DARK, n=16, alpha=0.85, stl=True)
+
+    # 2. Twin Over-Tube Cross-Beam Saddles at X = -520 & X = +520 mm (ZERO hull holes, bypasses 3" tunnel!)
+    y_sw = 880.0
+    for bx in (-520.0, 520.0):
+        # Main aluminum cross-beam straddling both Ø460 mm tube tops (Z = +234..+268 mm)
+        mb.add_box(bx - 28, bx + 28, -y_sw - 42, y_sw + 42, 234, 268, C_ALU, 1.0, stl=True)
+        # Curved saddle pads + vertical UHMW slide-up collars at the 4 corners (220 mm vertical lift!)
+        for sy in (-545.0, 545.0):
+            mb.add_box(bx - 40, bx + 40, sy - 125, sy + 125, 224, 236, C_CARBON_DARK, 1.0, stl=True)
+        for sy in (-y_sw, y_sw):
+            mb.add_box(bx - 125, bx + 125, sy - 26, sy + 26, 200, 295, C_KEVLAR, 1.0, stl=True)
+            # Strut top extension stub showing 220 mm vertical beach-retraction travel!
+            mb.add_box(bx - 95, bx + 95, sy - 13, sy + 13, 295, 345, C_CARBON_DARK, 0.85, stl=False)
+
+    # 3. Four Corner Surface-Piercing Buoyant Wing-Struts (X = ±520, Y = ±880, ~820 mm OPEN MIDDLE GAP!)
+    strut_sec = naca4_section(0.0, 0.0, 0.13, 220.0, n=12)
+    z_torp = -460.0
+    for bx in (-520.0, 520.0):
+        for sy in (-y_sw, y_sw):
+            rings = []
+            for zz in (z_torp, -210.0, 290.0):
+                rings.append([(bx + xl - 110.0, sy + yl, zz) for xl, yl in strut_sec])
+            mb.add_loft(rings, C_CARBON_DARK, 1.0, stl=True)
+            # Mandatory Horizontal Red Anti-Ventilation Fence just below foiling waterline (Z = -210 mm)!
+            mb.add_box(bx - 118, bx + 118, sy - 34, sy + 34, -214, -206, C_PUSHROD, 1.0, stl=True)
+            # Outer closed-cell rubber dock rub-strake on outer strut face
+            out_y = sy + (18.0 if sy > 0 else -18.0)
+            mb.add_box(bx - 102, bx + 102, out_y - 6, out_y + 6, -150, 220, C_RUB_STRAKE, 1.0, stl=False)
+
+    # 4. Two Sleek Lower Buoyancy/Battery Torpedoes (Y = ±880, Z = -460, Ø115 x 1,500 mm, NO 3rd center pod!)
+    torp_st = [
+        (-780, 8), (-745, 38), (-660, 54), (-540, 57.5),
+        (420, 57.5), (540, 54), (620, 48), (685, 42),
+    ]
+    n_t = 20
+    for sy in (-y_sw, y_sw):
+        # Gold Kevlar nose + streamlined carbon torpedo body (translucent to show internal 2.7 kWh pack!)
+        def t_rings(st_sub):
+            return [[(x, sy + r * math.cos(2 * math.pi * i / n_t), z_torp + r * math.sin(2 * math.pi * i / n_t)) for i in range(n_t)] for x, r in st_sub]
+        mb.add_loft(t_rings(torp_st[:3]), C_KEVLAR, 1.0, stl=True)
+        mb.add_loft(t_rings(torp_st[2:]), C_CARBON, 0.50, stl=True)
+        # Internal 2.7 kWh cylindrical 21700 battery cartridge + VESC + Ø54 mm slim inrunner motor
+        mb.add_rod((-640, sy, z_torp), (220, sy, z_torp), 44.0, C_WING_UP, n=14, alpha=0.80, stl=False)
+        mb.add_rod((260, sy, z_torp), (460, sy, z_torp), 27.0, C_MOTOR, n=14, alpha=1.0, stl=False)
+
+        # Fixed Rear Wide-Bore Axial Pump-Jet Shroud (Ø108 OD / Ø94 exit bore, X = +560..+750 mm, ZERO moving parts!)
+        sh_st = [(560, 48, 54), (640, 49, 55), (750, 47, 52)]
+        out_r, in_r = [], []
+        for x, ri, ro in sh_st:
+            out_r.append([(x, sy + ro * math.cos(2 * math.pi * i / n_t), z_torp + ro * math.sin(2 * math.pi * i / n_t)) for i in range(n_t)])
+            in_r.append([(x, sy + ri * math.cos(2 * math.pi * i / n_t), z_torp + ri * math.sin(2 * math.pi * i / n_t)) for i in range(n_t)])
+        mb.add_loft(out_r, C_CARBON_DARK, 0.90, stl=True, cap_ends=False)
+        mb.add_loft([list(reversed(r)) for r in in_r], C_CARBON_DARK, 0.90, stl=True, cap_ends=False)
+        for r_o, r_i, flip in [(out_r[0], in_r[0], True), (out_r[-1], in_r[-1], False)]:
+            for i in range(n_t):
+                j = (i + 1) % n_t
+                mb.add_quad(r_o[i], r_i[i], r_i[j], r_o[j], C_CARBON_DARK, 0.90, True) if flip else mb.add_quad(r_o[i], r_o[j], r_i[j], r_i[i], C_CARBON_DARK, 0.90, True)
+        # Center tailcone + 5-blade fixed axial impeller inside shroud
+        mb.add_loft(t_rings([(560, 27), (660, 22), (745, 7)]), C_KEVLAR, 1.0, stl=True)
+        for k in range(5):
+            a = math.radians(k * 72 + 12)
+            mb.add_quad(
+                (598, sy + 26 * math.cos(a), z_torp + 26 * math.sin(a)),
+                (616, sy + 26 * math.cos(a + 0.35), z_torp + 26 * math.sin(a + 0.35)),
+                (614, sy + 48 * math.cos(a + 0.25), z_torp + 48 * math.sin(a + 0.25)),
+                (600, sy + 48 * math.cos(a - 0.05), z_torp + 48 * math.sin(a - 0.05)),
+                C_PROP, 1.0, stl=True,
+            )
+
+    # 5. Wide-Staggered Tandem Foils (1.76 m Span, 65/35 Lift Split, 140 mm Vertical Stagger!)
+    #    - Front Main Foil (900 cm^2, c = 58 mm) low at X = -520, Z = -480 mm
+    #    - Rear Staggerwing (500 cm^2, c = 38 mm) 140 mm HIGHER at X = +520, Z = -340 mm (clean above front wake!)
+    fwd_sec = naca4_section(0.025, 0.4, 0.11, 58.0, n=12)
+    aft_sec = naca4_section(0.020, 0.4, 0.11, 38.0, n=10)
+    fwd_rings = [[(-520.0 + xl - 24.0, y, -480.0 + zl) for xl, zl in fwd_sec] for y in (-y_sw, -440.0, 0.0, 440.0, y_sw)]
+    aft_rings = [[(520.0 + xl - 16.0, y, -340.0 + zl) for xl, zl in aft_sec] for y in (-y_sw, -440.0, 0.0, 440.0, y_sw)]
+    mb.add_loft(fwd_rings, C_WING_LOW, 1.0, stl=True)
+    mb.add_loft(aft_rings, C_FLAP_R, 1.0, stl=True)
+
+    # Subtle translucent foiling waterline plane (Z = -230 mm -> hull tubes clear of water!)
+    add_plane_grid(mb, -230.0, C_WATER, 0.10, wx0=-1550, wx1=1550, wy0=-1150, wy1=1150, n=6)
+
+    write_binary_stl(mb, MODELS_DIR / "12_quad_swath_tandem_jet.stl", "FoilSkiff 12 (Quad-SWATH): 4-Corner Twin-Torpedo Wide-Staggered Tandem Jet (mm)")
+    callouts = [
+        ((-520, 880, 265), "left", 92, 240, "Over-Tube Cross-Beam Saddles", "Zero hull holes • Completely bypasses ~3\" tunnel!"),
+        ((-520, 880, -210), "left", 212, 240, "4× Corner Struts + Anti-Vent Fences", "Open 820 mm middle cuts strut drag 55% • Passive roll/pitch"),
+        ((-520, 220, -480), "left", 352, 240, "Front Main Foil (900 cm², 65% Lift)", "1.76 m fixed-fixed beam • -74% takeoff induced drag (~5.8 kn)!"),
+        ((-320, 880, -460), "left", 492, 240, "2× Sleek Torpedoes (Ø115×1,500 mm)", "2.7 kWh cylindrical pack ea. • NO 3rd center pod!"),
+        ((1195, -330, 305), "right", 96, 800, "220 mm Vertical Lift + Stern Wheels", "Slide frame snug to tubes + roll ashore on Ø320 mm wheels"),
+        ((520, -880, -340), "right", 228, 800, "Rear Staggerwing (500 cm², 35% Lift)", "+140 mm higher above front wake • ±35 cm CoG tolerance!"),
+        ((0, 0, -95), "right", 362, 800, "Realistic ~3.3\" Navigator 300 Tunnel", "100% untouched factory floor & air deck inside boat"),
+        ((710, -880, -460), "right", 495, 800, "Twin Fixed Ø108 mm Rear Pump-Jets", "1.76 m yaw arm • 0 moving tail parts • ~31 nm @ 12 kn!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "26-quad-swath-tandem-jet-3d-cad.svg",
+        "3D CAD Model 12: 4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH (Prop-Free)",
+        "Open-Middle 4-Strut SWATH • 65/35 Staggered Tandem Foils (1.76 m) • Twin Fixed Ø108 Jets • Zero Moving Underwater Parts!",
+        callouts, az_deg=-138, el_deg=21, scale=0.275, z_center=220,
+        footer="Interactive 3D STL: models/12_quad_swath_tandem_jet.stl (4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "15-quad-swath-tandem-jet-3d.png", "40,0,-120,70,0,224,5200")
+
+
+# ---------------------------------------------------------------------------
+# MODEL 13: Central Keel + 2 Staggered U-Foils + 4 Tip Floats + Dry Tie-Bars
+# ---------------------------------------------------------------------------
+def build_model_13_center_keel_tip_float_ufoil():
+    """
+    Central Keel Pod + 2 Wide-Staggered U-Foils (1.80 m) + 4 Corner Tip Floats + Above-Water Tie-Bars:
+      - True Kit Navigator 300 hull (Ø460 mm tubes, bottom Z = -230 mm, realistic ~3.3" tunnel floor Z = -145 mm).
+      - Central lowering struts (4x slim 60x9 mm blades) lower the single 28 L central keel pod (5.38 kWh batteries +
+        twin fixed Ø108 mm rear differential pump-jets — NO outer torpedoes!) to Z = -830 mm.
+      - TWO Wide-Staggered 1.80 m U-Foils (65/35 lift split, 1,400 cm^2 total, 0 separate tail stabilizer needed!):
+          * Front Main U-Foil (900 cm^2, Z = -830 mm) bends UP into front 18 mm lower vertical blades
+          * Rear Staggered U-Foil (500 cm^2, Z = -700 mm — +130 mm HIGHER above front wake!) bends UP into rear 18 mm blades
+          * All 4 lower vertical blades carry horizontal red anti-ventilation fences (Z = -570 mm).
+      - FOUR Stepped Corner Tip Floats (2 Front @ X = -440 mm, 2 Rear @ X = +460 mm, Z = -480..-80 mm, 24 L ea. = 96 L):
+          * Top View:  Classical streamlined torpedo (NACA 0014 teardrop, 620 x 135 mm)
+          * Side View: Vertical rounded-corner rectangle (620 x 400 mm, R = 65 mm corners)
+          * Connected front-to-back on each side by an ABOVE-WATER longitudinal carbon tie-bar (Z = -180 mm, 0 N water drag,
+            adds massive pitch/torsion stiffness & acts as a continuous side dock rub-rail!).
+      - 3-Stage Flight Progression:
+          * 0-5 kn Takeoff (WL Z = -180):    All 4 floats ~75% submerged (~100 kgf 4-corner pre-lift!)
+          * 6-10 kn Low Foil (WL Z = -330):  Tubes +100 mm clear; all 4 floats STILL 150 mm in water (4-corner stability!)
+          * 12-15.5 kn Cruise (WL Z = -510): All 4 floats +30 mm DRY IN AIR & tie-bars +330 mm dry (0 drag!),
+            Front foil 320 mm deep & Rear staggerwing 190 mm deep underwater (~33 nm @ 12 kn / ~20.5 nm @ 15.5 kn!).
+    """
+    mb = MeshBuilder()
+
+    # 1. Translucent True Kit Navigator 300 Hull + Realistic Low (~3.3") Air Floor + Tru-Alu Transom
+    path = [
+        (1490, -545, 0, 45), (1360, -545, 0, 175), (1100, -545, 0, 230),
+        (450, -545, 0, 230), (-300, -545, 0, 230), (-780, -545, 18, 226),
+        (-1060, -490, 62, 212), (-1280, -340, 118, 196), (-1410, -140, 152, 188),
+        (-1445, 0, 162, 186),
+        (-1410, 140, 152, 188), (-1280, 340, 118, 196), (-1060, 490, 62, 212),
+        (-780, 545, 18, 226), (-300, 545, 0, 230), (450, 545, 0, 230),
+        (1100, 545, 0, 230), (1360, 545, 0, 175), (1490, 545, 0, 45),
+    ]
+    mb.add_tube_along_path(path, C_TUBE_GREY, n=18, alpha=0.34, stl=True, cap_ends=True)
+    mb.add_box(-980, 1035, -340, 340, -145, -45, C_CARBON, alpha=0.52, stl=True)
+    mb.add_box(1035, 1065, -455, 455, -145, 220, C_TRANSOM_ALU, alpha=0.85, stl=True)
+    mb.add_box(1035, 1065, -455, -180, 220, 295, C_TRANSOM_ALU, alpha=0.85, stl=True)
+    mb.add_box(1035, 1065, 180, 455, 220, 295, C_TRANSOM_ALU, alpha=0.85, stl=True)
+
+    # Under-floor rail carriage beneath realistic low tunnel (Z = -165..-145 mm)
+    for sy in (-125, 125):
+        mb.add_box(-650, 1065, sy - 20, sy + 20, -165, -145, C_ALU, 1.0, stl=True)
+
+    dz_pod = -830.0
+    # 2. Central Lowering Struts (4x slim 60x9 mm carbon blades from tunnel rails down to central keel pod)
+    add_4x_blades(mb, z_top=-155.0, z_bot=dz_pod, fold_deg=0.0, x_front=-440.0, x_rear=340.0, y_half=122.0)
+
+    # 3. Single Central Keel Pod (1,350 x 220 x 96 mm, 28 L buoyancy — NO outer torpedoes!)
+    n_ang = 20
+    pod_st = [
+        (-700, 12, 10), (-670, 58, 30), (-605, 96, 44), (-520, 110, 48),
+        (240, 110, 48), (400, 96, 46), (520, 76, 42), (610, 40, 26),
+    ]
+    def p_rings(st_sub):
+        out = []
+        for x, ry, rz in st_sub:
+            ring = []
+            for i in range(n_ang):
+                a = 2 * math.pi * i / n_ang
+                ca, sa = math.cos(a), math.sin(a)
+                ring.append((x, ry * math.copysign(abs(ca) ** 0.85, ca), dz_pod + rz * math.copysign(abs(sa) ** 0.85, sa)))
+            out.append(ring)
+        return out
+    mb.add_loft(p_rings(pod_st[:3]), C_KEVLAR, 1.0, stl=True)
+    mb.add_loft(p_rings(pod_st[2:]), C_CARBON, 0.45, stl=True)
+    mb.add_box(-590, 140, -86, 86, dz_pod - 32, dz_pod + 32, C_WING_UP, 0.72, stl=False)
+
+    # Twin Fixed Wide-Bore Rear Differential Pump-Jets on Center Pod Tail (Y = ±56 mm, Ø108 OD, 0 moving parts!)
+    n_j = 16
+    for sy in (-56.0, 56.0):
+        sh_st = [(440, 47, 53), (540, 48, 54), (660, 46, 51)]
+        out_r, in_r = [], []
+        for x, ri, ro in sh_st:
+            out_r.append([(x, sy + ro * math.cos(2 * math.pi * i / n_j), dz_pod + ro * math.sin(2 * math.pi * i / n_j)) for i in range(n_j)])
+            in_r.append([(x, sy + ri * math.cos(2 * math.pi * i / n_j), dz_pod + ri * math.sin(2 * math.pi * i / n_j)) for i in range(n_j)])
+        mb.add_loft(out_r, C_CARBON_DARK, 0.92, stl=True, cap_ends=False)
+        mb.add_loft([list(reversed(r)) for r in in_r], C_CARBON_DARK, 0.92, stl=True, cap_ends=False)
+        for r_o, r_i, flip in [(out_r[0], in_r[0], True), (out_r[-1], in_r[-1], False)]:
+            for i in range(n_j):
+                j = (i + 1) % n_j
+                mb.add_quad(r_o[i], r_i[i], r_i[j], r_o[j], C_CARBON_DARK, 0.92, True) if flip else mb.add_quad(r_o[i], r_o[j], r_i[j], r_i[i], C_CARBON_DARK, 0.92, True)
+        cone_r = [[(x, sy + r * math.cos(2 * math.pi * i / 12), dz_pod + r * math.sin(2 * math.pi * i / 12)) for i in range(12)] for x, r in [(440, 26), (560, 20), (655, 6)]]
+        mb.add_loft(cone_r, C_KEVLAR, 1.0, stl=True)
+
+    # 4. TWO Wide-Staggered 1.80 m U-Foils (Front Main Low @ Z = -830 | Rear Staggered High @ Z = -700 mm!)
+    y_tip = 900.0
+    x_fwd, x_aft = -440.0, 460.0
+    z_fwd, z_aft = dz_pod, dz_pod + 130.0  # Rear staggerwing +130 mm higher above front wake!
+
+    # Rear center strut pylon tying Rear Staggered U-Foil (Z = -700) cleanly down to the pod/rear struts
+    pylon_sec = naca4_section(0.0, 0.0, 0.14, 95.0, n=10)
+    mb.add_loft([[(x_aft + xl - 40.0, yl, zz) for xl, yl in pylon_sec] for zz in (dz_pod, z_aft)], C_CARBON_DARK, 1.0, stl=True)
+
+    def add_u_foil(x_c, z_base, chord, col, r_bend=140.0):
+        # Horizontal flat center foil spanning Y = -(y_tip - r_bend) .. +(y_tip - r_bend)
+        y_flat = y_tip - r_bend
+        sec_h = naca4_section(0.025, 0.4, 0.12, chord, n=12)
+        h_rings = []
+        for y in (-y_flat, -y_flat * 0.5, -100.0, 100.0, y_flat * 0.5, y_flat):
+            taper = 1.0 - 0.14 * (abs(y) / y_flat)
+            h_rings.append([(x_c - chord * 0.45 + xl * taper, y, z_base + zl * taper) for xl, zl in sec_h])
+        mb.add_loft(h_rings, col, 1.0, stl=True)
+
+        # Curved U-corners + thin 18 mm vertical blades rising up to float bottom (Z = -480 mm)
+        v_sec = naca4_section(0.0, 0.0, 0.15, max(95.0, chord * 1.15), n=12)
+        for side in (-1, 1):
+            bend_rings = []
+            for k in range(7):
+                th = (math.pi / 2.0) * k / 6.0
+                cy = side * (y_flat + r_bend * math.sin(th))
+                cz = z_base + r_bend * (1.0 - math.cos(th))
+                bend_rings.append([(x_c - chord * 0.45 + xl * 0.92, cy + tl * math.sin(th) * side, cz + tl * math.cos(th)) for xl, tl in v_sec])
+            mb.add_loft(bend_rings, col, 1.0, stl=True)
+            z_bend_top = z_base + r_bend
+            vb_rings = [[(x_c - chord * 0.45 + xl * 0.92, side * y_tip + tl, zz) for xl, tl in v_sec] for zz in (z_bend_top, -570.0, -475.0)]
+            mb.add_loft(vb_rings, col, 1.0, stl=True)
+            # Mandatory Horizontal Red Anti-Ventilation Fence on each of the 4 lower vertical blades (Z = -570 mm)!
+            mb.add_box(x_c - chord * 0.55, x_c + chord * 0.85, side * y_tip - 24, side * y_tip + 24, -574, -566, C_PUSHROD, 1.0, stl=True)
+
+    add_u_foil(x_fwd, z_fwd, 95.0, C_WING_LOW, r_bend=140.0)   # Front Main U-Foil (65% lift, low)
+    add_u_foil(x_aft, z_aft, 65.0, C_WING_UP,  r_bend=120.0)   # Rear Staggered U-Foil (35% lift, +130 mm high!)
+
+    # 5. FOUR Stepped Corner Tip Floats (2 Front @ X = -440, 2 Rear @ X = +460, Z = -480..-80 mm, 24 L each = 96 L!)
+    #    - TOP VIEW:  Classical torpedo (NACA 0014 teardrop, 620 x 135 mm)
+    #    - SIDE VIEW: Vertical rectangle with R = 65 mm rounded corners!
+    z_f0, z_f1 = -480.0, -80.0
+    r_crn = 65.0
+    L_fl = 620.0
+    z_stations = [-480, -474, -460, -438, -415, -280, -145, -122, -100, -86, -80]
+    for xf in (x_fwd, x_aft):
+        for side in (-1, 1):
+            fl_rings = []
+            for zz in z_stations:
+                dz_e = min(zz - z_f0, z_f1 - zz)
+                if dz_e < r_crn:
+                    u = (r_crn - dz_e) / r_crn
+                    shrink = r_crn * (1.0 - math.sqrt(max(0.0, 1.0 - u * u)))
+                    w_sc = math.sqrt(max(0.14, 1.0 - max(0.0, (24.0 - dz_e) / 24.0) ** 2))
+                else:
+                    shrink = 0.0
+                    w_sc = 1.0
+                Lz = max(140.0, L_fl - 2.0 * shrink)
+                torp_sec = naca4_section(0.0, 0.0, 0.215 * w_sc, Lz, n=16)  # ~133 mm max torpedo width!
+                fl_rings.append([(xf - Lz * 0.45 + xl, side * y_tip + yl, zz) for xl, yl in torp_sec])
+            mb.add_loft(fl_rings, C_FLAP_R, 0.94, stl=True, cap_ends=True)
+
+    # 6. ABOVE-WATER Longitudinal Carbon Tie-Bars connecting Front & Rear Floats on Port & Starboard (Z = -180 mm)!
+    #    Stays +330 mm DRY IN AIR during 12-15.5 kn cruise (0 N water drag!), eliminates float torsion & acts as dock rail!
+    for side in (-1, 1):
+        mb.add_rod((x_fwd - 180.0, side * y_tip, -175.0), (x_aft + 180.0, side * y_tip, -175.0), 18.0, C_ALU, n=12, alpha=1.0, stl=True)
+        # Outer dark rubber rub-strake cap along tie-bar for non-marking dock protection
+        out_y = side * (y_tip + 18.0)
+        mb.add_box(x_fwd - 220, x_aft + 220, out_y - 6, out_y + 6, -187, -163, C_RUB_STRAKE, 1.0, stl=False)
+
+    # Translucent 12-15.5 kn High-Speed Cruise Waterline (Z = -510 mm: all 4 floats +30 mm DRY, tie-bars +330 mm DRY!)
+    add_plane_grid(mb, -510.0, C_WATER, 0.12, wx0=-1550, wx1=1550, wy0=-1150, wy1=1150, n=6)
+
+    write_binary_stl(mb, MODELS_DIR / "13_center_keel_tip_float_ufoil.stl", "FoilSkiff 13: Central Keel + 2 Staggered U-Foils + 4 Tip Floats + Dry Tie-Bars (mm)")
+    callouts = [
+        ((-440, 900, -280), "left", 92, 245, "4× Corner Tip Floats (24 L Ea. = 96 L)", "Top: torpedo • Side: rounded rect (620×400 mm) — 4-pt stability!"),
+        ((10, 900, -175), "left", 218, 245, "Above-Water Longitudinal Tie-Bar (Dry!)", "Locks front & rear floats (+330 mm in air = 0 N drag) + dock rail"),
+        ((-440, 900, -570), "left", 352, 245, "Front Main U-Foil (65% Lift, 320 mm Deep)", "Thin 18 mm blade + anti-vent fence • Only blades wet @ 12–15 kn"),
+        ((-420, 0, -830), "left", 492, 245, "Single 28 L Central Keel Pod (0 Torps!)", "5.38 kWh pack in 1 pod • ~100 kgf total 0 kn pre-lift buoyancy"),
+        ((340, -122, -480), "right", 92, 800, "Central Lowering Struts (4× 60×9 mm)", "Lowers all 4 floats 75% underwater at 0 kn for ~5 kn takeoff"),
+        ((460, -900, -280), "right", 220, 800, "3-Stage Flight: 0→5 / 6→10 / 12→15 kn", "Wet @ 6–10 kn (pitch+roll stable) → +30 mm DRY @ 12–15.5 kn!"),
+        ((460, -450, -700), "right", 358, 800, "Rear Staggered U-Foil (+130 mm Higher!)", "35% lift clean above front wake • Replaces aft stab • ±35 cm CoG"),
+        ((580, -56, -830), "right", 492, 800, "Twin Fixed Ø108 mm Rear Pump-Jets", "132.5 cm² exit • 0 moving tail parts • ~33 nm @ 12 kn!"),
+    ]
+    render_3d_svg(
+        mb, DIAG_DIR / "27-center-keel-tip-float-ufoil-3d-cad.svg",
+        "3D CAD Model 13: Central Keel + 2 Staggered U-Foils + 4 Tip Floats + Dry Tie-Bars",
+        "12–15.5 kn Cruise (WL Z = -510 mm): All 4 Corner Floats +30 mm DRY & Tie-Bars +330 mm DRY • 2 Staggered Foils Deep Underwater!",
+        callouts, az_deg=-138, el_deg=21, scale=0.265, z_center=380,
+        footer="Interactive 3D STL: models/13_center_keel_tip_float_ufoil.stl (2 Staggered U-Foils + 4 Corner Tip Floats + Above-Water Tie-Bars)",
+    )
+    render_openscad_png(mb, RENDERS_DIR / "16-center-keel-tip-float-ufoil-3d.png", "30,0,-340,70,0,224,5400")
+
+
 if __name__ == "__main__":
     for old_f in [
         MODELS_DIR / "01_step_out_flying_keel_truekit.stl",
@@ -1374,4 +1970,7 @@ if __name__ == "__main__":
     build_model_08_lr_pod_closeup()
     build_model_09_modular_seating()
     build_model_10_morphing_stol_staggerwing()
-    print("All 10 3D STL models, 10 annotated 3D SVGs, and 10 OpenSCAD PNG renders generated successfully.")
+    build_model_11_split_keel_jet_ccv_pod()
+    build_model_12_quad_swath_tandem_jet()
+    build_model_13_center_keel_tip_float_ufoil()
+    print("All 13 3D STL models, 13 annotated 3D SVGs, and 13 OpenSCAD PNG renders generated successfully.")

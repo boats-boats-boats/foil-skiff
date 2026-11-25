@@ -23,6 +23,11 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **8** | [`models/08_lr_pod_closeup.stl`](models/08_lr_pod_closeup.stl) | *Long-Range Pod Cutaway* | **Internal Cutaway of Long-Range Single-Prop Pod:** translucent shell showing `2×` recessed center struts, swappable cartridges (`5.4 kWh` `LiFePO4` / `8.2 kWh` `NMC`), `1×` `75100` VESC, internal rudder servo & `10"` 2-blade CNC prop |
 | **9** | [`models/09_modular_hard_deck_seating.stl`](models/09_modular_hard_deck_seating.stl) | **`Navigator 300`** *(Modular Deck)* | **Modular Hard Deck Seating System:** Bow-contoured 2-piece Hard Deck + **flush recessed twin L-Track rails (`390 mm` spacing)** + **2 quick-release low-sit ergonomic chairs** + right-hand armrest wireless helm pod (`0` trip edges when empty!) |
 | **10** | [`models/10_morphing_stol_staggerwing_pod.stl`](models/10_morphing_stol_staggerwing_pod.stl) | *Dual-Mode Wing Upgrade* | **100% Internal-Pod Morphing STOL-to-Staggerwing Sled:** `90 mm` pod encloses a **Wet-Slot / Dry-Bay Vertical Elevator Sled (`70 mm` stroke, `0` external arms!)** switching between **DOWN STOL (`6–8 mm` slot)** & **UP Protected Staggerwing (`57 mm` / `4–5×` above wake!)** via `Tr10×2` leadscrew + `2×` direct-drive `IP68` servos ON sled |
+| **11** | [`models/11_split_keel_jet_ccv_pod.stl`](models/11_split_keel_jet_ccv_pod.stl) | *Prop-Free Jet-CCV Pod* | **`70/30` Split Keel Jet-CCV Pod (`1,450 mm` LOA):** Rigid front/mid chassis (`1,120 mm`, `5.38 kWh` @ CoG, `Flipsky 65161` + `Ø140` BLI pump-jet, twin `Ø80 mm` zero-seal mag-drive CCV pumps + pop-up inboard roll-trim doors) + **330 mm 2-axis gimbaled hollow ring-nozzle** carrying a **spider-mounted sliding plug** (`~60%` η, `25–26 nm` — `3.4×` `BP100`!) |
+| **12** | [`models/ccv_magdrive_pump_80mm.scad`](models/ccv_magdrive_pump_80mm.scad) | *Printable Bench-Test Pump* | **`Ø80 mm` Mag-Drive Centrifugal CCV Pump (`5.5 L/s @ 0.50 bar`):** `6`-blade backward-curved impeller (`N_q ≈ 52`), logarithmic volute, `608` ceramic wet bearing, and `6× N52` mag-coupling across a `1.5 mm` solid barrier (`0` shaft seals!) — includes 4 ready-to-print `1:1` STLs |
+| **13** | [`models/gimbal_nozzle_150mm.scad`](models/gimbal_nozzle_150mm.scad) | *Close-Up Gimbal CAD* | **2-Axis Spherical Ring-Nozzle Gimbal & Spider-Mounted Plug:** Male/female spherical `UHMW-PE` seal (`R = 75 mm`), external `Ø179 mm` Cardan ring (`±15°` Y / `±6°` P, zero collision), heim-joint servo pushrods & `3`-vane spider-mounted sliding plug (`Tr8×2` leadscrew) — includes 4 printable `1:1` STLs |
+| **14** | [`models/12_quad_swath_tandem_jet.stl`](models/12_quad_swath_tandem_jet.stl) | *Quad-SWATH Tandem Jet* | **4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH (`ZERO` Moving Tail Parts!):** Over-tube cross-beams (bypasses `~3"` tunnel!), `4×` corner buoyant wing-struts (`820 mm` open middle + anti-ventilation fences), `2× Ø115×1,500 mm` battery torpedoes, `65/35` staggered tandem foils (`1.76 m`, `+140 mm` vertical stagger) & twin fixed `Ø108 mm` rear pump-jets (`~31 nm` @ `12 kn`) |
+| **15** | [`models/13_center_keel_tip_float_ufoil.stl`](models/13_center_keel_tip_float_ufoil.stl) | *2-Wing 4-Float U-Foil* | **Central Keel + `2` Staggered U-Foils + `4` Corner Tip Floats + Above-Water Tie-Bars (`NO` Outer Torpedoes!):** `4 × 24 L` corner floats (top: torpedo; side: `620×400 mm` rounded rect) tied fore-to-aft by **dry above-water carbon rails** (`0 N` water drag!), `65/35` staggered `1.80 m` U-foils (`+130 mm` vertical stagger), all `4` floats wet @ `6–10 kn` and **`+30 mm` DRY @ `12–15.5 kn`** (`~33 nm` @ `12 kn`) |
 
 ---
 
@@ -161,6 +166,69 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 <summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
 
 ![Annotated 3D Isometric CAD: 100% Internal-Pod Morphing STOL-to-Staggerwing Sled](diagrams/19-morphing-stol-staggerwing-3d-cad.svg)
+
+</details>
+
+---
+
+### 11. Prop-Free Foiling Track: `70/30` Split Keel Jet-CCV Pod (Gimbaled Ring-Nozzle + Mag-Drive CCV)
+*Full `1,450 mm` prop-free foiling pod documented in [`SPLIT_KEEL_JET_CCV_POD.md`](SPLIT_KEEL_JET_CCV_POD.md): **`1,120 mm` rigid front/mid chassis** houses `5.38 kWh` cartridges dead-on Wing CoL (`X_CoG = 545 mm`), all `4×` blades (`160 mm` ahead of the gimbal split), twin `Ø80 mm` zero-seal mag-drive CCV pumps feeding `2 × 250 mm` inboard wing-root plenums (foreground Starboard pop-up door OPEN for `88 N·m` differential roll + proverse yaw!), and an inline `Flipsky 65161` (`100 Kv`) driving a `Ø140 mm` BLI pump-jet. Behind the gold spherical gimbal (`±15°` Yaw / `±6°` Pitch), a **`330 mm` hollow converging ring-nozzle** (`Ø132 mm` bore) doubles as a power-off ring-tail stabilizer and carries a **spider-mounted sliding teardrop plug** concentrically (`~60%` η, **`~25–26 nm`** @ `15.5 kn` — `3.4×` the `BP100` hull jet!).*
+
+![OpenSCAD 3D Render: 70/30 Split Keel Jet-CCV Pod](renders/11-split-keel-jet-ccv-pod-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: 70/30 Split Keel Jet-CCV Pod](diagrams/25-split-keel-jet-ccv-pod-3d-cad.svg)
+
+</details>
+
+---
+
+### 12. Printable Bench-Test Unit: `Ø80 mm` Mag-Drive Centrifugal CCV Pump (`5.5 L/s @ 0.50 bar`)
+*Parametric `1:1` OpenSCAD design ([`models/ccv_magdrive_pump_80mm.scad`](models/ccv_magdrive_pump_80mm.scad)) with 4 manifold printable STLs (`impeller`, `volute`, `bulkhead_lid`, `drive_hub`) for tub bench-testing. Fits in a `~56 mm` stack inside the `96 mm` keel pod with **zero rotary shaft seals** (`6× 15×10×5 mm N52` magnets across a solid `1.5 mm` waterproof barrier transmit `>4.5 N·m` vs. `1.42 N·m` running torque at `2,350 RPM`).*
+
+![OpenSCAD 3D Cutaway: Ø80 mm Mag-Drive Centrifugal CCV Pump](renders/12-ccv-magdrive-pump-80mm-3d.png)
+
+---
+
+### 13. Close-Up Gimbal Mechanics: 2-Axis Spherical Ring-Nozzle & Spider-Mounted Sliding Plug
+*Parametric `1:1` OpenSCAD mechanical assembly ([`models/gimbal_nozzle_150mm.scad`](models/gimbal_nozzle_150mm.scad)) with 4 manifold printable STLs (`stator_housing`, `cardan_ring`, `rear_nozzle`, `sliding_plug`). Shows live **`+12°` Yaw / `+4°` Pitch** deflection across the stationary `R = 75.0 mm` male spherical ball, white `UHMW-PE` spherical seal band, gold external `Ø179 mm` Cardan ring (Pitch on 3/9 o'clock stationary fork pins; Yaw on 12/6 o'clock inward nozzle pins — mathematically collision-free!), red spherical heim-joint servo pushrods, and the `Ø65 → Ø16 mm` teardrop plug sliding on `3` internal spider vanes + `Tr8×2` leadscrew concentrically inside the pivoting shroud.*
+
+![OpenSCAD 3D Close-Up Cutaway: 2-Axis Spherical Ring-Nozzle Gimbal](renders/13-gimbal-nozzle-cutaway-3d.png)
+
+<details>
+<summary><strong>View Exploded Mechanical Assembly (All Gimbal Parts Separated)</strong></summary>
+
+![OpenSCAD 3D Exploded View: 2-Axis Spherical Ring-Nozzle Gimbal](renders/14-gimbal-nozzle-exploded-3d.png)
+
+</details>
+
+---
+
+### 14. Zero-Moving-Parts Prop-Free Track: 4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH (`Model 12`)
+*Full `1:1` assembly documented in [`QUAD_SWATH_TANDEM_JET.md`](QUAD_SWATH_TANDEM_JET.md): mounts via **two over-tube aluminum cross-beam saddles** across the `Navigator 300`'s `Ø460 mm` tubes (`0` hull holes, completely bypasses the real `~3"` tunnel!). Four slim `NACA 0013` corner wing-struts (`220 × 28 mm`, `820 mm` open middle gap, horizontal red anti-ventilation fences) join **two sleek `Ø115 × 1,500 mm` battery torpedoes** (`2 × 2.7 kWh`, no 3rd center pod!) carrying **twin fixed `Ø108 mm` rear differential pump-jets** (`1.76 m` yaw lever arm, `0` moving tail parts!) and **wide-staggered `65/35` tandem foils** (`900 cm²` front-low + `500 cm²` rear-high `+140 mm` above front wake $\rightarrow$ `~5.8 kn` passive takeoff, `±35 cm` CoG freedom, **`~31 nm` @ `12 kn`**). Vertical `220 mm` strut slide-up + stern `QuickLok` launching wheels handle rocky beaching cleanly.*
+
+![OpenSCAD 3D Render: 4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH](renders/15-quad-swath-tandem-jet-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: 4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH](diagrams/26-quad-swath-tandem-jet-3d-cad.svg)
+
+</details>
+
+---
+
+### 15. 3-Stage 4-Float Staggered U-Foil: Central Keel + `2` Staggered U-Foils + `4` Tip Floats + Above-Water Tie-Bars (`Model 13`)
+*Combines the **`-50%` lower body drag of a single `28 L` central keel pod** (`5.38 kWh` pack + twin fixed `Ø108 mm` rear differential pump-jets, **NO outer torpedoes!**) with **two wide-staggered `1.80 m` U-foils** (Front Main `65%` lift at `Z = -830 mm`; Rear Staggered `35%` lift `+130 mm` higher above front wake) bending up into `18 mm` lower vertical blades (with red anti-ventilation fences) topped by **four `24 L` corner tip floats** (`620 × 400 × 135 mm` — torpedo from above, rounded-corner rectangle from the side). **Above-water longitudinal carbon tie-bars (`Z = -175 mm`)** rigidly connect front and rear floats on each side (`+330 mm` dry in air = `0 N` water drag!), eliminating blade torsion and acting as continuous outer dock rub-rails: **`0–5 kn`** (`~100 kgf` 4-corner pre-lift), **`6–10 kn`** (all `4` floats wet for full passive pitch + roll stabilization), **`12–15.5 kn`** (all `4` floats **`+30 mm` DRY IN AIR** $\rightarrow$ **`~33 nm` @ `12 kn` / `~20.5 nm` @ `15.5 kn`**).*
+
+![OpenSCAD 3D Render: Central Keel + Stepped Torpedo-Planform Tip-Float U-Foil](renders/16-center-keel-tip-float-ufoil-3d.png)
+
+<details>
+<summary><strong>View Annotated 3D Isometric Engineering Callouts (SVG)</strong></summary>
+
+![Annotated 3D Isometric CAD: Central Keel + Stepped Torpedo-Planform Tip-Float U-Foil](diagrams/27-center-keel-tip-float-ufoil-3d-cad.svg)
 
 </details>
 
