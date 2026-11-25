@@ -2,9 +2,9 @@
 
 A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), and [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), pairing **interactive millimeter-scale 3D `.stl` CAD models** (orbitable directly in GitHub's native 3D viewer), **multi-material OpenSCAD 3D renderings (`renders/`)**, and **25 mathematically-scaled engineering SVG drawings (`diagrams/`)**.
 
-* **Primary Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `60 cm` inside beam, `Ø460 mm` continuous closed-bow tubes, factory `Tru-Alu` rigid aluminum transom, `31 kg` bare weight, `500 kg` capacity).
-* **Primary Wing & Actuation:** **Deep-Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`, `400 mm` deep)** with **`2×` `IP67` brushless servos sealed INSIDE the Flying-Keel Pod** (`ZERO` boxes above the top Hard Deck, `ZERO` external strut pushrods, `ZERO` surface-piercing wave-slam wings!).
-* **Secondary Wing:** **Flush-Nested Top-Deck Switchblade (`+1,300 cm²` roof-nested blades + `1,250 cm²` lower thin wing)** for maximum `22 kn` speed & `30.8 nm` range.
+* **Primary Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `60–70 cm` inside beam, `Ø460 mm` continuous closed-bow tubes, realistic `~3"–4"` under-floor tunnel, factory `Tru-Alu` rigid aluminum transom, `31 kg` bare weight, `500 kg` capacity).
+* **PRIMARY Architecture (`Models 13 & 14`):** **Central-Keel 4-Float Wide-Staggered U-Foil with Dry Above-Water 4-Channel Wing-Warping & Twin Fixed `Ø108 mm` Differential Pump-Jets** ([`WING_WARP_UFOIL_JET.md`](WING_WARP_UFOIL_JET.md)) — `100%` prop-free, `0` underwater moving parts, `3`-stage flight (`~100 kgf` pre-lift $\rightarrow$ wet `6–10 kn` stability $\rightarrow$ `+30 mm` DRY floats @ `12–15.5 kn`, `~33 nm` @ `12 kn`).
+* **Propeller Track (`Models 1–10`):** **Deep-Submerged Split STOL Flaperons (`1,000 + 2×250 cm²`)** & **Flush-Nested Top-Deck Switchblade (`30.8 nm` @ `15.5 kn`)** with internal pod servos (`ZERO` boxes above the top Hard Deck).
 * **Secondary Open-Bow Hull Reference:** **`True Kit Discovery 330`** / **`Takacat LX`** (open square bow enabling a full rigid Bow-to-Transom O-Frame).
 
 ---
@@ -27,7 +27,8 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 | **12** | [`models/ccv_magdrive_pump_80mm.scad`](models/ccv_magdrive_pump_80mm.scad) | *Printable Bench-Test Pump* | **`Ø80 mm` Mag-Drive Centrifugal CCV Pump (`5.5 L/s @ 0.50 bar`):** `6`-blade backward-curved impeller (`N_q ≈ 52`), logarithmic volute, `608` ceramic wet bearing, and `6× N52` mag-coupling across a `1.5 mm` solid barrier (`0` shaft seals!) — includes 4 ready-to-print `1:1` STLs |
 | **13** | [`models/gimbal_nozzle_150mm.scad`](models/gimbal_nozzle_150mm.scad) | *Close-Up Gimbal CAD* | **2-Axis Spherical Ring-Nozzle Gimbal & Spider-Mounted Plug:** Male/female spherical `UHMW-PE` seal (`R = 75 mm`), external `Ø179 mm` Cardan ring (`±15°` Y / `±6°` P, zero collision), heim-joint servo pushrods & `3`-vane spider-mounted sliding plug (`Tr8×2` leadscrew) — includes 4 printable `1:1` STLs |
 | **14** | [`models/12_quad_swath_tandem_jet.stl`](models/12_quad_swath_tandem_jet.stl) | *Quad-SWATH Tandem Jet* | **4-Corner Twin-Torpedo Wide-Staggered Tandem SWATH (`ZERO` Moving Tail Parts!):** Over-tube cross-beams (bypasses `~3"` tunnel!), `4×` corner buoyant wing-struts (`820 mm` open middle + anti-ventilation fences), `2× Ø115×1,500 mm` battery torpedoes, `65/35` staggered tandem foils (`1.76 m`, `+140 mm` vertical stagger) & twin fixed `Ø108 mm` rear pump-jets (`~31 nm` @ `12 kn`) |
-| **15** | [`models/13_center_keel_tip_float_ufoil.stl`](models/13_center_keel_tip_float_ufoil.stl) | *2-Wing 4-Float U-Foil* | **Central Keel + `2` Staggered U-Foils + `4` Corner Tip Floats + Above-Water Tie-Bars (`NO` Outer Torpedoes!):** `4 × 24 L` corner floats (top: torpedo; side: `620×400 mm` rounded rect) tied fore-to-aft by **dry above-water carbon rails** (`0 N` water drag!), `65/35` staggered `1.80 m` U-foils (`+130 mm` vertical stagger), all `4` floats wet @ `6–10 kn` and **`+30 mm` DRY @ `12–15.5 kn`** (`~33 nm` @ `12 kn`) |
+| **15** | [`models/13_center_keel_tip_float_ufoil.stl`](models/13_center_keel_tip_float_ufoil.stl) | **`PRIMARY` Architecture** | **Central Keel + `2` Staggered U-Foils + `4` Corner Tip Floats + Above-Water Tie-Bars (`NO` Outer Torpedoes!):** `4 × 24 L` corner floats (top: torpedo; side: `620×400 mm` rounded rect) tied fore-to-aft by **dry passive telescoping carbon slip-bars** (`0 N` water drag!), `65/35` staggered `1.80 m` U-foils (`+130 mm` stagger), wet @ `6–10 kn` and **`+30 mm` DRY @ `12–15.5 kn`** (`~33 nm` @ `12 kn`) |
+| **16** | [`models/wing_warp_tiebar_closeup.scad`](models/wing_warp_tiebar_closeup.scad) | **`PRIMARY` Close-Up CAD** | **Dry 4-Float Wing-Warping & Passive Telescoping Slip-Tube Close-Up (`Model 14`):** Cutaway orange corner floats revealing dry non-backdrivable worm actuators (`0 W` hold), `Ø28/Ø34 mm` UHMW passive slip-collar (`±34 mm` ΔL, `~56 N` shear), `18 mm` blades + anti-vent fences & gold `25%`-chord UD carbon spars (`>50 kn` divergence safe) — includes `2` printable STLs |
 
 ---
 
@@ -234,7 +235,17 @@ A complete visual companion to [`electric-foiling-dinghy-guide.md`](electric-foi
 
 ---
 
+### 16. PRIMARY Close-Up: Dry 4-Float Wing-Warping & Passive Telescoping Slip-Tube (`Model 14`)
+*Parametric `1:1` OpenSCAD mechanical close-up ([`models/wing_warp_tiebar_closeup.scad`](models/wing_warp_tiebar_closeup.scad)) with 2 manifold printable STLs ([`wing_warp_slip_collar.stl`](models/wing_warp_slip_collar.stl) and [`wing_warp_actuator_clevis.stl`](models/wing_warp_actuator_clevis.stl)). Shows the cutaway tops of the Front & Rear `24 L` orange floats exposing the **dry non-backdrivable worm-gear actuators** (`+330 mm` dry in air!), the **passive `Ø28/Ø34 mm` UHMW-bushed telescoping carbon tie-bar** absorbing `±34 mm` differential length change while carrying `~56 N` vertical shear, and the submerged `25%`-chord gold UD carbon main spars ensuring `>50–60 kn` divergence safety.*
+
+![OpenSCAD 3D Close-Up: Dry 4-Float Wing-Warping & Passive Telescoping Tie-Bar](renders/17-wing-warp-tiebar-closeup-3d.png)
+
+---
+
 ## Part II — Scaled 2D Engineering Drawings (`diagrams/`)
+
+### 10B. PRIMARY: 3-Stage 4-Float Flight Waterlines & Dry Wing-Warping Hydroelastic Proof
+![3-Stage 4-Float Flight Progression & Dry Wing-Warping Mechanics](diagrams/29-wing-warp-3stage-flight-dynamics.svg)
 
 ### 11. 100% Internal-Pod Morphing STOL-to-Staggerwing Sled (Wet-Slot / Dry-Bay Mechanics & Wake Clearance)
 ![100% Internal-Pod Morphing STOL-to-Staggerwing Wet-Slot Elevator Sled](diagrams/20-morphing-stol-staggerwing.svg)

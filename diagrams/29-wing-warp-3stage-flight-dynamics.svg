@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640">
+  <defs>
+    <style>
+      .bg { fill: #0B1220; }
+      .card { fill: #111A2E; stroke: #243352; stroke-width: 1.5; rx: 10; }
+      .title { font: 700 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .sub { font: 400 12.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .sec { font: 700 13.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .lbl { font: 600 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .mut { font: 400 10.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .ok  { font: 700 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #34D399; }
+      .wrn { font: 700 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #FBBF24; }
+      .err { font: 700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #F87171; }
+    </style>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0369A1" stop-opacity="0.08"/>
+    </linearGradient>
+    <marker id="ag" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399"/>
+    </marker>
+    <marker id="aw" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#FBBF24"/>
+    </marker>
+  </defs>
+
+  <rect width="1120" height="640" class="bg"/>
+  <text x="28" y="34" class="title">FoilSkiff PRIMARY — 3-Stage 4-Float Flight Progression &amp; Dry Above-Water Wing-Warping Mechanics</text>
+  <text x="28" y="54" class="sub">True Kit Navigator 300 (Ø460 mm Tubes, ~3&quot; Tunnel) • Single 28 L Central Keel + Twin Fixed Ø108 Jets + 2 Staggered 1.80 m U-Foils + 4× 24 L Corner Floats</text>
+
+  <!-- ==================== TOP ROW: 3-STAGE FLIGHT WATERLINES ==================== -->
+  <!-- Stage 1 -->
+  <rect x="24" y="72" width="346" height="252" class="card"/>
+  <text x="40" y="96" class="sec">Stage 1: 0–5 kn Takeoff (Lowered Pre-Lift)</text>
+  <text x="40" y="113" class="mut">WL = +50 mm above tube bottom • 4× Floats 75% submerged</text>
+  <rect x="34" y="156" width="326" height="148" fill="url(#water)"/>
+  <line x1="34" y1="156" x2="360" y2="156" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- Boat + U-foil at Stage 1 (low) -->
+  <g transform="translate(0, 14)">
+    <circle cx="136" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <circle cx="258" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <rect x="158" y="132" width="78" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1.2"/>
+    <line x1="184" y1="144" x2="184" y2="232" stroke="#64748B" stroke-width="3"/>
+    <line x1="210" y1="144" x2="210" y2="232" stroke="#64748B" stroke-width="3"/>
+    <path d="M 94 176 L 94 214 Q 94 234 118 234 L 276 234 Q 300 234 300 214 L 300 176" fill="none" stroke="#0EA5E9" stroke-width="5"/>
+    <!-- 4x Floats 75% submerged! -->
+    <rect x="85" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <rect x="291" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <line x1="84" y1="204" x2="104" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <line x1="290" y1="204" x2="310" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <ellipse cx="197" cy="234" rx="18" ry="9" fill="#0D9488" stroke="#F8FAFC" stroke-width="1.3"/>
+  </g>
+  <text x="197" y="290" class="ok" text-anchor="middle">~100 kgf Pre-Lift Buoyancy + All 4 Tips +2.5°</text>
+  <text x="197" y="308" class="mut" text-anchor="middle">Tubes 50%–75% unloaded → Effortless ~5.2 kn Lift-Off!</text>
+
+  <!-- Stage 2 -->
+  <rect x="387" y="72" width="346" height="252" class="card"/>
+  <text x="403" y="96" class="sec">Stage 2: 6–10 kn Low Foil (Passive Climb)</text>
+  <text x="403" y="113" class="mut">WL = −100 mm • Tubes +100 mm clear • Floats 150 mm wet</text>
+  <rect x="397" y="168" width="326" height="136" fill="url(#water)"/>
+  <line x1="397" y1="168" x2="723" y2="168" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+  <g transform="translate(363, -2)">
+    <circle cx="136" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <circle cx="258" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <rect x="158" y="132" width="78" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1.2"/>
+    <line x1="184" y1="144" x2="184" y2="232" stroke="#64748B" stroke-width="3"/>
+    <line x1="210" y1="144" x2="210" y2="232" stroke="#64748B" stroke-width="3"/>
+    <path d="M 94 176 L 94 214 Q 94 234 118 234 L 276 234 Q 300 234 300 214 L 300 176" fill="none" stroke="#0EA5E9" stroke-width="5"/>
+    <rect x="85" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <rect x="291" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <line x1="84" y1="204" x2="104" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <line x1="290" y1="204" x2="310" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <ellipse cx="197" cy="234" rx="18" ry="9" fill="#0D9488" stroke="#F8FAFC" stroke-width="1.3"/>
+  </g>
+  <text x="560" y="290" class="wrn" text-anchor="middle">4-Corner Linear Unloading (~10.5 kgf / 10 cm)</text>
+  <text x="560" y="308" class="mut" text-anchor="middle">Rock-solid passive pitch &amp; roll stability during climb</text>
+
+  <!-- Stage 3 -->
+  <rect x="750" y="72" width="346" height="252" class="card"/>
+  <text x="766" y="96" class="sec">Stage 3: 12–15.5 kn Cruise (Floats DRY!)</text>
+  <text x="766" y="113" class="mut">WL = −280 mm • Floats +30 mm DRY • Main Foil 320 mm deep</text>
+  <rect x="760" y="182" width="326" height="122" fill="url(#water)"/>
+  <line x1="760" y1="182" x2="1086" y2="182" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+  <g transform="translate(726, -18)">
+    <circle cx="136" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <circle cx="258" cy="128" r="24" fill="#CBD5E1" fill-opacity="0.22" stroke="#94A3B8" stroke-width="1.4"/>
+    <rect x="158" y="132" width="78" height="12" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1.2"/>
+    <line x1="184" y1="144" x2="184" y2="232" stroke="#64748B" stroke-width="3"/>
+    <line x1="210" y1="144" x2="210" y2="232" stroke="#64748B" stroke-width="3"/>
+    <path d="M 94 176 L 94 214 Q 94 234 118 234 L 276 234 Q 300 234 300 214 L 300 176" fill="none" stroke="#0EA5E9" stroke-width="5"/>
+    <rect x="85" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <rect x="291" y="134" width="18" height="50" rx="6" fill="#F97316" stroke="#F8FAFC" stroke-width="1.2"/>
+    <line x1="84" y1="204" x2="104" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <line x1="290" y1="204" x2="310" y2="204" stroke="#F87171" stroke-width="2.5"/>
+    <ellipse cx="197" cy="234" rx="18" ry="9" fill="#0D9488" stroke="#F8FAFC" stroke-width="1.3"/>
+  </g>
+  <text x="923" y="290" class="ok" text-anchor="middle">0 N Float Water Drag • ~33 nm @ 12 kn!</text>
+  <text x="923" y="308" class="mut" text-anchor="middle">Only 18 mm blades + 28 L pod wet • Dry warp locks height</text>
+
+  <!-- ==================== BOTTOM ROW: DRY WING-WARPING & HYDROELASTIC PROOF ==================== -->
+  <rect x="24" y="340" width="668" height="278" class="card"/>
+  <text x="42" y="366" class="sec">Side Elevation — Dry 4-Channel Wing-Warping &amp; Passive Telescoping Carbon Tie-Bar</text>
+  <text x="42" y="383" class="mut">Actuators sit +330 mm DRY IN AIR inside the 4 floats • Passive Ø28/Ø34 UHMW slip-tube absorbs ±34 mm ΔL &amp; carries F_z shear</text>
+
+  <!-- Cruise Waterline in Side Panel -->
+  <rect x="36" y="514" width="644" height="92" fill="url(#water)"/>
+  <line x1="36" y1="514" x2="680" y2="514" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="48" y="508" class="mut">12–15.5 kn Waterline (Floats +30 mm DRY)</text>
+
+  <!-- Front Float + Blade + Main Foil (slightly twisted -2 deg) -->
+  <g transform="rotate(-4, 185, 574)">
+    <rect x="168" y="492" width="34" height="82" rx="3" fill="#0EA5E9" fill-opacity="0.78" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="160" y="524" width="50" height="5" rx="1.5" fill="#F87171"/>
+    <rect x="112" y="410" width="146" height="88" rx="20" fill="#F97316" fill-opacity="0.28" stroke="#F97316" stroke-width="1.8"/>
+    <rect x="162" y="422" width="46" height="28" rx="4" fill="#1E293B" stroke="#F8FAFC" stroke-width="1.3"/>
+    <circle cx="185" cy="436" r="8" fill="#FBBF24"/>
+    <path d="M 156 574 C 166 565, 200 566, 236 574 C 206 581, 170 581, 156 574 Z" fill="#0EA5E9" stroke="#F8FAFC" stroke-width="1.4"/>
+    <circle cx="185" cy="574" r="4" fill="#FBBF24"/>
+  </g>
+
+  <!-- Rear Float + Blade + Staggered Foil (+130 mm higher, twisted +2 deg) -->
+  <g transform="rotate(4, 525, 548)">
+    <rect x="511" y="492" width="28" height="56" rx="3" fill="#14B8A6" fill-opacity="0.82" stroke="#E2E8F0" stroke-width="1.2"/>
+    <rect x="504" y="522" width="42" height="5" rx="1.5" fill="#F87171"/>
+    <rect x="452" y="410" width="146" height="88" rx="20" fill="#F97316" fill-opacity="0.28" stroke="#F97316" stroke-width="1.8"/>
+    <rect x="502" y="422" width="46" height="28" rx="4" fill="#1E293B" stroke="#F8FAFC" stroke-width="1.3"/>
+    <circle cx="525" cy="436" r="8" fill="#FBBF24"/>
+    <path d="M 502 548 C 510 541, 538 541, 566 548 C 542 554, 514 554, 502 548 Z" fill="#14B8A6" stroke="#F8FAFC" stroke-width="1.4"/>
+    <circle cx="525" cy="548" r="4" fill="#FBBF24"/>
+  </g>
+
+  <!-- Passive Telescoping Carbon Slip-Tube Tie-Bar -->
+  <line x1="176" y1="436" x2="365" y2="436" stroke="#94A3B8" stroke-width="11" stroke-linecap="round"/>
+  <line x1="345" y1="436" x2="533" y2="436" stroke="#CBD5E1" stroke-width="6.5" stroke-linecap="round"/>
+  <rect x="328" y="427" width="54" height="18" rx="4" fill="#0EA5E9" stroke="#F8FAFC" stroke-width="1.4"/>
+  <text x="355" y="416" class="lbl" text-anchor="middle">Passive Ø28 / Ø34 Carbon Slip-Tube + 120 mm UHMW Collar</text>
+  <text x="355" y="462" class="wrn" text-anchor="middle">Absorbs ΔL = ±34 mm freely • Carries F_z ≈ 56 N shear</text>
+
+  <!-- Shear arrows -->
+  <line x1="94" y1="472" x2="94" y2="424" stroke="#34D399" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="86" y="452" class="ok" text-anchor="end">+F_z</text>
+  <line x1="616" y1="424" x2="616" y2="472" stroke="#34D399" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="624" y="452" class="ok" text-anchor="start">−F_z</text>
+
+  <text x="185" y="598" class="lbl" text-anchor="middle">Front Main Foil (25%-c UD Spar)</text>
+  <text x="525" y="598" class="lbl" text-anchor="middle">Rear Staggered Foil (+130 mm High)</text>
+
+  <!-- ==================== BOTTOM RIGHT: KEY ENGINEERING NUMBERS ==================== -->
+  <rect x="708" y="340" width="388" height="278" class="card"/>
+  <text x="726" y="366" class="sec">Verified Hydroelastic &amp; Control Specs</text>
+
+  <text x="726" y="394" class="lbl">1. Foil Twist Authority (±2.5° @ 15.5 kn)</text>
+  <text x="738" y="412" class="mut">• Roll Torque (diff. ±2.5°): &gt;150 N·m (0 W bleed drag)</text>
+  <text x="738" y="428" class="mut">• Direct Heave / Pitch Trim: ±336 N (±34 kgf)</text>
+
+  <text x="726" y="454" class="lbl">2. Composite Fatigue &amp; Torque Budget</text>
+  <text x="738" y="472" class="mut">• Peak Surface Shear Strain: 0.055% (~10× endurance)</text>
+  <text x="738" y="488" class="mut">• Actuator Torque (1 ply ±45° skin): ~25–32 N·m (dry!)</text>
+
+  <text x="726" y="514" class="lbl">3. Mandatory Divergence Safety (&gt;50–60 kn)</text>
+  <text x="738" y="532" class="ok">• 0° UD Carbon Spar dead-on 25%–28% chord (e ≤ 3 mm)</text>
+  <text x="738" y="548" class="ok">• Non-backdrivable Worm/Tr8 locks tip (4× margin!)</text>
+
+  <text x="726" y="574" class="lbl">4. Propulsion &amp; Zero-Moving-Tail Specs</text>
+  <text x="738" y="592" class="mut">• Twin Fixed Ø108 mm Rear Jets (132.5 cm², 0 servos)</text>
+  <text x="738" y="608" class="wrn">• Range (5.38 kWh): ~33 nm @ 12 kn | ~20.5 nm @ 15.5 kn</text>
+</svg>

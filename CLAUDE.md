@@ -1,12 +1,22 @@
 # CLAUDE.md — Project Context & Engineering Guidelines for `foil-skiff`
 
 ## 1. Project Overview
-`foil-skiff` (**FoilSkiff**) is an R&D, hydrodynamics, and fabrication repository for a **Bow-Contoured Rigid Hard Deck + Deep-Submerged Split STOL Flaperon Flying-Keel Pod** (primary) and **Flush-Nested Top-Deck Switchblade Pod** (secondary) with swappable `IP68` battery cartridges.
+`foil-skiff` (**FoilSkiff**) is an R&D, hydrodynamics, and fabrication repository whose **PRIMARY ARCHITECTURE** is the **Central-Keel 4-Float Wide-Staggered U-Foil with Dry Above-Water 4-Channel Wing-Warping & Twin Fixed Differential Pump-Jets (`Models 13 & 14`, see [`WING_WARP_UFOIL_JET.md`](WING_WARP_UFOIL_JET.md))**—with the **Propeller Track** (Split STOL Flaperon & Flush-Nested Switchblade pods) preserved as secondary high-speed/narrow-beam options.
 
-* **Primary Reference Hull:** **`True Kit Navigator 300`** (`300 × 155 cm`, `600 mm` inside beam, `Ø460 mm` continuous closed curved bow tubes, factory notched `Tru-Alu` rigid aluminum transom rated to `10 HP`, `31 kg` bare weight, `500 kg` capacity, `105 × 60 × 30 cm` bag).
+* **Primary Reference Hull:** **`True Kit Navigator 300`** (`300 × 155 cm` [some revisions `170 cm`], `60–70 cm` inside beam, `Ø460 mm` continuous closed curved bow tubes, factory notched `Tru-Alu` rigid aluminum transom rated to `10 HP` short/extra-short shaft, `31 kg` bare weight, `500 kg` capacity, `105 × 60 × 30 cm` bag). **IMPORTANT TUNNEL REALITY CHECK:** True Kit does NOT publish exact tunnel height; real-world `Navigator 300` welded PVC tunnel clearance is approximately **`~75–100 mm` (`3"–4"`)** above flat ground (NOT `230 mm`!). Always tape-measure actual `H_tunnel_mid` and `H_tunnel_transom` before cutting struts, and use stern launching wheels or outer-tube clearance for rocky beaching.
 * **Secondary Open-Bow Reference:** **`True Kit Discovery 330`** (`330 × 165 cm`, `36 kg`) and **`Takacat LX`** (open square bow enabling a full rigid Bow-to-Transom O-Frame).
 
-Primary reference documents: [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), and [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md).
+Primary reference documents: [`WING_WARP_UFOIL_JET.md`](WING_WARP_UFOIL_JET.md) **(PRIMARY)**, [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md), [`QUAD_SWATH_TANDEM_JET.md`](QUAD_SWATH_TANDEM_JET.md), [`SPLIT_KEEL_JET_CCV_POD.md`](SPLIT_KEEL_JET_CCV_POD.md), [`BREAKAWAY_WING_SOCKET.md`](BREAKAWAY_WING_SOCKET.md), [`DESIGN_TRADE_OFFS.md`](DESIGN_TRADE_OFFS.md), and [`VISUAL_ATLAS.md`](VISUAL_ATLAS.md).
+
+---
+
+## 1B. PRIMARY Architecture Rules (Central-Keel 4-Float Wing-Warp Jet U-Foil — Do Not Violate!)
+1. **Single `28 L` Central Keel Pod (`NO` Outer Submerged Torpedoes):** Centralizes `5.38 kWh` `IP68` batteries + `2 × Flipsky 75100` `VESC`s + **twin fixed `Ø108 mm` wide-bore rear differential pump-jets** (`2 × Ø54 mm` slim inrunners, `132.5 cm²` total exit, `0` moving tail parts, `~60%` wire-to-thrust efficiency).
+2. **Two Wide-Staggered `1.80 m` U-Foils (`65/35` Lift Split, `+130 mm` Vertical Stagger):** Front Main U-Foil (`900 cm²`, `320 mm` deep in cruise) + Rear Staggered U-Foil (`500 cm²`, `190 mm` deep, clean above front wake, replaces separate tail stabilizer). Always include `4×` horizontal anti-ventilation fences on the `18 mm` lower vertical blades (`Z = -570 mm`).
+3. **Four Stepped Corner Tip Floats (`4 × 24 L = 96 L`) — 3-Stage Flight on `600 mm` Struts:** Top view = `NACA 0014` torpedo (`620 × 135 mm`), Side view = rounded-corner vertical rectangle (`620 × 400 mm`, `R = 65 mm`). `0–5 kn` Takeoff (`75%` submerged, `~100 kgf` pre-lift) $\rightarrow$ `6–10 kn` Low Foil (`150 mm` wet, linear 4-corner stability) $\rightarrow$ `12–15.5 kn` Cruise (`+30 mm` DRY IN AIR, `0 N` float water drag $\rightarrow$ `~33 nm` @ `12 kn` / `~20.5 nm` @ `15.5 kn`).
+4. **Dry Above-Water 4-Channel Wing-Warping & Mandatory Divergence Safety (`>50–60 kn`):**
+   * Four dry non-backdrivable worm/Tr8 rotary actuators (`~25–32 N·m`, `0 W` hold) inside the tops of the 4 above-water floats twist each `0.90 m` foil half `±2.5°` (`0.055%` strain) against **passive `Ø28/Ø34 mm` UHMW-bushed telescoping carbon tie-bars** (`±34 mm` free slip, carries `~56 N` vertical shear, `+330 mm` dry in air).
+   * **Mandatory:** Place the `0°` UD carbon bending spar dead-on **`25%–28%` chord** ($e \le 3\text{ mm}$) + `1` ply `±45°` torsion skin + strictly non-backdrivable tip locks so static torsional divergence stays above `50–60+ kn`.
 
 ---
 
